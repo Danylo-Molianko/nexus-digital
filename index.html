@@ -31,54 +31,115 @@
     </header>
 
     <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Не просто сайти. Ми створюємо інтелектуальні системи для вашого бізнесу</h1>
-                <p class="lead">Digital Foundation • Business Acceleration • Strategic Partnership</p>
-                <a class="btn-primary" href="contact.html">Замовити консультацію</a>
-            </div>
-        </section>
+        <!-- Hero: video background -->
+		<section class="hero section hero--video">
+			<video class="hero__video" autoplay muted loop playsinline poster="assets/images/hero-poster.jpg">
+				<source src="assets/videos/hero-bg.mp4" type="video/mp4">
+				<!-- fallback image shown via poster -->
+			</video>
+			<div class="hero__overlay"></div>
+			<div class="hero__content container">
+				<h1>Не просто сайти. Ми створюємо інтелектуальні системи для вашого бізнесу</h1>
+				<p class="lead">Digital Foundation • Business Acceleration • Strategic Partnership</p>
+				<a class="btn-primary" href="contact.html">Замовити консультацію</a>
+			</div>
+		</section>
 
-        <section class="services-teaser container">
-            <h2>Наші напрямки</h2>
-            <div class="services-grid">
-                <article>
-                    <h3>Digital Foundation</h3>
-                    <p>Створення стабільної цифрової платформи: сайти, інфраструктура, аналітика.</p>
-                    <a href="services.html#digital">Детальніше →</a>
-                </article>
-                <article>
-                    <h3>Business Acceleration</h3>
-                    <p>Прискорення продажів за допомогою продуктів та маркетингу з фокусом на результат.</p>
-                    <a href="services.html#acceleration">Детальніше →</a>
-                </article>
-                <article>
-                    <h3>Strategic Partnership</h3>
-                    <p>Стратегічне планування та інновації для довгострокового зростання.</p>
-                    <a href="services.html#partnership">Детальніше →</a>
-                </article>
-            </div>
-        </section>
+		<!-- Services -->
+		<section class="section">
+			<div class="container">
+				<h2>Наші напрямки</h2>
+				<div class="services-grid">
+					<article>
+						<div class="icon">DF</div>
+						<h3>Digital Foundation</h3>
+						<p>Створюємо технічну платформу, сайти та аналітику для масштабування бізнесу.</p>
+						<a href="services.html#digital">Детальніше →</a>
+					</article>
 
-        <section class="about-teaser container">
-            <h2>Про нас</h2>
-            <p>Команда: Данило Молянко (Керуючий Партнер, Стратег) та Олександр Данко (Технічний Партнер, Інноватор). Працюємо напряму з клієнтами для швидкого результату.</p>
-            <a href="about.html" class="btn-secondary">Дізнатися більше</a>
-        </section>
+					<article>
+						<div class="icon">BA</div>
+						<h3>Business Acceleration</h3>
+						<p>Оптимізація продукту і маркетингу для швидкого зростання продажів.</p>
+						<a href="services.html#acceleration">Детальніше →</a>
+					</article>
 
-        <section class="cta container">
-            <h2>Готові обговорити проєкт?</h2>
-            <p>Залиште контакт — ми підготуємо пропозицію.</p>
-            <a class="btn-primary" href="contact.html">Зв'язатися</a>
-        </section>
-    </main>
+					<article>
+						<div class="icon">SP</div>
+						<h3>Strategic Partnership</h3>
+						<p>Довгострокова співпраця: стратегія, інновації та технічна реалізація.</p>
+						<a href="services.html#partnership">Детальніше →</a>
+					</article>
+				</div>
+			</div>
+		</section>
 
-    <footer class="footer">
-        <div class="container footer__container">
-            <p class="copyright">© 2025 Nexus Studio. All rights reserved.</p>
-            <!-- за потреби додати контакти/посилання тут -->
-        </div>
-    </footer>
+		<!-- About teaser -->
+		<section class="section">
+			<div class="container about-grid">
+				<div class="about-grid__media">
+					<img src="assets/images/team-placeholder.jpg" alt="Команда Nexus Studio">
+				</div>
+				<div class="about-grid__content">
+					<h2>Ваш успіх — наша мета</h2>
+					<p>Клієнти працюють безпосередньо з власниками студії. Данило відповідає за стратегію, а Олександр — за технології та інновації.</p>
+					<p class="text-muted">Ми створюємо рішення на основі Webflow та AI, що дають вимірюваний бізнес-результат.</p>
+					<a class="btn-secondary" href="about.html">Дізнатися більше</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Call to Action -->
+		<section class="section">
+			<div class="container">
+				<div class="cta">
+					<h2>Готові обговорити ваш проєкт?</h2>
+					<p>Залиште контакт — ми підготуємо пропозицію.</p>
+					<a class="btn-primary" href="contact.html">Зв'язатися</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- Footer: 3-column + bottom -->
+	<footer class="footer">
+		<div class="container footer__container">
+			<div class="footer__col">
+				<div class="footer__brand">NEXUS STUDIO</div>
+				<p class="footer__desc">Ми — агентство цифрових інновацій, що перетворює бізнес-цілі на технологічні рішення. Створюємо інтелектуальні системи на основі Webflow та AI.</p>
+			</div>
+
+			<div class="footer__col footer__nav">
+				<h4>Навігація</h4>
+				<ul>
+					<li><a href="index.html">Головна</a></li>
+					<li><a href="services.html">Послуги</a></li>
+					<li><a href="about.html">Про нас</a></li>
+					<li><a href="contact.html">Контакти</a></li>
+				</ul>
+			</div>
+
+			<div class="footer__col footer__contacts">
+				<h4>Зв'яжіться з нами</h4>
+				<p><a href="mailto:hello@nexus.digital">hello@nexus.digital</a></p>
+				<p><a href="#" aria-label="Book meeting">Забронювати зустріч</a></p>
+				<div class="footer__socials" aria-hidden="false">
+					<a href="#" aria-label="LinkedIn">LinkedIn</a>
+					<a href="#" aria-label="GitHub">GitHub</a>
+					<a href="#" aria-label="Telegram">Telegram</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="container footer__bottom">
+			<div class="footer__socials">
+				<a href="#" aria-label="LinkedIn">LinkedIn</a>
+				<a href="#" aria-label="GitHub">GitHub</a>
+				<a href="#" aria-label="Telegram">Telegram</a>
+			</div>
+			<div>© 2025 Nexus Studio. All rights reserved.</div>
+		</div>
+	</footer>
 
     <script src="assets/js/main.js"></script>
 </body>
