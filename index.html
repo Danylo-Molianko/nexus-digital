@@ -31,13 +31,14 @@
     </header>
 
     <main>
-        <!-- Hero: video background -->
-		<section class="hero section hero--video">
+		<!-- HERO -->
+		<section class="hero">
 			<video class="hero__video" autoplay muted loop playsinline poster="assets/images/hero-poster.jpg">
 				<source src="assets/videos/hero-bg.mp4" type="video/mp4">
-				<!-- fallback image shown via poster -->
+				<!-- fallback to poster image -->
 			</video>
 			<div class="hero__overlay"></div>
+
 			<div class="hero__content container">
 				<h1>Не просто сайти. Ми створюємо інтелектуальні системи для вашого бізнесу</h1>
 				<p class="lead">Digital Foundation • Business Acceleration • Strategic Partnership</p>
@@ -45,26 +46,26 @@
 			</div>
 		</section>
 
-		<!-- Services -->
+		<!-- SERVICES -->
 		<section class="section">
 			<div class="container">
 				<h2>Наші напрямки</h2>
 				<div class="services-grid">
-					<article>
+					<article class="service-card">
 						<div class="icon">DF</div>
 						<h3>Digital Foundation</h3>
-						<p>Створюємо технічну платформу, сайти та аналітику для масштабування бізнесу.</p>
+						<p>Створення стабільної цифрової платформи: сайти, інфраструктура, аналітика.</p>
 						<a href="services.html#digital">Детальніше →</a>
 					</article>
 
-					<article>
+					<article class="service-card">
 						<div class="icon">BA</div>
 						<h3>Business Acceleration</h3>
 						<p>Оптимізація продукту і маркетингу для швидкого зростання продажів.</p>
 						<a href="services.html#acceleration">Детальніше →</a>
 					</article>
 
-					<article>
+					<article class="service-card">
 						<div class="icon">SP</div>
 						<h3>Strategic Partnership</h3>
 						<p>Довгострокова співпраця: стратегія, інновації та технічна реалізація.</p>
@@ -74,29 +75,28 @@
 			</div>
 		</section>
 
-		<!-- About teaser -->
+		<!-- ABOUT teaser -->
 		<section class="section">
 			<div class="container about-grid">
 				<div class="about-grid__media">
+					<!-- placeholder image / insert team photo later -->
 					<img src="assets/images/team-placeholder.jpg" alt="Команда Nexus Studio">
 				</div>
+
 				<div class="about-grid__content">
-					<h2>Ваш успіх — наша мета</h2>
-					<p>Клієнти працюють безпосередньо з власниками студії. Данило відповідає за стратегію, а Олександр — за технології та інновації.</p>
-					<p class="text-muted">Ми створюємо рішення на основі Webflow та AI, що дають вимірюваний бізнес-результат.</p>
+					<h2>Працюйте напряму з партнерами</h2>
+					<p>На відміну від великих агенцій, кожен проєкт ведуть засновники. Данило відповідає за бізнес-стратегію, а Олександр — за технології та інновації.</p>
 					<a class="btn-secondary" href="about.html">Дізнатися більше</a>
 				</div>
 			</div>
 		</section>
 
-		<!-- Call to Action -->
-		<section class="section">
+		<!-- CALL TO ACTION -->
+		<section class="cta section">
 			<div class="container">
-				<div class="cta">
-					<h2>Готові обговорити ваш проєкт?</h2>
-					<p>Залиште контакт — ми підготуємо пропозицію.</p>
-					<a class="btn-primary" href="contact.html">Зв'язатися</a>
-				</div>
+				<h2>Готові обговорити ваш проєкт?</h2>
+				<p class="lead">Залиште контакт — ми підготуємо пропозицію.</p>
+				<a class="btn-primary" href="contact.html">Зв'язатися</a>
 			</div>
 		</section>
 	</main>
