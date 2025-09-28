@@ -9,12 +9,11 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!-- ...existing header markup... -->
-    <header class="site-header">
-        <div class="container header-inner">
-            <a class="logo" href="index.html">Nexus<span>Digital</span></a>
-            <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
-            <nav class="site-nav">
+    <header class="header">
+        <div class="container header__container">
+            <a href="index.html" class="logo">NEXUS STUDIO</a>
+
+            <nav class="nav">
                 <ul>
                     <li><a href="index.html">Головна</a></li>
                     <li><a href="services.html">Послуги</a></li>
@@ -22,6 +21,12 @@
                     <li><a href="contact.html">Контакти</a></li>
                 </ul>
             </nav>
+
+            <button class="burger-menu" aria-label="Open navigation menu">
+                <span class="burger-menu__line"></span>
+                <span class="burger-menu__line"></span>
+                <span class="burger-menu__line"></span>
+            </button>
         </div>
     </header>
 
@@ -52,7 +57,6 @@
         </section>
     </main>
 
-    <!-- ...existing footer markup... -->
     <footer class="site-footer">
         <div class="container footer-inner">
             <p class="copyright">© 2025 Nexus Studio. All rights reserved.</p>

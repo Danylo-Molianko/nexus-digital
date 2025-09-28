@@ -79,13 +79,13 @@ h3 {
 .about-teaser{padding:32px 0;background:transparent}
 .cta{background:#fff;padding:28px;border-radius:8px;margin:24px 0;text-align:center}
 
-/* Header (BEM: header, header__container) — sticky + translucent */
+/* Header (BEM: header) — sticky + translucent (updated values) */
 .header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(17, 17, 17, 0.85); /* translucent for scroll effect */
-  backdrop-filter: blur(6px);
+  background-color: rgba(18, 18, 18, 0.8); /* напівпрозорий фон */
+  backdrop-filter: blur(10px); /* більший ефект розмиття */
   transition: background 0.22s ease, box-shadow 0.22s ease;
   border-bottom: 1px solid rgba(255,255,255,0.03);
 }
@@ -147,6 +147,30 @@ h3 {
   cursor: pointer;
   padding: 6px;
 }
+
+/* Burger menu button */
+.burger-menu {
+  display: none; /* shown on mobile via media query */
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.burger-menu__line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-primary);
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+/* animated state (optional) */
+.burger-menu.is-open .burger-menu__line:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.burger-menu.is-open .burger-menu__line:nth-child(2) { opacity: 0; }
+.burger-menu.is-open .burger-menu__line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
 /* Mobile menu overlay (hidden by default via transform) */
 .nav.mobile,
