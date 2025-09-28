@@ -333,6 +333,94 @@ h3 {
 .text-muted { color: var(--text-secondary); }
 .no-scroll { overflow: hidden; } /* Utility to prevent body scroll when mobile menu open */
 
+/* Services page styles */
+.service-hero {
+  padding: 64px 0;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+.service-hero .lead { color: var(--text-secondary); margin-top: 8px; }
+
+/* Two-column layout for service sections */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.two-col .col--left .icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: var(--accent-blue);
+  font-weight:700;
+  margin: 12px 0;
+}
+
+/* Accordion */
+.accordion {
+  width: 100%;
+}
+.accordion__item {
+  border: 1px solid rgba(255,255,255,0.04);
+  background: var(--panel);
+  border-radius: 10px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.accordion__header {
+  width: 100%;
+  text-align: left;
+  padding: 14px 18px;
+  background: transparent;
+  border: 0;
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.accordion__header:after {
+  content: '▾';
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  transition: transform .18s ease;
+}
+.accordion__item.open .accordion__header:after {
+  transform: rotate(180deg);
+  color: var(--accent-blue);
+}
+.accordion__content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.28s ease, padding 0.2s ease;
+  color: var(--text-secondary);
+}
+.accordion__item.open .accordion__content {
+  padding: 12px 18px 18px 18px;
+}
+
+/* content headings inside accordion */
+.accordion__content h4 { margin: 8px 0 6px; color: var(--text-primary); font-size: 0.95rem; }
+
+/* Responsive: two columns on wider screens */
+@media (min-width: 900px) {
+  .two-col { grid-template-columns: 40% 60%; }
+}
+
+/* small screens tweaks */
+@media (max-width: 767px) {
+  .service-hero { padding: 40px 0; }
+  .accordion__header { padding: 12px 14px; }
+  .accordion__content { padding: 10px 14px; }
+}
+
 /* Responsive behaviour (mobile) */
 @media (max-width: 767px) {
   /* show burger, hide desktop nav row */
@@ -394,8 +482,4 @@ h3 {
   .site-nav ul { display: flex !important; }
   .nav.mobile,
   .site-nav.mobile { position: static; transform: none; background: transparent; padding: 0; }
-}
-@media (min-width: 900px) {
-  .services-grid { grid-template-columns: repeat(3, 1fr); }
-  .about-grid { grid-template-columns: 1fr 1fr; }
 }
