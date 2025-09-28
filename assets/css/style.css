@@ -1,0 +1,69 @@
+:root{
+    --bg:#f0f2f5;
+    --text:#1c1e21;
+    --accent:#0066ff;
+    --container:1100px;
+}
+
+body{
+    background-color:var(--bg);
+    font-family:Inter, system-ui, Arial, sans-serif;
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+}
+
+.container{
+    max-width:var(--container);
+    margin:0 auto;
+    padding:0 16px;
+}
+
+/* Header */
+.site-header{
+    background:#ffffff;
+    border-bottom:1px solid #e6e9ee;
+}
+.header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 0;
+}
+.logo{font-weight:700;color:var(--text);font-size:1.1rem}
+.logo span{color:var(--accent)}
+.site-nav ul{display:flex;gap:16px;align-items:center}
+.site-nav a{color:var(--text);padding:8px 6px}
+.menu-toggle{display:block;background:none;border:0;font-size:1.4rem}
+
+/* Hero */
+.hero{
+    padding:56px 0;
+    text-align:center;
+}
+.hero .lead{margin:12px 0 20px;color:#555}
+.btn-primary{
+    display:inline-block;background:var(--accent);color:#fff;padding:12px 20px;border-radius:6px;
+}
+.btn-secondary{display:inline-block;border:1px solid #ccc;padding:8px 14px;border-radius:6px}
+
+/* Services teaser */
+.services-teaser{padding:40px 0}
+.services-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
+.services-grid article{background:#fff;padding:18px;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,0.04)}
+
+/* About teaser & CTA */
+.about-teaser{padding:32px 0;background:transparent}
+.cta{background:#fff;padding:28px;border-radius:8px;margin:24px 0;text-align:center}
+
+/* Footer */
+.site-footer{padding:20px 0;margin-top:40px;border-top:1px solid #e6e9ee;background:#fff}
+.footer-inner{display:flex;flex-direction:column;gap:8px;align-items:center}
+.contacts a{color:var(--accent);}
+
+/* Responsive: from 768px and up */
+@media(min-width:768px){
+    .menu-toggle{display:none}
+    .site-nav ul{gap:24px}
+    .services-grid{grid-template-columns:repeat(3,1fr)}
+    .footer-inner{flex-direction:row;justify-content:space-between}
+}
