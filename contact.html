@@ -1,101 +1,127 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Контакти — Nexus Digital</title>
-    <meta name="description" content="Зв'язатися з Nexus Digital — форма контактів та email.">
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Контакти — Nexus Studio</title>
+  <meta name="description" content="Зв'яжіться з Nexus Studio — форма контактів та альтернативні канали зв'язку.">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header class="header">
-        <div class="container header__container">
-            <a href="index.html" class="logo">NEXUS STUDIO</a>
+  <header class="header">
+    <div class="container header__container">
+      <a href="index.html" class="logo">NEXUS STUDIO</a>
 
-            <nav class="nav" aria-label="Головна навігація">
-                <ul class="nav__list">
-                    <li><a class="nav__link" href="index.html">Головна</a></li>
-                    <li><a class="nav__link" href="services.html">Послуги</a></li>
-                    <li><a class="nav__link" href="about.html">Про нас</a></li>
-                    <li><a class="nav__link" href="contact.html">Контакти</a></li>
-                </ul>
-            </nav>
+      <nav class="nav" aria-label="Головна навігація">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html">Головна</a></li>
+          <li><a class="nav__link" href="services.html">Послуги</a></li>
+          <li><a class="nav__link" href="about.html">Про нас</a></li>
+          <li><a class="nav__link" href="contact.html">Контакти</a></li>
+        </ul>
+      </nav>
 
-            <button class="burger-menu" aria-label="Open navigation menu" type="button">
-                <span class="burger-menu__line"></span>
-                <span class="burger-menu__line"></span>
-                <span class="burger-menu__line"></span>
-            </button>
-        </div>
-    </header>
+      <button class="burger-menu" aria-label="Open navigation menu" type="button">
+        <span class="burger-menu__line"></span>
+        <span class="burger-menu__line"></span>
+        <span class="burger-menu__line"></span>
+      </button>
+    </div>
+  </header>
 
-    <main class="container">
-        <h1>Контакти</h1>
-        <p>Напишіть нам — ми відповімо якнайшвидше.</p>
+  <main>
+    <!-- Hero -->
+    <section class="section contact-hero">
+      <div class="container" style="text-align:center; padding:56px 0;">
+        <h1>Давайте створимо щось видатне разом</h1>
+        <p class="lead">Заповніть форму нижче або скористайтеся альтернативними способами зв'язку. Ми відповімо якнайшвидше.</p>
+      </div>
+    </section>
 
-        <form class="contact-form" action="#" method="post" onsubmit="alert('Форма тимчасово не активна.'); return false;">
-            <label>
-                Ім'я
-                <input type="text" name="name" required>
-            </label>
-            <label>
-                Email
-                <input type="email" name="email" required>
-            </label>
-            <label>
-                Повідомлення
-                <textarea name="message" rows="6" required></textarea>
-            </label>
-            <button class="btn-primary" type="submit">Відправити</button>
-        </form>
-
-        <section class="contact-info">
-            <h2>Альтернативні контакти</h2>
-            <p>Email: <a href="mailto:hello@nexus.digital">hello@nexus.digital</a></p>
-            <p>Booking: посилання на Calendly (додати пізніше)</p>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container footer__container">
-            <div class="footer__col">
-                <div class="footer__brand">NEXUS STUDIO</div>
-                <p class="footer__desc">Ми — агентство цифрових інновацій, що перетворює бізнес-цілі на технологічні рішення. Створюємо інтелектуальні системи на основі Webflow та AI.</p>
-            </div>
-
-            <div class="footer__col footer__nav">
-                <h4>Навігація</h4>
-                <ul>
-                    <li><a href="index.html">Головна</a></li>
-                    <li><a href="services.html">Послуги</a></li>
-                    <li><a href="about.html">Про нас</a></li>
-                    <li><a href="contact.html">Контакти</a></li>
-                </ul>
-            </div>
-
-            <div class="footer__col footer__contacts">
-                <h4>Зв'яжіться з нами</h4>
-                <p><a href="mailto:hello@nexus.digital">hello@nexus.digital</a></p>
-                <p><a href="#" aria-label="Book meeting">Забронювати зустріч</a></p>
-                <div class="footer__socials">
-                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                    <a href="#" aria-label="GitHub">GitHub</a>
-                    <a href="#" aria-label="Telegram">Telegram</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="container footer__bottom">
+    <!-- Contact form + alt contacts -->
+    <section class="section">
+      <div class="container contact-grid">
+        <!-- Left: alternative contacts -->
+        <div class="contact-card">
+          <h2>Прямий зв'язок</h2>
+          <p class="text-muted">Можна написати або забронювати дзвінок.</p>
+          <p><strong>Email:</strong><br><a href="mailto:hello@nexus.digital">hello@nexus.digital</a></p>
+          <p><strong>Бронювання:</strong><br><a href="#" aria-label="Book meeting">Забронювати дзвінок через Calendly</a></p>
+          <div style="margin-top:18px;">
+            <p class="text-muted">Також доступні: LinkedIn, GitHub, Telegram</p>
             <div class="footer__socials">
-                <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                <a href="#" aria-label="GitHub">GitHub</a>
-                <a href="#" aria-label="Telegram">Telegram</a>
+              <a href="#" aria-label="LinkedIn">LinkedIn</a>
+              <a href="#" aria-label="GitHub">GitHub</a>
+              <a href="#" aria-label="Telegram">Telegram</a>
             </div>
-            <div>© 2025 Nexus Studio. All rights reserved.</div>
+          </div>
         </div>
-    </footer>
 
-    <script src="assets/js/main.js"></script>
+        <!-- Right: Netlify-ready contact form -->
+        <div class="contact-card">
+          <h2>Надіслати запит</h2>
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+            <!-- Netlify required hidden input -->
+            <input type="hidden" name="form-name" value="contact">
+            <input type="hidden" name="bot-field" />
+
+            <label class="form-field">
+              <span>Ваше ім'я</span>
+              <input type="text" name="name" required placeholder="Ім'я">
+            </label>
+
+            <label class="form-field">
+              <span>Ваш Email</span>
+              <input type="email" name="email" required placeholder="email@domain.com">
+            </label>
+
+            <label class="form-field">
+              <span>Повідомлення</span>
+              <textarea name="message" rows="6" required placeholder="Розкажіть про ваш проєкт..."></textarea>
+            </label>
+
+            <button type="submit" class="btn-submit btn-primary">Відправити</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__container">
+      <div class="footer__col">
+        <div class="footer__brand">NEXUS STUDIO</div>
+        <p class="footer__desc">Ми — агентство цифрових інновацій, що перетворює бізнес-цілі на технологічні рішення.</p>
+      </div>
+
+      <div class="footer__col footer__nav">
+        <h4>Навігація</h4>
+        <ul>
+          <li><a href="index.html">Головна</a></li>
+          <li><a href="services.html">Послуги</a></li>
+          <li><a href="about.html">Про нас</a></li>
+          <li><a href="contact.html">Контакти</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__contacts">
+        <h4>Зв'яжіться з нами</h4>
+        <p><a href="mailto:hello@nexus.digital">hello@nexus.digital</a></p>
+        <p><a href="#" aria-label="Book meeting">Забронювати зустріч</a></p>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <div class="footer__socials">
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="Telegram">Telegram</a>
+      </div>
+      <div>© 2025 Nexus Studio. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
