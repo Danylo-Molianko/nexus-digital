@@ -18,22 +18,43 @@ body{
     padding:0 16px;
 }
 
-/* Header */
-.site-header{
-    background:#ffffff;
-    border-bottom:1px solid #e6e9ee;
+/* Header (BEM: header, header__container) */
+.header{
+    background:#111;
+    color:#fff;
 }
-.header-inner{
+.header__container{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:16px 0;
+    padding:18px 0;
 }
-.logo{font-weight:700;color:var(--text);font-size:1.1rem}
-.logo span{color:var(--accent)}
-.site-nav ul{display:flex;gap:16px;align-items:center}
-.site-nav a{color:var(--text);padding:8px 6px}
-.menu-toggle{display:block;background:none;border:0;font-size:1.4rem}
+
+/* Логотип */
+.logo{
+    color:#ffffff;
+    text-decoration:none;
+    font-weight:700;
+    letter-spacing:0.4px;
+}
+
+/* Навігація */
+.nav ul{
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+.nav a{
+    color:#cfcfcf; /* світло-сірий */
+    text-decoration:none;
+    padding:6px 0;
+    font-weight:500;
+}
+.nav a:hover,
+.nav a:focus{
+    color:#007BFF; /* синій акцент */
+    outline:none;
+}
 
 /* Hero */
 .hero{
@@ -55,10 +76,29 @@ body{
 .about-teaser{padding:32px 0;background:transparent}
 .cta{background:#fff;padding:28px;border-radius:8px;margin:24px 0;text-align:center}
 
-/* Footer */
-.site-footer{padding:20px 0;margin-top:40px;border-top:1px solid #e6e9ee;background:#fff}
-.footer-inner{display:flex;flex-direction:column;gap:8px;align-items:center}
-.contacts a{color:var(--accent);}
+/* Footer (BEM: footer, footer__container) */
+.footer{
+    background:#0A0A0A; /* трохи темніший за хедер */
+    color:#bdbdbd;
+    padding:20px 0;
+}
+.footer__container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+}
+.footer__container p,
+.footer__container a{
+    margin:0;
+}
+
+/* Копірайт */
+copyright, .copyright {}
+.copyright{
+    font-size:0.85rem;
+    color:#9a9a9a;
+}
 
 /* Responsive: from 768px and up */
 @media(min-width:768px){
