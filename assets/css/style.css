@@ -599,20 +599,21 @@ input:focus, textarea:focus {
   .site-nav.mobile { position: static; transform: none; background: transparent; padding: 0; }
 }
 
-/* Diagnostics banner for missing assets (only visible in debug) */
+/* Diagnostics banner for missing assets */
 .asset-warning {
-  background: #3a2b2b;
+  background: rgba(83, 40, 40, 0.95);
   color: #fff;
-  padding: 10px 14px;
+  padding: 12px 16px;
   font-size: 0.95rem;
   position: relative;
-  z-index: 9999;
-  border-left: 4px solid #ff6b6b;
+  z-index: 99999;
 }
 .asset-warning ul { margin: 8px 0 0 16px; padding: 0; }
 .asset-warning li { margin-bottom: 4px; }
 
-/* Ensure hero content remains above overlay/video */
-.hero__video { z-index: 0; }
-.hero::before { z-index: 1; }
-.hero__content { z-index: 2; }
+/* When video hidden set a neutral dark background for hero */
+.hero video[style*="display: none"] + .hero__content,
+.hero__content { position: relative; z-index: 2; }
+
+/* img fallback simple style */
+img[src^="data:image/svg+xml"] { background: #0b0b0b; border-radius: 6px; }
