@@ -8,6 +8,9 @@
   <meta name="description" content="Nexus Studio — агентство цифрових інновацій. Розробляємо інтелектуальні системи для бізнесу на основі Webflow та AI. Перетворюємо ідеї на вимірюваний результат.">
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- AOS CSS (Animate On Scroll) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -48,45 +51,45 @@
 		</section>
 
 		<!-- Content block under the video -->
-		<section class="hero-copy section">
+		<section class="hero-copy section" data-aos="fade-up">
 			<div class="container hero__content">
 				<h1>Не просто сайти. Ми створюємо інтелектуальні системи для вашого бізнесу</h1>
 				<p class="lead">Digital Foundation • Business Acceleration • Strategic Partnership</p>
-				<a class="btn-primary" href="contact.html">Замовити консультацію</a>
+				<a class="btn btn-primary" href="contact.html">Замовити консультацію</a>
 			</div>
 		</section>
 
 		<!-- SERVICES: використати ваші 3D-моделі -->
-		<section class="section">
+		<section class="section services-overview" data-aos="fade-up">
 			<div class="container">
 				<h2>Наші напрямки</h2>
 				<div class="services-grid">
-					<article class="service-card">
+					<article class="service-card" data-aos="fade-up">
 						<img src="assets/images/1-model-dlia-holovnoi-storinky.webp" alt="1-модель-для-головної-сторінки (Digital Foundation)" loading="lazy">
 						<h3>Digital Foundation</h3>
 						<p>Створюємо технічну платформу, сайти та аналітику для масштабування бізнесу.</p>
-						<a href="services.html#digital">Детальніше →</a>
+						<a class="btn btn-secondary" href="services.html#digital">Детальніше →</a>
 					</article>
 
-					<article class="service-card">
+					<article class="service-card" data-aos="fade-up">
 						<img src="assets/images/2-model-dlia-holovnoi-storinky.webp" alt="2-модель-для-головної-сторінки (Business Acceleration)" loading="lazy">
 						<h3>Business Acceleration</h3>
 						<p>Оптимізація продукту і маркетингу для швидкого зростання продажів.</p>
-						<a href="services.html#acceleration">Детальніше →</a>
+						<a class="btn btn-secondary" href="services.html#acceleration">Детальніше →</a>
 					</article>
 
-					<article class="service-card">
+					<article class="service-card" data-aos="fade-up">
 						<img src="assets/images/3-model-dlia-holovnoi-storinky.webp" alt="3-модель-для-головної-сторінки (Strategic Partnership)" loading="lazy">
 						<h3>Strategic Partnership</h3>
 						<p>Довгострокова співпраця: стратегія, інновації та технічна реалізація.</p>
-						<a href="services.html#partnership">Детальніше →</a>
+						<a class="btn btn-secondary" href="services.html#partnership">Детальніше →</a>
 					</article>
 				</div>
 			</div>
 		</section>
 
 		<!-- ABOUT teaser -->
-		<section class="section">
+		<section class="section about-teaser" data-aos="fade-up">
 			<div class="container about-grid">
 				<div class="about-grid__media">
 					<img src="assets/images/foto-by-oleksandr.jpg" alt="Команда Nexus Studio обговорює проєкт" loading="lazy">
@@ -95,17 +98,17 @@
 				<div class="about-grid__content">
 					<h2>Працюйте напряму з партнерами</h2>
 					<p>На відміну від великих агенцій, кожен проєкт ведуть засновники. Данило відповідає за бізнес-стратегію, а Олександр — за технології та інновації.</p>
-					<a class="btn-secondary" href="about.html">Дізнатися більше</a>
+					<a class="btn btn-secondary" href="about.html">Дізнатися більше</a>
 				</div>
 			</div>
 		</section>
 
 		<!-- CALL TO ACTION -->
-		<section class="cta section">
+		<section class="cta section" data-aos="fade-up">
 			<div class="container">
 				<h2>Готові обговорити ваш проєкт?</h2>
 				<p class="lead">Залиште контакт — ми підготуємо пропозицію.</p>
-				<a class="btn-primary" href="contact.html">Зв'язатися</a>
+				<a class="btn btn-primary" href="contact.html">Зв'язатися</a>
 			</div>
 		</section>
 	</main>
@@ -151,10 +154,12 @@
 	</footer>
 
     <script src="assets/js/main.js"></script>
-</body>
-</html>
-	</footer>
-
-    <script src="assets/js/main.js"></script>
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script>
+	  AOS.init({
+	    duration: 1000,
+	    once: true
+	  });
+	</script>
 </body>
 </html>

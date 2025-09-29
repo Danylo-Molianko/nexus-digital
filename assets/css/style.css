@@ -13,6 +13,12 @@
   --container: 1200px;
   --radius: 8px;
   --glass: rgba(255,255,255,0.03);
+  --bg-light-ivory: #FDFDF5;
+  --text-dark: #1A1A1A;
+  --gradient-yellow-bliss-start: #FFFDE4;
+  --gradient-yellow-bliss-end: #FDFDF5;
+  --gradient-blue-start: #007BFF;
+  --gradient-blue-end: #00C6FF;
 }
 
 /* Global */
@@ -179,6 +185,42 @@ h3 {
 /* Buttons */
 .btn-primary { background: var(--accent-blue); color: #fff; padding: 14px 24px; border-radius: 8px; display:inline-block; }
 .btn-secondary { background: transparent; border: 1px solid rgba(255,255,255,0.06); color: var(--text-primary); padding: 10px 18px; border-radius:6px; }
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end));
+  background-size: 200% 200%;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  transition: background-position 0.4s ease, transform 0.12s ease;
+}
+
+/* Optional: keep semantic .btn-primary/.btn-secondary but inherit .btn */
+.btn-primary { /* preserve accent style if needed */ }
+.btn-secondary {
+  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  color: var(--text-dark);
+  border-radius: 10px;
+  padding: 10px 18px;
+}
+
+/* Light "airy" backgrounds for post-hero sections */
+.about-teaser,
+.services-overview,
+.cta {
+  background-color: var(--bg-light-ivory);
+  background-image:
+    radial-gradient(circle at 10% 20%, var(--gradient-yellow-bliss-start), transparent 40%),
+    radial-gradient(circle at 80% 90%, var(--gradient-blue-end), transparent 50%);
+  color: var(--text-dark);
+}
+.about-teaser h2, .services-overview h2, .cta h2,
+.about-teaser h3, .services-overview h3, .cta h3,
+.about-teaser p, .services-overview p, .cta p {
+  color: var(--text-dark);
+}
 
 /* SERVICES: cards */
 .services-grid {
@@ -188,19 +230,21 @@ h3 {
   margin-top: 20px;
 }
 .service-card {
-  background: var(--bg-light-dark);
-  color: var(--text-primary);
-  border-radius: 12px;
-  padding: 20px;
-  transition: transform .18s ease, box-shadow .18s ease;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  background: linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end));
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
   display:flex;
   flex-direction:column;
   gap:12px;
 }
 .service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 123, 255, 0.3);
+}
+.service-card h3, .service-card p, .service-card a {
+  color: #fff;
 }
 .service-card .icon {
   width:48px;height:48px;border-radius:10px;background:rgba(255,255,255,0.03);display:inline-flex;align-items:center;justify-content:center;color:var(--accent-blue);font-weight:700;
