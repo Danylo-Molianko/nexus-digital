@@ -311,11 +311,10 @@ h3 {
 /* Footer - layout & visual */
 .footer {
   position: relative; /* Необхідно для псевдо-елемента */
-  background-image: url('../images/Picture-for-footer.webp');
+  background-image: url('../images/footer-bg.webp');
   background-size: cover;
   background-position: center;
   z-index: 0;
-  /* якщо були інші фон-стилі, вони залишаються або можуть бути перезаписані */
 }
 .footer::before {
   content: '';
@@ -598,4 +597,5 @@ input:focus, textarea:focus {
   .site-nav ul { display: flex !important; }
   .nav.mobile,
   .site-nav.mobile { position: static; transform: none; background: transparent; padding: 0; }
+}
 }
