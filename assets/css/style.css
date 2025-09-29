@@ -310,7 +310,7 @@ h3 {
 
 /* Footer - layout & visual */
 .footer {
-  position: relative; /* Необхідно для псевдо-елемента */
+  position: relative;
   background-image: url('../images/Picture-for-footer.webp');
   background-size: cover;
   background-position: center;

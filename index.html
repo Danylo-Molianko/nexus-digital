@@ -13,7 +13,7 @@
 	<div class="container header__container">
 		<!-- Logo candidates: prefer lowercase first, then older variants -->
 		<a href="index.html" class="logo">
-			<img id="site-logo" data-srcs="assets/images/logo.png,assets/images/Logo-for-site.png,assets/images/logo.PNG" alt="Nexus Studio Logo">
+			<img src="assets/images/Logo-for-site.png" alt="Nexus Studio Logo">
 		</a>
 
 		<nav class="nav" aria-label="Головна навігація">
@@ -36,9 +36,9 @@
     <main>
 		<!-- HERO: video data-sources candidates (lowercase first) -->
 		<section class="hero section hero--video">
-			<video id="hero-video" class="hero__video" autoplay muted loop playsinline poster="assets/images/hero-poster.jpg" data-sources="assets/videos/hero-video.mp4,assets/videos/Video-section--1.mp4,assets/videos/Video-section-1.mp4">
-				<!-- source буде підставлено скриптом -->
-				Your browser does not support the video tag.
+			<video src="assets/videos/Video-section--1.mp4" autoplay loop muted playsinline poster="assets/images/hero-poster.jpg" class="hero__video">
+				<!-- fallback for very old browsers -->
+				Ваш браузер не підтримує відтворення відео. <img src="assets/images/hero-poster.jpg" alt="Hero poster">
 			</video>
 
 			<div class="hero__content container">
@@ -54,21 +54,21 @@
 				<h2>Наші напрямки</h2>
 				<div class="services-grid">
 					<article class="service-card">
-						<img loading="lazy" class="asset-img" data-srcs="assets/images/service-card-1.webp,assets/images/Picture-for-section---1.webp,assets/images/service-card-1.png" alt="Digital Foundation">
+						<img src="assets/images/Picture-for-section---1.webp" alt="Digital Foundation" loading="lazy">
 						<h3>Digital Foundation</h3>
 						<p>Створюємо технічну платформу, сайти та аналітику для масштабування бізнесу.</p>
 						<a href="services.html#digital">Детальніше →</a>
 					</article>
 
 					<article class="service-card">
-						<img loading="lazy" class="asset-img" data-srcs="assets/images/service-card-2.webp,assets/images/Picture-for-section---2.webp,assets/images/service-card-2.png" alt="Business Acceleration">
+						<img src="assets/images/Picture-for-section---2.webp" alt="Business Acceleration" loading="lazy">
 						<h3>Business Acceleration</h3>
 						<p>Оптимізація продукту і маркетингу для швидкого зростання продажів.</p>
 						<a href="services.html#acceleration">Детальніше →</a>
 					</article>
 
 					<article class="service-card">
-						<img loading="lazy" class="asset-img" data-srcs="assets/images/service-card-3.webp,assets/images/Picture-for-section---3.webp,assets/images/service-card-3.png" alt="Strategic Partnership">
+						<img src="assets/images/Picture-for-section---3.webp" alt="Strategic Partnership" loading="lazy">
 						<h3>Strategic Partnership</h3>
 						<p>Довгострокова співпраця: стратегія, інновації та технічна реалізація.</p>
 						<a href="services.html#partnership">Детальніше →</a>
