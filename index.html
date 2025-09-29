@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Digital — Головна</title>
-    <meta name="description" content="Nexus Digital — створюємо інтелектуальні системи та якісні веб-рішення для бізнесу.">
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Digital — Головна</title>
+  <!-- UPDATED meta description -->
+  <meta name="description" content="Nexus Studio — агентство цифрових інновацій. Розробляємо інтелектуальні системи для бізнесу на основі Webflow та AI. Перетворюємо ідеї на вимірюваний результат.">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
 	<div class="container header__container">
 		<a href="index.html" class="logo" aria-label="Nexus Studio — home">
-			<!-- image (will be resolved by JS if present) -->
-			<img id="site-logo" class="logo__img" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Nexus Studio logo" loading="eager">
-
-			<!-- visible modern name (always shown beside logo img) -->
+			<img id="site-logo" class="logo__img" src="assets/images/logo-for-site.png" alt="Логотип інноваційного агентства Nexus Studio" loading="eager">
 			<span class="logo__name"><span class="logo-gradient">Nexus Studio</span></span>
-
-			<!-- fallback shown only when image not found (JS toggles .show) -->
-			<span id="logo-fallback" class="logo-fallback" aria-hidden="true"><span class="logo-gradient">Nexus Studio</span></span>
 		</a>
 
 		<nav class="nav" aria-label="Головна навігація">
@@ -67,21 +62,21 @@
 				<h2>Наші напрямки</h2>
 				<div class="services-grid">
 					<article class="service-card">
-						<img loading="lazy" src="assets/images/1-model-dlia-holovnoi-storinky.webp" alt="Digital Foundation">
+						<img src="assets/images/1-model-dlia-holovnoi-storinky.webp" alt="1-модель-для-головної-сторінки (Digital Foundation)" loading="lazy">
 						<h3>Digital Foundation</h3>
 						<p>Створюємо технічну платформу, сайти та аналітику для масштабування бізнесу.</p>
 						<a href="services.html#digital">Детальніше →</a>
 					</article>
 
 					<article class="service-card">
-						<img loading="lazy" src="assets/images/2-model-dlia-holovnoi-storinky.webp" alt="Business Acceleration">
+						<img src="assets/images/2-model-dlia-holovnoi-storinky.webp" alt="2-модель-для-головної-сторінки (Business Acceleration)" loading="lazy">
 						<h3>Business Acceleration</h3>
 						<p>Оптимізація продукту і маркетингу для швидкого зростання продажів.</p>
 						<a href="services.html#acceleration">Детальніше →</a>
 					</article>
 
 					<article class="service-card">
-						<img loading="lazy" src="assets/images/3-model-dlia-holovnoi-storinky.webp" alt="Strategic Partnership">
+						<img src="assets/images/3-model-dlia-holovnoi-storinky.webp" alt="3-модель-для-головної-сторінки (Strategic Partnership)" loading="lazy">
 						<h3>Strategic Partnership</h3>
 						<p>Довгострокова співпраця: стратегія, інновації та технічна реалізація.</p>
 						<a href="services.html#partnership">Детальніше →</a>
@@ -94,7 +89,7 @@
 		<section class="section">
 			<div class="container about-grid">
 				<div class="about-grid__media">
-					<img src="assets/images/foto-by-oleksandr.jpg" alt="Олександр Данко">
+					<img src="assets/images/foto-by-oleksandr.jpg" alt="Команда Nexus Studio обговорює проєкт" loading="lazy">
 				</div>
 
 				<div class="about-grid__content">
@@ -136,23 +131,28 @@
 			<div class="footer__col footer__contacts">
 				<h4>Зв'яжіться з нами</h4>
 				<p><a href="mailto:hello@nexus.digital">hello@nexus.digital</a></p>
-				<p><a href="#" aria-label="Book meeting">Забронювати зустріч</a></p>
+				<p><a href="https://calendly.com/" aria-label="Book meeting">Забронювати зустріч</a></p>
 				<div class="footer__socials" aria-hidden="false">
-					<a href="#" aria-label="LinkedIn">LinkedIn</a>
-					<a href="#" aria-label="GitHub">GitHub</a>
-					<a href="#" aria-label="Telegram">Telegram</a>
+					<a href="https://linkedin.com/" aria-label="LinkedIn">LinkedIn</a>
+					<a href="https://github.com/" aria-label="GitHub">GitHub</a>
+					<a href="https://t.me/" aria-label="Telegram">Telegram</a>
 				</div>
 			</div>
 		</div>
 
 		<div class="container footer__bottom">
 			<div class="footer__socials">
-				<a href="#" aria-label="LinkedIn">LinkedIn</a>
-				<a href="#" aria-label="GitHub">GitHub</a>
-				<a href="#" aria-label="Telegram">Telegram</a>
+				<a href="https://linkedin.com/" aria-label="LinkedIn">LinkedIn</a>
+				<a href="https://github.com/" aria-label="GitHub">GitHub</a>
+				<a href="https://t.me/" aria-label="Telegram">Telegram</a>
 			</div>
 			<div>© 2025 Nexus Studio. All rights reserved.</div>
 		</div>
+	</footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
 	</footer>
 
     <script src="assets/js/main.js"></script>
