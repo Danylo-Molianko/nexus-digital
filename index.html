@@ -11,9 +11,9 @@
 <body>
     <header class="header">
 	<div class="container header__container">
-		<!-- Заміна логотипу: перелік кандидатів через data-srcs -->
+		<!-- Logo candidates: prefer lowercase first, then older variants -->
 		<a href="index.html" class="logo">
-			<img id="site-logo" data-srcs="assets/images/logo.png,assets/images/logo.png,assets/images/Logo-for-site.png,assets/images/logo.PNG" alt="Nexus Studio Logo">
+			<img id="site-logo" data-srcs="assets/images/logo.png,assets/images/Logo-for-site.png,assets/images/logo.PNG" alt="Nexus Studio Logo">
 		</a>
 
 		<nav class="nav" aria-label="Головна навігація">
@@ -31,10 +31,10 @@
 			<span class="burger-menu__line"></span>
 		</button>
 	</div>
-</header>
+    </header>
 
     <main>
-		<!-- HERO: video з переліком кандидатів у data-sources, poster залишено -->
+		<!-- HERO: video data-sources candidates (lowercase first) -->
 		<section class="hero section hero--video">
 			<video id="hero-video" class="hero__video" autoplay muted loop playsinline poster="assets/images/hero-poster.jpg" data-sources="assets/videos/hero-video.mp4,assets/videos/Video-section--1.mp4,assets/videos/Video-section-1.mp4">
 				<!-- source буде підставлено скриптом -->
@@ -48,7 +48,7 @@
 			</div>
 		</section>
 
-		<!-- Services: images з data-srcs (кілька кандидатів) -->
+		<!-- SERVICES: images with candidate lists (lowercase first) -->
 		<section class="section">
 			<div class="container">
 				<h2>Наші напрямки</h2>
@@ -81,7 +81,7 @@
 		<section class="section">
 			<div class="container about-grid">
 				<div class="about-grid__media">
-					<!-- team image with candidates -->
+					<!-- team image candidates -->
 					<img class="asset-img" data-srcs="assets/images/team-placeholder.jpg,assets/images/team-placeholder.png,assets/images/team.jpg" alt="Команда Nexus Studio">
 				</div>
 
@@ -103,7 +103,7 @@
 		</section>
 	</main>
 
-	<!-- Footer: додано data-srcs на сам футер для фонової картинки -->
+	<!-- Footer: background candidates -->
 	<footer class="footer" data-srcs="assets/images/footer-bg.webp,assets/images/Picture-for-footer.webp,assets/images/footer-bg.png">
 		<div class="container footer__container">
 			<div class="footer__col">
