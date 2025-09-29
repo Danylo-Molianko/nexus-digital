@@ -311,7 +311,7 @@ h3 {
 /* Footer - layout & visual */
 .footer {
   position: relative; /* Необхідно для псевдо-елемента */
-  background-image: url('../images/Picture for footer.png');
+  background-image: url('../images/footer-bg.webp');
   background-size: cover;
   background-position: center;
   z-index: 0;
@@ -328,6 +328,8 @@ h3 {
   z-index: 1;
 }
 .footer__container {
+  position: relative;
+  z-index: 2;
   display: flex;
   gap: 30px;
   align-items: flex-start;
