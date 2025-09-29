@@ -7,13 +7,20 @@
     <meta name="description" content="Nexus Digital — створюємо інтелектуальні системи та якісні веб-рішення для бізнесу.">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
 	<div class="container header__container">
-		<!-- logo replaced with accessible text logo (no external image) -->
-		<a href="index.html" class="logo" aria-label="Nexus Studio">
-			<span class="logo-text">NEXUS STUDIO</span>
+		<a href="index.html" class="logo" aria-label="Nexus Studio — home">
+			<!-- image (will be resolved by JS if present) -->
+			<img id="site-logo" class="logo__img" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Nexus Studio logo" loading="eager">
+
+			<!-- visible modern name (always shown beside logo img) -->
+			<span class="logo__name"><span class="logo-gradient">Nexus Studio</span></span>
+
+			<!-- fallback shown only when image not found (JS toggles .show) -->
+			<span id="logo-fallback" class="logo-fallback" aria-hidden="true"><span class="logo-gradient">Nexus Studio</span></span>
 		</a>
 
 		<nav class="nav" aria-label="Головна навігація">
@@ -150,5 +157,4 @@
 
     <script src="assets/js/main.js"></script>
 </body>
-</html>
 </html>

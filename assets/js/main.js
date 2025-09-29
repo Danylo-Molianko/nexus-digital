@@ -277,5 +277,95 @@ document.addEventListener('DOMContentLoaded', function(){
 	  });
 	})();
 
+	// --- POLISH: reveal on scroll + button ripple ---
+	(function uiPolish(){
+	  // Reveal on scroll
+	  const revealEls = Array.from(document.querySelectorAll('.reveal'));
+	  if (revealEls.length) {
+	    if ('IntersectionObserver' in window) {
+	      const io = new IntersectionObserver((entries, obs) => {
+	        entries.forEach(en => {
+	          if (en.isIntersecting) {
+	            const el = en.target;
+	            // optional delay via data attribute
+	            const delay = parseFloat(el.dataset.revealDelay) || 0;
+	            setTimeout(()=> el.classList.add('is-visible'), Math.round(delay * 1000));
+	            obs.unobserve(el);
+	          }
+	        });
+	      }, { threshold: 0.12 });
+	      revealEls.forEach(e => io.observe(e));
+	    } else {
+	      revealEls.forEach(e => e.classList.add('is-visible'));
+	    }
+	  }
+
+	  // Ripple on .btn-primary
+	  document.addEventListener('click', (ev) => {
+	    const btn = ev.target.closest('.btn-primary');
+	    if (!btn) return;
+	    const rect = btn.getBoundingClientRect();
+	    const ripple = document.createElement('span');
+	    ripple.className = 'ripple';
+	    const size = Math.max(rect.width, rect.height);
+	    ripple.style.width = ripple.style.height = size + 'px';
+	    ripple.style.left = (ev.clientX - rect.left - size / 2) + 'px';
+	    ripple.style.top = (ev.clientY - rect.top - size / 2) + 'px';
+	    btn.appendChild(ripple);
+	    setTimeout(() => ripple.remove(), 650);
+	  }, { passive: true });
+	})();
+
 	// end DOMContentLoaded
+});
+
+document.addEventListener('DOMContentLoaded', function(){
+  // Resolve logo: try candidate filenames and set first reachable
+  (async function resolveLogo(){
+    const img = document.getElementById('site-logo');
+    const fallback = document.getElementById('logo-fallback');
+    if (!img) return;
+
+    const candidates = [
+      'assets/images/logo-for-site.png',
+      'assets/images/logo-for-site.webp',
+      'assets/images/Logo-for-site.png',
+      'assets/images/logo.png',
+      'assets/images/logo.webp'
+    ];
+
+    async function exists(url){
+      try {
+        const res = await fetch(url, { method: 'HEAD' });
+        return res.ok;
+      } catch (e) {
+        // fallback: try GET
+        try {
+          const r2 = await fetch(url, { method: 'GET' });
+          return r2.ok;
+        } catch (_) {
+          return false;
+        }
+      }
+    }
+
+    for (const path of candidates){
+      if (!path) continue;
+      // eslint-disable-next-line no-await-in-loop
+      const ok = await exists(path);
+      if (ok) {
+        img.src = path;
+        // ensure fallback hidden
+        fallback.classList.remove('show');
+        return;
+      }
+    }
+
+    // nothing found: hide broken image and show text fallback
+    img.style.display = 'none';
+    fallback.classList.add('show');
+    console.warn('Logo resolution: no candidate found, showing text fallback.');
+  })();
+
+  // end DOMContentLoaded
 });
