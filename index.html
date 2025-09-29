@@ -10,37 +10,33 @@
 </head>
 <body>
     <header class="header">
-        <div class="container header__container">
-            <!-- Заміна текстового логотипу на зображення -->
-            <a href="index.html" class="logo">
-                <img src="assets/images/Logo-for-site.png" alt="Nexus Studio Logo">
-            </a>
+	<div class="container header__container">
+		<!-- Заміна логотипу -->
+		<a href="index.html" class="logo">
+			<img src="assets/images/Logo-for-site.png" alt="Nexus Studio Logo">
+		</a>
 
-            <nav class="nav" aria-label="Головна навігація">
-                <ul class="nav__list">
-                    <li><a class="nav__link" href="index.html">Головна</a></li>
-                    <li><a class="nav__link" href="services.html">Послуги</a></li>
-                    <li><a class="nav__link" href="about.html">Про нас</a></li>
-                    <li><a class="nav__link" href="contact.html">Контакти</a></li>
-                </ul>
-            </nav>
+		<nav class="nav" aria-label="Головна навігація">
+			<ul class="nav__list">
+				<li><a class="nav__link" href="index.html">Головна</a></li>
+				<li><a class="nav__link" href="services.html">Послуги</a></li>
+				<li><a class="nav__link" href="about.html">Про нас</a></li>
+				<li><a class="nav__link" href="contact.html">Контакти</a></li>
+			</ul>
+		</nav>
 
-            <button class="burger-menu" aria-label="Open navigation menu" type="button">
-                <span class="burger-menu__line"></span>
-                <span class="burger-menu__line"></span>
-                <span class="burger-menu__line"></span>
-            </button>
-        </div>
-    </header>
+		<button class="burger-menu" aria-label="Open navigation menu" type="button">
+			<span class="burger-menu__line"></span>
+			<span class="burger-menu__line"></span>
+			<span class="burger-menu__line"></span>
+		</button>
+	</div>
+</header>
 
     <main>
 		<!-- HERO: оновлено шлях до відео -->
 		<section class="hero section hero--video">
-			<video class="hero__video" autoplay muted loop playsinline src="assets/videos/Video-section--1.mp4" poster="assets/images/hero-poster.jpg">
-				<!-- fallback content / poster used if video missing -->
-			</video>
-
-			<!-- видалено окремий .hero__overlay — затемнення робить ::before у CSS -->
+			<video class="hero__video" autoplay muted loop playsinline src="assets/videos/Video-section--1.mp4" poster="assets/images/hero-poster.jpg"></video>
 
 			<div class="hero__content container">
 				<h1>Не просто сайти. Ми створюємо інтелектуальні системи для вашого бізнесу</h1>
@@ -49,7 +45,7 @@
 			</div>
 		</section>
 
-		<!-- SERVICES -->
+		<!-- Services: оновлені шляхи до зображень карток -->
 		<section class="section">
 			<div class="container">
 				<h2>Наші напрямки</h2>
