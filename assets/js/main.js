@@ -86,4 +86,59 @@ document.addEventListener('DOMContentLoaded', function(){
     document.querySelectorAll('.accordion__item.open .accordion__content').forEach(c => {
         c.style.maxHeight = c.scrollHeight + 'px';
     });
+
+    // --- DIAGNOSTICS: check media resources and show warnings if missing ---
+    (function checkMediaAssets(){
+        const assets = new Set();
+        // collect src from images
+        document.querySelectorAll('img').forEach(img => {
+            if (img.src) assets.add(img.getAttribute('src'));
+        });
+        // collect sources from <video> sources and poster
+        document.querySelectorAll('video').forEach(v => {
+            const poster = v.getAttribute('poster');
+            if (poster) assets.add(poster);
+            v.querySelectorAll('source').forEach(s => {
+                const src = s.getAttribute('src');
+                if (src) assets.add(src);
+            });
+            // fallback src attribute on video (if any)
+            const vsrc = v.getAttribute('src');
+            if (vsrc) assets.add(vsrc);
+        });
+
+        if (assets.size === 0) return;
+
+        const missing = [];
+        const checkPromises = Array.from(assets).map(path => {
+            // attempt HEAD request; fall back to GET if HEAD not allowed
+            return fetch(path, { method: 'HEAD' }).then(res => {
+                if (!res.ok) {
+                    missing.push({ path, status: res.status });
+                }
+            }).catch(() => {
+                // try GET as fallback
+                return fetch(path, { method: 'GET' }).then(res2 => {
+                    if (!res2.ok) missing.push({ path, status: res2.status });
+                }).catch(() => {
+                    missing.push({ path, status: 'fetch-failed' });
+                });
+            });
+        });
+
+        Promise.all(checkPromises).then(() => {
+            if (missing.length) {
+                console.warn('Missing media assets detected:', missing);
+                // create an unobtrusive banner in the page for quick debugging
+                const banner = document.createElement('div');
+                banner.className = 'asset-warning';
+                banner.innerHTML = '<strong>Warning:</strong> missing media assets detected:<ul>' +
+                    missing.map(m => `<li>${m.path} (status: ${m.status})</li>`).join('') +
+                    '</ul>';
+                document.body.insertBefore(banner, document.body.firstChild);
+            } else {
+                console.log('All media assets are reachable.');
+            }
+        });
+    })();
 });
