@@ -227,5 +227,55 @@ document.addEventListener('DOMContentLoaded', function(){
 		}
 	})();
 
+	// Hero video error handling: hide video and show fallback if sources fail
+	(function handleHeroVideoErrors(){
+	  const wrapper = document.querySelector('.hero-video');
+	  if (!wrapper) return;
+	  const vid = wrapper.querySelector('video.hero__video');
+
+	  if (!vid) return;
+
+	  let errored = false;
+	  // if video can't play / loadedmetadata not fired after timeout -> mark failed
+	  const failTimeout = setTimeout(() => {
+	    if (vid.readyState < 2 && !errored) {
+	      errored = true;
+	      wrapper.classList.add('video-failed');
+	      const note = document.createElement('div');
+	      note.className = 'hero-fallback-note show';
+	      note.textContent = 'Фонове відео тимчасово недоступне — показано fallback.';
+	      wrapper.appendChild(note);
+	      console.warn('Hero video appears not to be loading (timeout). Applied fallback.');
+	    }
+	  }, 3500); // 3.5s to attempt loading
+
+	  // on error events (network decode etc)
+	  vid.addEventListener('error', (e) => {
+	    if (errored) return;
+	    errored = true;
+	    clearTimeout(failTimeout);
+	    wrapper.classList.add('video-failed');
+	    const note = document.createElement('div');
+	    note.className = 'hero-fallback-note show';
+	    note.textContent = 'Фонове відео недоступне — показано fallback.';
+	    wrapper.appendChild(note);
+	    console.warn('Hero video error event:', e);
+	  });
+
+	  // if metadata loaded successfully, cancel fallback timeout
+	  vid.addEventListener('loadedmetadata', () => {
+	    clearTimeout(failTimeout);
+	    // If video has zero width/height or still nothing, kept handled by timeout
+	    if (vid.videoWidth === 0 || vid.videoHeight === 0) {
+	      // treat as failure
+	      wrapper.classList.add('video-failed');
+	      console.warn('Hero video loaded but has zero dimensions — applied fallback.');
+	    } else {
+	      // successful load; ensure wrapper not marked failed
+	      wrapper.classList.remove('video-failed');
+	    }
+	  });
+	})();
+
 	// end DOMContentLoaded
 });

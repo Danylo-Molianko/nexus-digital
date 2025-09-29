@@ -109,6 +109,15 @@ h3 {
   display: block;
 }
 
+/* Logo as text */
+.logo-text {
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  font-size: 1rem;
+  display: inline-block;
+}
+
 /* Buttons */
 .btn-primary { background: var(--accent-blue); color: #fff; padding: 14px 24px; border-radius: 8px; display:inline-block; }
 .btn-secondary { background: transparent; border: 1px solid rgba(255,255,255,0.06); color: var(--text-primary); padding: 10px 18px; border-radius:6px; }
@@ -150,6 +159,16 @@ h3 {
   margin-bottom: 12px;
 }
 
+/* Card media placeholder */
+.card-media {
+  width: 100%;
+  height: 180px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+  margin-bottom: 12px;
+}
+
 /* ABOUT teaser: two-column layout */
 .about-grid {
   display: grid;
@@ -170,6 +189,14 @@ h3 {
 }
 .about-grid__media img { width:100%; height:100%; object-fit:cover; display:block; }
 .about-grid__content { color: var(--text-secondary); }
+
+/* About/media placeholder */
+.about-media {
+  width: 100%;
+  height: 320px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
 
 /* CTA */
 .cta {
@@ -311,9 +338,10 @@ h3 {
 /* Footer - layout & visual */
 .footer {
   position: relative;
-  background-image: url('../images/Picture-for-footer.webp');
+  background-image: url('../images/picture-for-footer.webp');
   background-size: cover;
   background-position: center;
+  color: var(--text-secondary);
   z-index: 0;
 }
 .footer::before {
@@ -367,6 +395,26 @@ h3 {
   color: var(--muted);
   font-size: 0.9rem;
   flex-wrap:wrap;
+}
+
+/* Footer image block (new styles) */
+.footer__hero {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.footer__hero .footer__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 280px;
+}
+
+/* ensure footer content remains readable on top of image if overlaps */
+.footer__container {
+  position: relative;
+  z-index: 2;
 }
 
 /* Utilities */
@@ -617,3 +665,68 @@ input:focus, textarea:focus {
 
 /* img fallback simple style */
 img[src^="data:image/svg+xml"] { background: #0b0b0b; border-radius: 6px; }
+
+/* Video-only hero wrapper with 20% dark overlay */
+.hero-video {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 520px;
+  overflow: hidden;
+  display: block;
+  background: linear-gradient(180deg, rgba(10,10,10,0.98), rgba(8,12,16,0.98)); /* fallback background in case video missing */
+}
+
+/* overlay should be above video but below content (20% dark) */
+.hero-video::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,0.20); /* 20% затемнення */
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* video sits below overlay */
+.hero-video .hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  background: transparent;
+}
+
+/* content block sits above everything (under it visually) */
+.hero-copy { background: transparent; }
+.hero-copy .hero__content { position: relative; z-index: 3; }
+
+/* If video failed to load, show a subtle fallback look (no heavy black block) */
+.hero-video.video-failed {
+  background: linear-gradient(180deg, rgba(6,8,10,1), rgba(12,14,18,1));
+}
+.hero-video.video-failed::before {
+  /* slightly stronger overlay so text remains legible when fallback used */
+  background-color: rgba(0,0,0,0.35);
+}
+.hero-video.video-failed .hero__video {
+  display: none; /* hide video element if it failed */
+}
+
+/* small accessibility hint visible only when video failed (optional) */
+.hero-video.video-failed .hero-fallback-note {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  color: rgba(255,255,255,0.65);
+  font-size: 0.95rem;
+  z-index: 3;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.25);
+  display: none;
+}
+.hero-video.video-failed .hero-fallback-note.show { display: block; }

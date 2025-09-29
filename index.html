@@ -11,9 +11,9 @@
 <body>
     <header class="header">
 	<div class="container header__container">
-		<!-- Logo candidates: prefer lowercase first, then older variants -->
-		<a href="index.html" class="logo">
-			<img src="assets/images/Logo-for-site.png" alt="Nexus Studio Logo">
+		<!-- logo replaced with accessible text logo (no external image) -->
+		<a href="index.html" class="logo" aria-label="Nexus Studio">
+			<span class="logo-text">NEXUS STUDIO</span>
 		</a>
 
 		<nav class="nav" aria-label="Головна навігація">
@@ -34,41 +34,47 @@
     </header>
 
     <main>
-		<!-- HERO: video data-sources candidates (lowercase first) -->
-		<section class="hero section hero--video">
-			<video src="assets/videos/Video-section--1.mp4" autoplay loop muted playsinline poster="assets/images/hero-poster.jpg" class="hero__video">
-				<!-- fallback for very old browsers -->
-				Ваш браузер не підтримує відтворення відео. <img src="assets/images/hero-poster.jpg" alt="Hero poster">
-			</video>
+		<!-- HERO: video -->
+		<!-- Video-only hero wrapper with multiple source fallbacks -->
+		<section class="hero-video">
+		  <video class="hero__video" autoplay muted loop playsinline preload="auto">
+		    <source src="assets/videos/video-section-1.mp4" type="video/mp4">
+		    <source src="assets/videos/Video-section--1.mp4" type="video/mp4">
+		    <source src="assets/videos/hero-video.mp4" type="video/mp4">
+		    Ваш браузер не підтримує відтворення відео.
+		  </video>
+		</section>
 
-			<div class="hero__content container">
+		<!-- Content block under the video -->
+		<section class="hero-copy section">
+			<div class="container hero__content">
 				<h1>Не просто сайти. Ми створюємо інтелектуальні системи для вашого бізнесу</h1>
 				<p class="lead">Digital Foundation • Business Acceleration • Strategic Partnership</p>
 				<a class="btn-primary" href="contact.html">Замовити консультацію</a>
 			</div>
 		</section>
 
-		<!-- SERVICES: images with candidate lists (lowercase first) -->
+		<!-- SERVICES: використати ваші 3D-моделі -->
 		<section class="section">
 			<div class="container">
 				<h2>Наші напрямки</h2>
 				<div class="services-grid">
 					<article class="service-card">
-						<img src="assets/images/Picture-for-section---1.webp" alt="Digital Foundation" loading="lazy">
+						<img loading="lazy" src="assets/images/1-model-dlia-holovnoi-storinky.webp" alt="Digital Foundation">
 						<h3>Digital Foundation</h3>
 						<p>Створюємо технічну платформу, сайти та аналітику для масштабування бізнесу.</p>
 						<a href="services.html#digital">Детальніше →</a>
 					</article>
 
 					<article class="service-card">
-						<img src="assets/images/Picture-for-section---2.webp" alt="Business Acceleration" loading="lazy">
+						<img loading="lazy" src="assets/images/2-model-dlia-holovnoi-storinky.webp" alt="Business Acceleration">
 						<h3>Business Acceleration</h3>
 						<p>Оптимізація продукту і маркетингу для швидкого зростання продажів.</p>
 						<a href="services.html#acceleration">Детальніше →</a>
 					</article>
 
 					<article class="service-card">
-						<img src="assets/images/Picture-for-section---3.webp" alt="Strategic Partnership" loading="lazy">
+						<img loading="lazy" src="assets/images/3-model-dlia-holovnoi-storinky.webp" alt="Strategic Partnership">
 						<h3>Strategic Partnership</h3>
 						<p>Довгострокова співпраця: стратегія, інновації та технічна реалізація.</p>
 						<a href="services.html#partnership">Детальніше →</a>
@@ -81,8 +87,7 @@
 		<section class="section">
 			<div class="container about-grid">
 				<div class="about-grid__media">
-					<!-- team image candidates -->
-					<img class="asset-img" data-srcs="assets/images/team-placeholder.jpg,assets/images/team-placeholder.png,assets/images/team.jpg" alt="Команда Nexus Studio">
+					<img src="assets/images/foto-by-oleksandr.jpg" alt="Олександр Данко">
 				</div>
 
 				<div class="about-grid__content">
@@ -103,8 +108,8 @@
 		</section>
 	</main>
 
-	<!-- Footer: background candidates -->
-	<footer class="footer" data-srcs="assets/images/footer-bg.webp,assets/images/Picture-for-footer.webp,assets/images/footer-bg.png">
+	<!-- Footer: без inline-образу (фон задаємо в CSS) -->
+	<footer class="footer">
 		<div class="container footer__container">
 			<div class="footer__col">
 				<div class="footer__brand">NEXUS STUDIO</div>

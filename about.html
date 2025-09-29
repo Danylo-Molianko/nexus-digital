@@ -11,7 +11,9 @@
 <body>
 	<header class="header">
 		<div class="container header__container">
-			<a href="index.html" class="logo">NEXUS STUDIO</a>
+			<a href="index.html" class="logo" aria-label="Nexus Studio">
+				<span class="logo-text">NEXUS STUDIO</span>
+			</a>
 
 			<nav class="nav" aria-label="Головна навігація">
 				<ul class="nav__list">
@@ -44,42 +46,30 @@
 			<div class="container about-grid">
 				<!-- Danilo -->
 				<article class="about-card">
-					<div class="about-grid__media" style="height:260px; display:flex;align-items:center;justify-content:center;">
-						<!-- placeholder for photo -->
-						<img src="assets/images/danilo-placeholder.jpg" alt="Данило Молянко" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-					</div>
+					<div class="about-media" aria-hidden="true"></div>
+					<h2>Данило Молянко</h2>
+					<h3>Керуючий Партнер, Стратег</h3>
+					<p>Данило є мостом між бізнес-цілями клієнта та технічною реалізацією. Його головне завдання — зрозуміти "ЩО" і "НАВІЩО" потрібно клієнту.</p>
 
-					<div class="about-grid__content">
-						<h2>Данило Молянко</h2>
-						<h3>Керуючий Партнер, Стратег</h3>
-						<p>Данило є мостом між бізнес-цілями клієнта та технічною реалізацією. Його головне завдання — зрозуміти "ЩО" і "НАВІЩО" потрібно клієнту.</p>
-
-						<ul>
-							<li>Стратегія та Бізнес-аналіз</li>
-							<li>Клієнтські Відносини</li>
-							<li>Безпека та Інфраструктура</li>
-						</ul>
-					</div>
+					<ul>
+						<li>Стратегія та Бізнес-аналіз</li>
+						<li>Клієнтські Відносини</li>
+						<li>Безпека та Інфраструктура</li>
+					</ul>
 				</article>
 
 				<!-- Oleksandr -->
 				<article class="about-card">
-					<div class="about-grid__media" style="height:260px; display:flex;align-items:center;justify-content:center;">
-						<!-- placeholder for photo -->
-						<img src="assets/images/oleksandr-placeholder.jpg" alt="Олександр Данко" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-					</div>
+					<div class="about-media" aria-hidden="true"></div>
+					<h2>Олександр Данко</h2>
+					<h3>Технічний Партнер, Інноватор</h3>
+					<p>Олександр відповідає за технічне втілення стратегії в життя. Його завдання — знайти найкраще рішення "ЯК" реалізувати ідею.</p>
 
-					<div class="about-grid__content">
-						<h2>Олександр Данко</h2>
-						<h3>Технічний Партнер, Інноватор</h3>
-						<p>Олександр відповідає за технічне втілення стратегії в життя. Його завдання — знайти найкраще рішення "ЯК" реалізувати ідею.</p>
-
-						<ul>
-							<li>Розробка та Технології</li>
-							<li>Штучний Інтелект та Інновації</li>
-							<li>Дизайн та UX/UI</li>
-						</ul>
-					</div>
+					<ul>
+						<li>Розробка та Технології</li>
+						<li>Штучний Інтелект та Інновації</li>
+						<li>Дизайн та UX/UI</li>
+					</ul>
 				</article>
 			</div>
 		</section>
@@ -135,6 +125,16 @@
 		<div class="container footer__bottom">
 			<div class="footer__socials">
 				<a href="#" aria-label="LinkedIn">LinkedIn</a>
+				<a href="#" aria-label="GitHub">GitHub</a>
+				<a href="#" aria-label="Telegram">Telegram</a>
+			</div>
+			<div>© 2025 Nexus Studio. All rights reserved.</div>
+		</div>
+	</footer>
+
+	<script src="assets/js/main.js"></script>
+</body>
+</html>
 				<a href="#" aria-label="GitHub">GitHub</a>
 				<a href="#" aria-label="Telegram">Telegram</a>
 			</div>
