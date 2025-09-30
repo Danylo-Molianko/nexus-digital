@@ -9,6 +9,12 @@
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/style.css">
 
+	<!-- Performance: preload critical resources -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preload" href="/assets/css/style.css" as="style">
+	<link rel="preload" href="/assets/js/main.js" as="script">
+
   <!-- AOS CSS (Animate On Scroll) -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
@@ -41,11 +47,11 @@
   </script>
 </head>
 <body>
-  <!-- Accessibility: skip link -->
-  <a class="skip-link" href="#main-content" style="position:absolute;left:-9999px;top:auto;">Пропустити до контенту</a>
+	<!-- Accessibility: skip link -->
+	<a class="skip-link" href="#main-content">Пропустити до основного контенту</a>
 
-  <!-- Ensure main landmark id for skip-link -->
-  <main id="main-content">
+	<!-- Ensure main landmark id for skip-link -->
+	<main id="main-content">
     <header class="header">
 	<div class="container header__container">
 		<a href="index.html" class="logo" aria-label="Nexus Studio — home">
@@ -91,38 +97,64 @@
 		<!-- Content block under the video -->
 		<section class="hero-copy section" data-aos="fade-up">
 			<div class="container hero__content">
-				<h1>Не просто сайти. Ми створюємо інтелектуальні системи для вашого бізнесу</h1>
-				<p class="lead">Digital Foundation • Business Acceleration • Strategic Partnership</p>
+				<h1>Перетворюємо бізнес-ідеї на цифрові інновації</h1>
+				<p class="lead">Nexus Studio — агенція цифрових інновацій. Ми допомагаємо технологічним стартапам та МСБ випереджати конкурентів через стратегію, продукти та автоматизацію.</p>
 				<a class="btn btn-primary" href="contact.html">Замовити консультацію</a>
 			</div>
 		</section>
 
-		<!-- SERVICES: використати ваші 3D-моделі -->
-		<section class="section services-overview" data-aos="fade-up">
+		<!-- SERVICES: наші напрямки -->
+		<section class="section services-overview light-section" data-aos="fade-up">
 			<div class="container">
 				<h2>Наші напрямки</h2>
 				<div class="services-grid">
 					<article class="service-card" data-aos="fade-up">
-						<img src="assets/images/1-модель-для-головної-сторінки.webp" alt="1-модель-для-головної-сторінки (Digital Foundation)" loading="lazy">
+						<picture>
+							<source srcset="assets/images/1-модель-для-головної-сторінки.avif" type="image/avif">
+							<source srcset="assets/images/1-модель-для-головної-сторінки.webp" type="image/webp">
+							<img src="assets/images/1-модель-для-головної-сторінки.webp" alt="Digital Foundation" loading="lazy">
+						</picture>
 						<h3>Digital Foundation</h3>
-						<p>Створюємо технічну платформу, сайти та аналітику для масштабування бізнесу.</p>
+						<p>Створюємо потужну онлайн‑присутність: сайти, платформи та аналітику — фундамент для масштабування бізнесу та залучення інвестицій.</p>
 						<a class="btn btn-secondary" href="services.html#digital">Детальніше →</a>
 					</article>
 
 					<article class="service-card" data-aos="fade-up">
-						<img src="assets/images/2-модель-для-головної-сторінки.webp" alt="2-модель-для-головної-сторінки (Business Acceleration)" loading="lazy">
+						<picture>
+							<source srcset="assets/images/2-модель-для-головної-сторінки.avif" type="image/avif">
+							<source srcset="assets/images/2-модель-для-головної-сторінки.webp" type="image/webp">
+							<img src="assets/images/2-модель-для-головної-сторінки.webp" alt="Business Acceleration" loading="lazy">
+						</picture>
 						<h3>Business Acceleration</h3>
-						<p>Оптимізація продукту і маркетингу для швидкого зростання продажів.</p>
+						<p>Автоматизуємо процеси й впроваджуємо інтелектуальні інструменти (AI, CRM, чат‑боти), щоб ваш бізнес ріс швидше і ефективніше.</p>
 						<a class="btn btn-secondary" href="services.html#acceleration">Детальніше →</a>
 					</article>
 
 					<article class="service-card" data-aos="fade-up">
-						<img src="assets/images/3-модель-для-головної-сторінки.webp" alt="3-модель-для-головної-сторінки (Strategic Partnership)" loading="lazy">
+						<picture>
+							<source srcset="assets/images/3-модель-для-головної-сторінки.avif" type="image/avif">
+							<source srcset="assets/images/3-модель-для-головної-сторінки.webp" type="image/webp">
+							<img src="assets/images/3-модель-для-головної-сторінки.webp" alt="Strategic Partnership" loading="lazy">
+						</picture>
 						<h3>Strategic Partnership</h3>
-						<p>Довгострокова співпраця: стратегія, інновації та технічна реалізація.</p>
+						<p>Забезпечуємо довгостроковий успіх через експертну підтримку: стратегія, технічна реалізація та сумісне планування росту.</p>
 						<a class="btn btn-secondary" href="services.html#partnership">Детальніше →</a>
 					</article>
 				</div>
+			</div>
+		</section>
+
+		<!-- USP: Why choose us -->
+		<section class="section light-section" data-aos="fade-up">
+			<div class="container">
+				<h2>Чому клієнти обирають нас?</h2>
+				<p class="lead">Клієнт працює напряму з власниками — це гарантує швидкий зворотний зв'язок, стратегічне бачення та технічну досконалість в одному місці.</p>
+				<ul>
+					<li><strong>Прямий контакт з власниками:</strong> Данило (стратегія, бізнес-аналітика) та Олександр (технічна реалізація) ведуть проєкти персонально.</li>
+					<li><strong>Швидкі рішення:</strong> мінімум менеджерських шарів — більше швидкості та менше втрат інформації.</li>
+					<li><strong>Експертна відповідальність:</strong> поєднання стратегічного та технічного підходів гарантує якісний результат.</li>
+				</ul>
+				<a class="btn btn-primary" href="about.html">Познайомитись з командою</a>
 			</div>
 		</section>
 
@@ -132,8 +164,12 @@
     <h2 id="home-partners-heading" style="color:var(--text-dark);">Наша команда</h2>
 
 				<div class="partners-grid">
-			<div class="partner-card" data-aos="fade-up">
-				<img src="assets/images/foto-by-daniel-2.jpg" alt="Данило Молянко" class="partner-card__image" loading="lazy">
+				<div class="partner-card" data-aos="fade-up">
+					<picture>
+						<source srcset="assets/images/foto-by-daniel-2.avif" type="image/avif">
+						<source srcset="assets/images/foto-by-daniel-2.webp" type="image/webp">
+						<img src="assets/images/foto-by-daniel-2.jpg" alt="Данило Молянко" class="partner-card__image" loading="lazy">
+					</picture>
         <div class="partner-card__content">
           <h3 class="partner-card__name">Данило Молянко</h3>
           <div class="partner-card__role">Керуючий Партнер, Стратег</div>
@@ -141,8 +177,12 @@
         </div>
       </div>
 
-			<div class="partner-card" data-aos="fade-up" data-aos-delay="200">
-				<img src="assets/images/foto-by-oleksandr-1.jpg" alt="Олександр Данко" class="partner-card__image" loading="lazy">
+				<div class="partner-card" data-aos="fade-up" data-aos-delay="200">
+					<picture>
+						<source srcset="assets/images/foto-by-oleksandr-1.avif" type="image/avif">
+						<source srcset="assets/images/foto-by-oleksandr-1.webp" type="image/webp">
+						<img src="assets/images/foto-by-oleksandr-1.jpg" alt="Олександр Данко" class="partner-card__image" loading="lazy">
+					</picture>
         <div class="partner-card__content">
           <h3 class="partner-card__name">Олександр Данко</h3>
           <div class="partner-card__role">Технічний Партнер, Інноватор</div>
@@ -203,13 +243,13 @@
 		</div>
 	</footer>
 
-    <script src="assets/js/main.js"></script>
-	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-	<script>
-	  AOS.init({
-	    duration: 1000,
-	    once: true
-	  });
-	</script>
+		<script src="assets/js/main.js"></script>
+		<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+		<script>
+			AOS.init({
+				duration: 1200,
+				once: true
+			});
+		</script>
 </body>
 </html>

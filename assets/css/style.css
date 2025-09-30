@@ -40,6 +40,24 @@ body {
   line-height: 1.5;
 }
 
+/* Accessibility: visible focus for keyboard users */
+*:focus-visible {
+  outline: 3px solid var(--accent-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Global micro-interactions: smooth transitions for interactive elements */
+a, button, .btn, .service-card, .partner-card, .nav__link {
+  transition: all 0.3s ease;
+}
+
+/* Typography: improve readability */
+p, li {
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+}
+
 /* Container (updated as requested) */
 .container {
   max-width: var(--container);

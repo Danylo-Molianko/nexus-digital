@@ -7,8 +7,14 @@
   <meta name="description" content="Зв'яжіться з Nexus Studio для обговорення вашого проєкту. Замовте безкоштовну консультацію або напишіть нам, щоб перетворити вашу ідею на реальність.">
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="preload" href="/assets/js/main.js" as="script">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Пропустити до основного контенту</a>
   <header class="header">
     <div class="container header__container">
       <a href="index.html" class="logo" aria-label="Nexus Studio">
@@ -32,7 +38,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- Hero -->
     <section class="section contact-hero" data-aos="fade-up">
       <div class="container">

@@ -7,8 +7,15 @@
 	<meta name="description" content="Команда Nexus Studio. Працюйте напряму з партнерами-засновниками: Данило Молянко (стратегія) та Олександр Данко (технології). Ваш успіх — наша головна мета.">
 	<link rel="stylesheet" href="assets/css/reset.css">
 	<link rel="stylesheet" href="assets/css/style.css">
+
+	<!-- Performance hints -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preload" href="/assets/css/style.css" as="style">
+	<link rel="preload" href="/assets/js/main.js" as="script">
 </head>
 <body>
+	<a href="#main-content" class="skip-link">Пропустити до основного контенту</a>
 	<header class="header">
 		<div class="container header__container">
 			<a href="index.html" class="logo" aria-label="Nexus Studio">
@@ -32,7 +39,7 @@
 		</div>
 	</header>
 
-	<main>
+	<main id="main-content">
 		<!-- HERO -->
 		<section class="section">
 			<div class="container" style="text-align:center; padding:64px 0;">
@@ -46,25 +53,55 @@
   <div class="container">
     <h2 id="partners-heading" style="color:var(--text-dark);">Знайомство з партнерами</h2>
 
-    <div class="partners-grid">
-      <div class="partner-card" data-aos="fade-up">
-        <img src="assets/images/foto-by-danylo.jpg" alt="Данило Молянко" class="partner-card__image" loading="lazy">
-        <div class="partner-card__content">
-          <h3 class="partner-card__name">Данило Молянко</h3>
-          <div class="partner-card__role">Керуючий Партнер, Стратег</div>
-          <p class="partner-card__bio">Данило є мостом між бізнес-цілями клієнта та технічною реалізацією. Його головне завдання — зрозуміти «ЩО» і «НАВІЩО» потрібно клієнту.</p>
-        </div>
-      </div>
+				<div class="partners-grid">
+					<div class="partner-card" data-aos="fade-up">
+						<picture>
+							<source srcset="assets/images/foto-by-daniel-2.avif" type="image/avif">
+							<source srcset="assets/images/foto-by-daniel-2.webp" type="image/webp">
+							<img src="assets/images/foto-by-daniel-2.jpg" alt="Данило Молянко" class="partner-card__image" loading="lazy">
+						</picture>
+						<div class="partner-card__content">
+							<h3 class="partner-card__name">Данило Молянко</h3>
+							<div class="partner-card__role">Керуючий Партнер, Стратег та Клієнтський Архітектор</div>
+							<p class="partner-card__bio">Данило — міст між бізнес‑цілями клієнта та технічною реалізацією. Відповідає за стратегію, бізнес‑аналіз, клієнтські відносини та маркетинг.</p>
+							<ul>
+								<li>Стратегія та Бізнес‑аналіз</li>
+								<li>Клієнтські відносини та маркетинг</li>
+								<li>Безпека та інфраструктура</li>
+							</ul>
+						</div>
+					</div>
 
-      <div class="partner-card" data-aos="fade-up" data-aos-delay="200">
-        <img src="assets/images/foto-by-oleksandr.jpg" alt="Олександр Данко" class="partner-card__image" loading="lazy">
-        <div class="partner-card__content">
-          <h3 class="partner-card__name">Олександр Данко</h3>
-          <div class="partner-card__role">Технічний Партнер, Інноватор</div>
-          <p class="partner-card__bio">Олександр відповідає за технічне втілення стратегії в життя. Його завдання — знайти найкраще рішення «ЯК» реалізувати ідею.</p>
-        </div>
-      </div>
-    </div>
+					<div class="partner-card" data-aos="fade-up" data-aos-delay="200">
+						<picture>
+							<source srcset="assets/images/foto-by-oleksandr-1.avif" type="image/avif">
+							<source srcset="assets/images/foto-by-oleksandr-1.webp" type="image/webp">
+							<img src="assets/images/foto-by-oleksandr-1.jpg" alt="Олександр Данко" class="partner-card__image" loading="lazy">
+						</picture>
+						<div class="partner-card__content">
+							<h3 class="partner-card__name">Олександр Данко</h3>
+							<div class="partner-card__role">Технічний Партнер, Інноватор та Розробник</div>
+							<p class="partner-card__bio">Олександр відповідає за технічне втілення стратегії: архітектура, розробка та впровадження інноваційних рішень.</p>
+							<ul>
+								<li>Розробка та Технології (Webflow, Web‑Apps)</li>
+								<li>Штучний Інтелект та інновації</li>
+								<li>Дизайн та UX/UI</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="partner-card" data-aos="fade-up" data-aos-delay="300">
+						<picture>
+							<source srcset="assets/images/for-site-2.webp" type="image/webp">
+							<img src="assets/images/for-site-2.webp" alt="Тіма — команда" class="partner-card__image" loading="lazy">
+						</picture>
+						<div class="partner-card__content">
+							<h3 class="partner-card__name">Тіма</h3>
+							<div class="partner-card__role">Веб‑розробник, 3D‑моделер та Дизайнер</div>
+							<p class="partner-card__bio">Тіма працює над візуальною частиною проєктів, створює 3D-моделі та забезпечує технічну реалізацію дизайну.</p>
+						</div>
+					</div>
+				</div>
   </div>
 </section>
 

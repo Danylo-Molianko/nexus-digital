@@ -11,7 +11,8 @@
     <!-- Performance hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="../assets/css/style.css" as="style">
+    <link rel="preload" href="/assets/css/style.css" as="style">
+    <link rel="preload" href="/assets/js/main.js" as="script">
 
     <!-- Open Graph / Twitter -->
     <meta property="og:title" content="Послуги | Nexus Studio">
@@ -40,8 +41,8 @@
     </script>
 </head>
 <body>
-  <!-- skip-link for keyboard users -->
-  <a href="#main-content" class="skip-link">Перейти до основного контенту</a>
+    <!-- skip-link for keyboard users -->
+    <a href="#main-content" class="skip-link">Пропустити до основного контенту</a>
 
     <header class="header">
         <div class="container header__container">
@@ -82,33 +83,33 @@
 
             <div class="services-grid">
               <article class="service-card" data-aos="fade-up" data-aos-delay="100" aria-labelledby="svc-df-title">
-                <picture>
-                  <source srcset="assets/images/1-model-dlia-holovnoi-storinky.avif" type="image/avif">
-                  <source srcset="assets/images/1-model-dlia-holovnoi-storinky.webp" type="image/webp">
-                  <img src="assets/images/1-model-dlia-holovnoi-storinky.png" alt="1-модель-для-головної-сторінки (Digital Foundation)" loading="lazy">
-                </picture>
+                                <picture>
+                                    <source srcset="assets/images/1-модель-для-головної-сторінки.avif" type="image/avif">
+                                    <source srcset="assets/images/1-модель-для-головної-сторінки.webp" type="image/webp">
+                                    <img src="assets/images/1-модель-для-головної-сторінки.webp" alt="1-модель-для-головної-сторінки (Digital Foundation)" loading="lazy">
+                                </picture>
                 <h3 id="svc-df-title">Digital Foundation</h3>
                 <p>Технічні платформи, сайти та аналітика для масштабування бізнесу.</p>
                 <a class="btn" href="services.html#digital">Детальніше →</a>
               </article>
 
               <article class="service-card" data-aos="fade-up" data-aos-delay="200" aria-labelledby="svc-ba-title">
-                <picture>
-                  <source srcset="assets/images/2-model-dlia-holovnoi-storinky.avif" type="image/avif">
-                  <source srcset="assets/images/2-model-dlia-holovnoi-storinky.webp" type="image/webp">
-                  <img src="assets/images/2-model-dlia-holovnoi-storinky.png" alt="2-модель-для-головної-сторінки (Business Acceleration)" loading="lazy">
-                </picture>
+                                <picture>
+                                    <source srcset="assets/images/2-модель-для-головної-сторінки.avif" type="image/avif">
+                                    <source srcset="assets/images/2-модель-для-головної-сторінки.webp" type="image/webp">
+                                    <img src="assets/images/2-модель-для-головної-сторінки.webp" alt="2-модель-для-головної-сторінки (Business Acceleration)" loading="lazy">
+                                </picture>
                 <h3 id="svc-ba-title">Business Acceleration</h3>
                 <p>Оптимізація продукту, маркетинг та AI-автоматизація.</p>
                 <a class="btn" href="services.html#acceleration">Детальніше →</a>
               </article>
 
               <article class="service-card" data-aos="fade-up" data-aos-delay="300" aria-labelledby="svc-sp-title">
-                <picture>
-                  <source srcset="assets/images/3-model-dlia-holovnoi-storinky.avif" type="image/avif">
-                  <source srcset="assets/images/3-model-dlia-holovnoi-storinky.webp" type="image/webp">
-                  <img src="assets/images/3-model-dlia-holovnoi-storinky.png" alt="3-модель-для-головної-сторінки (Strategic Partnership)" loading="lazy">
-                </picture>
+                                <picture>
+                                    <source srcset="assets/images/3-модель-для-головної-сторінки.avif" type="image/avif">
+                                    <source srcset="assets/images/3-модель-для-головної-сторінки.webp" type="image/webp">
+                                    <img src="assets/images/3-модель-для-головної-сторінки.webp" alt="3-модель-для-головної-сторінки (Strategic Partnership)" loading="lazy">
+                                </picture>
                 <h3 id="svc-sp-title">Strategic Partnership</h3>
                 <p>Стратегія, підтримка та довгострокова технічна реалізація.</p>
                 <a class="btn" href="services.html#partnership">Детальніше →</a>
@@ -140,119 +141,57 @@
         </section>
 
         <!-- Digital Foundation -->
-        <section class="section service-section">
-            <div class="container two-col">
-                <div class="col col--left">
-                    <h2>Digital Foundation</h2>
-                    <div class="icon">DF</div>
-                    <p>Мета: створити потужну, швидку та безпечну онлайн‑присутність, яка є основою для масштабування бізнесу.</p>
-                </div>
+        <section class="section light-section" id="digital" data-aos="fade-up">
+            <div class="container">
+                <h2>Digital Foundation</h2>
+                <p>Інноваційна розробка на Webflow: створюємо сайти «під ключ» — від лендингів до корпоративних порталів. Клієнт отримує потужний інструмент для залучення інвестицій та клієнтів.</p>
 
-                <div class="col col--right">
-                    <div class="accordion" id="acc-digital">
-                        <div class="accordion__item">
-                            <button class="accordion__header" aria-expanded="false">Розробка сайтів на Webflow</button>
-                            <div class="accordion__content">
-                                <h4>Що це?</h4>
-                                <p>Створення візуально досконалих та технічно надійних веб-сайтів на Webflow.</p>
-                                <h4>Цінність для клієнта</h4>
-                                <p>Швидка реалізація, легке редагування контенту та висока продуктивність.</p>
-                                <h4>Результат</h4>
-                                <p>Готовий до запуску веб-сайт з оптимізацією під SEO та швидкістю завантаження.</p>
-                            </div>
-                        </div>
+                <h3>Розробка Web-App та кастомних баз даних</h3>
+                <p>Виходимо за межі стандартних сайтів: створюємо унікальні веб‑додатки, персональні кабінети та бази знань з інтеграцією API та зовнішніх сервісів.</p>
 
-                        <div class="accordion__item">
-                            <button class="accordion__header" aria-expanded="false">Web‑App та кастомні бази даних</button>
-                            <div class="accordion__content">
-                                <h4>Що це?</h4>
-                                <p>Розробка веб-додатків та інтеграції з базами даних, API та сервісами.</p>
-                                <h4>Цінність для клієнта</h4>
-                                <p>Масштабована архітектура, автоматизація процесів і збір аналітики.</p>
-                                <h4>Результат</h4>
-                                <p>Кастомний продукт, готовий до інтеграцій та зростання користувачів.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <ul>
+                  <li>Повний цикл: від прототипу до релізу.</li>
+                  <li>Оптимізація для SEO та продуктивності.</li>
+                  <li>Архітектура, готова до зростання та інтеграцій.</li>
+                </ul>
             </div>
         </section>
 
-        <!-- Business Acceleration -->
-        <section class="section service-section">
-            <div class="container two-col">
-                <div class="col col--left">
-                    <h2>Business Acceleration</h2>
-                    <div class="icon">BA</div>
-                    <p>Мета: прискорити зростання продажів та підвищити життєву цінність продукту через продуктову оптимізацію і маркетинг.</p>
-                </div>
+        <section class="section light-section" id="acceleration" data-aos="fade-up">
+            <div class="container">
+                <h2>Business Acceleration</h2>
+                <p>AI-автоматизація бізнес-процесів та інтелектуальна автоматизація маркетингу та продажів. Ми допомагаємо систематизувати продажі та підвищити ефективність команд.</p>
 
-                <div class="col col--right">
-                    <div class="accordion" id="acc-acceleration">
-                        <div class="accordion__item">
-                            <button class="accordion__header" aria-expanded="false">Маркетингові воронки та CRO</button>
-                            <div class="accordion__content">
-                                <h4>Що це?</h4>
-                                <p>Аналіз і налаштування воронок, A/B тестування та оптимізація конверсій.</p>
-                                <h4>Цінність для клієнта</h4>
-                                <p>Більше лідів та якісніша конверсія за менших витрат.</p>
-                                <h4>Результат</h4>
-                                <p>Підвищення конверсії та зниження CPA у вимірюваних показниках.</p>
-                            </div>
-                        </div>
+                <h3>AI-автоматизація бізнес-процесів</h3>
+                <p>Розробляємо персональних ШІ-агентів для аналізу документів, сортування запитів та автоматичного виконання рутинних завдань. Це скорочує час обробки і зменшує людські помилки.</p>
 
-                        <div class="accordion__item">
-                            <button class="accordion__header" aria-expanded="false">Growth‑хакінг продукту</button>
-                            <div class="accordion__content">
-                                <h4>Що це?</h4>
-                                <p>Продуктові і маркетингові експерименти для швидкого виявлення робочих рішень.</p>
-                                <h4>Цінність для клієнта</h4>
-                                <p>Швидкі інсайти, що приводять до ощутимого зростання KPI.</p>
-                                <h4>Результат</h4>
-                                <p>Зростання активних користувачів та доходу в короткі терміни.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <h3>Інтелектуальна автоматизація маркетингу та продажів</h3>
+                <p>Налаштовуємо CRM, інтегруємо розумні чат‑боти, автоматизуємо e-mail кампанії та процеси лідогенерації, підвищуючи конверсію та скорочуючи витрати.</p>
+
+                <ul>
+                  <li>Персоналізовані AI-рішення для вашої ніші.</li>
+                  <li>Інтеграції CRM та автоматизація комунікацій.</li>
+                  <li>Аналітика та вимірювані результати.</li>
+                </ul>
             </div>
         </section>
 
-        <!-- Strategic Partnership -->
-        <section class="section service-section">
-            <div class="container two-col">
-                <div class="col col--left">
-                    <h2>Strategic Partnership</h2>
-                    <div class="icon">SP</div>
-                    <p>Мета: стати технічним та продуктовим партнером для довгострокового зростання бізнесу.</p>
-                </div>
+        <section class="section light-section" id="partnership" data-aos="fade-up">
+            <div class="container">
+                <h2>Strategic Partnership</h2>
+                <p>Бізнес-аналіз, маркетингові консультації та технічна підтримка, спрямовані на довгостроковий успіх клієнта.</p>
 
-                <div class="col col--right">
-                    <div class="accordion" id="acc-partnership">
-                        <div class="accordion__item">
-                            <button class="accordion__header" aria-expanded="false">Технічний due diligence & roadmap</button>
-                            <div class="accordion__content">
-                                <h4>Що це?</h4>
-                                <p>Оцінка поточного стану продукту та створення плану розвитку.</p>
-                                <h4>Цінність для клієнта</h4>
-                                <p>Чіткий план з пріоритетами та оцінками ризиків.</p>
-                                <h4>Результат</h4>
-                                <p>Roadmap з кроками для досягнення бізнес‑цілей та технічними рішеннями.</p>
-                            </div>
-                        </div>
+                <h3>Бізнес-аналіз та маркетингові консультації</h3>
+                <p>Проводимо глибоке дослідження ринку та конкурентів ще до початку розробки, щоб гарантувати, що рішення вирішують реальні бізнес-проблеми та приносять прибуток.</p>
 
-                        <div class="accordion__item">
-                            <button class="accordion__header" aria-expanded="false">Техпартнерство та підтримка</button>
-                            <div class="accordion__content">
-                                <h4>Що це?</h4>
-                                <p>Підтримка продукту, оптимізації та регулярні релізи у рамках партнерства.</p>
-                                <h4>Цінність для клієнта</h4>
-                                <p>Стабільний розвиток продукту без найму великої внутрішньої команди.</p>
-                                <h4>Результат</h4>
-                                <p>Працюючий та еволюційний продукт з прозорою підтримкою.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <h3>Технічна підтримка та гарантії</h3>
+                <p>Кожен проєкт включає 3 місяці безкоштовної підтримки та 6-місячну гарантію якості. Пропонуємо довгострокові пакети підтримки: 6, 12, 24 місяці.</p>
+
+                <ul>
+                  <li>Due diligence та roadmap для прозорих рішень.</li>
+                  <li>Пакети підтримки з SLA та регулярними релізами.</li>
+                  <li>Консультації з монетизації та росту.</li>
+                </ul>
             </div>
         </section>
     </main>
