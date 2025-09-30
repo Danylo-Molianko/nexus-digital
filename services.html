@@ -14,6 +14,10 @@
     <link rel="preload" href="/assets/css/style.css" as="style">
     <link rel="preload" href="/assets/js/main.js" as="script">
 
+  <!-- Load Google Fonts with preload + swap to reduce FOUT -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet"></noscript>
+
     <!-- Open Graph / Twitter -->
     <meta property="og:title" content="Послуги | Nexus Studio">
     <meta property="og:description" content="Digital Foundation (Webflow, Web-Apps), Business Acceleration (AI-автоматизація, CRM), та Strategic Partnership (бізнес-аналіз, підтримка).">
@@ -44,28 +48,29 @@
     <!-- skip-link for keyboard users -->
     <a href="#main-content" class="skip-link">Пропустити до основного контенту</a>
 
-    <header class="header">
-        <div class="container header__container">
-            <a href="index.html" class="logo" aria-label="Nexus Studio">
-                <span class="logo-text">NEXUS STUDIO</span>
-            </a>
+  <header class="header">
+    <div class="container header__container">
+      <a href="index.html" class="logo" aria-label="Nexus Studio — home">
+        <img id="site-logo" class="logo__img" src="assets/images/logo-for-site.png" alt="Nexus Studio logo" loading="eager">
+        <span class="logo__name"><span class="logo-gradient">Nexus Studio</span></span>
+      </a>
 
-            <nav class="nav" aria-label="Головна навігація">
-                <ul class="nav__list">
-                    <li><a class="nav__link" href="index.html">Головна</a></li>
-                    <li><a class="nav__link" href="services.html">Послуги</a></li>
-                    <li><a class="nav__link" href="about.html">Про нас</a></li>
-                    <li><a class="nav__link" href="contact.html">Контакти</a></li>
-                </ul>
-            </nav>
+      <nav class="site-nav" aria-label="Головна навігація">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html">Головна</a></li>
+          <li><a class="nav__link" href="services.html">Послуги</a></li>
+          <li><a class="nav__link" href="about.html">Про нас</a></li>
+          <li><a class="nav__link" href="contact.html">Контакти</a></li>
+        </ul>
+      </nav>
 
-            <button class="burger-menu" aria-label="Open navigation menu" type="button">
-                <span class="burger-menu__line"></span>
-                <span class="burger-menu__line"></span>
-                <span class="burger-menu__line"></span>
-            </button>
-        </div>
-    </header>
+      <button class="burger-menu" aria-label="Open navigation menu" type="button">
+        <span class="burger-menu__line"></span>
+        <span class="burger-menu__line"></span>
+        <span class="burger-menu__line"></span>
+      </button>
+    </div>
+  </header>
 
     <main id="main-content">
         <!-- HERO (light) -->
@@ -144,55 +149,120 @@
         <section class="section light-section" id="digital" data-aos="fade-up">
             <div class="container">
                 <h2>Digital Foundation</h2>
-                <p>Інноваційна розробка на Webflow: створюємо сайти «під ключ» — від лендингів до корпоративних порталів. Клієнт отримує потужний інструмент для залучення інвестицій та клієнтів.</p>
+                <p>Наша ключова пропозиція: інноваційна розробка на Webflow «під ключ» для стартапів та МСБ. Ми створюємо швидкі, адаптивні та керовані сайти, а також Web‑App з кастомними базами даних.</p>
 
-                <h3>Розробка Web-App та кастомних баз даних</h3>
-                <p>Виходимо за межі стандартних сайтів: створюємо унікальні веб‑додатки, персональні кабінети та бази знань з інтеграцією API та зовнішніх сервісів.</p>
-
-                <ul>
-                  <li>Повний цикл: від прототипу до релізу.</li>
-                  <li>Оптимізація для SEO та продуктивності.</li>
-                  <li>Архітектура, готова до зростання та інтеграцій.</li>
-                </ul>
+                <div class="two-col">
+                  <div class="col--left">
+                    <h3>Що входить</h3>
+                    <ul>
+                      <li>Стратегічна сесія і архітектура продукту</li>
+                      <li>UX/UI дизайн і прототипування</li>
+                      <li>Розробка на Webflow або чистому коді (за потреби)</li>
+                      <li>Інтеграція CMS, API та баз даних</li>
+                      <li>Тестування, SEO‑оптимізація, запуск</li>
+                    </ul>
+                  </div>
+                  <div class="col--right">
+                    <h3>Відповідальні</h3>
+                    <p><strong>Олександр</strong> — технічна реалізація, Webflow, архітектура баз даних.<br>
+                    <strong>Данило</strong> — бізнес‑аналіз, стратегія, маркетинг.</p>
+                  </div>
+                </div>
             </div>
         </section>
 
         <section class="section light-section" id="acceleration" data-aos="fade-up">
             <div class="container">
                 <h2>Business Acceleration</h2>
-                <p>AI-автоматизація бізнес-процесів та інтелектуальна автоматизація маркетингу та продажів. Ми допомагаємо систематизувати продажі та підвищити ефективність команд.</p>
+                <p>Перетворюємо операційні процеси на автоматизовану машину продажів і підтримки — AI‑агенти, CRM‑інтеграції і персоналізована аналітика.</p>
 
-                <h3>AI-автоматизація бізнес-процесів</h3>
-                <p>Розробляємо персональних ШІ-агентів для аналізу документів, сортування запитів та автоматичного виконання рутинних завдань. Це скорочує час обробки і зменшує людські помилки.</p>
-
-                <h3>Інтелектуальна автоматизація маркетингу та продажів</h3>
-                <p>Налаштовуємо CRM, інтегруємо розумні чат‑боти, автоматизуємо e-mail кампанії та процеси лідогенерації, підвищуючи конверсію та скорочуючи витрати.</p>
-
-                <ul>
-                  <li>Персоналізовані AI-рішення для вашої ніші.</li>
-                  <li>Інтеграції CRM та автоматизація комунікацій.</li>
-                  <li>Аналітика та вимірювані результати.</li>
-                </ul>
+                <div class="two-col">
+                  <div class="col--left">
+                    <h3>Послуги</h3>
+                    <ul>
+                      <li>Кастомні AI‑агенти для обробки запитів і документів</li>
+                      <li>Налаштування та автоматизація CRM (HubSpot, Salesforce)</li>
+                      <li>Чат‑боти для соцмереж і комунікацій</li>
+                      <li>Автоматизація e‑mail кампаній і персоналізація</li>
+                    </ul>
+                  </div>
+                  <div class="col--right">
+                    <h3>Відповідальні</h3>
+                    <p><strong>Олександр</strong> — технічна реалізація ботів і AI.<br>
+                    <strong>Данило</strong> — архітектура CRM, аналітика і воронки продажів.</p>
+                  </div>
+                </div>
             </div>
         </section>
 
         <section class="section light-section" id="partnership" data-aos="fade-up">
             <div class="container">
                 <h2>Strategic Partnership</h2>
-                <p>Бізнес-аналіз, маркетингові консультації та технічна підтримка, спрямовані на довгостроковий успіх клієнта.</p>
+                <p>Ми працюємо як довгостроковий партнер: стратегія, безпека, підтримка та розвиток продукту.</p>
 
-                <h3>Бізнес-аналіз та маркетингові консультації</h3>
-                <p>Проводимо глибоке дослідження ринку та конкурентів ще до початку розробки, щоб гарантувати, що рішення вирішують реальні бізнес-проблеми та приносять прибуток.</p>
-
-                <h3>Технічна підтримка та гарантії</h3>
-                <p>Кожен проєкт включає 3 місяці безкоштовної підтримки та 6-місячну гарантію якості. Пропонуємо довгострокові пакети підтримки: 6, 12, 24 місяці.</p>
-
-                <ul>
-                  <li>Due diligence та roadmap для прозорих рішень.</li>
-                  <li>Пакети підтримки з SLA та регулярними релізами.</li>
-                  <li>Консультації з монетизації та росту.</li>
-                </ul>
+                <div class="two-col">
+                  <div class="col--left">
+                    <h3>Послуги</h3>
+                    <ul>
+                      <li>Глибокий бізнес‑аналіз і конкурентне дослідження</li>
+                      <li>Розробка дорожньої карти і продуктова стратегія</li>
+                      <li>Аудит безпеки та рекомендації по інфраструктурі</li>
+                      <li>Підтримка: Support 6 / Support 12 / Premium 24</li>
+                    </ul>
+                  </div>
+                  <div class="col--right">
+                    <h3>Відповідальні</h3>
+                    <p><strong>Данило</strong> — стратегія, клієнтські відносини, кібербезпека.<br>
+                    <strong>Олександр</strong> — технічна підтримка, інфраструктура, SLA.</p>
+                  </div>
+                </div>
             </div>
+        </section>
+
+        <!-- Timelines / Estimates table -->
+        <section class="section light-section" id="timelines" data-aos="fade-up">
+          <div class="container">
+            <h2>Орієнтовні терміни виконання</h2>
+            <p class="lead">Точні терміни формуються після стратегічної сесії. Нижче — типові оцінки для планування.</p>
+            <div class="table-responsive">
+              <table class="timelines" style="width:100%; border-collapse:collapse;">
+                <thead>
+                  <tr style="text-align:left; border-bottom:1px solid rgba(15,20,28,0.06);">
+                    <th>Тип проєкту</th>
+                    <th>Орієнтовно</th>
+                    <th>Що зазвичай входить</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Лендінг</td>
+                    <td>2–3 тижні</td>
+                    <td>Стратегія, дизайн, розробка, запуск</td>
+                  </tr>
+                  <tr>
+                    <td>Корпоративний сайт (до 10 сторінок)</td>
+                    <td>4–6 тижнів</td>
+                    <td>Дизайн шаблонів, розробка, наповнення, базове SEO</td>
+                  </tr>
+                  <tr>
+                    <td>Складний портал / CMS</td>
+                    <td>6–10 тижнів</td>
+                    <td>Архітектура, CMS-колекції, інтеграції, тестування</td>
+                  </tr>
+                  <tr>
+                    <td>Web‑App з кастомною БД</td>
+                    <td>8–14 тижнів</td>
+                    <td>Проєктування БД, розробка логіки, QA</td>
+                  </tr>
+                  <tr>
+                    <td>AI‑проект (CRM + бот)</td>
+                    <td>3–5 тижнів</td>
+                    <td>Аналіз, архітектура, розробка агента, інтеграція</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </section>
     </main>
 
@@ -204,7 +274,7 @@
             </div>
 
             <div class="footer__col footer__nav">
-                <h4>Навігація</h4>
+                <h3>Навігація</h3>
                 <ul>
                     <li><a href="index.html">Головна</a></li>
                     <li><a href="services.html">Послуги</a></li>
@@ -214,7 +284,7 @@
             </div>
 
             <div class="footer__col footer__contacts">
-                <h4>Зв'яжіться з нами</h4>
+                <h3>Зв'яжіться з нами</h3>
                 <p><a href="mailto:hello@nexus.digital">hello@nexus.digital</a></p>
                 <p><a href="#" aria-label="Book meeting">Забронювати зустріч</a></p>
                 <div class="footer__socials">

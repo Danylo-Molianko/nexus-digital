@@ -13,16 +13,21 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="preload" href="/assets/css/style.css" as="style">
 	<link rel="preload" href="/assets/js/main.js" as="script">
+
+	<!-- Load Google Fonts with preload + swap to reduce FOUT -->
+	<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" onload="this.rel='stylesheet'">
+	<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet"></noscript>
 </head>
 <body>
 	<a href="#main-content" class="skip-link">Пропустити до основного контенту</a>
 	<header class="header">
 		<div class="container header__container">
-			<a href="index.html" class="logo" aria-label="Nexus Studio">
-				<span class="logo-text">NEXUS STUDIO</span>
+			<a href="index.html" class="logo" aria-label="Nexus Studio — home">
+				<img id="site-logo" class="logo__img" src="assets/images/logo-for-site.png" alt="Nexus Studio logo" loading="eager">
+				<span class="logo__name"><span class="logo-gradient">Nexus Studio</span></span>
 			</a>
 
-			<nav class="nav" aria-label="Головна навігація">
+			<nav class="site-nav" aria-label="Головна навігація">
 				<ul class="nav__list">
 					<li><a class="nav__link" href="index.html">Головна</a></li>
 					<li><a class="nav__link" href="services.html">Послуги</a></li>
@@ -151,7 +156,7 @@
 			</div>
 
 			<div class="footer__col footer__nav">
-				<h4>Навігація</h4>
+				<h3>Навігація</h3>
 				<ul>
 					<li><a href="index.html">Головна</a></li>
 					<li><a href="services.html">Послуги</a></li>
@@ -161,7 +166,7 @@
 			</div>
 
 			<div class="footer__col footer__contacts">
-				<h4>Зв'яжіться з нами</h4>
+				<h3>Зв'яжіться з нами</h3>
 				<p><a href="mailto:hello@nexus.digital">hello@nexus.digital</a></p>
 				<p><a href="#" aria-label="Book meeting">Забронювати зустріч</a></p>
 				<div class="footer__socials">
@@ -185,7 +190,7 @@
 	<script src="assets/js/main.js"></script>
 </body>
 </html>
-				<h4>Навігація</h4>
+				<h3>Навігація</h3>
 				<ul>
 					<li><a href="index.html">Головна</a></li>
 					<li><a href="services.html">Послуги</a></li>
@@ -195,7 +200,7 @@
 			</div>
 
 			<div class="footer__col footer__contacts">
-				<h4>Зв'яжіться з нами</h4>
+				<h3>Зв'яжіться з нами</h3>
 				<p><a href="mailto:hello@nexus.digital">hello@nexus.digital</a></p>
 				<p><a href="#" aria-label="Book meeting">Забронювати зустріч</a></p>
 				<div class="footer__socials">

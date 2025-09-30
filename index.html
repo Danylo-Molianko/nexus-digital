@@ -15,13 +15,14 @@
 	<link rel="preload" href="/assets/css/style.css" as="style">
 	<link rel="preload" href="/assets/js/main.js" as="script">
 
-  <!-- AOS CSS (Animate On Scroll) -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+	<!-- AOS CSS (Animate On Scroll) -->
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-  <!-- Performance: preconnect to fonts & CDNs -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+	<!-- Load Google Fonts with preload + swap to avoid FOUT -->
+	<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" onload="this.rel='stylesheet'">
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+	</noscript>
 
   <!-- SEO / Social -->
   <meta property="og:title" content="Nexus Studio — Інтелектуальні системи для бізнесу">
@@ -76,7 +77,8 @@
 	</div>
     </header>
 
-    <main>
+
+	<div class="page-content">
 				<!-- HERO: video -->
 				<!-- Video-only hero wrapper with multiple source fallbacks -->
 				<section class="hero-video hero">
@@ -89,8 +91,7 @@
 					<!-- Optional overlay for better text readability if needed -->
 					<div class="hero__overlay" aria-hidden="true"></div>
 					<div class="container hero__content">
-						<!-- keep an accessible heading inside hero for screen readers and SEO -->
-						<h1 class="visually-hidden">Nexus Studio — інноваційні цифрові рішення</h1>
+						<!-- visible H1 is below in the hero-copy; avoid duplicate H1s -->
 					</div>
 				</section>
 
@@ -108,7 +109,7 @@
 			<div class="container">
 				<h2>Наші напрямки</h2>
 				<div class="services-grid">
-					<article class="service-card" data-aos="fade-up">
+					<article class="service-card" data-aos="fade-up" tabindex="0" data-href="services.html#digital">
 						<picture>
 							<source srcset="assets/images/1-модель-для-головної-сторінки.avif" type="image/avif">
 							<source srcset="assets/images/1-модель-для-головної-сторінки.webp" type="image/webp">
@@ -119,7 +120,7 @@
 						<a class="btn btn-secondary" href="services.html#digital">Детальніше →</a>
 					</article>
 
-					<article class="service-card" data-aos="fade-up">
+					<article class="service-card" data-aos="fade-up" tabindex="0" data-href="services.html#acceleration">
 						<picture>
 							<source srcset="assets/images/2-модель-для-головної-сторінки.avif" type="image/avif">
 							<source srcset="assets/images/2-модель-для-головної-сторінки.webp" type="image/webp">
@@ -130,7 +131,7 @@
 						<a class="btn btn-secondary" href="services.html#acceleration">Детальніше →</a>
 					</article>
 
-					<article class="service-card" data-aos="fade-up">
+					<article class="service-card" data-aos="fade-up" tabindex="0" data-href="services.html#partnership">
 						<picture>
 							<source srcset="assets/images/3-модель-для-головної-сторінки.avif" type="image/avif">
 							<source srcset="assets/images/3-модель-для-головної-сторінки.webp" type="image/webp">
@@ -201,7 +202,7 @@
 				<a class="btn btn-primary" href="contact.html">Зв'язатися</a>
 			</div>
 		</section>
-	</main>
+	</div>
 
 	<!-- Footer: без inline-образу (фон задаємо в CSS) -->
 	<footer class="footer">
@@ -212,7 +213,7 @@
 			</div>
 
 			<div class="footer__col footer__nav">
-				<h4>Навігація</h4>
+				<h3>Навігація</h3>
 				<ul>
 					<li><a href="index.html">Головна</a></li>
 					<li><a href="services.html">Послуги</a></li>
@@ -222,7 +223,7 @@
 			</div>
 
 			<div class="footer__col footer__contacts">
-				<h4>Зв'яжіться з нами</h4>
+				<h3>Зв'яжіться з нами</h3>
 				<p><a href="mailto:hello@nexus.digital">hello@nexus.digital</a></p>
 				<p><a href="https://calendly.com/" aria-label="Book meeting">Забронювати зустріч</a></p>
 				<div class="footer__socials" aria-hidden="false">
@@ -245,11 +246,5 @@
 
 		<script src="assets/js/main.js"></script>
 		<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-		<script>
-			AOS.init({
-				duration: 1200,
-				once: true
-			});
-		</script>
 </body>
 </html>

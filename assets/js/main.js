@@ -10,16 +10,22 @@ document.addEventListener('DOMContentLoaded', function(){
 		});
 	}
 
-	// Burger menu toggle (mobile)
+	// Burger menu toggle (mobile) — accessible
 	const burger = document.querySelector('.burger-menu');
-	const nav = document.querySelector('.nav');
+	const mobileNav = document.querySelector('.site-nav');
 	const header = document.querySelector('.header');
 
-	if (burger && nav) {
+	if (burger && mobileNav) {
+		burger.setAttribute('aria-expanded', 'false');
 		burger.addEventListener('click', () => {
+			mobileNav.classList.toggle('mobile');
+			mobileNav.classList.toggle('open');
 			burger.classList.toggle('is-open');
-			nav.classList.toggle('is-open');
-			document.body.classList.toggle('no-scroll'); // prevent body scroll when menu open
+			// sync aria
+			const expanded = burger.getAttribute('aria-expanded') === 'true';
+			burger.setAttribute('aria-expanded', String(!expanded));
+			// prevent body scroll when menu open
+			document.body.classList.toggle('no-scroll');
 		});
 	}
 
@@ -49,6 +55,25 @@ document.addEventListener('DOMContentLoaded', function(){
 			}
 		});
 	});
+
+		// Make service cards clickable and keyboard-accessible (uses data-href)
+		document.querySelectorAll('.service-card[data-href]').forEach(card => {
+			// ensure keyboard focus
+			if (!card.hasAttribute('tabindex')) card.setAttribute('tabindex', '0');
+			card.addEventListener('click', (e) => {
+				// ignore clicks on inner interactive controls (links, buttons)
+				if (e.target.closest('a') || e.target.closest('button')) return;
+				const href = card.dataset.href;
+				if (href) window.location.href = href;
+			});
+			card.addEventListener('keydown', (e) => {
+				if (e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault();
+					const href = card.dataset.href;
+					if (href) window.location.href = href;
+				}
+			});
+		});
 
 	// Accordion behavior (services)
 	document.querySelectorAll('.accordion__header').forEach(headerBtn => {
@@ -373,9 +398,9 @@ document.addEventListener('DOMContentLoaded', function(){
 // INIT: AOS (if included) and simple lazy loader
 document.addEventListener('DOMContentLoaded', function () {
   // AOS init if available
-  if (window.AOS) {
-    AOS.init({ duration: 900, once: true });
-  }
+	if (window.AOS) {
+		AOS.init({ duration: 1200, once: true });
+	}
 
   // Simple IntersectionObserver lazy loader for images with data-src / data-srcset
   const ioSupported = 'IntersectionObserver' in window;
