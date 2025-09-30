@@ -1,0 +1,17 @@
+{
+  "name": "nexus-digital-site",
+  "version": "1.0.0",
+  "description": "Website for the Nexus Studio digital innovation agency.",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=8080",
+    "build:css": "postcss assets/css/style.css -o assets/css/style.css"
+  },
+  "author": "Nexus Studio",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "live-server": "^1.2.2",
+    "postcss-cli": "^11.0.0"
+  }
+}
