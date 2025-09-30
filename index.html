@@ -12,8 +12,40 @@
   <!-- AOS CSS (Animate On Scroll) -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Performance: preconnect to fonts & CDNs -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <!-- SEO / Social -->
+  <meta property="og:title" content="Nexus Studio — Інтелектуальні системи для бізнесу">
+  <meta property="og:description" content="Nexus Studio — агентство цифрових інновацій. Розробляємо інтелектуальні системи для бізнесу на основі Webflow та AI.">
+  <meta property="og:image" content="/assets/images/og-image.png"> <!-- add optimized og image -->
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@your_handle">
+
+  <!-- Structured data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Nexus Studio",
+    "url":"https://your-site.example/",
+    "logo":"https://your-site.example/assets/images/logo-for-site.png",
+    "sameAs":[
+      "https://linkedin.com/",
+      "https://github.com/"
+    ]
+  }
+  </script>
 </head>
 <body>
+  <!-- Accessibility: skip link -->
+  <a class="skip-link" href="#main-content" style="position:absolute;left:-9999px;top:auto;">Пропустити до контенту</a>
+
+  <!-- Ensure main landmark id for skip-link -->
+  <main id="main-content">
     <header class="header">
 	<div class="container header__container">
 		<a href="index.html" class="logo" aria-label="Nexus Studio — home">
@@ -21,7 +53,7 @@
 			<span class="logo__name"><span class="logo-gradient">Nexus Studio</span></span>
 		</a>
 
-		<nav class="nav" aria-label="Головна навігація">
+		<nav class="site-nav" aria-label="Головна навігація">
 			<ul class="nav__list">
 				<li><a class="nav__link" href="index.html">Головна</a></li>
 				<li><a class="nav__link" href="services.html">Послуги</a></li>

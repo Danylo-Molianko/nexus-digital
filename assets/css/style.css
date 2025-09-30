@@ -19,6 +19,15 @@
   --gradient-yellow-bliss-end: #FDFDF5;
   --gradient-blue-start: #007BFF;
   --gradient-blue-end: #00C6FF;
+  --header-ivory: var(--bg-light-ivory);
+  --header-gold: #F7E9B6; /* легкий золотий відтінок */
+
+  /* NAV visual vars (preferred palette: deep navy → warm gold) */
+  --nav-start: #07204a; /* deep navy */
+  --nav-end:   #0b3d91; /* cobalt */
+  --nav-accent: #F7E9B6; /* soft gold for subtle glow */
+  --nav-link-color: #0b1730; /* dark text on light-ish header if needed */
+  --nav-link-contrast: #07204a; /* hover/accent */
 }
 
 /* Global */
@@ -271,34 +280,81 @@ h3 {
   margin-bottom: 12px;
 }
 
-/* ABOUT teaser: two-column layout */
+/* ABOUT teaser: two-column layout — improved for clean image columns + content box */
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr; /* mobile first: single column */
   gap: 24px;
   align-items: center;
 }
-.about-grid__media {
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  height: 320px;
-  border-radius: 12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color: var(--text-secondary);
-  font-size: 1rem;
-  overflow: hidden;
-}
-.about-grid__media img { width:100%; height:100%; object-fit:cover; display:block; }
-.about-grid__content { color: var(--text-secondary); }
 
-/* About/media placeholder */
-.about-media {
-  width: 100%;
-  height: 320px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+/* Desktop: three columns — two images + content */
+@media (min-width: 900px) {
+  .about-grid {
+    grid-template-columns: repeat(3, 1fr); /* left image | middle image | content */
+    gap: 28px;
+    align-items: stretch;
+  }
 }
+
+/* Media wrapper — center the framed photo */
+.about-grid__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* keep a consistent visual height on mobile and let the frame control aspect on desktop */
+  height: auto;
+  width: 100%;
+  padding: 6px; /* small breathing room around frame on small screens */
+  box-sizing: border-box;
+}
+
+/* Photo frame: enforces portrait aspect, inner padding, subtle border & shadow */
+.photo-frame {
+  width: min(360px, 100%);                  /* desktop: up to 360px wide; mobile: full width of column */
+  aspect-ratio: 1080 / 1600;               /* preserve original portrait ratio */
+  background: linear-gradient(180deg, #fff, #f7f5ea); /* soft paper-like base */
+  padding: 12px;                           /* frame thickness */
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 12px 30px rgba(8,12,20,0.08);
+  overflow: hidden;
+  display: block;
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+
+/* Slight hover lift on non-touch devices for polish */
+@media (hover: hover) {
+  .photo-frame:hover { transform: translateY(-6px); box-shadow: 0 22px 44px rgba(8,12,20,0.12); }
+}
+
+/* Image fills the inner area and is cropped elegantly */
+.photo-frame img,
+.photo-frame picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 8px; /* inner rounding for picture */
+}
+
+/* If you want the content to occupy the right-most column on desktop */
+.about-grid__content {
+  grid-column: span 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* On smaller screens make frames slightly taller */
+@media (max-width: 899px) {
+  .photo-frame { aspect-ratio: 1080 / 1520; /* slightly taller on mobile for visual balance */ width: 100%; padding: 10px; border-radius: 12px; }
+  .about-grid__media { padding: 0; }
+  .about-grid__content { padding: 18px; }
+}
+
+/* Ensure picture fallback images respond correctly */
+picture, .photo-frame { display: block; }
 
 /* CTA */
 .cta {
@@ -315,10 +371,12 @@ h3 {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: rgba(18, 18, 18, 0.8); /* напівпрозорий фон */
-  backdrop-filter: blur(10px); /* більший ефект розмиття */
-  transition: background 0.22s ease, box-shadow 0.22s ease;
-  border-bottom: 1px solid rgba(255,255,255,0.03);
+  /* visual: smooth ivory→gold gradient (animated via .header--anim) */
+  background: linear-gradient(90deg, var(--header-ivory) 0%, var(--header-gold) 100%);
+  background-size: 200% 200%;
+  transition: background 0.3s ease;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  backdrop-filter: none; /* remove dark blur for light header */
 }
 .header--elevated {
   box-shadow: 0 6px 18px rgba(0,0,0,0.45);
@@ -327,7 +385,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 0;
+  padding: 8px 0; /* reduced height for a compact navbar */
 }
 
 /* Логотип */
@@ -345,27 +403,32 @@ h3 {
   display: block;
 }
 .nav ul,
-.site-nav ul {
-  display: flex;
-  gap: 20px;
-  align-items: center;
+.site-nav ul,
+.nav__list {
+  display: flex !important;
+  flex-direction: row; /* horizontal links */
+  gap: 18px;           /* spacing between items */
+  align-items: center; /* center vertically inside header */
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 .nav a,
 .site-nav a {
-  color: var(--text-secondary);
+  color: var(--text-dark);    /* readable on light headers; adjust if header is dark */
+  font-weight: 600;
+  font-size: 1rem;           /* slightly reduced for compact nav */
+  padding: 6px 10px;
+  transition: color .18s ease, transform .12s ease, text-shadow .12s ease;
   text-decoration: none;
-  padding: 6px 0;
-  font-weight: 500;
-  transition: color 0.15s ease;
 }
 .nav a:hover,
 .site-nav a:hover,
 .nav a:focus,
 .site-nav a:focus {
-  color: var(--accent-blue);
-  outline: none;
+  color: var(--nav-accent);
+  transform: translateY(-1px);
+  text-shadow: 0 6px 18px rgba(0,0,0,0.18);
 }
 
 /* Burger toggle (hidden on desktop, visible on mobile) */
@@ -428,6 +491,56 @@ h3 {
   transform: translateY(0);
 }
 
+/* header background: ivory → light-gold animated gradient */
+:root {
+  /* ...existing vars... */
+  --header-ivory: var(--bg-light-ivory);
+  --header-gold: #F7E9B6; /* легкий золотий відтінок */
+}
+
+/* Replace previous .header background with animated gradient base */
+.header {
+  /* keep sticky behaviour */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  /* visual: smooth ivory→gold gradient (animated via .header--anim) */
+  background: linear-gradient(90deg, var(--header-ivory) 0%, var(--header-gold) 100%);
+  background-size: 200% 200%;
+  transition: background 0.3s ease;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  backdrop-filter: none; /* remove dark blur for light header */
+}
+
+/* animated state driven by JS (class toggled on DOMContentLoaded) */
+.header.header--anim {
+  animation: headerPulse 8s ease-in-out infinite;
+}
+
+/* keyframes: плавне переміщення градієнта, дає ефект переливу */
+@keyframes headerPulse {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* nav links visible on light background */
+.site-nav .nav__list .nav__link {
+  color: var(--text-dark);
+  font-weight: 600;
+  padding: 8px 6px;
+}
+.site-nav .nav__list .nav__link:hover,
+.site-nav .nav__list .nav__link:focus {
+  color: var(--gradient-blue-start);
+  text-decoration: underline;
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .header.header--anim { animation: none; }
+}
+
 /* Panels / cards adapt to dark theme */
 .services-grid article,
 .cta,
@@ -439,12 +552,14 @@ h3 {
 
 /* Footer - layout & visual */
 .footer {
+  /* compact footer: reduced vertical size */
   position: relative;
   background-image: url('../images/picture-for-footer.webp');
   background-size: cover;
   background-position: center;
   color: var(--text-secondary);
   z-index: 0;
+  padding: 20px 0;            /* added compact vertical padding */
 }
 .footer::before {
   content: '';
@@ -453,53 +568,26 @@ h3 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.35); /* затемнення 35% для кращої читабельності */
+  background-color: rgba(0, 0, 0, 0.28); /* slightly lighter overlay */
   z-index: 1;
 }
 .footer__container {
   position: relative;
   z-index: 2;
   display: flex;
-  gap: 30px;
+  gap: 18px;                 /* reduced gap between columns */
   align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
+  padding: 12px 15px;        /* subtle inner padding */
 }
 
 /* Footer columns */
-.footer__col { flex: 1 1 300px; min-width: 220px; }
-.footer__brand { color: var(--text-primary); font-weight:700; font-size:1.05rem; margin-bottom:8px; }
-.footer__desc { color: var(--text-secondary); font-size:0.95rem; line-height:1.5; margin-bottom:12px; }
+.footer__col { flex: 1 1 260px; min-width: 180px; } /* slightly narrower columns */
+.footer__brand { color: var(--text-primary); font-weight:700; font-size:0.95rem; margin-bottom:6px; }
+.footer__desc { color: var(--text-secondary); font-size:0.88rem; line-height:1.4; margin-bottom:8px; }
 
-.footer__nav h4,
-.footer__contacts h4 { color: var(--text-primary); margin-bottom:10px; font-size:1rem; }
-.footer__nav ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px; }
-.footer__nav a { color: var(--text-secondary); text-decoration:none; }
-.footer__nav a:hover { color: var(--accent-blue); }
-
-.footer__contacts a { color: var(--text-secondary); display:inline-block; margin-bottom:8px; text-decoration:none; }
-.footer__contacts a:hover { color: var(--accent-blue); }
-
-/* Social icons row */
-.footer__socials { display:flex; gap:12px; align-items:center; }
-.footer__socials a { color: var(--text-secondary); text-decoration:none; font-size:1.05rem; }
-.footer__socials a:hover { color: var(--accent-blue); }
-
-/* Footer bottom row */
-.footer__bottom {
-  margin-top: 24px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255,255,255,0.03);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  color: var(--muted);
-  font-size: 0.9rem;
-  flex-wrap:wrap;
-}
-
-/* Footer image block (new styles) */
+/* Footer image block: reduce visual height to keep footer compact */
 .footer__hero {
   width: 100%;
   overflow: hidden;
@@ -510,13 +598,30 @@ h3 {
   width: 100%;
   height: auto;
   object-fit: cover;
-  max-height: 280px;
+  max-height: 140px;         /* reduced from 280px */
 }
 
-/* ensure footer content remains readable on top of image if overlaps */
-.footer__container {
-  position: relative;
-  z-index: 2;
+/* Footer bottom row (compact) */
+.footer__bottom {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.02);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  color: var(--muted);
+  font-size: 0.82rem;        /* smaller text */
+  flex-wrap:wrap;
+}
+
+/* Mobile: ensure footer stays compact on small screens */
+@media (max-width: 767px) {
+  .footer__container { gap: 12px; padding: 10px 12px; }
+  .footer__hero .footer__image { max-height: 100px; }
+  .footer__brand { font-size: 0.92rem; }
+  .footer__desc { font-size: 0.86rem; }
+  .footer__bottom { font-size: 0.8rem; padding-top: 6px; margin-top: 10px; gap:6px; }
 }
 
 /* Utilities */
@@ -645,41 +750,52 @@ details[open] summary::after { transform: rotate(45deg); }
   /* default no-op; specific light sections already override */
 }
 
-/* ...existing code... */
-
-/* Responsive: two columns on wide screens */
-@media (min-width: 900px) {
-  .contact-grid { grid-template-columns: 1fr 1fr; }
-  .btn-submit { align-self: flex-end; }
+/* Skip-link (visible only on keyboard focus) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--accent-blue);
+  color: white;
+  padding: 8px 12px;
+  z-index: 9999;
+  transition: top 0.3s ease;
 }
-@media (max-width: 767px) {
-  .contact-card { padding: 16px; }
-  .btn-submit { width:100%; text-align:center; }
-}
-
-/* Responsive: two columns on wider screens */
-@media (min-width: 900px) {
-  .two-col { grid-template-columns: 40% 60%; }
+.skip-link:focus {
+  top: 12px;
 }
 
-/* small screens tweaks */
-@media (max-width: 767px) {
-  .service-hero { padding: 40px 0; }
-  .accordion__header { padding: 12px 14px; }
-  .accordion__content { padding: 10px 14px; }
+/* Light section style used on services/about/contact hero & sections */
+.light-section {
+  background-color: var(--bg-light-ivory);
+  color: var(--text-dark);
+  background-image:
+    radial-gradient(circle at 10% 20%, var(--gradient-yellow-bliss-start), transparent 40%),
+    radial-gradient(circle at 80% 90%, var(--gradient-blue-end), transparent 50%);
 }
 
-/* Responsive behaviour (mobile) */
-@media (max-width: 767px) {
-  /* show burger, hide desktop nav row */
-  .menu-toggle { display: none; }
-  .burger-menu { display: flex; }
+/* Focus-visible for keyboard users (links, buttons, summary) */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
 
-  /* Hide desktop inline list */
-  .nav ul,
-  .site-nav ul { display: none; }
+/* Make details/summary keyboard-friendly appearance */
+details summary[role="button"] {
+  -webkit-user-select: none;
+  user-select: none;
+}
+details[open] summary { /* slightly different bg when open for affordance */
+  background: rgba(0,0,0,0.02);
+}
 
-  /* Mobile full-screen nav overlay (hidden by default) */
+/* Ensure images inside picture respond */
+picture img { display: block; width: 100%; height: auto; border-radius: 8px; }
+
+/* Small fix: remove duplicated broken CSS segments at file end */
   .nav {
     display: none; /* hide by default */
     position: fixed;
@@ -883,17 +999,14 @@ img[src^="data:image/svg+xml"] { background: #0b0b0b; border-radius: 6px; }
 /* hide text fallback until image resolution logic shows it */
 .logo__text { display: none; }
 .logo__text.show { display: inline-block; }
-  box-shadow: 0 22px 50px rgba(0,0,0,0.55);
-}
+/* Subtle performance tweak for animated elements */
+.reveal, .service-card, .btn-primary { backface-visibility: hidden; -webkit-font-smoothing: antialiased; }
 
-/* Accessible focus-visible outline */
-:focus { outline: none; }
-:focus-visible {
-  outline: 3px solid rgba(0,123,255,0.16);
-  outline-offset: 2px;
-  border-radius: 6px;
-}
-
+/* hide text fallback until image resolution logic shows it */
+.logo__text { display: none; }
+.logo__text.show { display: inline-block; }
+.logo__text { display: none; }
+.logo__text.show { display: inline-block; }
 /* Subtle performance tweak for animated elements */
 .reveal, .service-card, .btn-primary { backface-visibility: hidden; -webkit-font-smoothing: antialiased; }
 

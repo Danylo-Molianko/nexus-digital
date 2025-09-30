@@ -369,3 +369,42 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // end DOMContentLoaded
 });
+
+// INIT: AOS (if included) and simple lazy loader
+document.addEventListener('DOMContentLoaded', function () {
+  // AOS init if available
+  if (window.AOS) {
+    AOS.init({ duration: 900, once: true });
+  }
+
+  // Simple IntersectionObserver lazy loader for images with data-src / data-srcset
+  const ioSupported = 'IntersectionObserver' in window;
+  const lazyImgs = document.querySelectorAll('img[data-src], img[data-srcset]');
+  if (ioSupported && lazyImgs.length) {
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          const img = en.target;
+          if (img.dataset.src) img.src = img.dataset.src;
+          if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+          img.removeAttribute('data-src');
+          img.removeAttribute('data-srcset');
+          obs.unobserve(img);
+        }
+      });
+    }, { rootMargin: '200px 0px' });
+    lazyImgs.forEach(i => io.observe(i));
+  } else {
+    // fallback: eager load
+    lazyImgs.forEach(img => {
+      if (img.dataset.src) img.src = img.dataset.src;
+      if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+    });
+  }
+
+  // Basic global error logging for media
+  window.addEventListener('error', (e) => {
+    // keep brief logging (could post to server)
+    console.warn('Resource error:', e.target && e.target.src ? e.target.src : e.message);
+  }, true);
+});

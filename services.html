@@ -7,8 +7,42 @@
     <meta name="description" content="Повний спектр послуг від Nexus Studio: Digital Foundation (сайти та Web-Apps на Webflow), Business Acceleration (AI-автоматизація, CRM), та Strategic Partnership (бізнес-аналіз, підтримка).">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Performance hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="../assets/css/style.css" as="style">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="Послуги | Nexus Studio">
+    <meta property="og:description" content="Digital Foundation (Webflow, Web-Apps), Business Acceleration (AI-автоматизація, CRM), та Strategic Partnership (бізнес-аналіз, підтримка).">
+    <meta property="og:image" content="https://your-domain.com/assets/images/og-image-services.webp">
+    <meta property="og:url" content="https://your-domain.com/services.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Breadcrumb structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Головна",
+        "item": "https://your-domain.com/index.html"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Послуги",
+        "item": "https://your-domain.com/services.html"
+      }]
+    }
+    </script>
 </head>
 <body>
+  <!-- skip-link for keyboard users -->
+  <a href="#main-content" class="skip-link">Перейти до основного контенту</a>
+
     <header class="header">
         <div class="container header__container">
             <a href="index.html" class="logo" aria-label="Nexus Studio">
@@ -32,63 +66,76 @@
         </div>
     </header>
 
-    <main>
-        <!-- HERO -->
-        <section class="section services-hero" data-aos="fade-in">
+    <main id="main-content">
+        <!-- HERO (light) -->
+        <section class="section light-section service-hero" data-aos="fade-in">
           <div class="container">
-            <h1 style="color:var(--text-dark)">Наші послуги</h1>
-            <p class="lead" style="color:var(--text-dark)">Комплексні рішення: від технічної платформи до стратегічного партнерства.</p>
+            <h1 style="color:var(--text-dark);">Наші послуги</h1>
+            <p class="lead" style="color:var(--text-dark);">Комплексні рішення: від техплатформи до стратегічного партнерства.</p>
           </div>
         </section>
 
-        <!-- SERVICES: three feature blocks with staggered AOS delays -->
-        <section class="section services-overview" data-aos="fade-up">
+        <!-- Services overview: each article uses picture + lazy loading -->
+        <section class="section light-section services-overview" data-aos="fade-up">
           <div class="container">
+            <h2 style="color:var(--text-dark);">Наші напрямки</h2>
+
             <div class="services-grid">
-              <article class="service-card" data-aos="fade-up" data-aos-delay="100">
-                <img src="assets/images/1-model-dlia-holovnoi-storinky.webp" alt="1-модель-для-головної-сторінки (Digital Foundation)" loading="lazy">
-                <h3>Digital Foundation</h3>
+              <article class="service-card" data-aos="fade-up" data-aos-delay="100" aria-labelledby="svc-df-title">
+                <picture>
+                  <source srcset="assets/images/1-model-dlia-holovnoi-storinky.avif" type="image/avif">
+                  <source srcset="assets/images/1-model-dlia-holovnoi-storinky.webp" type="image/webp">
+                  <img src="assets/images/1-model-dlia-holovnoi-storinky.png" alt="1-модель-для-головної-сторінки (Digital Foundation)" loading="lazy">
+                </picture>
+                <h3 id="svc-df-title">Digital Foundation</h3>
                 <p>Технічні платформи, сайти та аналітика для масштабування бізнесу.</p>
-                <a class="btn btn-secondary" href="services.html#digital">Детальніше →</a>
+                <a class="btn" href="services.html#digital">Детальніше →</a>
               </article>
 
-              <article class="service-card" data-aos="fade-up" data-aos-delay="200">
-                <img src="assets/images/2-model-dlia-holovnoi-storinky.webp" alt="2-модель-для-головної-сторінки (Business Acceleration)" loading="lazy">
-                <h3>Business Acceleration</h3>
-                <p>Оптимізація продукту, маркетинг і AI-автоматизація для росту продажів.</p>
-                <a class="btn btn-secondary" href="services.html#acceleration">Детальніше →</a>
+              <article class="service-card" data-aos="fade-up" data-aos-delay="200" aria-labelledby="svc-ba-title">
+                <picture>
+                  <source srcset="assets/images/2-model-dlia-holovnoi-storinky.avif" type="image/avif">
+                  <source srcset="assets/images/2-model-dlia-holovnoi-storinky.webp" type="image/webp">
+                  <img src="assets/images/2-model-dlia-holovnoi-storinky.png" alt="2-модель-для-головної-сторінки (Business Acceleration)" loading="lazy">
+                </picture>
+                <h3 id="svc-ba-title">Business Acceleration</h3>
+                <p>Оптимізація продукту, маркетинг та AI-автоматизація.</p>
+                <a class="btn" href="services.html#acceleration">Детальніше →</a>
               </article>
 
-              <article class="service-card" data-aos="fade-up" data-aos-delay="300">
-                <img src="assets/images/3-model-dlia-holovnoi-storinky.webp" alt="3-модель-для-головної-сторінки (Strategic Partnership)" loading="lazy">
-                <h3>Strategic Partnership</h3>
+              <article class="service-card" data-aos="fade-up" data-aos-delay="300" aria-labelledby="svc-sp-title">
+                <picture>
+                  <source srcset="assets/images/3-model-dlia-holovnoi-storinky.avif" type="image/avif">
+                  <source srcset="assets/images/3-model-dlia-holovnoi-storinky.webp" type="image/webp">
+                  <img src="assets/images/3-model-dlia-holovnoi-storinky.png" alt="3-модель-для-головної-сторінки (Strategic Partnership)" loading="lazy">
+                </picture>
+                <h3 id="svc-sp-title">Strategic Partnership</h3>
                 <p>Стратегія, підтримка та довгострокова технічна реалізація.</p>
-                <a class="btn btn-secondary" href="services.html#partnership">Детальніше →</a>
+                <a class="btn" href="services.html#partnership">Детальніше →</a>
               </article>
             </div>
           </div>
         </section>
 
-        <!-- ACCORDION / DETAILS: wrap content in .accordion-content -->
-        <section class="section" data-aos="fade-up" data-aos-delay="120">
+        <!-- Accordion with ARIA-enhanced details -->
+        <section class="section light-section" data-aos="fade-up" data-aos-delay="120">
           <div class="container">
-            <h2>Часті питання</h2>
+            <h2 style="color:var(--text-dark);">Часті питання</h2>
 
-            <details>
-              <summary>Як відбувається робота над проєктом?</summary>
-              <div class="accordion-content">
-                <p>Ми починаємо з аудиту, потім — стратегія, дизайн, розробка і підтримка.</p>
+            <details id="q1">
+              <summary aria-controls="q1-desc" aria-expanded="false" role="button" tabindex="0">Як відбувається робота над проєктом?</summary>
+              <div id="q1-desc" class="accordion-content" role="region" aria-labelledby="q1">
+                <p>Ми починаємо з аудиту бізнесу, потім — стратегія, дизайн, розробка і підтримка.</p>
               </div>
             </details>
 
-            <details>
-              <summary>Чи працюєте ви з AI-рішеннями?</summary>
-              <div class="accordion-content">
+            <details id="q2">
+              <summary aria-controls="q2-desc" aria-expanded="false" role="button" tabindex="0">Чи працюєте ви з AI-рішеннями?</summary>
+              <div id="q2-desc" class="accordion-content" role="region" aria-labelledby="q2">
                 <p>Так — впроваджуємо AI для автоматизації бізнес-процесів та персоналізації UX.</p>
               </div>
             </details>
 
-            <!-- ...additional details... -->
           </div>
         </section>
 
