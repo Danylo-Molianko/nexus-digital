@@ -1,7 +1,16 @@
-document.addEventListener('DOMContentLoaded', function(){
+// Basic JavaScript for new site// Basic JavaScript for new site// Basic JavaScript for new sitedocument.addEventListener('DOMContentLoaded', function(){
 
-	// --- existing behavior: menu-toggle (legacy) ---
-	const toggle = document.querySelector('.menu-toggle');
+document.addEventListener('DOMContentLoaded', function() {
+
+  console.log('Site loaded - ready to build from scratch');document.addEventListener('DOMContentLoaded', function() {
+
+});
+  console.log('Site loaded - ready to build from scratch');document.addEventListener('DOMContentLoaded', function() {
+
+});
+  console.log('Site loaded - ready to build from scratch');	// --- existing behavior: menu-toggle (legacy) ---
+
+});	const toggle = document.querySelector('.menu-toggle');
 	const siteNav = document.querySelector('.site-nav');
 	if(toggle && siteNav){
 		toggle.addEventListener('click', () => {
@@ -434,74 +443,38 @@ document.addEventListener('DOMContentLoaded', function () {
   }, true);
 });
 
-// --- Nexus: Custom cursor and Hero "Genesis" typing animation ---
+// --- Hero "Genesis" typing animation ---
 document.addEventListener('DOMContentLoaded', function(){
-	// Custom cursor
-	(function initCursor(){
-		if (document.body.classList.contains('nexus-cursor-enabled')) return;
-		const cursor = document.createElement('div');
-		cursor.className = 'nexus-cursor';
-		cursor.setAttribute('aria-hidden', 'true');
-		document.body.appendChild(cursor);
-		document.body.classList.add('nexus-cursor-enabled');
+    // Hero typing "Genesis" effect on index only
+    (function heroGenesis(){
+        if (!document.body.classList.contains('home-page')) return;
+        const header = document.querySelector('.header.hero-full');
+        if (!header) return;
+        header.classList.add('hero-animated');
+        const titleEl = header.querySelector('.hero-title');
+        const subEl = header.querySelector('.hero-sub');
+        const cta = header.querySelector('.hero-cta');
+        if (!titleEl) return;
 
-		let cx = window.innerWidth/2, cy = window.innerHeight/2;
-		let tx = cx, ty = cy; // tracked target
-		const ease = 0.18;
+        const text = titleEl.dataset.text || titleEl.textContent.trim();
+        titleEl.textContent = '';
+        titleEl.classList.add('typewriter');
 
-		window.addEventListener('mousemove', (e)=>{
-			tx = e.clientX; ty = e.clientY;
-		}, {passive:true});
-
-		// hover targets (links, buttons)
-		function addHoverListeners(){
-			const interact = document.querySelectorAll('a, button, .btn');
-			interact.forEach(el=>{
-				el.addEventListener('mouseenter', ()=> cursor.classList.add('nexus-cursor--hover'));
-				el.addEventListener('mouseleave', ()=> cursor.classList.remove('nexus-cursor--hover'));
-			});
-		}
-		addHoverListeners();
-
-		function loop(){
-			cx += (tx - cx) * ease;
-			cy += (ty - cy) * ease;
-			cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
-			requestAnimationFrame(loop);
-		}
-		requestAnimationFrame(loop);
-	})();
-
-	// Hero typing "Genesis" effect on index only
-	(function heroGenesis(){
-		if (!document.body.classList.contains('home-page')) return;
-		const header = document.querySelector('.header.hero-full');
-		if (!header) return;
-		header.classList.add('hero-animated');
-		const titleEl = header.querySelector('.hero-title');
-		const subEl = header.querySelector('.hero-sub');
-		const cta = header.querySelector('.hero-cta');
-		if (!titleEl) return;
-
-		const text = titleEl.dataset.text || titleEl.textContent.trim();
-		titleEl.textContent = '';
-		titleEl.classList.add('typewriter');
-
-		// typewriter
-		let i = 0;
-		const speed = 42; // ms per char
-		function typeChar(){
-			if (i < text.length) {
-				titleEl.textContent += text.charAt(i++);
-				setTimeout(typeChar, speed + Math.random()*40);
-			} else {
-				titleEl.classList.add('is-done');
-				// reveal subtitle and CTA
-				setTimeout(()=>{ if (subEl) subEl.classList.add('show'); }, 320);
-				setTimeout(()=>{ if (cta) cta.classList.add('show'); }, 540);
-			}
-		}
-		// start after slight delay
-		setTimeout(typeChar, 260);
-	})();
+        // typewriter
+        let i = 0;
+        const speed = 42; // ms per char
+        function typeChar(){
+            if (i < text.length) {
+                titleEl.textContent += text.charAt(i++);
+                setTimeout(typeChar, speed + Math.random()*40);
+            } else {
+                titleEl.classList.add('is-done');
+                // reveal subtitle and CTA
+                setTimeout(()=>{ if (subEl) subEl.classList.add('show'); }, 320);
+                setTimeout(()=>{ if (cta) cta.classList.add('show'); }, 540);
+            }
+        }
+        // start after slight delay
+        setTimeout(typeChar, 260);
+    })();
 });
