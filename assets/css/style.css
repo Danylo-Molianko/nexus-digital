@@ -1013,3 +1013,18 @@ img[src^="data:image/svg+xml"] { background: #0b0b0b; border-radius: 6px; }
 /* hide text fallback until image resolution logic shows it */
 .logo__text { display: none; }
 .logo__text.show { display: inline-block; }
+
+.partner-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1080 / 1600; /* Зберігаємо пропорції ваших фото */
+  object-fit: cover; /* Гарантує, що фото заповнить рамку без спотворень */
+  border-radius: 12px; /* Легке заокруглення кутів */
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Тонка "скляна" межа */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* М'яка тінь для глибини */
+  display: block;
+}
+
+/* Можна підлаштувати відступи картки, щоб фото і текст вирівнювались */
+.partner-card { display: flex; gap: 16px; align-items: center; }
+.partner-card .partner-info { flex: 1; }
