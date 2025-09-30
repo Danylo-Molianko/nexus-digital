@@ -3,110 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кейси | Nexus Studio</title>
+    <title>Кейси | Nexus Digital</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 </head>
 <body>
     <header class="header">
-        <div class="header__container">
-            <a href="index.html" class="header__logo">
-                <img src="assets/images/logo-for-site.webp" alt="Nexus Studio" class="header__logo-img">
-            </a>
-            <nav class="header__nav">
-                <ul class="header__nav-list">
-                    <li class="header__nav-item">
-                        <a href="index.html" class="header__nav-link">Головна</a>
-                    </li>
-                    <li class="header__nav-item">
-                        <a href="services.html" class="header__nav-link">Послуги</a>
-                    </li>
-                    <li class="header__nav-item">
-                        <a href="about.html" class="header__nav-link">Про нас</a>
-                    </li>
-                    <li class="header__nav-item">
-                        <a href="cases.html" class="header__nav-link header__nav-link--active">Кейси</a>
-                    </li>
-                    <li class="header__nav-item">
-                        <a href="contact.html" class="header__nav-link">Контакти</a>
-                    </li>
-                </ul>
-            </nav>
+        <div class="container">
+            <div class="header__container">
+                <a href="index.html" class="header__logo">
+                    <img src="assets/images/logo-for-site.webp" alt="Nexus Digital" class="header__logo-img">
+                    Nexus Digital
+                </a>
+                <nav class="header__nav">
+                    <ul class="header__nav-list">
+                        <li><a href="index.html" class="header__nav-link">Головна</a></li>
+                        <li><a href="services.html" class="header__nav-link">Послуги</a></li>
+                        <li><a href="about.html" class="header__nav-link">Про нас</a></li>
+                        <li><a href="cases.html" class="header__nav-link header__nav-link--active">Кейси</a></li>
+                        <li><a href="contact.html" class="header__nav-link">Контакти</a></li>
+                    </ul>
+                </nav>
+                <button class="header__menu-toggle">
+                    <span class="header__menu-line"></span>
+                    <span class="header__menu-line"></span>
+                    <span class="header__menu-line"></span>
+                </button>
+            </div>
         </div>
+        <nav class="header__mobile-nav">
+            <ul class="header__mobile-nav-list">
+                <li class="header__mobile-nav-item">
+                    <a href="index.html" class="header__mobile-nav-link">Головна</a>
+                </li>
+                <li class="header__mobile-nav-item">
+                    <a href="services.html" class="header__mobile-nav-link">Послуги</a>
+                </li>
+                <li class="header__mobile-nav-item">
+                    <a href="about.html" class="header__mobile-nav-link">Про нас</a>
+                </li>
+                <li class="header__mobile-nav-item">
+                    <a href="cases.html" class="header__mobile-nav-link header__mobile-nav-link--active">Кейси</a>
+                </li>
+                <li class="header__mobile-nav-item">
+                    <a href="contact.html" class="header__mobile-nav-link">Контакти</a>
+                </li>
+            </ul>
+        </nav>
     </header>
-    
-    <main id="main-content">
-        <!-- Cases content will be added here -->
-    </main>
-    
-    <footer class="footer">
-        <div class="footer__container">
-            <div class="footer__column footer__column--about">
-                <h3 class="footer__title">Nexus Studio</h3>
-                <p class="footer__description">Агентство цифрових інновацій, що перетворює бізнес-цілі на технологічні рішення.</p>
+
+    <main class="main">
+        <section class="section section--hero">
+            <div class="container">
+                <h1 class="section__title" data-aos="fade-up">Кейси</h1>
+                <p class="section__subtitle" data-aos="fade-up" data-aos-delay="200">Успішні проєкти, які змінили бізнес наших клієнтів</p>
             </div>
-            
-            <div class="footer__column footer__column--nav">
-                <h3 class="footer__title">Навігація</h3>
-                <ul class="footer__nav-list">
-                    <li class="footer__nav-item">
-                        <a href="index.html" class="footer__nav-link">Головна</a>
-                    </li>
-                    <li class="footer__nav-item">
-                        <a href="services.html" class="footer__nav-link">Послуги</a>
-                    </li>
-                    <li class="footer__nav-item">
-                        <a href="about.html" class="footer__nav-link">Про нас</a>
-                    </li>
-                    <li class="footer__nav-item">
-                        <a href="cases.html" class="footer__nav-link">Кейси</a>
-                    </li>
-                    <li class="footer__nav-item">
-                        <a href="contact.html" class="footer__nav-link">Контакти</a>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="footer__column footer__column--services">
-                <h3 class="footer__title">Послуги</h3>
-                <ul class="footer__services-list">
-                    <li class="footer__services-item">
-                        <a href="services.html#digital" class="footer__services-link">Digital Foundation</a>
-                    </li>
-                    <li class="footer__services-item">
-                        <a href="services.html#acceleration" class="footer__services-link">Business Acceleration</a>
-                    </li>
-                    <li class="footer__services-item">
-                        <a href="services.html#partnership" class="footer__services-link">Strategic Partnership</a>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="footer__column footer__column--contact">
-                <h3 class="footer__title">Зв'яжіться з нами</h3>
-                <div class="footer__contact">
-                    <p class="footer__contact-item">
-                        <a href="mailto:hello@nexus.digital" class="footer__contact-link">hello@nexus.digital</a>
-                    </p>
-                    <p class="footer__contact-item">
-                        <a href="tel:+380000000000" class="footer__contact-link">+38 (000) 000-00-00</a>
-                    </p>
-                    <div class="footer__social">
-                        <a href="#" class="footer__social-link">LinkedIn</a>
-                        <a href="#" class="footer__social-link">GitHub</a>
-                        <a href="#" class="footer__social-link">Telegram</a>
+        </section>
+
+        <section class="section cases-grid" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section__title">Наші проєкти</h2>
+                <div class="cases-grid__container">
+                    <div class="case-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="case-card__image">
+                            <img src="assets/images/picture-for-services-1.webp" alt="TechCorp" class="case-card__img">
+                            <div class="case-card__overlay">
+                                <span class="case-card__category">Корпоративний сайт</span>
+                            </div>
+                        </div>
+                        <div class="case-card__content">
+                            <h3 class="case-card__title">TechCorp - Корпоративний портал</h3>
+                            <p class="case-card__description">Створили сучасний корпоративний сайт з інтеграцією CRM системи.</p>
+                            <div class="case-card__results">
+                                <div class="case-result">
+                                    <span class="case-result__value">+150%</span>
+                                    <span class="case-result__metric">Генерація лідів</span>
+                                </div>
+                            </div>
+                            <div class="case-card__tech">
+                                <span class="tech-tag tech-tag--small">WordPress</span>
+                                <span class="tech-tag tech-tag--small">PHP</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="case-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="case-card__image">
+                            <img src="assets/images/picture-for-services-2.webp" alt="FinanceApp" class="case-card__img">
+                            <div class="case-card__overlay">
+                                <span class="case-card__category">Мобільний додаток</span>
+                            </div>
+                        </div>
+                        <div class="case-card__content">
+                            <h3 class="case-card__title">FinanceApp - Фінансовий помічник</h3>
+                            <p class="case-card__description">Розробили мобільний додаток для управління особистими фінансами.</p>
+                            <div class="case-card__results">
+                                <div class="case-result">
+                                    <span class="case-result__value">50K+</span>
+                                    <span class="case-result__metric">Завантажень</span>
+                                </div>
+                            </div>
+                            <div class="case-card__tech">
+                                <span class="tech-tag tech-tag--small">React Native</span>
+                                <span class="tech-tag tech-tag--small">Firebase</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="footer__bottom">
+        </section>
+
+        <section class="section cta-section" data-aos="fade-up">
+            <div class="container">
+                <div class="cta">
+                    <h2 class="cta__title">Готові створити наступний успішний кейс?</h2>
+                    <p class="cta__text">Розкажіть нам про ваш проєкт</p>
+                    <a href="contact.html" class="btn cta__btn">Обговорити проєкт</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
             <div class="footer__container">
-                <p class="footer__copyright">&copy; 2025 Nexus Studio. Усі права захищено.</p>
+                <div class="footer__column">
+                    <h3 class="footer__title">Про нас</h3>
+                    <p class="footer__text">Nexus Digital - провідне агентство цифрових інновацій.</p>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__title">Навігація</h3>
+                    <ul class="footer__list">
+                        <li class="footer__list-item"><a href="index.html" class="footer__link">Головна</a></li>
+                        <li class="footer__list-item"><a href="services.html" class="footer__link">Послуги</a></li>
+                        <li class="footer__list-item"><a href="about.html" class="footer__link">Про нас</a></li>
+                        <li class="footer__list-item"><a href="cases.html" class="footer__link">Кейси</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__title">Контакти</h3>
+                    <p class="footer__text">Email: info@nexusdigital.com</p>
+                    <p class="footer__text">Телефон: +380 XX XXX XXXX</p>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link">IG</a>
+                        <a href="#" class="footer__social-link">TW</a>
+                        <a href="#" class="footer__social-link">DC</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 Nexus Digital. Всі права захищені.</p>
             </div>
         </div>
     </footer>
-    
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
 </body>

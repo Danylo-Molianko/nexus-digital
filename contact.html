@@ -1,250 +1,166 @@
-<!DOCTYPE html><!DOCTYPE html>
-
-<html lang="uk"><html lang="uk">
-
-<head><head>
-
-    <meta charset="UTF-8">  <meta charset="utf-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Контакти | Nexus Studio</title>  <title>Контакти — Nexus Studio</title>
-
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти | Nexus Digital</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">  <meta name="description" content="Зв'яжіться з Nexus Studio для обговорення вашого проєкту. Замовте безкоштовну консультацію або напишіть нам, щоб перетворити вашу ідею на реальність.">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__container">
+                <a href="index.html" class="header__logo">
+                    <img src="assets/images/logo-for-site.webp" alt="Nexus Digital" class="header__logo-img">
+                    Nexus Digital
+                </a>
+                <nav class="header__nav">
+                    <ul class="header__nav-list">
+                        <li><a href="index.html" class="header__nav-link">Головна</a></li>
+                        <li><a href="services.html" class="header__nav-link">Послуги</a></li>
+                        <li><a href="about.html" class="header__nav-link">Про нас</a></li>
+                        <li><a href="cases.html" class="header__nav-link">Кейси</a></li>
+                        <li><a href="contact.html" class="header__nav-link header__nav-link--active">Контакти</a></li>
+                    </ul>
+                </nav>
+                <button class="header__menu-toggle">
+                    <span class="header__menu-line"></span>
+                    <span class="header__menu-line"></span>
+                    <span class="header__menu-line"></span>
+                </button>
+            </div>
+        </div>
+        <nav class="header__mobile-nav">
+            <ul class="header__mobile-nav-list">
+                <li class="header__mobile-nav-item">
+                    <a href="index.html" class="header__mobile-nav-link">Головна</a>
+                </li>
+                <li class="header__mobile-nav-item">
+                    <a href="services.html" class="header__mobile-nav-link">Послуги</a>
+                </li>
+                <li class="header__mobile-nav-item">
+                    <a href="about.html" class="header__mobile-nav-link">Про нас</a>
+                </li>
+                <li class="header__mobile-nav-item">
+                    <a href="cases.html" class="header__mobile-nav-link">Кейси</a>
+                </li>
+                <li class="header__mobile-nav-item">
+                    <a href="contact.html" class="header__mobile-nav-link header__mobile-nav-link--active">Контакти</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-</head>  <link rel="stylesheet" href="assets/css/reset.css">
+    <main class="main">
+        <section class="section section--hero">
+            <div class="container">
+                <h1 class="section__title" data-aos="fade-up">Контакти</h1>
+                <p class="section__subtitle" data-aos="fade-up" data-aos-delay="200">Готові розпочати ваш наступний цифровий проєкт?</p>
+            </div>
+        </section>
 
-<body>  <link rel="stylesheet" href="assets/css/style.css">
+        <section class="section contact-section" data-aos="fade-up">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-form-wrapper" data-aos="fade-up" data-aos-delay="100">
+                        <h2 class="contact-form__title">Надішліть нам повідомлення</h2>
+                        <p class="contact-form__subtitle">Розкажіть про ваш проєкт</p>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Ім'я *</label>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            <div class="form-group form-group--full">
+                                <label for="message" class="form-label">Повідомлення *</label>
+                                <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn form-submit">Надіслати повідомлення</button>
+                        </form>
+                    </div>
 
-    <header class="header">  <!-- Performance hints -->
+                    <div class="contact-info" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="contact-info__title">Зв'яжіться з нами</h3>
+                        
+                        <div class="contact-item">
+                            <div class="contact-item__icon">📧</div>
+                            <div class="contact-item__content">
+                                <h4 class="contact-item__title">Email</h4>
+                                <p class="contact-item__text">info@nexusdigital.com</p>
+                            </div>
+                        </div>
 
-        <div class="header__container">  <link rel="preconnect" href="https://fonts.googleapis.com">
+                        <div class="contact-item">
+                            <div class="contact-item__icon">📱</div>
+                            <div class="contact-item__content">
+                                <h4 class="contact-item__title">Телефон</h4>
+                                <p class="contact-item__text">+380 XX XXX XXXX</p>
+                            </div>
+                        </div>
 
-            <a href="index.html" class="header__logo">  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                        <div class="contact-item">
+                            <div class="contact-item__icon">📍</div>
+                            <div class="contact-item__content">
+                                <h4 class="contact-item__title">Адреса</h4>
+                                <p class="contact-item__text">Київ, Україна</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <img src="assets/images/logo-for-site.webp" alt="Nexus Studio" class="header__logo-img">  <link rel="preload" href="/assets/css/style.css" as="style">
-
-            </a>  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" onload="this.rel='stylesheet'">
-
-            <nav class="header__nav">  <noscript><link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet"></noscript>
-
-                <ul class="header__nav-list">  <link rel="preload" href="/assets/js/main.js" as="script">
-
-                    <li class="header__nav-item">  
-
-                        <a href="index.html" class="header__nav-link">Головна</a>  <!-- Load Google Fonts with preload + swap to reduce FOUT -->
-
-                    </li>  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" onload="this.rel='stylesheet'">
-
-                    <li class="header__nav-item">  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet"></noscript>
-
-                        <a href="services.html" class="header__nav-link">Послуги</a></head>
-
-                    </li><body>
-
-                    <li class="header__nav-item">  <a href="#main-content" class="skip-link">Пропустити до основного контенту</a>
-
-                        <a href="about.html" class="header__nav-link">Про нас</a>  <header class="header">
-
-                    </li>    <div class="container header__container">
-
-                    <li class="header__nav-item">      <a href="index.html" class="logo" aria-label="Nexus Studio  home">
-
-                        <a href="cases.html" class="header__nav-link">Кейси</a>        <img id="site-logo" class="logo__img" src="assets/images/logo-for-site.png" alt="Nexus Studio logo" loading="eager">
-
-                    </li>        <span class="logo__name"><span class="logo-gradient gold-gradient">Nexus Studio</span></span>
-
-                    <li class="header__nav-item">      </a>
-
-                        <a href="contact.html" class="header__nav-link header__nav-link--active">Контакти</a>
-
-                    </li>      <nav class="site-nav" aria-label="Головна навігація">
-
-                </ul>        <ul class="nav__list">
-
-            </nav>          <li><a class="nav__link gold-gradient" href="index.html">Головна</a></li>
-
-        </div>          <li><a class="nav__link gold-gradient" href="services.html">Послуги</a></li>
-
-    </header>          <li><a class="nav__link gold-gradient" href="about.html">Про нас</a></li>
-
-              <li><a class="nav__link gold-gradient" href="contact.html">Контакти</a></li>
-
-    <main id="main-content">        </ul>
-
-        <!-- Contact content will be added here -->      </nav>
-
+        <section class="section cta-section" data-aos="fade-up">
+            <div class="container">
+                <div class="cta">
+                    <h2 class="cta__title">Готові розпочати співпрацю?</h2>
+                    <p class="cta__text">Зв'яжіться з нами сьогодні</p>
+                    <div class="cta__buttons">
+                        <a href="tel:+380xxxxxxxxx" class="btn cta__btn">Подзвонити</a>
+                        <a href="mailto:info@nexusdigital.com" class="btn btn--outline cta__btn">Написати email</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-          <button class="burger-menu" aria-label="Open navigation menu" type="button">
-
-    <footer class="footer">        <span class="burger-menu__line"></span>
-
-        <div class="footer__container">        <span class="burger-menu__line"></span>
-
-            <div class="footer__column footer__column--about">        <span class="burger-menu__line"></span>
-
-                <h3 class="footer__title">Nexus Studio</h3>      </button>
-
-                <p class="footer__description">Агентство цифрових інновацій, що перетворює бізнес-цілі на технологічні рішення.</p>    </div>
-
-            </div>  </header>
-
-            
-
-            <div class="footer__column footer__column--nav">  <main id="main-content">
-
-                <h3 class="footer__title">Навігація</h3>    <!-- Hero -->
-
-                <ul class="footer__nav-list">    <section class="section contact-hero" data-aos="fade-up">
-
-                    <li class="footer__nav-item">      <div class="container">
-
-                        <a href="index.html" class="footer__nav-link">Головна</a>        <h1 style="color:var(--text-dark)">Зв'яжіться з нами</h1>
-
-                    </li>        <p class="lead" style="color:var(--text-dark)">Розкажіть про свій проєкт — ми підготуємо пропозицію.</p>
-
-                    <li class="footer__nav-item">      </div>
-
-                        <a href="services.html" class="footer__nav-link">Послуги</a>    </section>
-
-                    </li>
-
-                    <li class="footer__nav-item">    <!-- Contact form + alt contacts -->
-
-                        <a href="about.html" class="footer__nav-link">Про нас</a>    <section class="section" data-aos="fade-up" data-aos-delay="120">
-
-                    </li>      <div class="container contact-grid">
-
-                    <li class="footer__nav-item">        <!-- Left: alternative contacts -->
-
-                        <a href="cases.html" class="footer__nav-link">Кейси</a>        <div class="contact-card" data-aos="fade-up" data-aos-delay="140">
-
-                    </li>          <h2>Залиште повідомлення</h2>
-
-                    <li class="footer__nav-item">          <form class="contact-form" action="/send" method="post">
-
-                        <a href="contact.html" class="footer__nav-link">Контакти</a>            <label class="form-field"><span>Ім'я</span>
-
-                    </li>              <input type="text" name="name" required>
-
-                </ul>            </label>
-
-            </div>
-
-                        <label class="form-field"><span>Email</span>
-
-            <div class="footer__column footer__column--services">              <input type="email" name="email" required>
-
-                <h3 class="footer__title">Послуги</h3>            </label>
-
-                <ul class="footer__services-list">
-
-                    <li class="footer__services-item">            <label class="form-field"><span>Повідомлення</span>
-
-                        <a href="services.html#digital" class="footer__services-link">Digital Foundation</a>              <textarea name="message" rows="6" required></textarea>
-
-                    </li>            </label>
-
-                    <li class="footer__services-item">
-
-                        <a href="services.html#acceleration" class="footer__services-link">Business Acceleration</a>            <button type="submit" class="btn btn-primary">Відправити</button>
-
-                    </li>          </form>
-
-                    <li class="footer__services-item">        </div>
-
-                        <a href="services.html#partnership" class="footer__services-link">Strategic Partnership</a>
-
-                    </li>        <!-- Right: Netlify-ready contact form -->
-
-                </ul>        <div class="contact-card" data-aos="fade-up" data-aos-delay="160">
-
-            </div>          <h2>Контакти</h2>
-
-                      <p>Email: <a href="mailto:hello@nexus.digital">hello@nexus.digital</a></p>
-
-            <div class="footer__column footer__column--contact">          <p><a href="https://calendly.com/" target="_blank" rel="noopener">Забронювати дзвінок</a></p>
-
-                <h3 class="footer__title">Зв'яжіться з нами</h3>        </div>
-
-                <div class="footer__contact">      </div>
-
-                    <p class="footer__contact-item">    </section>
-
-                        <a href="mailto:hello@nexus.digital" class="footer__contact-link">hello@nexus.digital</a>  </main>
-
-                    </p>
-
-                    <p class="footer__contact-item">  <footer class="site-footer">
-
-                        <a href="tel:+380000000000" class="footer__contact-link">+38 (000) 000-00-00</a>    <div class="footer-container">
-
-                    </p>      <div class="footer-column footer-about">
-
-                    <div class="footer__social">        <div class="footer-content-frame">
-
-                        <a href="#" class="footer__social-link">LinkedIn</a>          <img src="assets/images/logo-for-site.png" alt="Nexus Studio" class="footer-logo">
-
-                        <a href="#" class="footer__social-link">GitHub</a>          <p class="footer-description">Ми — агентство цифрових інновацій, що перетворює бізнес-цілі на технологічні рішення.</p>
-
-                        <a href="#" class="footer__social-link">Telegram</a>        </div>
-
-                    </div>      </div>
-
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__container">
+                <div class="footer__column">
+                    <h3 class="footer__title">Про нас</h3>
+                    <p class="footer__text">Nexus Digital - провідне агентство цифрових інновацій.</p>
                 </div>
-
-            </div>      <div class="footer-column footer-nav">
-
-        </div>        <div class="footer-content-frame">
-
-                  <h3 class="footer-heading">Навігація</h3>
-
-        <div class="footer__bottom">          <ul class="footer-links">
-
-            <div class="footer__container">            <li><a href="index.html">Головна</a></li>
-
-                <p class="footer__copyright">&copy; 2025 Nexus Studio. Усі права захищено.</p>            <li><a href="services.html">Послуги</a></li>
-
-            </div>            <li><a href="about.html">Про нас</a></li>
-
-        </div>            <li><a href="contact.html">Контакти</a></li>
-
-    </footer>          </ul>
-
+                <div class="footer__column">
+                    <h3 class="footer__title">Навігація</h3>
+                    <ul class="footer__list">
+                        <li class="footer__list-item"><a href="index.html" class="footer__link">Головна</a></li>
+                        <li class="footer__list-item"><a href="services.html" class="footer__link">Послуги</a></li>
+                        <li class="footer__list-item"><a href="about.html" class="footer__link">Про нас</a></li>
+                        <li class="footer__list-item"><a href="cases.html" class="footer__link">Кейси</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__title">Контакти</h3>
+                    <p class="footer__text">Email: info@nexusdigital.com</p>
+                    <p class="footer__text">Телефон: +380 XX XXX XXXX</p>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link">IG</a>
+                        <a href="#" class="footer__social-link">TW</a>
+                        <a href="#" class="footer__social-link">DC</a>
+                    </div>
+                </div>
             </div>
-
-    <script src="assets/js/main.js"></script>      </div>
-
-</body>
-
-</html>      <div class="footer-column footer-services">
-        <div class="footer-content-frame">
-          <h3 class="footer-heading">Ключові послуги</h3>
-          <ul class="footer-links">
-            <li><a href="#">Webflow Розробка</a></li>
-            <li><a href="#">AI-автоматизація</a></li>
-            <li><a href="#">Бізнес-аналіз</a></li>
-          </ul>
+            <div class="footer__bottom">
+                <p>&copy; 2024 Nexus Digital. Всі права захищені.</p>
+            </div>
         </div>
-      </div>
+    </footer>
 
-      <div class="footer-column footer-contact">
-        <div class="footer-content-frame">
-          <h3 class="footer-heading">Зв'яжіться з нами</h3>
-          <p>Email: <a href="mailto:hello@nexus.digital">hello@nexus.digital</a></p>
-          <p>Телефон: <a href="tel:+380000000000">+38 (000) 000-00-00</a></p>
-          <div style="margin-top:12px">LinkedIn &nbsp; GitHub &nbsp; Telegram</div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Nexus Studio. Усі права захищено.</p>
-    </div>
-  </footer>
-
-  <script src="assets/js/nexus-background.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
