@@ -70,6 +70,32 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
   
+  // Hero scroll indicator functionality
+  const scrollIndicator = document.querySelector(".hero__scroll-indicator");
+  if (scrollIndicator) {
+    scrollIndicator.addEventListener("click", function() {
+      const servicesSection = document.querySelector(".services-section");
+      if (servicesSection) {
+        servicesSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    });
+    
+    // Hide scroll indicator when scrolling
+    window.addEventListener("scroll", function() {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        scrollIndicator.style.opacity = "0";
+        scrollIndicator.style.pointerEvents = "none";
+      } else {
+        scrollIndicator.style.opacity = "0.8";
+        scrollIndicator.style.pointerEvents = "auto";
+      }
+    });
+  }
+  
   // Hero video error handling
   const heroVideo = document.querySelector(".hero__video");
   if (heroVideo) {
