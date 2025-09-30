@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap');
+
 /* Design system: CSS variables */
 :root {
   /* Core color system (refined for Nexus Studio - tech + premium) */
@@ -7,6 +9,15 @@
   --text-light: #F7F9FB;         /* primary text on dark bg */
   --text-mid: #BFC9D9;           /* secondary text */
   --text-dark: #0b1220;          /* on light surfaces */
+
+  /* New Digital Nexus theme tokens (primary visual language) */
+  --primary-background: #0A0A14; /* deep navy ink */
+  --primary-text: #EAEAEA;       /* main light text */
+  --accent-color: #00BFFF;       /* bright cyan accent */
+  --secondary-text: #8A94A7;     /* muted description color */
+
+  --font-headings: 'Clash Display', sans-serif;
+  --font-body: 'General Sans', 'Inter', sans-serif; /* fallback to Inter when General Sans not available */
 
   /* Brand palette */
   --brand-primary: #07204A;      /* deep navy (trust, tech) */
@@ -44,6 +55,58 @@
 
   letter-spacing: 0.5px;
 }
+
+/* Global element rules for Digital Nexus */
+body {
+  background-color: var(--primary-background);
+  color: var(--primary-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+h1, h2, h3 { font-family: var(--font-headings); color: var(--primary-text); margin: 0 0 12px 0; }
+p, li, span, a { font-family: var(--font-body); color: var(--secondary-text); }
+
+/* nexus background container (behind content) */
+#nexus-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: transparent;
+}
+
+/* custom cursor placeholder (styled, JS will animate) */
+#custom-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(234,234,234,0.95);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 180ms ease, height 180ms ease, background 180ms ease, transform 180ms ease;
+  mix-blend-mode: difference;
+}
+
+/* Hero CTA specific styling for the Genesis hero */
+.hero-cta {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 12px;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  background: transparent;
+  text-decoration: none;
+  transition: background 220ms ease, color 220ms ease, transform 160ms ease;
+}
+.hero-cta:focus { outline: 3px solid rgba(0,191,255,0.18); }
+.hero-cta:hover { background: var(--accent-color); color: var(--primary-background); transform: translateY(-2px); }
 
 /* Mobile typography adjustments */
 @media (max-width: 767px) {
