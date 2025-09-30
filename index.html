@@ -13,6 +13,12 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="preload" href="/assets/css/style.css" as="style">
+
+	<!-- Recommended fonts: Clash Display (headings) + General Sans (body). Using Google Fonts as a placeholder for demo. -->
+	<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" onload="this.rel='stylesheet'">
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	</noscript>
 	<link rel="preload" href="/assets/js/main.js" as="script">
 
 	<!-- AOS CSS (Animate On Scroll) -->
@@ -47,62 +53,47 @@
   }
   </script>
 </head>
-<body>
+<body class="home-page">
 	<!-- Accessibility: skip link -->
 	<a class="skip-link" href="#main-content">Пропустити до основного контенту</a>
 
 	<!-- Ensure main landmark id for skip-link -->
 	<main id="main-content">
-    <header class="header">
-	<div class="container header__container">
-		<a href="index.html" class="logo" aria-label="Nexus Studio — home">
-			<img id="site-logo" class="logo__img" src="assets/images/logo-for-site.png" alt="Логотип інноваційного агентства Nexus Studio" loading="eager">
-			<span class="logo__name"><span class="logo-gradient">Nexus Studio</span></span>
-		</a>
 
-		<nav class="site-nav" aria-label="Головна навігація">
-			<ul class="nav__list">
-				<li><a class="nav__link" href="index.html">Головна</a></li>
-				<li><a class="nav__link" href="services.html">Послуги</a></li>
-				<li><a class="nav__link" href="about.html">Про нас</a></li>
-				<li><a class="nav__link" href="contact.html">Контакти</a></li>
-			</ul>
-		</nav>
+    <header class="header hero-full hero-animated" role="banner" aria-label="Genesis hero">
+      <div class="container header__container">
+        <a href="index.html" class="logo" aria-label="Nexus Studio home">
+          <img id="site-logo" class="logo__img" src="assets/images/logo-for-site.png" alt="Nexus Studio" loading="eager">
+          <span class="logo__name"><span class="logo-gradient gold-gradient">Nexus Studio</span></span>
+        </a>
 
-		<button class="burger-menu" aria-label="Open navigation menu" type="button">
-			<span class="burger-menu__line"></span>
-			<span class="burger-menu__line"></span>
-			<span class="burger-menu__line"></span>
-		</button>
-	</div>
+        <nav class="site-nav" aria-label="Головна навігація">
+          <ul class="nav__list">
+            <li><a class="nav__link gold-gradient" href="index.html">Головна</a></li>
+            <li><a class="nav__link gold-gradient" href="services.html">Послуги</a></li>
+            <li><a class="nav__link gold-gradient" href="about.html">Про нас</a></li>
+            <li><a class="nav__link gold-gradient" href="contact.html">Контакти</a></li>
+          </ul>
+        </nav>
+
+        <button class="burger-menu" aria-label="Open navigation menu" type="button">
+          <span class="burger-menu__line"></span>
+          <span class="burger-menu__line"></span>
+          <span class="burger-menu__line"></span>
+        </button>
+      </div>
+
+      <!-- subtle overlay so text is legible over the canvas -->
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="container hero__content">
+        <h1 class="hero-title typewriter" data-text="Перетворюємо бізнес-ідеї на цифрові інновації">Перетворюємо бізнес-ідеї на цифрові інновації</h1>
+        <p class="hero-sub lead">Nexus Studio — агенція цифрових інновацій. Ми допомагаємо технологічним стартапам та МСБ випереджати конкурентів через стратегію, продукти та автоматизацію.</p>
+        <a class="btn btn-primary hero-cta" href="contact.html">Замовити консультацію</a>
+      </div>
     </header>
 
-
-	<div class="page-content">
-				<!-- HERO: video -->
-				<!-- Video-only hero wrapper with multiple source fallbacks -->
-				<section class="hero-video hero">
-					<video class="hero__video" autoplay muted loop playsinline preload="auto">
-						<source src="assets/videos/video-section-1.mp4" type="video/mp4">
-						<source src="assets/videos/Video-section--1.mp4" type="video/mp4">
-						<source src="assets/videos/hero-video.mp4" type="video/mp4">
-						Ваш браузер не підтримує відтворення відео.
-					</video>
-					<!-- Optional overlay for better text readability if needed -->
-					<div class="hero__overlay" aria-hidden="true"></div>
-					<div class="container hero__content">
-						<!-- visible H1 is below in the hero-copy; avoid duplicate H1s -->
-					</div>
-				</section>
-
-		<!-- Content block under the video -->
-		<section class="hero-copy section" data-aos="fade-up">
-			<div class="container hero__content">
-				<h1>Перетворюємо бізнес-ідеї на цифрові інновації</h1>
-				<p class="lead">Nexus Studio — агенція цифрових інновацій. Ми допомагаємо технологічним стартапам та МСБ випереджати конкурентів через стратегію, продукти та автоматизацію.</p>
-				<a class="btn btn-primary" href="contact.html">Замовити консультацію</a>
-			</div>
-		</section>
+    <div class="page-content">
 
 		<!-- SERVICES: наші напрямки -->
 		<section class="section services-overview light-section" data-aos="fade-up">
@@ -153,46 +144,43 @@
 				<ul>
 					<li><strong>Прямий контакт з власниками:</strong> Данило (стратегія, бізнес-аналітика) та Олександр (технічна реалізація) ведуть проєкти персонально.</li>
 					<li><strong>Швидкі рішення:</strong> мінімум менеджерських шарів — більше швидкості та менше втрат інформації.</li>
+	</div>
 					<li><strong>Експертна відповідальність:</strong> поєднання стратегічного та технічного підходів гарантує якісний результат.</li>
 				</ul>
-				<a class="btn btn-primary" href="about.html">Познайомитись з командою</a>
-			</div>
-		</section>
-
-		<!-- ABOUT teaser -->
-		<section class="section about-teaser light-section" data-aos="fade-up" aria-labelledby="home-partners-heading">
-  <div class="container">
-    <h2 id="home-partners-heading" style="color:var(--text-dark);">Наша команда</h2>
-
-				<div class="partners-grid">
-				<div class="partner-card" data-aos="fade-up">
-					<picture>
-						<source srcset="assets/images/foto-by-daniel-2.avif" type="image/avif">
-						<source srcset="assets/images/foto-by-daniel-2.webp" type="image/webp">
-						<img src="assets/images/foto-by-daniel-2.jpg" alt="Данило Молянко" class="partner-card__image" loading="lazy">
-					</picture>
-        <div class="partner-card__content">
-          <h3 class="partner-card__name">Данило Молянко</h3>
-          <div class="partner-card__role">Керуючий Партнер, Стратег</div>
-          <p class="partner-card__bio">Данило є мостом між бізнес-цілями клієнта та технічною реалізацією.</p>
-        </div>
-      </div>
-
-				<div class="partner-card" data-aos="fade-up" data-aos-delay="200">
-					<picture>
-						<source srcset="assets/images/foto-by-oleksandr-1.avif" type="image/avif">
-						<source srcset="assets/images/foto-by-oleksandr-1.webp" type="image/webp">
-						<img src="assets/images/foto-by-oleksandr-1.jpg" alt="Олександр Данко" class="partner-card__image" loading="lazy">
-					</picture>
-        <div class="partner-card__content">
-          <h3 class="partner-card__name">Олександр Данко</h3>
-          <div class="partner-card__role">Технічний Партнер, Інноватор</div>
-          <p class="partner-card__bio">Олександр відповідає за технічне втілення стратегії в життя.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+	<footer class="site-footer">
+	  <div class="footer-container">
+	    <div class="footer-column footer-about">
+	      <div class="footer-content-frame">
+	        <img src="assets/images/logo-for-site.png" alt="Nexus Studio" class="footer-logo">
+	        <p class="footer-description">Ми — агентство цифрових інновацій, що перетворює бізнес-цілі на технологічні рішення.</p>
+	      </div>
+	    </div>
+	
+	    <div class="footer-column footer-nav">
+	      <div class="footer-content-frame">
+	        <h3 class="footer-heading">Навігація</h3>
+	        <ul class="footer-links">
+	          <li><a href="index.html">Головна</a></li>
+	          <li><a href="services.html">Послуги</a></li>
+	          <li><a href="about.html">Про нас</a></li>
+	          <li><a href="contact.html">Контакти</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	
+	    <div class="footer-column footer-contact">
+	      <div class="footer-content-frame">
+	        <h3 class="footer-heading">Зв'яжіться з нами</h3>
+	        <p>Email: <a href="mailto:hello@nexus.digital">hello@nexus.digital</a></p>
+	        <p>Телефон: <a href="tel:+380000000000">+38 (000) 000-00-00</a></p>
+	        <div style="margin-top:12px">LinkedIn &nbsp; GitHub &nbsp; Telegram</div>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="footer-bottom">
+	    <p>&copy; 2025 Nexus Studio. Усі права захищено.</p>
+	  </div>
+	</footer>
 
 		<!-- CALL TO ACTION -->
 		<section class="cta section" data-aos="fade-up">
@@ -244,6 +232,7 @@
 		</div>
 	</footer>
 
+		<script src="assets/js/nexus-background.js"></script>
 		<script src="assets/js/main.js"></script>
 		<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 </body>

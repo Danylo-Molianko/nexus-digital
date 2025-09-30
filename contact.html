@@ -11,6 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet"></noscript>
   <link rel="preload" href="/assets/js/main.js" as="script">
   
   <!-- Load Google Fonts with preload + swap to reduce FOUT -->
@@ -21,17 +23,17 @@
   <a href="#main-content" class="skip-link">Пропустити до основного контенту</a>
   <header class="header">
     <div class="container header__container">
-      <a href="index.html" class="logo" aria-label="Nexus Studio — home">
+      <a href="index.html" class="logo" aria-label="Nexus Studio  home">
         <img id="site-logo" class="logo__img" src="assets/images/logo-for-site.png" alt="Nexus Studio logo" loading="eager">
-        <span class="logo__name"><span class="logo-gradient">Nexus Studio</span></span>
+        <span class="logo__name"><span class="logo-gradient gold-gradient">Nexus Studio</span></span>
       </a>
 
       <nav class="site-nav" aria-label="Головна навігація">
         <ul class="nav__list">
-          <li><a class="nav__link" href="index.html">Головна</a></li>
-          <li><a class="nav__link" href="services.html">Послуги</a></li>
-          <li><a class="nav__link" href="about.html">Про нас</a></li>
-          <li><a class="nav__link" href="contact.html">Контакти</a></li>
+          <li><a class="nav__link gold-gradient" href="index.html">Головна</a></li>
+          <li><a class="nav__link gold-gradient" href="services.html">Послуги</a></li>
+          <li><a class="nav__link gold-gradient" href="about.html">Про нас</a></li>
+          <li><a class="nav__link gold-gradient" href="contact.html">Контакти</a></li>
         </ul>
       </nav>
 
@@ -85,56 +87,53 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer__container">
-      <div class="footer__col">
-        <div class="footer__brand">NEXUS STUDIO</div>
-        <p class="footer__desc">Ми — агентство цифрових інновацій, що перетворює бізнес-цілі на технологічні рішення.</p>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-column footer-about">
+        <div class="footer-content-frame">
+          <img src="assets/images/logo-for-site.png" alt="Nexus Studio" class="footer-logo">
+          <p class="footer-description">Ми — агентство цифрових інновацій, що перетворює бізнес-цілі на технологічні рішення.</p>
+        </div>
       </div>
 
-      <div class="footer__col footer__nav">
-  <h3>Навігація</h3>
-        <ul>
-          <li><a href="index.html">Головна</a></li>
-          <li><a href="services.html">Послуги</a></li>
-          <li><a href="about.html">Про нас</a></li>
-          <li><a href="contact.html">Контакти</a></li>
-        </ul>
+      <div class="footer-column footer-nav">
+        <div class="footer-content-frame">
+          <h3 class="footer-heading">Навігація</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="services.html">Послуги</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="contact.html">Контакти</a></li>
+          </ul>
+        </div>
       </div>
 
-      <div class="footer__col footer__contacts">
-  <h3>Зв'яжіться з нами</h3>
-        <p><a href="mailto:hello@nexus.digital">hello@nexus.digital</a></p>
-        <p><a href="#" aria-label="Book meeting">Забронювати зустріч</a></p>
+      <div class="footer-column footer-services">
+        <div class="footer-content-frame">
+          <h3 class="footer-heading">Ключові послуги</h3>
+          <ul class="footer-links">
+            <li><a href="#">Webflow Розробка</a></li>
+            <li><a href="#">AI-автоматизація</a></li>
+            <li><a href="#">Бізнес-аналіз</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-column footer-contact">
+        <div class="footer-content-frame">
+          <h3 class="footer-heading">Зв'яжіться з нами</h3>
+          <p>Email: <a href="mailto:hello@nexus.digital">hello@nexus.digital</a></p>
+          <p>Телефон: <a href="tel:+380000000000">+38 (000) 000-00-00</a></p>
+          <div style="margin-top:12px">LinkedIn &nbsp; GitHub &nbsp; Telegram</div>
+        </div>
       </div>
     </div>
-
-    <div class="container footer__bottom">
-      <div class="footer__socials">
-        <a href="#" aria-label="LinkedIn">LinkedIn</a>
-        <a href="#" aria-label="GitHub">GitHub</a>
-        <a href="#" aria-label="Telegram">Telegram</a>
-      </div>
-      <div>© 2025 Nexus Studio. All rights reserved.</div>
-    </div>
-  </footer>
-
-  <script src="assets/js/main.js"></script>
-</body>
-</html>
-      </div>
-    </div>
-
-    <div class="container footer__bottom">
-      <div class="footer__socials">
-        <a href="#" aria-label="LinkedIn">LinkedIn</a>
-        <a href="#" aria-label="GitHub">GitHub</a>
-        <a href="#" aria-label="Telegram">Telegram</a>
-      </div>
-      <div>© 2025 Nexus Studio. All rights reserved.</div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Nexus Studio. Усі права захищено.</p>
     </div>
   </footer>
 
+  <script src="assets/js/nexus-background.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
