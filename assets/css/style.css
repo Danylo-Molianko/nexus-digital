@@ -75,10 +75,20 @@ h3 {
   margin-bottom: 0.4rem;
 }
 
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+  border: 0; padding: 0; margin: -1px;
+}
+
 /* HERO: full-screen video background */
-.hero {
+.hero,
+.hero-video {
   position: relative;
-  height: 100vh;
+  height: 100vh; /* reserve full viewport so next sections don't overlap */
   min-height: 520px;
   display: flex;
   align-items: center;
@@ -207,7 +217,7 @@ h3 {
 }
 
 /* Optional: keep semantic .btn-primary/.btn-secondary but inherit .btn */
-.btn-primary { /* preserve accent style if needed */ }
+/* removed empty .btn-primary rule to avoid empty ruleset */
 .btn-secondary {
   background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
   color: var(--text-dark);
@@ -542,13 +552,7 @@ picture, .photo-frame { display: block; }
 }
 
 /* Panels / cards adapt to dark theme */
-.services-grid article,
-.cta,
-.hero,
-.about-teaser,
-.footer {
-  /* gentle panels on dark background */
-}
+/* (removed empty ruleset) gentle panels comment removed to avoid empty ruleset */
 
 /* Footer - layout & visual */
 .footer {
@@ -713,318 +717,1448 @@ details[open] summary::after { transform: rotate(45deg); }
   display: inline-block;
 }
 
-/* Partners grid responsive */
+/* =================
+   Partner Cards
+   ================= */
 .partners-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-}
-@media (min-width: 900px) {
-  .partners-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* Contact form inputs (light modern style) */
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #DCDCDC;
-  border-radius: 8px;
-  background-color: #FFFFFF;
-  font-family: var(--font-primary);
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  color: var(--text-dark);
-}
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--accent-blue);
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+  grid-template-columns: 1fr 1fr; /* дві колонки на десктопі */
+  gap: 40px; /* відстань між картками */
+  align-items: start;
+  margin-top: 8px;
 }
 
-/* Ensure light sections use dark text */
-.section { /* keep existing spacing */ }
-.section h1, .section h2, .section h3, .section p, .section a {
-  /* default no-op; specific light sections already override */
-}
-
-/* Skip-link (visible only on keyboard focus) */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: var(--accent-blue);
-  color: white;
-  padding: 8px 12px;
-  z-index: 9999;
-  transition: top 0.3s ease;
-}
-.skip-link:focus {
-  top: 12px;
-}
-
-/* Light section style used on services/about/contact hero & sections */
-.light-section {
-  background-color: var(--bg-light-ivory);
-  color: var(--text-dark);
-  background-image:
-    radial-gradient(circle at 10% 20%, var(--gradient-yellow-bliss-start), transparent 40%),
-    radial-gradient(circle at 80% 90%, var(--gradient-blue-end), transparent 50%);
-}
-
-/* Focus-visible for keyboard users (links, buttons, summary) */
-a:focus-visible,
-button:focus-visible,
-summary:focus-visible {
-  outline: 2px solid var(--accent-blue);
-  outline-offset: 2px;
-  border-radius: 6px;
-}
-
-/* Make details/summary keyboard-friendly appearance */
-details summary[role="button"] {
-  -webkit-user-select: none;
-  user-select: none;
-}
-details[open] summary { /* slightly different bg when open for affordance */
-  background: rgba(0,0,0,0.02);
-}
-
-/* Ensure images inside picture respond */
-picture img { display: block; width: 100%; height: auto; border-radius: 8px; }
-
-/* Small fix: remove duplicated broken CSS segments at file end */
-  .nav {
-    display: none; /* hide by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(18, 18, 18, 0.95);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-  }
-  .nav.is-open {
-    display: flex; /* show when opened */
-  }
-
-  /* list and link styles for mobile */
-  .nav__list {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    align-items: center;
-  }
-  .nav__link {
-    color: var(--text-primary);
-    font-size: 24px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.15s ease;
-  }
-  .nav__link:hover { color: var(--accent-blue); }
-
-  /* Footer layout adjustments on mobile */
-  .footer__container { flex-direction: column; gap: 18px; }
-  .footer__bottom { flex-direction: column; align-items: flex-start; gap:8px; }
-}
-
-/* Desktop tweaks */
-@media (min-width: 768px) {
-  .menu-toggle { display: none; }
-  .burger-menu { display: none; }
-  /* ensure desktop nav visible */
-  .nav ul,
-  .site-nav ul { display: flex !important; }
-  .nav.mobile,
-  .site-nav.mobile { position: static; transform: none; background: transparent; padding: 0; }
-}
-
-/* Diagnostics banner for missing assets */
-.asset-warning {
-  background: rgba(83, 40, 40, 0.95);
-  color: #fff;
-  padding: 12px 16px;
-  font-size: 0.95rem;
-  position: relative;
-  z-index: 99999;
-}
-.asset-warning ul { margin: 8px 0 0 16px; padding: 0; }
-.asset-warning li { margin-bottom: 4px; }
-
-/* When video hidden set a neutral dark background for hero */
-.hero video[style*="display: none"] + .hero__content,
-.hero__content { position: relative; z-index: 2; }
-
-/* img fallback simple style */
-img[src^="data:image/svg+xml"] { background: #0b0b0b; border-radius: 6px; }
-
-/* Video-only hero wrapper with 20% dark overlay */
-.hero-video {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 520px;
+.partner-card {
+  background-color: #FFFFFF; /* білий фон для контрасту */
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  display: block;
-  background: linear-gradient(180deg, rgba(10,10,10,0.98), rgba(8,12,16,0.98)); /* fallback background in case video missing */
-}
-
-/* overlay should be above video but below content (20% dark) */
-.hero-video::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0,0,0,0.20); /* 20% затемнення */
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* video sits below overlay */
-.hero-video .hero__video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  object-fit: cover;
-  z-index: 1;
-  background: transparent;
 }
 
-/* content block sits above everything (under it visually) */
-.hero-copy { background: transparent; }
-.hero-copy .hero__content { position: relative; z-index: 3; }
-
-/* If video failed to load, show a subtle fallback look (no heavy black block) */
-.hero-video.video-failed {
-  background: linear-gradient(180deg, rgba(6,8,10,1), rgba(12,14,18,1));
-}
-.hero-video.video-failed::before {
-  /* slightly stronger overlay so text remains legible when fallback used */
-  background-color: rgba(0,0,0,0.35);
-}
-.hero-video.video-failed .hero__video {
-  display: none; /* hide video element if it failed */
+.partner-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(8, 12, 20, 0.12);
 }
 
-/* small accessibility hint visible only when video failed (optional) */
-.hero-video.video-failed .hero-fallback-note {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  color: rgba(255,255,255,0.65);
-  font-size: 0.95rem;
-  z-index: 3;
-  text-align: center;
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: rgba(0,0,0,0.25);
-  display: none;
-}
-.hero-video.video-failed .hero-fallback-note.show { display: block; }
-
-/* Reveal on scroll (fade + translate) */
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity .62s cubic-bezier(.2,.9,.2,1), transform .62s cubic-bezier(.2,.9,.2,1);
-  will-change: opacity, transform;
-}
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* Small stagger helper (set via inline style or JS: el.style.transitionDelay = '0.12s') */
-.reveal.stagger-sm  { transition-delay: 0.08s; }
-.reveal.stagger-md  { transition-delay: 0.16s; }
-.reveal.stagger-lg  { transition-delay: 0.28s; }
-
-/* Buttons: ripple + hover */
-.btn-primary {
-  position: relative; /* for ripple */
-  overflow: hidden;
-  transition: transform .12s ease, box-shadow .18s ease, filter .12s ease;
-  box-shadow: 0 6px 18px rgba(0,123,255,0.06);
-}
-.btn-primary:hover,
-.btn-primary:focus {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0,123,255,0.12);
-  filter: none;
-}
-
-/* Ripple element */
-.btn-primary .ripple {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.12);
-  transform: scale(0);
-  pointer-events: none;
-  animation: ripple .6s linear;
-}
-@keyframes ripple { to { transform: scale(3); opacity: 0; } }
-
-/* Card interaction tweak */
-.service-card {
-  transition: transform .22s cubic-bezier(.2,.9,.2,1), box-shadow .22s, border-color .18s;
-  will-change: transform, box-shadow;
-}
-.service-card:hover,
-.service-card:focus-within {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 22px 50px rgba(0,0,0,0.55);
-}
-
-/* Accessible focus-visible outline */
-:focus { outline: none; }
-:focus-visible {
-  outline: 3px solid rgba(0,123,255,0.16);
-  outline-offset: 2px;
-  border-radius: 6px;
-}
-
-/* Subtle performance tweak for animated elements */
-.reveal, .service-card, .btn-primary { backface-visibility: hidden; -webkit-font-smoothing: antialiased; }
-
-/* hide text fallback until image resolution logic shows it */
-.logo__text { display: none; }
-.logo__text.show { display: inline-block; }
-/* Subtle performance tweak for animated elements */
-.reveal, .service-card, .btn-primary { backface-visibility: hidden; -webkit-font-smoothing: antialiased; }
-
-/* hide text fallback until image resolution logic shows it */
-.logo__text { display: none; }
-.logo__text.show { display: inline-block; }
-.logo__text { display: none; }
-.logo__text.show { display: inline-block; }
-/* Subtle performance tweak for animated elements */
-.reveal, .service-card, .btn-primary { backface-visibility: hidden; -webkit-font-smoothing: antialiased; }
-
-/* hide text fallback until image resolution logic shows it */
-.logo__text { display: none; }
-.logo__text.show { display: inline-block; }
-
-.partner-photo {
+.partner-card__image {
   width: 100%;
-  height: auto;
-  aspect-ratio: 1080 / 1600; /* Зберігаємо пропорції ваших фото */
-  object-fit: cover; /* Гарантує, що фото заповнить рамку без спотворень */
-  border-radius: 12px; /* Легке заокруглення кутів */
-  border: 1px solid rgba(255, 255, 255, 0.08); /* Тонка "скляна" межа */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* М'яка тінь для глибини */
+  height: 400px; /* фіксована висота для консистентності */
+  object-fit: cover; /* зображення заповнює простір без спотворення */
   display: block;
 }
 
-/* Можна підлаштувати відступи картки, щоб фото і текст вирівнювались */
-.partner-card { display: flex; gap: 16px; align-items: center; }
-.partner-card .partner-info { flex: 1; }
+.partner-card__content {
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.partner-card__name {
+  font-size: 1.375rem; /* ~22px */
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.partner-card__role {
+  font-size: 0.95rem;
+  color: var(--accent-blue);
+  font-weight: 700;
+  margin: 0;
+}
+
+.partner-card__bio {
+  margin: 6px 0 0 0;
+  color: rgba(26,26,26,0.78);
+  line-height: 1.55;
+  font-size: 0.99rem;
+  flex: 1;
+}
+
+/* Responsive: одна колонка на мобільних */
+@media (max-width: 900px) {
+  .partners-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .partner-card__image { height: 360px; }
+  .partner-card__content { padding: 20px; }
+}
+
+/* Services page styles */
+.service-hero {
+  padding: 64px 0;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+.service-hero .lead { color: var(--text-secondary); margin-top: 8px; }
+
+/* Two-column layout for service sections */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.two-col .col--left .icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: var(--accent-blue);
+  font-weight:700;
+  margin: 12px 0;
+}
+
+/* ACCORDION using native <details> with enhanced styles */
+details {
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+details:hover { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07); }
+summary {
+  padding: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::marker { content: none; }
+summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  color: var(--text-dark);
+}
+details[open] summary::after { transform: rotate(45deg); }
+
+/* Content wrapper inside details */
+.accordion-content {
+  padding: 0 1rem 1rem 1rem;
+  border-top: 1px solid #EAEAEA;
+  margin-top: 0.5rem;
+  color: var(--text-dark);
+}
+
+/* Partner cards */
+.partner-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 12px 30px rgba(10,10,10,0.06);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+.partner-photo-placeholder {
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0,198,255,0.12), rgba(0,123,255,0.12));
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* =================
+   Partner Cards
+   ================= */
+.partners-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* дві колонки на десктопі */
+  gap: 40px; /* відстань між картками */
+  align-items: start;
+  margin-top: 8px;
+}
+
+.partner-card {
+  background-color: #FFFFFF; /* білий фон для контрасту */
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.partner-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(8, 12, 20, 0.12);
+}
+
+.partner-card__image {
+  width: 100%;
+  height: 400px; /* фіксована висота для консистентності */
+  object-fit: cover; /* зображення заповнює простір без спотворення */
+  display: block;
+}
+
+.partner-card__content {
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.partner-card__name {
+  font-size: 1.375rem; /* ~22px */
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.partner-card__role {
+  font-size: 0.95rem;
+  color: var(--accent-blue);
+  font-weight: 700;
+  margin: 0;
+}
+
+.partner-card__bio {
+  margin: 6px 0 0 0;
+  color: rgba(26,26,26,0.78);
+  line-height: 1.55;
+  font-size: 0.99rem;
+  flex: 1;
+}
+
+/* Responsive: одна колонка на мобільних */
+@media (max-width: 900px) {
+  .partners-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .partner-card__image { height: 360px; }
+  .partner-card__content { padding: 20px; }
+}
+
+/* Services page styles */
+.service-hero {
+  padding: 64px 0;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+.service-hero .lead { color: var(--text-secondary); margin-top: 8px; }
+
+/* Two-column layout for service sections */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.two-col .col--left .icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: var(--accent-blue);
+  font-weight:700;
+  margin: 12px 0;
+}
+
+/* ACCORDION using native <details> with enhanced styles */
+details {
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+details:hover { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07); }
+summary {
+  padding: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::marker { content: none; }
+summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  color: var(--text-dark);
+}
+details[open] summary::after { transform: rotate(45deg); }
+
+/* Content wrapper inside details */
+.accordion-content {
+  padding: 0 1rem 1rem 1rem;
+  border-top: 1px solid #EAEAEA;
+  margin-top: 0.5rem;
+  color: var(--text-dark);
+}
+
+/* Partner cards */
+.partner-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 12px 30px rgba(10,10,10,0.06);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+.partner-photo-placeholder {
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0,198,255,0.12), rgba(0,123,255,0.12));
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* =================
+   Partner Cards
+   ================= */
+.partners-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* дві колонки на десктопі */
+  gap: 40px; /* відстань між картками */
+  align-items: start;
+  margin-top: 8px;
+}
+
+.partner-card {
+  background-color: #FFFFFF; /* білий фон для контрасту */
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.partner-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(8, 12, 20, 0.12);
+}
+
+.partner-card__image {
+  width: 100%;
+  height: 400px; /* фіксована висота для консистентності */
+  object-fit: cover; /* зображення заповнює простір без спотворення */
+  display: block;
+}
+
+.partner-card__content {
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.partner-card__name {
+  font-size: 1.375rem; /* ~22px */
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.partner-card__role {
+  font-size: 0.95rem;
+  color: var(--accent-blue);
+  font-weight: 700;
+  margin: 0;
+}
+
+.partner-card__bio {
+  margin: 6px 0 0 0;
+  color: rgba(26,26,26,0.78);
+  line-height: 1.55;
+  font-size: 0.99rem;
+  flex: 1;
+}
+
+/* Responsive: одна колонка на мобільних */
+@media (max-width: 900px) {
+  .partners-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .partner-card__image { height: 360px; }
+  .partner-card__content { padding: 20px; }
+}
+
+/* Services page styles */
+.service-hero {
+  padding: 64px 0;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+.service-hero .lead { color: var(--text-secondary); margin-top: 8px; }
+
+/* Two-column layout for service sections */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.two-col .col--left .icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: var(--accent-blue);
+  font-weight:700;
+  margin: 12px 0;
+}
+
+/* ACCORDION using native <details> with enhanced styles */
+details {
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+details:hover { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07); }
+summary {
+  padding: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::marker { content: none; }
+summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  color: var(--text-dark);
+}
+details[open] summary::after { transform: rotate(45deg); }
+
+/* Content wrapper inside details */
+.accordion-content {
+  padding: 0 1rem 1rem 1rem;
+  border-top: 1px solid #EAEAEA;
+  margin-top: 0.5rem;
+  color: var(--text-dark);
+}
+
+/* Partner cards */
+.partner-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 12px 30px rgba(10,10,10,0.06);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+.partner-photo-placeholder {
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0,198,255,0.12), rgba(0,123,255,0.12));
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* =================
+   Partner Cards
+   ================= */
+.partners-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* дві колонки на десктопі */
+  gap: 40px; /* відстань між картками */
+  align-items: start;
+  margin-top: 8px;
+}
+
+.partner-card {
+  background-color: #FFFFFF; /* білий фон для контрасту */
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.partner-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(8, 12, 20, 0.12);
+}
+
+.partner-card__image {
+  width: 100%;
+  height: 400px; /* фіксована висота для консистентності */
+  object-fit: cover; /* зображення заповнює простір без спотворення */
+  display: block;
+}
+
+.partner-card__content {
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.partner-card__name {
+  font-size: 1.375rem; /* ~22px */
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.partner-card__role {
+  font-size: 0.95rem;
+  color: var(--accent-blue);
+  font-weight: 700;
+  margin: 0;
+}
+
+.partner-card__bio {
+  margin: 6px 0 0 0;
+  color: rgba(26,26,26,0.78);
+  line-height: 1.55;
+  font-size: 0.99rem;
+  flex: 1;
+}
+
+/* Responsive: одна колонка на мобільних */
+@media (max-width: 900px) {
+  .partners-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .partner-card__image { height: 360px; }
+  .partner-card__content { padding: 20px; }
+}
+
+/* Services page styles */
+.service-hero {
+  padding: 64px 0;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+.service-hero .lead { color: var(--text-secondary); margin-top: 8px; }
+
+/* Two-column layout for service sections */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.two-col .col--left .icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: var(--accent-blue);
+  font-weight:700;
+  margin: 12px 0;
+}
+
+/* ACCORDION using native <details> with enhanced styles */
+details {
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+details:hover { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07); }
+summary {
+  padding: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::marker { content: none; }
+summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  color: var(--text-dark);
+}
+details[open] summary::after { transform: rotate(45deg); }
+
+/* Content wrapper inside details */
+.accordion-content {
+  padding: 0 1rem 1rem 1rem;
+  border-top: 1px solid #EAEAEA;
+  margin-top: 0.5rem;
+  color: var(--text-dark);
+}
+
+/* Partner cards */
+.partner-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 12px 30px rgba(10,10,10,0.06);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+.partner-photo-placeholder {
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0,198,255,0.12), rgba(0,123,255,0.12));
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* =================
+   Partner Cards
+   ================= */
+.partners-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* дві колонки на десктопі */
+  gap: 40px; /* відстань між картками */
+  align-items: start;
+  margin-top: 8px;
+}
+
+.partner-card {
+  background-color: #FFFFFF; /* білий фон для контрасту */
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.partner-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(8, 12, 20, 0.12);
+}
+
+.partner-card__image {
+  width: 100%;
+  height: 400px; /* фіксована висота для консистентності */
+  object-fit: cover; /* зображення заповнює простір без спотворення */
+  display: block;
+}
+
+.partner-card__content {
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.partner-card__name {
+  font-size: 1.375rem; /* ~22px */
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.partner-card__role {
+  font-size: 0.95rem;
+  color: var(--accent-blue);
+  font-weight: 700;
+  margin: 0;
+}
+
+.partner-card__bio {
+  margin: 6px 0 0 0;
+  color: rgba(26,26,26,0.78);
+  line-height: 1.55;
+  font-size: 0.99rem;
+  flex: 1;
+}
+
+/* Responsive: одна колонка на мобільних */
+@media (max-width: 900px) {
+  .partners-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .partner-card__image { height: 360px; }
+  .partner-card__content { padding: 20px; }
+}
+
+/* Services page styles */
+.service-hero {
+  padding: 64px 0;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+.service-hero .lead { color: var(--text-secondary); margin-top: 8px; }
+
+/* Two-column layout for service sections */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.two-col .col--left .icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: var(--accent-blue);
+  font-weight:700;
+  margin: 12px 0;
+}
+
+/* ACCORDION using native <details> with enhanced styles */
+details {
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+details:hover { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07); }
+summary {
+  padding: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::marker { content: none; }
+summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  color: var(--text-dark);
+}
+details[open] summary::after { transform: rotate(45deg); }
+
+/* Content wrapper inside details */
+.accordion-content {
+  padding: 0 1rem 1rem 1rem;
+  border-top: 1px solid #EAEAEA;
+  margin-top: 0.5rem;
+  color: var(--text-dark);
+}
+
+/* Partner cards */
+.partner-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 12px 30px rgba(10,10,10,0.06);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+.partner-photo-placeholder {
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0,198,255,0.12), rgba(0,123,255,0.12));
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* =================
+   Partner Cards
+   ================= */
+.partners-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* дві колонки на десктопі */
+  gap: 40px; /* відстань між картками */
+  align-items: start;
+  margin-top: 8px;
+}
+
+.partner-card {
+  background-color: #FFFFFF; /* білий фон для контрасту */
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.partner-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(8, 12, 20, 0.12);
+}
+
+.partner-card__image {
+  width: 100%;
+  height: 400px; /* фіксована висота для консистентності */
+  object-fit: cover; /* зображення заповнює простір без спотворення */
+  display: block;
+}
+
+.partner-card__content {
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.partner-card__name {
+  font-size: 1.375rem; /* ~22px */
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.partner-card__role {
+  font-size: 0.95rem;
+  color: var(--accent-blue);
+  font-weight: 700;
+  margin: 0;
+}
+
+.partner-card__bio {
+  margin: 6px 0 0 0;
+  color: rgba(26,26,26,0.78);
+  line-height: 1.55;
+  font-size: 0.99rem;
+  flex: 1;
+}
+
+/* Responsive: одна колонка на мобільних */
+@media (max-width: 900px) {
+  .partners-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .partner-card__image { height: 360px; }
+  .partner-card__content { padding: 20px; }
+}
+
+/* Services page styles */
+.service-hero {
+  padding: 64px 0;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+.service-hero .lead { color: var(--text-secondary); margin-top: 8px; }
+
+/* Two-column layout for service sections */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.two-col .col--left .icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: var(--accent-blue);
+  font-weight:700;
+  margin: 12px 0;
+}
+
+/* ACCORDION using native <details> with enhanced styles */
+details {
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+details:hover { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07); }
+summary {
+  padding: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::marker { content: none; }
+summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  color: var(--text-dark);
+}
+details[open] summary::after { transform: rotate(45deg); }
+
+/* Content wrapper inside details */
+.accordion-content {
+  padding: 0 1rem 1rem 1rem;
+  border-top: 1px solid #EAEAEA;
+  margin-top: 0.5rem;
+  color: var(--text-dark);
+}
+
+/* Partner cards */
+.partner-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 12px 30px rgba(10,10,10,0.06);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+.partner-photo-placeholder {
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0,198,255,0.12), rgba(0,123,255,0.12));
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* =================
+   Partner Cards
+   ================= */
+.partners-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* дві колонки на десктопі */
+  gap: 40px; /* відстань між картками */
+  align-items: start;
+  margin-top: 8px;
+}
+
+.partner-card {
+  background-color: #FFFFFF; /* білий фон для контрасту */
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.partner-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(8, 12, 20, 0.12);
+}
+
+.partner-card__image {
+  width: 100%;
+  height: 400px; /* фіксована висота для консистентності */
+  object-fit: cover; /* зображення заповнює простір без спотворення */
+  display: block;
+}
+
+.partner-card__content {
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.partner-card__name {
+  font-size: 1.375rem; /* ~22px */
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.partner-card__role {
+  font-size: 0.95rem;
+  color: var(--accent-blue);
+  font-weight: 700;
+  margin: 0;
+}
+
+.partner-card__bio {
+  margin: 6px 0 0 0;
+  color: rgba(26,26,26,0.78);
+  line-height: 1.55;
+  font-size: 0.99rem;
+  flex: 1;
+}
+
+/* Responsive: одна колонка на мобільних */
+@media (max-width: 900px) {
+  .partners-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .partner-card__image { height: 360px; }
+  .partner-card__content { padding: 20px; }
+}
+
+/* Services page styles */
+.service-hero {
+  padding: 64px 0;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+.service-hero .lead { color: var(--text-secondary); margin-top: 8px; }
+
+/* Two-column layout for service sections */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.two-col .col--left .icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: var(--accent-blue);
+  font-weight:700;
+  margin: 12px 0;
+}
+
+/* ACCORDION using native <details> with enhanced styles */
+details {
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+details:hover { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07); }
+summary {
+  padding: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::marker { content: none; }
+summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  color: var(--text-dark);
+}
+details[open] summary::after { transform: rotate(45deg); }
+
+/* Content wrapper inside details */
+.accordion-content {
+  padding: 0 1rem 1rem 1rem;
+  border-top: 1px solid #EAEAEA;
+  margin-top: 0.5rem;
+  color: var(--text-dark);
+}
+
+/* Partner cards */
+.partner-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 12px 30px rgba(10,10,10,0.06);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+.partner-photo-placeholder {
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0,198,255,0.12), rgba(0,123,255,0.12));
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* =================
+   Partner Cards
+   ================= */
+.partners-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* дві колонки на десктопі */
+  gap: 40px; /* відстань між картками */
+  align-items: start;
+  margin-top: 8px;
+}
+
+.partner-card {
+  background-color: #FFFFFF; /* білий фон для контрасту */
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.partner-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(8, 12, 20, 0.12);
+}
+
+.partner-card__image {
+  width: 100%;
+  height: 400px; /* фіксована висота для консистентності */
+  object-fit: cover; /* зображення заповнює простір без спотворення */
+  display: block;
+}
+
+.partner-card__content {
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.partner-card__name {
+  font-size: 1.375rem; /* ~22px */
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.partner-card__role {
+  font-size: 0.95rem;
+  color: var(--accent-blue);
+  font-weight: 700;
+  margin: 0;
+}
+
+.partner-card__bio {
+  margin: 6px 0 0 0;
+  color: rgba(26,26,26,0.78);
+  line-height: 1.55;
+  font-size: 0.99rem;
+  flex: 1;
+}
+
+/* Responsive: одна колонка на мобільних */
+@media (max-width: 900px) {
+  .partners-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .partner-card__image { height: 360px; }
+  .partner-card__content { padding: 20px; }
+}
+
+/* Services page styles */
+.service-hero {
+  padding: 64px 0;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+.service-hero .lead { color: var(--text-secondary); margin-top: 8px; }
+
+/* Two-column layout for service sections */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.two-col .col--left .icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: var(--accent-blue);
+  font-weight:700;
+  margin: 12px 0;
+}
+
+/* ACCORDION using native <details> with enhanced styles */
+details {
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+details:hover { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07); }
+summary {
+  padding: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::marker { content: none; }
+summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  color: var(--text-dark);
+}
+details[open] summary::after { transform: rotate(45deg); }
+
+/* Content wrapper inside details */
+.accordion-content {
+  padding: 0 1rem 1rem 1rem;
+  border-top: 1px solid #EAEAEA;
+  margin-top: 0.5rem;
+  color: var(--text-dark);
+}
+
+/* Partner cards */
+.partner-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 12px 30px rgba(10,10,10,0.06);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+.partner-photo-placeholder {
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0,198,255,0.12), rgba(0,123,255,0.12));
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* =================
+   Partner Cards
+   ================= */
+.partners-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* дві колонки на десктопі */
+  gap: 40px; /* відстань між картками */
+  align-items: start;
+  margin-top: 8px;
+}
+
+.partner-card {
+  background-color: #FFFFFF; /* білий фон для контрасту */
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.partner-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(8, 12, 20, 0.12);
+}
+
+.partner-card__image {
+  width: 100%;
+  height: 400px; /* фіксована висота для консистентності */
+  object-fit: cover; /* зображення заповнює простір без спотворення */
+  display: block;
+}
+
+.partner-card__content {
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.partner-card__name {
+  font-size: 1.375rem; /* ~22px */
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.partner-card__role {
+  font-size: 0.95rem;
+  color: var(--accent-blue);
+  font-weight: 700;
+  margin: 0;
+}
+
+.partner-card__bio {
+  margin: 6px 0 0 0;
+  color: rgba(26,26,26,0.78);
+  line-height: 1.55;
+  font-size: 0.99rem;
+  flex: 1;
+}
+
+/* Responsive: одна колонка на мобільних */
+@media (max-width: 900px) {
+  .partners-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .partner-card__image { height: 360px; }
+  .partner-card__content { padding: 20px; }
+}
+
+/* Services page styles */
+.service-hero {
+  padding: 64px 0;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+.service-hero .lead { color: var(--text-secondary); margin-top: 8px; }
+
+/* Two-column layout for service sections */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.two-col .col--left .icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: var(--accent-blue);
+  font-weight:700;
+  margin: 12px 0;
+}
+
+/* ACCORDION using native <details> with enhanced styles */
+details {
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+details:hover { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07); }
+summary {
+  padding: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::marker { content: none; }
+summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  color: var(--text-dark);
+}
+details[open] summary::after { transform: rotate(45deg); }
+
+/* Content wrapper inside details */
+.accordion-content {
+  padding: 0 1rem 1rem 1rem;
+  border-top: 1px solid #EAEAEA;
+  margin-top: 0.5rem;
+  color: var(--text-dark);
+}
+
+/* Partner cards */
+.partner-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 12px 30px rgba(10,10,10,0.06);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+.partner-photo-placeholder {
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0,198,255,0.12), rgba(0,123,255,0.12));
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* =================
+   Partner Cards
+   ================= */
+.partners-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* дві колонки на десктопі */
+  gap: 40px; /* відстань між картками */
+  align-items: start;
+  margin-top: 8px;
+}
+
+.partner-card {
+  background-color: #FFFFFF; /* білий фон для контрасту */
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* end of file cleaned */

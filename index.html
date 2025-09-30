@@ -71,16 +71,22 @@
     </header>
 
     <main>
-		<!-- HERO: video -->
-		<!-- Video-only hero wrapper with multiple source fallbacks -->
-		<section class="hero-video">
-		  <video class="hero__video" autoplay muted loop playsinline preload="auto">
-		    <source src="assets/videos/video-section-1.mp4" type="video/mp4">
-		    <source src="assets/videos/Video-section--1.mp4" type="video/mp4">
-		    <source src="assets/videos/hero-video.mp4" type="video/mp4">
-		    Ваш браузер не підтримує відтворення відео.
-		  </video>
-		</section>
+				<!-- HERO: video -->
+				<!-- Video-only hero wrapper with multiple source fallbacks -->
+				<section class="hero-video hero">
+					<video class="hero__video" autoplay muted loop playsinline preload="auto">
+						<source src="assets/videos/video-section-1.mp4" type="video/mp4">
+						<source src="assets/videos/Video-section--1.mp4" type="video/mp4">
+						<source src="assets/videos/hero-video.mp4" type="video/mp4">
+						Ваш браузер не підтримує відтворення відео.
+					</video>
+					<!-- Optional overlay for better text readability if needed -->
+					<div class="hero__overlay" aria-hidden="true"></div>
+					<div class="container hero__content">
+						<!-- keep an accessible heading inside hero for screen readers and SEO -->
+						<h1 class="visually-hidden">Nexus Studio — інноваційні цифрові рішення</h1>
+					</div>
+				</section>
 
 		<!-- Content block under the video -->
 		<section class="hero-copy section" data-aos="fade-up">
@@ -97,21 +103,21 @@
 				<h2>Наші напрямки</h2>
 				<div class="services-grid">
 					<article class="service-card" data-aos="fade-up">
-						<img src="assets/images/1-model-dlia-holovnoi-storinky.webp" alt="1-модель-для-головної-сторінки (Digital Foundation)" loading="lazy">
+						<img src="assets/images/1-модель-для-головної-сторінки.webp" alt="1-модель-для-головної-сторінки (Digital Foundation)" loading="lazy">
 						<h3>Digital Foundation</h3>
 						<p>Створюємо технічну платформу, сайти та аналітику для масштабування бізнесу.</p>
 						<a class="btn btn-secondary" href="services.html#digital">Детальніше →</a>
 					</article>
 
 					<article class="service-card" data-aos="fade-up">
-						<img src="assets/images/2-model-dlia-holovnoi-storinky.webp" alt="2-модель-для-головної-сторінки (Business Acceleration)" loading="lazy">
+						<img src="assets/images/2-модель-для-головної-сторінки.webp" alt="2-модель-для-головної-сторінки (Business Acceleration)" loading="lazy">
 						<h3>Business Acceleration</h3>
 						<p>Оптимізація продукту і маркетингу для швидкого зростання продажів.</p>
 						<a class="btn btn-secondary" href="services.html#acceleration">Детальніше →</a>
 					</article>
 
 					<article class="service-card" data-aos="fade-up">
-						<img src="assets/images/3-model-dlia-holovnoi-storinky.webp" alt="3-модель-для-головної-сторінки (Strategic Partnership)" loading="lazy">
+						<img src="assets/images/3-модель-для-головної-сторінки.webp" alt="3-модель-для-головної-сторінки (Strategic Partnership)" loading="lazy">
 						<h3>Strategic Partnership</h3>
 						<p>Довгострокова співпраця: стратегія, інновації та технічна реалізація.</p>
 						<a class="btn btn-secondary" href="services.html#partnership">Детальніше →</a>
@@ -121,19 +127,31 @@
 		</section>
 
 		<!-- ABOUT teaser -->
-		<section class="section about-teaser" data-aos="fade-up">
-			<div class="container about-grid">
-				<div class="about-grid__media">
-					<img src="assets/images/foto-by-oleksandr.jpg" alt="Команда Nexus Studio обговорює проєкт" loading="lazy">
-				</div>
+		<section class="section about-teaser light-section" data-aos="fade-up" aria-labelledby="home-partners-heading">
+  <div class="container">
+    <h2 id="home-partners-heading" style="color:var(--text-dark);">Наша команда</h2>
 
-				<div class="about-grid__content">
-					<h2>Працюйте напряму з партнерами</h2>
-					<p>На відміну від великих агенцій, кожен проєкт ведуть засновники. Данило відповідає за бізнес-стратегію, а Олександр — за технології та інновації.</p>
-					<a class="btn btn-secondary" href="about.html">Дізнатися більше</a>
-				</div>
-			</div>
-		</section>
+				<div class="partners-grid">
+			<div class="partner-card" data-aos="fade-up">
+				<img src="assets/images/foto-by-daniel-2.jpg" alt="Данило Молянко" class="partner-card__image" loading="lazy">
+        <div class="partner-card__content">
+          <h3 class="partner-card__name">Данило Молянко</h3>
+          <div class="partner-card__role">Керуючий Партнер, Стратег</div>
+          <p class="partner-card__bio">Данило є мостом між бізнес-цілями клієнта та технічною реалізацією.</p>
+        </div>
+      </div>
+
+			<div class="partner-card" data-aos="fade-up" data-aos-delay="200">
+				<img src="assets/images/foto-by-oleksandr-1.jpg" alt="Олександр Данко" class="partner-card__image" loading="lazy">
+        <div class="partner-card__content">
+          <h3 class="partner-card__name">Олександр Данко</h3>
+          <div class="partner-card__role">Технічний Партнер, Інноватор</div>
+          <p class="partner-card__bio">Олександр відповідає за технічне втілення стратегії в життя.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 		<!-- CALL TO ACTION -->
 		<section class="cta section" data-aos="fade-up">
