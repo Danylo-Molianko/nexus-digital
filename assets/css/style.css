@@ -1425,3 +1425,32 @@ body {
   font-size: 1.125rem;
   line-height: 1.6;
 }
+
+/* =================
+   Footer Socials
+================= */
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Дозволяє переносити елементи на мобільних */
+  gap: 20px;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Відстань між іконками */
+}
+
+.footer-socials img {
+  height: 24px; /* Однаковий розмір для всіх іконок */
+  width: auto;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.footer-socials a:hover img {
+  opacity: 1;
+  transform: scale(1.1); /* Легке збільшення при наведенні */
+}
