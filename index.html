@@ -5,10 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Головна | Nexus Digital</title>
     <meta name="description" content="Nexus Digital — агентство цифрових інновацій. Розробляємо інтелектуальні системи для бізнесу.">
+    
+    <!-- Professional Font Pair -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 </head>
 <body>
+    <!-- Interactive Background -->
+    <div class="interactive-bg">
+        <canvas id="particles-canvas"></canvas>
+        <div class="aurora-layer"></div>
+    </div>
+    
+    <!-- Transition Dust Effect -->
+    <div class="transition-dust"></div>
+    
     <header class="header">
         <div class="container">
             <div class="header__container">
@@ -112,8 +128,21 @@
         <section class="section about-section" data-aos="fade-up">
             <div class="container">
                 <div class="about-grid">
-                    <div class="about-image" data-aos="fade-right">
-                        <img src="assets/images/foto-by-oleksandr-1.jpg" alt="Команда Nexus Digital" class="about__photo">
+                    <div class="founders-images" data-aos="fade-right">
+                        <div class="founder-image">
+                            <img src="assets/images/foto-by-daniel-2.jpg" alt="Данило Молянко - Стратег" class="founder__photo">
+                            <div class="founder-label">
+                                <span class="founder-name">Данило</span>
+                                <span class="founder-role">Стратег</span>
+                            </div>
+                        </div>
+                        <div class="founder-image">
+                            <img src="assets/images/foto-by-oleksandr-1.jpg" alt="Олександр Данко - Технологічний Інноватор" class="founder__photo">
+                            <div class="founder-label">
+                                <span class="founder-name">Олександр</span>
+                                <span class="founder-role">Інноватор</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="about-content" data-aos="fade-left">
                         <h2 class="about__title">Чому Nexus Studio? Прямий Шлях до Інновацій.</h2>
@@ -130,6 +159,50 @@
                             </div>
                         </div>
                         <a href="about.html" class="btn about__btn">Про команду</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секція довіри -->
+        <section class="section trust-section" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section__title">Нам Довіряють</h2>
+                <p class="section__subtitle">Компанії різних галузей обирають нас для цифрової трансформації</p>
+                <div class="trust-grid">
+                    <div class="trust-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="trust-icon">🚀</div>
+                        <h3 class="trust-title">SaaS Стартапи</h3>
+                        <p class="trust-description">Технологічні компанії, які прагнуть швидкого виходу на ринок з професійним виглядом</p>
+                    </div>
+                    <div class="trust-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="trust-icon">🏢</div>
+                        <h3 class="trust-title">B2B Дистриб'ютори</h3>
+                        <p class="trust-description">Міжнародні компанії, що потребують централізації даних та оптимізації процесів</p>
+                    </div>
+                    <div class="trust-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="trust-icon">⚖️</div>
+                        <h3 class="trust-title">Професійні Послуги</h3>
+                        <p class="trust-description">Сервісні компанії, які хочуть автоматизувати рутинні процеси та зосередитися на стратегії</p>
+                    </div>
+                    <div class="trust-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="trust-icon">🎯</div>
+                        <h3 class="trust-title">Зростаючі Бізнеси</h3>
+                        <p class="trust-description">Амбітні компанії, що потребують масштабованих рішень для швидкого розвитку</p>
+                    </div>
+                </div>
+                <div class="trust-stats" data-aos="fade-up" data-aos-delay="500">
+                    <div class="trust-stat">
+                        <span class="trust-stat-number">25+</span>
+                        <span class="trust-stat-label">Успішних проєктів</span>
+                    </div>
+                    <div class="trust-stat">
+                        <span class="trust-stat-number">98%</span>
+                        <span class="trust-stat-label">Задоволених клієнтів</span>
+                    </div>
+                    <div class="trust-stat">
+                        <span class="trust-stat-number">3 тижні</span>
+                        <span class="trust-stat-label">Середній час запуску</span>
                     </div>
                 </div>
             </div>

@@ -4,10 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Про нас | Nexus Digital</title>
+    
+    <!-- Professional Font Pair -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 </head>
 <body>
+    <!-- Interactive Background -->
+    <div class="interactive-bg">
+        <canvas id="particles-canvas"></canvas>
+        <div class="aurora-layer"></div>
+    </div>
+    
+    <!-- Transition Dust Effect -->
+    <div class="transition-dust"></div>
+    
     <header class="header">
         <div class="container">
             <div class="header__container">
@@ -62,25 +78,56 @@
 
         <section class="section founders-section" data-aos="fade-up">
             <div class="container">
-                <div class="partners-grid">
-                    <div class="partner-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="partner-card__image">
-                            <img src="assets/images/foto-by-daniel-2.jpg" alt="Данило Молянко" class="partner-card__img">
+                <!-- Інноваційна структура з спільним фото -->
+                <div class="founders-showcase">
+                    <div class="founders-images-gallery">
+                        <div class="founders-image-hero" data-aos="zoom-in">
+                            <div class="image-container">
+                                <img src="assets/images/image-together-1.JPG" alt="Данило Молянко та Олександр Данко - Засновники Nexus Studio" class="founders-photo">
+                                <div class="image-overlay">
+                                    <div class="founders-labels">
+                                        <div class="founder-tag founder-tag--left">
+                                            <span class="tag-name">Данило</span>
+                                            <span class="tag-role">Стратег</span>
+                                        </div>
+                                        <div class="founder-tag founder-tag--right">
+                                            <span class="tag-name">Олександр</span>
+                                            <span class="tag-role">Інноватор</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="partner-card__content">
-                            <h2>Данило Молянко</h2>
-                            <h3>Стратег, Візіонер, Гарант Росту</h3>
-                            <p>Данило — це ваш стратегічний компас. Замість того, щоб сліпо кодувати, він спочатку ставить критичні запитання: «Яку бізнес-проблему ми вирішуємо? Як це рішення принесе клієнту вимірюваний прибуток?» З досвідом у бізнес-аналізі та побудові воронок продажів, він гарантує, що кожен елемент сайту служить єдиній меті — вашому зростанню. Данило перетворює вашу ідею на чіткий, прибутковий план дій.</p>
+
+                        <div class="founders-image-hero" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="image-container">
+                                <img src="assets/images/image-together-2.jpg" alt="Команда Nexus Digital в роботі" class="founders-photo">
+                                <div class="image-overlay">
+                                    <div class="founders-labels">
+                                        <div class="founder-tag founder-tag--center">
+                                            <span class="tag-name">Nexus Digital</span>
+                                            <span class="tag-role">Команда Мрії</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="partner-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="partner-card__image">
-                            <img src="assets/images/foto-by-oleksandr-1.jpg" alt="Олександр Данко" class="partner-card__img">
+                    
+                    <div class="founders-bio-grid">
+                        <div class="bio-card bio-card--danylo" data-aos="fade-right" data-aos-delay="200">
+                            <div class="bio-header">
+                                <h2>Данило Молянко</h2>
+                                <h3>Стратег, Візіонер, Гарант Росту</h3>
+                            </div>
+                            <p>Данило — це ваш стратегічний компас. Замість того, щоб сліпо кодувати, він спочатку ставить критичні запитання: «Яку бізнес-проблему ми вирішуємо? Як це рішення принесе клієнту вимірюваний прибуток?» З досвідом у бізнес-аналізі та побудові воронок продажів, він гарантує, що кожен елемент сайту служить єдиній меті — вашому зростанню. Данило перетворює вашу ідею на чіткий, прибутковий план дій.</p>
                         </div>
-                        <div class="partner-card__content">
-                            <h2>Олександр Данко</h2>
-                            <h3>Технологічний Інноватор, Архітектор Рішень</h3>
+
+                        <div class="bio-card bio-card--oleksandr" data-aos="fade-left" data-aos-delay="300">
+                            <div class="bio-header">
+                                <h2>Олександр Данко</h2>
+                                <h3>Технологічний Інноватор, Архітектор Рішень</h3>
+                            </div>
                             <p>Олександр — це втілення технологічної досконалості. Він перетворює стратегічний план Данила на бездоганно функціональне рішення. Його експертиза охоплює спектр від гнучкої розробки на Webflow до створення кастомних сайтів з нуля для максимальної продуктивності. Він також архітектор складних Web-App та інтегратор передових AI-агентів. З Олександром ви впевнені: ваш продукт буде швидким, безпечним, масштабованим і реалізованим досконало.</p>
                         </div>
                     </div>
