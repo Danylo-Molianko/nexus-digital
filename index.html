@@ -5,12 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Головна | Nexus Digital</title>
     <meta name="description" content="Nexus Digital — агентство цифрових інновацій. Розробляємо інтелектуальні системи для бізнесу.">
+    <meta name="keywords" content="цифрові інновації, веб-розробка, автоматизація бізнесу, штучний інтелект, IT консалтинг, німецьке агентство">
+    <meta name="author" content="Nexus Digital">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nexus-digital.com/">
+    <meta property="og:title" content="Nexus Digital - Агентство Цифрових Інновацій">
+    <meta property="og:description" content="Ми перетворюємо складні бізнес-завдання на елегантні та автоматизовані рішення.">
+    <meta property="og:image" content="assets/images/logo-for-site.webp">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nexus-digital.com/">
+    <meta property="twitter:title" content="Nexus Digital - Агентство Цифрових Інновацій">
+    <meta property="twitter:description" content="Ми перетворюємо складні бізнес-завдання на елегантні та автоматизовані рішення.">
+    <meta property="twitter:image" content="assets/images/logo-for-site.webp">
     
     <!-- Performance optimizations -->
     <meta name="theme-color" content="#000000">
     <meta name="robots" content="index, follow">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://unpkg.com">
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Nexus Digital",
+      "description": "Агентство цифрових інновацій. Розробляємо інтелектуальні системи для бізнесу.",
+      "url": "https://nexus-digital.com",
+      "logo": "https://nexus-digital.com/assets/images/logo-for-site.webp",
+      "foundingDate": "2023",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Данило Молянко",
+          "jobTitle": "Стратег"
+        },
+        {
+          "@type": "Person", 
+          "name": "Олександр Данко",
+          "jobTitle": "Технологічний Інноватор"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "DE"
+      },
+      "sameAs": [
+        "https://twitter.com/nexusdigital",
+        "https://instagram.com/nexusdigital",
+        "https://linkedin.com/company/nexusdigital"
+      ],
+      "services": [
+        "Digital Foundation",
+        "Business Acceleration", 
+        "Strategic Partnership",
+        "Веб-розробка",
+        "Автоматизація бізнесу",
+        "ШІ-інтеграція"
+      ]
+    }
+    </script>
     
     <!-- Critical CSS inline for faster rendering -->
     <style>
@@ -49,6 +107,8 @@
     
     <!-- Stylesheets - Optimized loading -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="enhanced-animations.css">
+    <link rel="stylesheet" href="mobile-animations.css">
     <link rel="stylesheet" href="debug.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" media="print" onload="this.media='all'">
 </head>
@@ -66,11 +126,11 @@
         <div class="container">
             <div class="header__container">
                 <a href="index.html" class="header__logo">
-                    <img src="assets/images/logo-for-site.webp" alt="Nexus Digital" class="header__logo-img">
+                    <img src="assets/images/logo-for-site.webp" alt="Nexus Digital - Агентство цифрових інновацій, логотип компанії" class="header__logo-img">
                     Nexus Digital
                 </a>
-                <nav class="header__nav">
-                    <ul class="header__nav-list">
+                <nav class="header__nav" role="navigation" aria-label="Головна навігація">
+                    <ul class="header__nav-list" role="menubar">
                         <li><a href="index.html" class="header__nav-link header__nav-link--active">Головна</a></li>
                         <li><a href="services.html" class="header__nav-link">Послуги</a></li>
                         <li><a href="about.html" class="header__nav-link">Про нас</a></li>
@@ -108,7 +168,7 @@
 
     <main class="main">
         <!-- Hero Section з відеофоном -->
-        <section class="hero">
+        <section class="hero" role="banner" aria-label="Головна секція сайту">
             <video class="hero__video" autoplay muted loop playsinline>
                 <source src="assets/videos/video-section-1.mp4" type="video/mp4">
                 Ваш браузер не підтримує відео.
@@ -118,7 +178,7 @@
                 <div class="container">
                     <h1 class="hero__title" data-aos="fade-up">Майбутнє Вашого Бізнесу. Створено Сьогодні.</h1>
                     <p class="hero__subtitle" data-aos="fade-up" data-aos-delay="200">Ми – німецьке агентство цифрових інновацій. Ми перетворюємо складні бізнес-завдання на елегантні та автоматизовані рішення, що прискорюють ваш ріст.</p>
-                    <button class="btn hero__btn" data-aos="fade-up" data-aos-delay="400">Забронювати Аналіз Проєкту</button>
+                    <button class="btn hero__btn" data-aos="fade-up" data-aos-delay="400" aria-label="Забронювати аналіз проєкту - зв'язатися з Nexus Digital">Забронювати Аналіз Проєкту</button>
                 </div>
             </div>
             <div class="hero__scroll-indicator" data-aos="fade-in" data-aos-delay="600">
@@ -128,13 +188,13 @@
         </section>
 
         <!-- Секція "Наші напрямки" -->
-        <section class="section services-section" data-aos="fade-up">
+        <section class="section services-section" data-aos="fade-up" aria-label="Наші послуги та рішення">
             <div class="container">
                 <h2 class="section__title">Ваші Три Шляхи до Цифрового Лідерства</h2>
                 <p class="section__subtitle">Ми пропонуємо не окремі послуги, а комплексні пакети рішень, що відповідають на ключові потреби бізнесу на різних етапах його розвитку.</p>
                 <div class="services-grid">
                     <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <img src="assets/images/picture-for-services-1.webp" alt="Digital Foundation" class="service-card__image">
+                        <img src="assets/images/picture-for-services-1.webp" alt="Digital Foundation - створення потужної онлайн-присутності для бізнесу" class="service-card__image">
                         <div class="service-card__content">
                             <h3 class="service-card__title">Digital Foundation</h3>
                             <p class="service-card__description">Створення потужної, швидкої та безпечної онлайн-присутності, яка є основою для зростання та залучення інвестицій.</p>
@@ -142,7 +202,7 @@
                         </div>
                     </div>
                     <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                        <img src="assets/images/picture-for-services-2.webp" alt="Business Acceleration" class="service-card__image">
+                        <img src="assets/images/picture-for-services-2.webp" alt="Business Acceleration - автоматизація та інтелектуальні рішення для бізнесу" class="service-card__image">
                         <div class="service-card__content">
                             <h3 class="service-card__title">Business Acceleration</h3>
                             <p class="service-card__description">Перетворення вашого бізнесу на автоматизовану машину та випередження конкурентів за допомогою інтелектуальних рішень.</p>
@@ -150,7 +210,7 @@
                         </div>
                     </div>
                     <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                        <img src="assets/images/picture-for-section-3.webp" alt="Strategic Partnership" class="service-card__image">
+                        <img src="assets/images/picture-for-section-3.webp" alt="Strategic Partnership - довгострокова підтримка та захист цифрових активів" class="service-card__image">
                         <div class="service-card__content">
                             <h3 class="service-card__title">Strategic Partnership</h3>
                             <p class="service-card__description">Забезпечення повного спокою та довгострокового росту завдяки надійній експертній підтримці та захисту ваших цифрових активів.</p>
@@ -162,7 +222,7 @@
         </section>
 
         <!-- Секція "Про нас" -->
-        <section class="section about-section" data-aos="fade-up">
+        <section class="section about-section" data-aos="fade-up" aria-label="Про компанію та команду">
             <div class="container">
                 <div class="about-grid">
                     <div class="founders-images" data-aos="fade-right">
@@ -247,7 +307,7 @@
         </section>
 
         <!-- Заклик до дії -->
-        <section class="section cta-section" data-aos="fade-up">
+        <section class="section cta-section" data-aos="fade-up" aria-label="Заклик до дії">
             <div class="container">
                 <div class="cta">
                     <h2 class="cta__title">Готові Випередити Ринок?</h2>
@@ -298,16 +358,16 @@
                 <div class="footer-bottom">
       <div class="footer-socials">
         <a href="https://x.com/DMolianko" target="_blank" rel="noopener noreferrer" aria-label="Посилання на наш Twitter/X">
-          <img src="assets/images/icon-twitter.webp" alt="Іконка Twitter/X">
+          <img src="assets/images/icon-twitter.webp" alt="Перейти на сторінку Nexus Digital у Twitter/X">
         </a>
         <a href="https://www.instagram.com/the.nexus.studio?igsh=Mmxob2FtdGFscHc1" target="_blank" rel="noopener noreferrer" aria-label="Посилання на наш Instagram">
-          <img src="assets/images/icon-instagram.webp" alt="Іконка Instagram">
+          <img src="assets/images/icon-instagram.webp" alt="Перейти на сторінку Nexus Digital у Instagram">
         </a>
         <a href="https://www.linkedin.com/in/danylo-molianko-5a4876385/" target="_blank" rel="noopener noreferrer" aria-label="Посилання на наш LinkedIn">
-          <img src="assets/images/icon-linkedin.png" alt="Іконка LinkedIn">
+          <img src="assets/images/icon-linkedin.png" alt="Перейти на сторінку Nexus Digital у LinkedIn">
         </a>
         <a href="https://discord.gg/UVZqYUH3" target="_blank" rel="noopener noreferrer" aria-label="Посилання на наш Discord сервер">
-          <img src="assets/images/icon-discord.webp" alt="Іконка Discord">
+          <img src="assets/images/icon-discord.webp" alt="Перейти на сервер Nexus Digital у Discord">
         </a>
       </div>
       <p>&copy; 2024 Nexus Digital. Всі права захищені.</p>
@@ -317,6 +377,7 @@
 
     <!-- Optimized script loading -->
     <script src="force-visibility.js"></script>
+    <script src="assets/js/enhanced-animations.js"></script>
     <script>
         // Mark page as loaded for CSS transition
         document.addEventListener('DOMContentLoaded', function() {

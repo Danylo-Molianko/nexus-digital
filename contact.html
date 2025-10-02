@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакти | Nexus Digital</title>
+    <meta name="description" content="Контакти Nexus Digital. Зв'яжіться з нами для консультації та аналізу вашого проєкту.">
     
     <!-- Professional Font Pair -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,20 +83,23 @@
                     <div class="contact-form-wrapper" data-aos="fade-up" data-aos-delay="100">
                         <h2 class="contact-form__title">Надішліть нам повідомлення</h2>
                         <p class="contact-form__subtitle">Розкажіть про ваш проєкт</p>
-                        <form class="contact-form" id="contactForm">
+                        <form class="contact-form" id="contactForm" aria-label="Форма зворотного зв'язку">
                             <div class="form-group">
                                 <label for="name" class="form-label">Ім'я *</label>
-                                <input type="text" id="name" name="name" class="form-input" required>
+                                <input type="text" id="name" name="name" class="form-input" required aria-describedby="name-help">
+                                <small id="name-help" class="form-help">Введіть ваше повне ім'я</small>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="form-label">Email *</label>
-                                <input type="email" id="email" name="email" class="form-input" required>
+                                <input type="email" id="email" name="email" class="form-input" required aria-describedby="email-help">
+                                <small id="email-help" class="form-help">Введіть дійсну електронну адресу</small>
                             </div>
                             <div class="form-group form-group--full">
                                 <label for="message" class="form-label">Повідомлення *</label>
-                                <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+                                <textarea id="message" name="message" class="form-textarea" rows="5" required aria-describedby="message-help"></textarea>
+                                <small id="message-help" class="form-help">Розкажіть про ваш проєкт та потреби</small>
                             </div>
-                            <button type="submit" class="btn form-submit">Надіслати повідомлення</button>
+                            <button type="submit" class="btn form-submit" aria-label="Надіслати форму зворотного зв'язку">Надіслати повідомлення</button>
                         </form>
                     </div>
 
