@@ -9,16 +9,48 @@
     <!-- Performance optimizations -->
     <meta name="theme-color" content="#000000">
     <meta name="robots" content="index, follow">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
     
-    <!-- Professional Font Pair -->
+    <!-- Critical CSS inline for faster rendering -->
+    <style>
+        body { 
+            opacity: 1 !important; 
+            transition: opacity 0.3s ease;
+            visibility: visible !important;
+        }
+        body.loaded { opacity: 1; }
+        
+        /* Ensure main content is visible */
+        .main, .hero, .section, .hero__content {
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: block !important;
+        }
+        
+        .hero {
+            display: flex !important;
+        }
+        
+        /* Ensure text is visible */
+        .hero__title, .hero__subtitle, .section__title, .section__subtitle,
+        .service-card__title, .service-card__description {
+            color: #ffffff !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+    </style>
+    
+    <!-- Professional Font Pair - Optimized loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     
-    <!-- Stylesheets -->
+    <!-- Stylesheets - Optimized loading -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="debug.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" media="print" onload="this.media='all'">
 </head>
 <body>
     <!-- Interactive Background -->
@@ -283,7 +315,20 @@
         </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- Optimized script loading -->
+    <script src="force-visibility.js"></script>
+    <script>
+        // Mark page as loaded for CSS transition
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+        
+        // Load AOS library asynchronously
+        const aosScript = document.createElement('script');
+        aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+        aosScript.async = true;
+        document.head.appendChild(aosScript);
+    </script>
+    <script src="assets/js/main.js" async></script>
 </body>
 </html>
