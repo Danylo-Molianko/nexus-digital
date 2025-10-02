@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Послуги | Nexus Digital</title>
+    <meta name="description" content="Послуги Nexus Digital: Digital Foundation, Business Acceleration, Strategic Partnership. Комплексні рішення для цифрового розвитку вашого бізнесу.">
+    
+    <!-- Professional Font Pair -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <!-- API base for frontend calls (same-origin, через Nginx proxy) -->
+    <meta name="api-base" content="/api">
+</head>
+<body>
+    <!-- Interactive Background -->
+    <div class="interactive-bg">
+        <canvas id="particles-canvas"></canvas>
+        <div class="aurora-layer"></div>
+    </div>
+    
+    <!-- Transition Dust Effect -->
+    <div class="transition-dust"></div>
+    
+    <header class="header">
+        <div class="container">
+            <div class="header__container">
+                <a href="index.html" class="header__logo">
+                    <img src="assets/images/logo-for-site.webp" alt="Nexus Digital" class="header__logo-img">
+                    Nexus Digital
+                </a>
+                <nav class="header__nav">
+                    <ul class="header__nav-list">
+                        <li><a href="index.html" class="header__nav-link">Головна</a></li>
+                        <li><a href="services.html" class="header__nav-link header__nav-link--active">Послуги</a></li>
+                        <li><a href="about.html" class="header__nav-link">Про нас</a></li>
+                        <li><a href="cases.html" class="header__nav-link">Кейси</a></li>
+                        <li><a href="contact.html" class="header__nav-link">Контакти</a></li>
+                    </ul>
+                </nav>
+                <button class="header__menu-toggle">
+                    <span class="header__menu-line"></span>
+                    <span class="header__menu-line"></span>
+                    <span class="header__menu-line"></span>
+                </button>
+            </div>
+        </div>
+        <nav class="header__mobile-nav">
+            <ul class="header__mobile-nav-list">
+                <li class="header__mobile-nav-item">
+                    <a href="index.html" class="header__mobile-nav-link">Головна</a>
+                </li>
+                <li class="header__mobile-nav-item">
+                    <a href="services.html" class="header__mobile-nav-link header__mobile-nav-link--active">Послуги</a>
+                </li>
+                <li class="header__mobile-nav-item">
+                    <a href="about.html" class="header__mobile-nav-link">Про нас</a>
+                </li>
+                <li class="header__mobile-nav-item">
+                    <a href="cases.html" class="header__mobile-nav-link">Кейси</a>
+                </li>
+                <li class="header__mobile-nav-item">
+                    <a href="contact.html" class="header__mobile-nav-link">Контакти</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="section section--hero">
+            <div class="container">
+                <div class="services-hero-content services-hero-content-with-bg">
+                    <div class="services-hero-content-bg"></div>
+                    <div class="services-hero-text">
+                        <h1 class="section__title" data-aos="fade-up">Комплексні Цифрові Рішення: Наш Підхід до Вашого Зростання</h1>
+                        <p class="section__subtitle" data-aos="fade-up" data-aos-delay="200">Наші послуги структуровані у три стратегічні напрямки, що охоплюють увесь життєвий цикл інновацій: від створення міцного фундаменту до радикального прискорення бізнесу через AI.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" data-aos="fade-up">
+            <div class="container">
+                <div class="service-detail">
+                    <div class="service-detail__header">
+                        <h2 class="service-detail__title">Digital Foundation (Цифровий Фундамент)</h2>
+                        <p class="service-detail__subtitle">Створення потужної, швидкої та безпечної онлайн-присутності</p>
+                    </div>
+                    <div class="service-detail__content">
+                        <details class="accordion" data-aos="fade-up" data-aos-delay="100">
+                            <summary class="accordion__header">Інноваційна Веб-Розробка</summary>
+                            <div class="accordion__content">
+                                <p><strong>Суть:</strong> Створення потужної, швидкої та безпечної онлайн-присутності.</p>
+                                <p><strong>Що ми робимо:</strong> Ми створюємо візуально досконалі та технічно бездоганні сайти на Webflow. Це не просто дизайн, це високошвидкісні інструменти, оптимізовані для конверсії та SEO.</p>
+                                <p><strong>Результат:</strong> Ви отримуєте готовий цифровий актив, який вражає інвесторів та клієнтів і є міцним фундаментом для масштабування.</p>
+                            </div>
+                        </details>
+                        
+                        <details class="accordion" data-aos="fade-up" data-aos-delay="200">
+                            <summary class="accordion__header">Розробка Web-App та Кастомних Баз Даних</summary>
+                            <div class="accordion__content">
+                                <p><strong>Суть:</strong> Реалізація складної логіки для унікальної функціональності.</p>
+                                <p><strong>Що ми робимо:</strong> Ми реалізуємо складну логіку: від особистих кабінетів клієнтів (Customer Portals) до унікальних баз знань, що відрізняє вас від конкурентів.</p>
+                                <p><strong>Результат:</strong> Повністю функціональний веб-додаток, інтегрований у ваш сайт, що вирішує унікальні бізнес-завдання.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" data-aos="fade-up">
+            <div class="container">
+                <div class="service-detail">
+                    <div class="service-detail__header">
+                        <h2 class="service-detail__title">Business Acceleration (Прискорення Бізнесу)</h2>
+                        <p class="service-detail__subtitle">Перетворення вашого бізнесу на автоматизовану машину</p>
+                    </div>
+                    <div class="service-detail__content">
+                        <details class="accordion" data-aos="fade-up" data-aos-delay="100">
+                            <summary class="accordion__header">AI-Автоматизація Процесів</summary>
+                            <div class="accordion__content">
+                                <p><strong>Суть:</strong> Інтеграція штучного інтелекту для автоматизації рутинних процесів.</p>
+                                <p><strong>Що ми робимо:</strong> Розробляємо кастомних ШІ-агентів, які аналізують документи, обробляють запити клієнтів, та інтегрують складну бізнес-логіку в автоматизовані процеси.</p>
+                                <p><strong>Результат:</strong> Радикальне скорочення часу на рутинні завдання (до 98%), нульовий ризик людських помилок та можливість фокусуватися на стратегічних завданнях.</p>
+                            </div>
+                        </details>
+                        
+                        <details class="accordion" data-aos="fade-up" data-aos-delay="200">
+                            <summary class="accordion__header">Інтелектуальні CRM та Воронки Продажів</summary>
+                            <div class="accordion__content">
+                                <p><strong>Суть:</strong> Створення розумних систем управління клієнтами та автоматизованих воронок продажів.</p>
+                                <p><strong>Що ми робимо:</strong> Налаштовуємо просунуті CRM системи з інтегрованими чат-ботами, автоматичною кваліфікацією лідів та персоналізованими маркетинговими воронками.</p>
+                                <p><strong>Результат:</strong> Підвищення конверсії до 25%, автоматизація 80% первинних запитів та структурована система для масштабування продажів.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" data-aos="fade-up">
+            <div class="container">
+                <div class="service-detail">
+                    <div class="service-detail__header">
+                        <h2 class="service-detail__title">Strategic Partnership (Стратегічне Партнерство)</h2>
+                        <p class="service-detail__subtitle">Довгостроковий ріст та захист ваших цифрових активів</p>
+                    </div>
+                    <div class="service-detail__content">
+                        <details class="accordion" data-aos="fade-up" data-aos-delay="100">
+                            <summary class="accordion__header">Глибокий Бізнес-Аналіз та Стратегія</summary>
+                            <div class="accordion__content">
+                                <p><strong>Суть:</strong> Комплексний аналіз бізнес-процесів та розробка стратегії цифрової трансформації.</p>
+                                <p><strong>Що ми робимо:</strong> Проводимо детальний аудит ваших процесів, виявляємо точки росту та розробляємо покроковий план досягнення ваших цілей з чіткими KPI.</p>
+                                <p><strong>Результат:</strong> Прозора дорожня карта розвитку, оптимізовані процеси та стратегічна впевненість у напрямку розвитку.</p>
+                            </div>
+                        </details>
+                        
+                        <details class="accordion" data-aos="fade-up" data-aos-delay="200">
+                            <summary class="accordion__header">Безпека та Інфраструктура</summary>
+                            <div class="accordion__content">
+                                <p><strong>Суть:</strong> Забезпечення надійного захисту та стабільної роботи ваших цифрових активів.</p>
+                                <p><strong>Що ми робимо:</strong> Реалізуємо комплексні рішення кібербезпеки, налаштовуємо моніторинг систем та забезпечуємо безперервну технічну підтримку.</p>
+                                <p><strong>Результат:</strong> Повний спокій за безпеку даних, 24/7 стабільність роботи систем та довгостроковий захист ваших інвестицій в технології.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cta-section" data-aos="fade-up">
+            <div class="container">
+                <div class="cta cta-with-bg">
+                    <div class="cta-bg-image"></div>
+                    <div class="cta-content">
+                        <h2 class="cta__title">Готові розпочати проєкт?</h2>
+                        <p class="cta__text">Зв'яжіться з нами для детального обговорення</p>
+                        <a href="contact.html" class="btn cta__btn">Отримати консультацію</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__container">
+                <div class="footer__column">
+                    <h3 class="footer__title">Про нас</h3>
+                    <p class="footer__text">Nexus Digital - провідне агентство цифрових інновацій.</p>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__title">Навігація</h3>
+                    <ul class="footer__list">
+                        <li class="footer__list-item"><a href="index.html" class="footer__link">Головна</a></li>
+                        <li class="footer__list-item"><a href="services.html" class="footer__link">Послуги</a></li>
+                        <li class="footer__list-item"><a href="about.html" class="footer__link">Про нас</a></li>
+                        <li class="footer__list-item"><a href="cases.html" class="footer__link">Кейси</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__title">Контакти</h3>
+                    <p class="footer__text">Email: info@nexusdigital.com</p>
+                    <p class="footer__text">Телефон: +380 XX XXX XXXX</p>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link">IG</a>
+                        <a href="#" class="footer__social-link">TW</a>
+                        <a href="#" class="footer__social-link">DC</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer-socials">
+                    <a href="https://x.com/DMolianko" target="_blank" rel="noopener noreferrer" aria-label="Посилання на наш Twitter/X">
+                        <img src="assets/images/icon-twitter.webp" alt="Іконка Twitter/X">
+                    </a>
+                    <a href="https://www.instagram.com/the.nexus.studio?igsh=Mmxob2FtdGFscHc1" target="_blank" rel="noopener noreferrer" aria-label="Посилання на наш Instagram">
+                        <img src="assets/images/icon-instagram.webp" alt="Іконка Instagram">
+                    </a>
+                    <a href="https://www.linkedin.com/in/danylo-molianko-5a4876385/" target="_blank" rel="noopener noreferrer" aria-label="Посилання на наш LinkedIn">
+                        <img src="assets/images/icon-linkedin.png" alt="Іконка LinkedIn">
+                    </a>
+                    <a href="https://discord.gg/UVZqYUH3" target="_blank" rel="noopener noreferrer" aria-label="Посилання на наш Discord сервер">
+                        <img src="assets/images/icon-discord.webp" alt="Іконка Discord">
+                    </a>
+                </div>
+                <p>&copy; 2024 Nexus Digital. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      window.API_BASE = (document.querySelector('meta[name="api-base"]')?.content) || '/api';
+      // Quick health check in console to debug connectivity
+      (async () => {
+        try {
+          const r = await fetch(`${window.API_BASE}/health`, { cache: 'no-store' });
+          console.log('API health:', r.status, await r.text());
+        } catch (e) {
+          console.error('API health error:', e);
+        }
+      })();
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
