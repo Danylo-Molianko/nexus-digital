@@ -18,7 +18,7 @@ const contactRoutes = require('./routes/contact');
 const servicesRoutes = require('./routes/services');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // ==========================================
 // DATABASE CONNECTION
@@ -55,7 +55,7 @@ app.use(helmet({
 app.use(cors({
     origin: process.env.NODE_ENV === 'production' 
         ? process.env.FRONTEND_URL 
-        : ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:5000'],
+        : ['http://localhost:8080', 'http://127.0.0.1:8080', 'http://localhost:3000'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
     credentials: true

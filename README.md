@@ -130,9 +130,79 @@ npm start
 ### 4. Перевірка роботи
 
 Відкрийте браузер та перейдіть на:
-- **Сайт**: http://localhost:3000
-- **API Health Check**: http://localhost:3000/api/health
-- **API Documentation**: http://localhost:3000/api
+- **Сайт**: http://localhost:8080
+- **API Health Check**: http://localhost:8080/api/health
+- **API Documentation**: http://localhost:8080/api
+
+## 🐳 Docker розгортання
+
+### Збірка Docker image:
+```bash
+docker build -t nexus-digital .
+```
+
+### Запуск контейнера:
+```bash
+docker run -p 8080:8080 --env-file .env nexus-digital
+```
+
+## 🚀 Production розгортання
+
+### DigitalOcean/VPS з PM2:
+```bash
+# Клонування та setup
+git clone <your-repo-url>
+cd nexus-digital
+npm install --production
+
+# Запуск з PM2
+npm run pm2:start
+
+# Або використайте deploy скрипт
+chmod +x deploy.sh
+./deploy.sh
+```
+
+### Heroku:
+```bash
+# Встановіть Heroku CLI
+npm install -g heroku
+
+# Логін та створення застосунку
+heroku login
+heroku create nexus-digital-app
+
+# Налаштування змінних
+heroku config:set NODE_ENV=production
+heroku config:set PORT=8080
+heroku config:set MONGODB_URI=your-mongodb-connection
+
+# Деплой
+git push heroku main
+```
+
+## 🔧 Nginx конфігурація
+
+Для підключення з Nginx на порту 8080:
+
+```nginx
+server {
+    listen 80;
+    server_name your-domain.com;
+    
+    location / {
+        proxy_pass http://localhost:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
 
 ## 📡 API Endpoints
 
