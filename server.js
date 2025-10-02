@@ -23,6 +23,7 @@ app.get('/api/health', async (_req, res) => {
   }
 });
 
+// Тестовий ендпоінт
 app.get('/api/time', async (_req, res) => {
   const pool = getPool();
   const { rows } = await pool.query('select now() as now');

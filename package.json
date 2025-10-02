@@ -1,61 +1,21 @@
 {
-  "name": "nexus-digital-backend",
+  "name": "nexus-digital-web",
   "version": "1.0.0",
-  "description": "Nexus Digital - Full Stack Web Application with Express Backend",
+  "description": "Nexus Digital Website",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
-    "production": "NODE_ENV=production PORT=8080 node server.js",
-    "pm2:start": "pm2 start ecosystem.config.js --env production",
-    "pm2:stop": "pm2 stop nexus-digital",
-    "pm2:restart": "pm2 restart nexus-digital",
-    "pm2:delete": "pm2 delete nexus-digital",
-    "pm2:status": "pm2 status",
-    "pm2:logs": "pm2 logs nexus-digital",
-    "docker:build": "docker build -t nexus-digital .",
-    "docker:run": "docker run -p 8080:8080 nexus-digital",
-    "frontend": "live-server public --port=8080",
-    "build:css": "postcss public/assets/css/style.css -o public/assets/css/style.css",
-    "install-deps": "npm install",
-    "test": "jest",
-    "start:pm2": "pm2 start ecosystem.config.js --env production"
+    "start:pm2": "pm2 start ecosystem.config.js --env production",
+    "dev": "nodemon server.js"
   },
-  "keywords": [
-    "nodejs",
-    "express",
-    "nexus-digital",
-    "backend",
-    "api",
-    "fullstack"
-  ],
-  "author": "Nexus Digital Team",
-  "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
     "cors": "^2.8.5",
-    "helmet": "^7.0.0",
-    "morgan": "^1.10.0",
     "dotenv": "^16.3.1",
-    "body-parser": "^1.20.2",
-    "express-rate-limit": "^6.7.1",
-    "compression": "^1.7.4",
-    "nodemailer": "^6.9.4",
-    "pg": "^8.11.3",
-    "pg-pool": "^3.6.1",
-    "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.1",
-    "express-validator": "^7.0.1",
-    "multer": "^1.4.5-lts.1",
-    "sharp": "^0.32.1"
+    "pg": "^8.11.3"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "live-server": "^1.2.2",
-    "postcss-cli": "^11.0.0",
-    "nodemon": "^3.0.1",
-    "jest": "^29.6.1",
-    "supertest": "^6.3.3"
+    "nodemon": "^3.0.1"
   },
   "engines": {
     "node": ">=16.0.0"
