@@ -63,39 +63,68 @@ router.post('/', contactLimiter, contactValidation, async (req, res) => {
 
         const { name, email, message, phone, company } = req.body;
 
-        // Create contact entry object
-        const contactData = {
-            name,
-            email,
-            message,
-            phone: phone || null,
-            company: company || null,
-            submittedAt: new Date(),
-            ipAddress: req.ip,
-            userAgent: req.get('User-Agent')
-        };
+        // Import database connection
+        const Database = require('../config/database');
+        
+        // Save to PostgreSQL database
+        try {
+            const query = `
+                INSERT INTO contacts (name, email, company, message, created_at)
+                VALUES ($1, $2, $3, $4, $5)
+                RETURNING id, created_at
+            `;
+            
+            const values = [
+                name,
+                email,
+                company || null,
+                message,
+                new Date()
+            ];
 
-        // TODO: Save to database when ready
-        // const contact = new Contact(contactData);
-        // await contact.save();
+            const result = await Database.query(query, values);
+            const savedContact = result.rows[0];
 
-        // TODO: Send email notification
-        // await sendEmailNotification(contactData);
+            // Log successful submission
+            console.log('📧 Contact form saved to database:', {
+                id: savedContact.id,
+                name: name,
+                email: email,
+                timestamp: savedContact.created_at
+            });
 
-        // Log submission (temporary until database is connected)
-        console.log('📧 New contact form submission:', {
-            name: contactData.name,
-            email: contactData.email,
-            timestamp: contactData.submittedAt
-        });
+            // TODO: Send email notification
+            // await sendEmailNotification(contactData);
 
-        res.status(200).json({
-            success: true,
-            message: 'Дякуємо за ваше повідомлення! Ми зв\'яжемося з вами найближчим часом.',
-            data: {
-                submittedAt: contactData.submittedAt
-            }
-        });
+            res.status(200).json({
+                success: true,
+                message: 'Дякуємо за ваше повідомлення! Ми зв\'яжемося з вами найближчим часом.',
+                data: {
+                    id: savedContact.id,
+                    submittedAt: savedContact.created_at
+                }
+            });
+
+        } catch (dbError) {
+            console.error('❌ Database save error:', dbError);
+            
+            // Fallback: log to console if database fails
+            console.log('📧 New contact form submission (fallback):', {
+                name: name,
+                email: email,
+                company: company,
+                message: message,
+                timestamp: new Date()
+            });
+
+            res.status(200).json({
+                success: true,
+                message: 'Дякуємо за ваше повідомлення! Ми зв\'яжемося з вами найближчим часом.',
+                data: {
+                    submittedAt: new Date()
+                }
+            });
+        }
 
     } catch (error) {
         console.error('❌ Contact form error:', error);

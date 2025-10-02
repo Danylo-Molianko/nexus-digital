@@ -1,53 +1,76 @@
 // ==========================================
-// DATABASE CONNECTION CONFIGURATION
+// POSTGRESQL DATABASE CONNECTION CONFIGURATION
 // ==========================================
 
-const mongoose = require('mongoose');
+const { Pool } = require('pg');
 
 class Database {
     constructor() {
-        this.connection = null;
+        this.pool = null;
+        this.isConnectedFlag = false;
     }
 
     async connect() {
         try {
-            const options = {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-                maxPoolSize: 10,
-                serverSelectionTimeoutMS: 5000,
-                socketTimeoutMS: 45000,
-                bufferCommands: false,
-                bufferMaxEntries: 0
+            // PostgreSQL connection configuration
+            const config = {
+                host: process.env.DB_HOST,
+                port: process.env.DB_PORT,
+                user: process.env.DB_USER,
+                password: process.env.DB_PASS,
+                database: process.env.DB_NAME,
+                ssl: {
+                    rejectUnauthorized: false // Required for DigitalOcean managed databases
+                },
+                max: 20, // Maximum number of clients in the pool
+                idleTimeoutMillis: 30000, // Close idle clients after 30 seconds
+                connectionTimeoutMillis: 2000, // Return an error after 2 seconds if connection could not be established
             };
 
-            const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/nexus-digital';
+            // Alternative: use DATABASE_URL if provided
+            if (process.env.DATABASE_URL) {
+                this.pool = new Pool({
+                    connectionString: process.env.DATABASE_URL,
+                    ssl: {
+                        rejectUnauthorized: false
+                    }
+                });
+            } else {
+                this.pool = new Pool(config);
+            }
+
+            // Test connection
+            const client = await this.pool.connect();
+            const result = await client.query('SELECT NOW()');
+            client.release();
             
-            this.connection = await mongoose.connect(uri, options);
+            this.isConnectedFlag = true;
             
             console.log(`
-📊 Database Connected Successfully!
+📊 PostgreSQL Database Connected Successfully!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🎯 Database: ${this.connection.connection.name}
-🏠 Host: ${this.connection.connection.host}:${this.connection.connection.port}
-⚡ Status: ${this.connection.connection.readyState === 1 ? 'Connected' : 'Disconnected'}
+🎯 Database: ${process.env.DB_NAME}
+🏠 Host: ${process.env.DB_HOST}:${process.env.DB_PORT}
+⚡ Status: Connected
+🕒 Server Time: ${result.rows[0].now}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             `);
 
-            // Handle connection events
-            mongoose.connection.on('error', (err) => {
-                console.error('❌ MongoDB connection error:', err);
+            // Handle pool events
+            this.pool.on('error', (err) => {
+                console.error('❌ PostgreSQL pool error:', err);
+                this.isConnectedFlag = false;
             });
 
-            mongoose.connection.on('disconnected', () => {
-                console.log('📊 MongoDB disconnected');
+            this.pool.on('connect', () => {
+                console.log('📊 New PostgreSQL client connected');
             });
 
-            mongoose.connection.on('reconnected', () => {
-                console.log('📊 MongoDB reconnected');
+            this.pool.on('remove', () => {
+                console.log('📊 PostgreSQL client removed');
             });
 
-            return this.connection;
+            return this.pool;
         } catch (error) {
             console.error('❌ Database connection failed:', error.message);
             
@@ -57,15 +80,16 @@ class Database {
                 return null;
             }
             
-            process.exit(1);
+            throw error; // Re-throw in production
         }
     }
 
     async disconnect() {
         try {
-            if (this.connection) {
-                await mongoose.disconnect();
-                console.log('📊 Database disconnected successfully');
+            if (this.pool) {
+                await this.pool.end();
+                this.isConnectedFlag = false;
+                console.log('📊 PostgreSQL database disconnected successfully');
             }
         } catch (error) {
             console.error('❌ Error disconnecting from database:', error);
@@ -73,7 +97,64 @@ class Database {
     }
 
     isConnected() {
-        return mongoose.connection.readyState === 1;
+        return this.isConnectedFlag;
+    }
+
+    getPool() {
+        return this.pool;
+    }
+
+    // Helper method to execute queries
+    async query(text, params) {
+        if (!this.pool) {
+            throw new Error('Database not connected');
+        }
+        
+        const client = await this.pool.connect();
+        try {
+            const result = await client.query(text, params);
+            return result;
+        } finally {
+            client.release();
+        }
+    }
+
+    // Create tables if they don't exist
+    async initializeTables() {
+        if (!this.isConnected()) {
+            return;
+        }
+
+        try {
+            // Create contacts table
+            await this.query(`
+                CREATE TABLE IF NOT EXISTS contacts (
+                    id SERIAL PRIMARY KEY,
+                    name VARCHAR(255) NOT NULL,
+                    email VARCHAR(255) NOT NULL,
+                    company VARCHAR(255),
+                    message TEXT NOT NULL,
+                    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+                )
+            `);
+
+            // Create services table (for future use)
+            await this.query(`
+                CREATE TABLE IF NOT EXISTS services (
+                    id SERIAL PRIMARY KEY,
+                    title VARCHAR(255) NOT NULL,
+                    description TEXT,
+                    price DECIMAL(10,2),
+                    category VARCHAR(100),
+                    active BOOLEAN DEFAULT true,
+                    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+                )
+            `);
+
+            console.log('📊 Database tables initialized successfully');
+        } catch (error) {
+            console.error('❌ Error initializing tables:', error);
+        }
     }
 }
 

@@ -23,7 +23,14 @@ const PORT = process.env.PORT || 8080;
 // ==========================================
 // DATABASE CONNECTION
 // ==========================================
-connectDB();
+(async () => {
+    try {
+        await connectDB.connect();
+        await connectDB.initializeTables();
+    } catch (error) {
+        console.error('Failed to initialize database:', error);
+    }
+})();
 
 // ==========================================
 // SECURITY MIDDLEWARE

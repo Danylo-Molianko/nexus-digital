@@ -70,34 +70,7 @@
     }
     </script>
     
-    <!-- Critical CSS inline for faster rendering -->
-    <style>
-        body { 
-            opacity: 1 !important; 
-            transition: opacity 0.3s ease;
-            visibility: visible !important;
-        }
-        body.loaded { opacity: 1; }
-        
-        /* Ensure main content is visible */
-        .main, .hero, .section, .hero__content {
-            opacity: 1 !important;
-            visibility: visible !important;
-            display: block !important;
-        }
-        
-        .hero {
-            display: flex !important;
-        }
-        
-        /* Ensure text is visible */
-        .hero__title, .hero__subtitle, .section__title, .section__subtitle,
-        .service-card__title, .service-card__description {
-            color: #ffffff !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-        }
-    </style>
+
     
     <!-- Professional Font Pair - Optimized loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -105,127 +78,87 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     
-    <!-- Stylesheets - Optimized loading -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="enhanced-animations.css">
-    <link rel="stylesheet" href="mobile-animations.css">
-    <link rel="stylesheet" href="debug.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" media="print" onload="this.media='all'">
+    <!-- Basic Styles -->
+    <link rel="stylesheet" href="assets/css/minimal.css">
 </head>
 <body>
-    <!-- Interactive Background -->
-    <div class="interactive-bg">
-        <canvas id="particles-canvas"></canvas>
-        <div class="aurora-layer"></div>
-    </div>
-    
-    <!-- Transition Dust Effect -->
-    <div class="transition-dust"></div>
+
     
     <header class="header">
         <div class="container">
-            <div class="header__container">
-                <a href="index.html" class="header__logo">
-                    <img src="assets/images/logo-for-site.webp" alt="Nexus Digital - Агентство цифрових інновацій, логотип компанії" class="header__logo-img">
+            <nav class="nav">
+                <a href="index.html" class="logo">
                     Nexus Digital
                 </a>
-                <nav class="header__nav" role="navigation" aria-label="Головна навігація">
-                    <ul class="header__nav-list" role="menubar">
-                        <li><a href="index.html" class="header__nav-link header__nav-link--active">Головна</a></li>
-                        <li><a href="services.html" class="header__nav-link">Послуги</a></li>
-                        <li><a href="about.html" class="header__nav-link">Про нас</a></li>
-                        <li><a href="cases.html" class="header__nav-link">Кейси</a></li>
-                        <li><a href="contact.html" class="header__nav-link">Контакти</a></li>
-                    </ul>
-                </nav>
-                <button class="header__menu-toggle">
-                    <span class="header__menu-line"></span>
-                    <span class="header__menu-line"></span>
-                    <span class="header__menu-line"></span>
+                <ul class="nav-menu" role="menubar">
+                    <li><a href="index.html" class="nav-link">Головна</a></li>
+                    <li><a href="services.html" class="nav-link">Послуги</a></li>
+                    <li><a href="about.html" class="nav-link">Про нас</a></li>
+                    <li><a href="cases.html" class="nav-link">Кейси</a></li>
+                    <li><a href="contact.html" class="nav-link">Контакти</a></li>
+                </ul>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
-            </div>
+            </nav>
         </div>
-        <nav class="header__mobile-nav">
-            <ul class="header__mobile-nav-list">
-                <li class="header__mobile-nav-item">
-                    <a href="index.html" class="header__mobile-nav-link header__mobile-nav-link--active">Головна</a>
-                </li>
-                <li class="header__mobile-nav-item">
-                    <a href="services.html" class="header__mobile-nav-link">Послуги</a>
-                </li>
-                <li class="header__mobile-nav-item">
-                    <a href="about.html" class="header__mobile-nav-link">Про нас</a>
-                </li>
-                <li class="header__mobile-nav-item">
-                    <a href="cases.html" class="header__mobile-nav-link">Кейси</a>
-                </li>
-                <li class="header__mobile-nav-item">
-                    <a href="contact.html" class="header__mobile-nav-link">Контакти</a>
-                </li>
-            </ul>
-        </nav>
     </header>
 
     <main class="main">
         <!-- Hero Section з відеофоном -->
-        <section class="hero" role="banner" aria-label="Головна секція сайту">
+        <section class="hero" role="banner">
             <video class="hero__video" autoplay muted loop playsinline>
                 <source src="assets/videos/video-section-1.mp4" type="video/mp4">
                 Ваш браузер не підтримує відео.
             </video>
-            <div class="hero__overlay"></div>
-                        <div class="hero__content">
-                <div class="container">
-                    <h1 class="hero__title" data-aos="fade-up">Майбутнє Вашого Бізнесу. Створено Сьогодні.</h1>
-                    <p class="hero__subtitle" data-aos="fade-up" data-aos-delay="200">Ми – німецьке агентство цифрових інновацій. Ми перетворюємо складні бізнес-завдання на елегантні та автоматизовані рішення, що прискорюють ваш ріст.</p>
-                    <button class="btn hero__btn" data-aos="fade-up" data-aos-delay="400" aria-label="Забронювати аналіз проєкту - зв'язатися з Nexus Digital">Забронювати Аналіз Проєкту</button>
+            <div class="hero-content">
+                <h1>Майбутнє Вашого Бізнесу.<br>Створено Сьогодні.</h1>
+                <p>Ми – німецьке агентство цифрових інновацій. Перетворюємо складні бізнес-завдання на елегантні та автоматизовані рішення.</p>
+                <div class="hero-cta">
+                    <a href="contact.html" class="btn btn-primary">Забронювати Аналіз</a>
+                    <a href="services.html" class="btn btn-secondary">Наші Послуги</a>
                 </div>
-            </div>
-            <div class="hero__scroll-indicator" data-aos="fade-in" data-aos-delay="600">
-                <div class="scroll-arrow"></div>
-                <span>Прокручуйте вниз</span>
             </div>
         </section>
 
         <!-- Секція "Наші напрямки" -->
-        <section class="section services-section" data-aos="fade-up" aria-label="Наші послуги та рішення">
+        <section class="section">
             <div class="container">
-                <h2 class="section__title">Ваші Три Шляхи до Цифрового Лідерства</h2>
-                <p class="section__subtitle">Ми пропонуємо не окремі послуги, а комплексні пакети рішень, що відповідають на ключові потреби бізнесу на різних етапах його розвитку.</p>
+                <h2 class="section-title">Ваші Три Шляхи до Цифрового Лідерства</h2>
+                <p>Ми пропонуємо не окремі послуги, а комплексні пакети рішень, що відповідають на ключові потреби бізнесу.</p>
+                
                 <div class="services-grid">
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <img src="assets/images/picture-for-services-1.webp" alt="Digital Foundation - створення потужної онлайн-присутності для бізнесу" class="service-card__image">
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">Digital Foundation</h3>
-                            <p class="service-card__description">Створення потужної, швидкої та безпечної онлайн-присутності, яка є основою для зростання та залучення інвестицій.</p>
-                            <a href="services.html" class="service-card__link">Детальніше →</a>
-                        </div>
+                    <div class="service-card">
+                        <div class="service-icon">🚀</div>
+                        <h3>Digital Foundation</h3>
+                        <p>Створення потужної, швидкої та безпечної онлайн-присутності, яка є основою для зростання та залучення інвестицій.</p>
+                        <a href="services.html" class="btn btn-primary">Детальніше →</a>
                     </div>
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                        <img src="assets/images/picture-for-services-2.webp" alt="Business Acceleration - автоматизація та інтелектуальні рішення для бізнесу" class="service-card__image">
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">Business Acceleration</h3>
-                            <p class="service-card__description">Перетворення вашого бізнесу на автоматизовану машину та випередження конкурентів за допомогою інтелектуальних рішень.</p>
-                            <a href="services.html" class="service-card__link">Детальніше →</a>
-                        </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3>Business Acceleration</h3>
+                        <p>Перетворення вашого бізнесу на автоматизовану машину та випередження конкурентів за допомогою інтелектуальних рішень.</p>
+                        <a href="services.html" class="btn btn-primary">Детальніше →</a>
                     </div>
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                        <img src="assets/images/picture-for-section-3.webp" alt="Strategic Partnership - довгострокова підтримка та захист цифрових активів" class="service-card__image">
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">Strategic Partnership</h3>
-                            <p class="service-card__description">Забезпечення повного спокою та довгострокового росту завдяки надійній експертній підтримці та захисту ваших цифрових активів.</p>
-                            <a href="services.html" class="service-card__link">Детальніше →</a>
-                        </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">🛡️</div>
+                        <h3>Strategic Partnership</h3>
+                        <p>Забезпечення повного спокою та довгострокового росту завдяки надійній експертній підтримці та захисту цифрових активів.</p>
+                        <a href="services.html" class="btn btn-primary">Детальніше →</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Секція "Про нас" -->
-        <section class="section about-section" data-aos="fade-up" aria-label="Про компанію та команду">
+        <section class="section about-section" aria-label="Про компанію та команду">
             <div class="container">
                 <div class="about-grid">
-                    <div class="founders-images" data-aos="fade-right">
+                    <div class="founders-images">
                         <div class="founder-image">
                             <img src="assets/images/foto-by-daniel-2.jpg" alt="Данило Молянко - Стратег" class="founder__photo">
                             <div class="founder-label">
@@ -241,7 +174,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="about-content" data-aos="fade-left">
+                    <div class="about-content">
                         <h2 class="about__title">Чому Nexus Studio? Прямий Шлях до Інновацій.</h2>
                         <p class="about__text">У великих агенціях ви говорите з менеджерами. У Nexus Studio ви працюєте безпосередньо із засновниками: стратегом і технологічним інноватором. Це гарантує максимальну залученість, швидкість прийняття рішень та якість на кожному етапі.</p>
                         <p class="about__text">Наш підхід: Ми не просто виконавці, ми гарантуємо результат за моделлю Werkvertrag, забезпечуючи чітке планування та досягнення конкретної мети.</p>
@@ -262,34 +195,34 @@
         </section>
 
         <!-- Секція довіри -->
-        <section class="section trust-section trust-section-with-bg" data-aos="fade-up">
-            <div class="trust-section-bg"></div>
+        <section class="section trust-section">
+
             <div class="container">
                 <h2 class="section__title">Нам Довіряють</h2>
                 <p class="section__subtitle">Компанії різних галузей обирають нас для цифрової трансформації</p>
                 <div class="trust-grid">
-                    <div class="trust-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="trust-item">
                         <div class="trust-icon">🚀</div>
                         <h3 class="trust-title">SaaS Стартапи</h3>
                         <p class="trust-description">Технологічні компанії, які прагнуть швидкого виходу на ринок з професійним виглядом</p>
                     </div>
-                    <div class="trust-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="trust-item">
                         <div class="trust-icon">🏢</div>
                         <h3 class="trust-title">B2B Дистриб'ютори</h3>
                         <p class="trust-description">Міжнародні компанії, що потребують централізації даних та оптимізації процесів</p>
                     </div>
-                    <div class="trust-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="trust-item">
                         <div class="trust-icon">⚖️</div>
                         <h3 class="trust-title">Професійні Послуги</h3>
                         <p class="trust-description">Сервісні компанії, які хочуть автоматизувати рутинні процеси та зосередитися на стратегії</p>
                     </div>
-                    <div class="trust-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="trust-item">
                         <div class="trust-icon">🎯</div>
                         <h3 class="trust-title">Зростаючі Бізнеси</h3>
                         <p class="trust-description">Амбітні компанії, що потребують масштабованих рішень для швидкого розвитку</p>
                     </div>
                 </div>
-                <div class="trust-stats" data-aos="fade-up" data-aos-delay="500">
+                <div class="trust-stats">
                     <div class="trust-stat">
                         <span class="trust-stat-number">25+</span>
                         <span class="trust-stat-label">Успішних проєктів</span>
@@ -307,7 +240,7 @@
         </section>
 
         <!-- Заклик до дії -->
-        <section class="section cta-section" data-aos="fade-up" aria-label="Заклик до дії">
+        <section class="section cta-section" aria-label="Заклик до дії">
             <div class="container">
                 <div class="cta">
                     <h2 class="cta__title">Готові Випередити Ринок?</h2>
@@ -375,21 +308,7 @@
         </div>
     </footer>
 
-    <!-- Optimized script loading -->
-    <script src="force-visibility.js"></script>
-    <script src="assets/js/enhanced-animations.js"></script>
-    <script>
-        // Mark page as loaded for CSS transition
-        document.addEventListener('DOMContentLoaded', function() {
-            document.body.classList.add('loaded');
-        });
-        
-        // Load AOS library asynchronously
-        const aosScript = document.createElement('script');
-        aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
-        aosScript.async = true;
-        document.head.appendChild(aosScript);
-    </script>
-    <script src="assets/js/main.js" async></script>
+    <!-- Basic script loading -->
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
