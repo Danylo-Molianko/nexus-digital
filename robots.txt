@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Основні сторінки
+Allow: /index.html
+Allow: /services.html
+Allow: /about.html
+Allow: /contact.html
+Allow: /cases.html
+
+# Ресурси
+Allow: /assets/
+
+# Sitemap
+Sitemap: https://nexusdigital.ua/sitemap.xml
+
+# Блокувати
+Disallow: /admin/
+Disallow: /*.php$
+Disallow: /*.asp$
