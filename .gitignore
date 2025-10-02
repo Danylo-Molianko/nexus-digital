@@ -1,18 +1,66 @@
-# Dependencies
-/node_modules
+# ==========================================
+# NEXUS DIGITAL - BACKEND .GITIGNORE
+# ==========================================
 
-# IDE
-.vscode/
-.idea/
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# OS
-.DS_Store
-Thumbs.db
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Logs
+logs/
 *.log
-npm-debug.log*
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory
+coverage/
+.nyc_output/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Output of 'npm pack'
+*.tgz
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
 
 # Build
 /dist
 /build
+
+# Database files
+*.db
+*.sqlite
+
+# Uploads
+uploads/
+temp/
+
+# PM2
+.pm2/
+
+# Cache
+.cache/

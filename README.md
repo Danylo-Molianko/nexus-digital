@@ -1,174 +1,271 @@
-# Nexus Digital - Цифрове агентство
+# Nexus Digital - Full-Stack Backend Project
 
-Сучасний веб-сайт цифрового агентства Nexus Digital з повною уніфікованою структурою.
+🚀 **Професійний веб-сайт цифрового агентства Nexus Digital з повнофункціональним Node.js/Express backend сервером**
 
-## Структура проєкту
+## 📋 Огляд проекту
+
+Цей проект було успішно конвертовано зі статичного HTML/CSS/JS сайту в повноцінний backend проект на Node.js з Express фреймворком. Тепер сайт готовий для розгортання на сервері та підключення баз даних.
+
+### 🎯 Основні можливості
+
+- ✅ **Express.js сервер** з професійною архітектурою
+- ✅ **RESTful API** для всіх функцій сайту
+- ✅ **MongoDB інтеграція** готова до підключення
+- ✅ **Безпека та захист** (Helmet, CORS, Rate Limiting)
+- ✅ **Валідація даних** та санітизація вводу
+- ✅ **Обробка помилок** та логування
+- ✅ **Модульна архітектура** для легкого розширення
+- ✅ **SPA підтримка** для frontend фреймворків
+
+## 🛠 Технічний стек
+
+### Backend
+- **Node.js** - JavaScript runtime
+- **Express.js** - Web фреймворк
+- **MongoDB** - NoSQL база даних
+- **Mongoose** - MongoDB ODM
+- **JWT** - Аутентифікація (готово)
+- **Nodemailer** - Email сервіс (готово)
+
+### Security & Middleware
+- **Helmet** - Безпека заголовків
+- **CORS** - Cross-Origin Resource Sharing
+- **Rate Limiting** - Захист від DDoS
+- **Validation** - Валідація та санітизація даних
+- **Compression** - Стиснення відповідей
+
+### Frontend (Статичні файли)
+- **HTML5** - Семантична розмітка
+- **CSS3** - Сучасні стилі (Flexbox, Grid, Animations)
+- **JavaScript ES6+** - Інтерактивність
+- **AOS Library** - Animate On Scroll
+- **Responsive Design** - Адаптивність
+
+## 📁 Структура проекту
 
 ```
 nexus-digital/
-├── index.html          # Головна сторінка з Hero секцією та відео
-├── services.html       # Сторінка послуг з аккордеонами
-├── about.html          # Про нас зі статистикою та командою
-├── cases.html          # Кейси з портфоліо проєктів
-├── contact.html        # Контакти з формою зворотного зв'язку
-├── assets/
-│   ├── css/
-│   │   └── style.css   # Єдиний CSS файл для всього сайту
-│   ├── js/
-│   │   └── main.js     # JavaScript з AOS анімаціями
-│   ├── images/         # Всі зображення сайту
-│   └── videos/         # Відео для Hero секції
-└── README.md
+├── 📂 config/
+│   └── database.js          # Конфігурація MongoDB
+├── 📂 middleware/
+│   ├── errorHandler.js      # Обробка помилок
+│   └── security.js          # Безпека та валідація
+├── 📂 routes/
+│   ├── contact.js           # API контактної форми
+│   └── services.js          # API послуг
+├── 📂 utils/
+│   └── validation.js        # Утиліти валідації
+├── 📂 public/               # Статичні файли
+│   ├── index.html           # Головна сторінка
+│   ├── about.html           # Про нас
+│   ├── services.html        # Послуги
+│   ├── cases.html           # Кейси
+│   ├── contact.html         # Контакти
+│   ├── 📂 assets/           # Медіа файли
+│   │   ├── 📂 css/          # Стилі
+│   │   ├── 📂 js/           # Скрипти
+│   │   ├── 📂 images/       # Зображення
+│   │   └── 📂 videos/       # Відео
+│   ├── manifest.json        # PWA маніфест
+│   ├── sw.js               # Service Worker
+│   ├── robots.txt          # SEO robots
+│   └── sitemap.xml         # XML карта сайту
+├── .env                     # Змінні середовища
+├── .env.example            # Приклад змінних
+├── package.json            # Залежності проекту
+└── server.js               # Головний сервер
 ```
 
-## Технології
+## 🚀 Швидкий старт
 
-- **HTML5** - семантична розмітка
-- **CSS3** - BEM методологія, CSS змінні, Flexbox/Grid
-- **JavaScript** - ванільний JS, AOS анімації
-- **AOS** - Animate On Scroll бібліотека
-- **Responsive Design** - Mobile-First підхід
+### 1. Встановлення залежностей
 
-## Особливості
+```bash
+npm install
+```
 
-✅ **Уніфікована структура** - всі сторінки мають однакову навігацію та footer  
-✅ **AOS анімації** - плавні анімації при прокрутці  
-✅ **Відео Hero секція** - з fallback на градієнт  
-✅ **Мобільна навігація** - повнофункціональне бургер-меню  
-✅ **Аккордеони на сторінці послуг**  
-✅ **Контактна форма з валідацією**  
-✅ **Адаптивний дизайн для всіх пристроїв**  
-✅ **SEO-оптимізовані meta теги**  
+### 2. Налаштування змінних середовища
 
-## Сторінки
+Скопіюйте `.env.example` в `.env` та налаштуйте:
 
-### Головна (index.html)
-- Hero секція з відео фоном
-- Огляд послуг у вигляді карток
-- Секція "Про нас" з командою
-- Call-to-action секція
+```bash
+copy .env.example .env
+```
 
-### Послуги (services.html)
-- Digital Foundation з аккордеонами
-- Business Acceleration
-- Strategic Partnership
-- Детальний опис кожної послуги
+Відредагуйте `.env` файл:
 
-### Про нас (about.html)
-- Місія компанії
-- Статистика досягнень
-- Команда (планується розширення)
-- Цінності компанії
+```env
+# Сервер
+NODE_ENV=development
+PORT=3000
+FRONTEND_URL=http://localhost:3000
 
-### Кейси (cases.html)
-- Портфоліо успішних проєктів
-- Результати та метрики
-- Використані технології
-- Процес роботи
+# База даних
+MONGODB_URI=mongodb://localhost:27017/nexus-digital
 
-### Контакти (contact.html)
-- Форма зворотного зв'язку
-- Контактна інформація
-- Соціальні мережі
-- FAQ секція (планується)
+# JWT
+JWT_SECRET=your-super-secret-jwt-key
+JWT_EXPIRE=7d
 
-## Запуск
+# Email (Nodemailer)
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-app-password
+EMAIL_FROM=noreply@nexus-digital.com
+```
 
-1. Відкрийте `index.html` у браузері
-2. Або запустіть локальний сервер:
+### 3. Запуск сервера
+
+#### Режим розробки:
+```bash
+npm run dev
+```
+
+#### Продакшн режим:
+```bash
+npm start
+```
+
+### 4. Перевірка роботи
+
+Відкрийте браузер та перейдіть на:
+- **Сайт**: http://localhost:3000
+- **API Health Check**: http://localhost:3000/api/health
+- **API Documentation**: http://localhost:3000/api
+
+## 📡 API Endpoints
+
+### Загальні
+- `GET /api` - Інформація про API
+- `GET /api/health` - Перевірка стану сервера
+
+### Контакти
+- `POST /api/contact` - Відправка контактної форми
+
+### Послуги
+- `GET /api/services` - Список всіх послуг
+- `GET /api/services/:id` - Деталі послуги
+- `GET /api/services/meta/categories` - Категорії послуг
+
+## 🔧 Налаштування бази даних
+
+### MongoDB (Рекомендовано)
+
+1. **Локальна установка MongoDB**:
    ```bash
-   python -m http.server 8000
+   # Windows (з MongoDB Compass)
+   # Завантажте з: https://www.mongodb.com/try/download/community
+   
+   # macOS
+   brew install mongodb-community
+   
+   # Ubuntu
+   sudo apt install mongodb
    ```
-   Перейдіть на http://localhost:8000
 
-## Розробка
+2. **MongoDB Atlas (Cloud)**:
+   - Створіть акаунт на [MongoDB Atlas](https://www.mongodb.com/atlas)
+   - Створіть cluster
+   - Отримайте connection string
+   - Додайте в `.env` файл
 
-Проєкт використовує чистий HTML/CSS/JS без систем збірки для простоти підтримки.
+3. **Підключення**:
+   ```env
+   MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/nexus-digital
+   ```
 
-**Структура CSS:**
-- CSS змінні для кольорів та відступів
-- BEM методологія для назв класів
-- Mobile-First responsive дизайн
-- Модульна архітектура стилів
+## 📧 Налаштування Email
 
-**JavaScript функціональність:**
-- Ініціалізація AOS анімацій
-- Мобільне меню
-- Форма контактів з валідацією
-- Плавна прокрутка
-- Обробка помилок відео
+### Gmail SMTP:
+1. Увімкніть 2-Factor Authentication
+2. Створіть App Password
+3. Додайте в `.env`:
+   ```env
+   EMAIL_HOST=smtp.gmail.com
+   EMAIL_PORT=587
+   EMAIL_USER=your-email@gmail.com
+   EMAIL_PASS=your-16-char-app-password
+   ```
+
+### Інші провайдери:
+- **SendGrid**, **Mailgun**, **AWS SES** - більш надійні для продакшну
+
+## 🔐 Безпека
+
+Проект включає комплексні заходи безпеки:
+
+- ✅ **Helmet.js** - Захист HTTP заголовків
+- ✅ **CORS** - Контроль доступу між доменами  
+- ✅ **Rate Limiting** - Захист від DDoS атак
+- ✅ **Input Validation** - Валідація всіх вхідних даних
+- ✅ **XSS Protection** - Захист від XSS атак
+- ✅ **SQL Injection Prevention** - Безпечні запити
+- ✅ **Error Handling** - Безпечна обробка помилок
+
+## 🚀 Розгортання
+
+### Heroku:
+```bash
+# Встановіть Heroku CLI
+npm install -g heroku
+
+# Логін та створення застосунку
+heroku login
+heroku create nexus-digital-app
+
+# Налаштування змінних
+heroku config:set NODE_ENV=production
+heroku config:set MONGODB_URI=your-mongodb-connection
+
+# Деплой
+git push heroku main
+```
+
+### DigitalOcean/AWS/VPS:
+```bash
+# Клонування репозиторію
+git clone <your-repo-url>
+cd nexus-digital
+
+# Встановлення залежностей
+npm install --production
+
+# Запуск з PM2
+npm install -g pm2
+pm2 start server.js --name "nexus-digital"
+pm2 startup
+pm2 save
+```
+
+## 📊 Моніторинг
+
+Сервер включає:
+- 📝 **Логування запитів** (development/production)
+- ❌ **Логування помилок** у файли
+- 📈 **Health check endpoint** для моніторингу
+- 🔍 **Детальна діагностика** в development режимі
+
+## 🤝 Внесок в розробку
+
+1. Fork проекту
+2. Створіть feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit зміни (`git commit -m 'Add amazing feature'`)
+4. Push до branch (`git push origin feature/amazing-feature`)
+5. Створіть Pull Request
+
+## 📞 Підтримка
+
+Якщо у вас виникли питання або проблеми:
+
+- 📧 **Email**: [support@nexus-digital.com]
+- 💬 **Issues**: Створіть issue в GitHub репозиторії
+- 📚 **Документація**: Перевірте файли в папці проекту
+
+## 📄 Ліцензія
+
+Цей проект має [MIT License](LICENSE).
 
 ---
 
-© 2024 Nexus Digital. Всі права захищені.
-
-Проєкт створено для початкової структури сайту.
-
-Quick checklist:
-- Run Lighthouse (Performance, Accessibility, SEO).
-- Ensure images optimized (WebP/AVIF), use srcset/picture.
-- Add `og:image` (1200x630) and structured data.
-- Preconnect to fonts, preload critical assets.
-- Test on real devices and browsers.
-- Deploy to GitHub Pages or static host; ensure assets pushed to the deployed branch.
-
-Structure:
-- index.html — головна
-- assets/css/style.css — стилі
-- assets/js/main.js — скрипти
-- assets/images/* — медіа
-
-How to run locally:
-1. Open folder in VS Code
-2. Serve via Live Server or simple static server (e.g., `npx http-server`)
-3. Run Lighthouse and address issues.
-
-Adding the portrait photos and updated about teaser
-1. Place the image files at:
-   - c:\Users\sdank\Desktop\nexus-digital\assets\images\foto-by-oleksandr-1.webp
-   - c:\Users\sdank\Desktop\nexus-digital\assets\images\foto-by-oleksandr-1.png (fallback optional)
-   - c:\Users\sdank\Desktop\nexus-digital\assets\images\foto-by-daniel-2.webp
-   - c:\Users\sdank\Desktop\nexus-digital\assets\images\foto-by-daniel-2.png (fallback optional)
-
-Images are 1080×1600px (portrait). Use WebP/AVIF for best perf, keep PNG fallback if needed.
-
-2. Replace (or update) your about teaser section in index.html with this HTML snippet (uses .photo-frame):
-
-```html
-<!-- filepath: c:\Users\sdank\Desktop\nexus-digital\index.html -->
-<section class="section about-teaser light-section" data-aos="fade-up">
-  <div class="container about-grid">
-
-    <!-- Left portrait -->
-    <div class="about-grid__media">
-      <div class="photo-frame" aria-hidden="true">
-        <picture>
-          <source srcset="assets/images/foto-by-oleksandr-1.avif" type="image/avif">
-          <source srcset="assets/images/foto-by-oleksandr-1.webp" type="image/webp">
-          <img src="assets/images/foto-by-oleksandr-1.png" alt="Фото Олександра — команда Nexus Studio" loading="lazy">
-        </picture>
-      </div>
-    </div>
-
-    <!-- Middle portrait -->
-    <div class="about-grid__media">
-      <div class="photo-frame" aria-hidden="true">
-        <picture>
-          <source srcset="assets/images/foto-by-daniel-2.avif" type="image/avif">
-          <source srcset="assets/images/foto-by-daniel-2.webp" type="image/webp">
-          <img src="assets/images/foto-by-daniel-2.png" alt="Фото Даніеля — команда Nexus Studio" loading="lazy">
-        </picture>
-      </div>
-    </div>
-
-    <!-- Content (right column on desktop) -->
-    <div class="about-grid__content">
-      <h2>Працюйте напряму з партнерами</h2>
-      <p>На відміну від великих агенцій, кожен проєкт ведуть засновники. Данило відповідає за бізнес-стратегію, а Олександр — за технології та інновації.</p>
-      <a class="btn btn-secondary" href="about.html">Дізнатися більше</a>
-    </div>
-
-  </div>
-</section>```
-
-3. After placing images: clear cache (Ctrl+F5) and test on desktop/mobile. If you prefer different ordering (e.g., image + content + image) adjust order in markup or use CSS order.
+**Nexus Digital** - Ваш партнер у цифровій трансформації! 🚀
