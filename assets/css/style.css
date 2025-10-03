@@ -2476,7 +2476,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255,  255, 255, 0.8);
   text-decoration: none;
   transition: color var(--transition);
 }
@@ -2924,6 +2924,7 @@ body {
   background-repeat: no-repeat;
   opacity: 0.3;
   z-index: 0;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .services-hero-content-bg::before {
