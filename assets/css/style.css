@@ -1,28 +1,28 @@
-﻿/* NEXUS DIGITAL - Glassmorphism Future Design */
-
-/* CSS Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+﻿/* General Body and Canvas Reset */
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent scrollbars from canvas */
+    background-color: #0A0B10;
 }
 
-/* CSS Variables - Maximum Color Saturation */
-:root {
-  --primary-color: #000000;
-  --accent-color: #0055ff;
-  --text-light: #ffffff;
-  --text-dark: #1a1a1a;
-  --text-muted: rgba(255, 255, 255, 0.95);
-  --bg-color: #000000;
-  --bg-dark: #000000;
-  --border-color: rgba(255, 255, 255, 0.25);
-  /* Professional Font Variables */
-  --font-heading: 'Clash Display', system-ui, -apple-system, sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-primary: var(--font-body);
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block; /* Remove any default spacing */
+}
+
+/* Layering the Canvases */
+#ecosystem-canvas {
+    z-index: 0; /* The deepest layer - our particle ecosystem */
+}
+
+#matrix-canvas {
+    z-index: 1; /* The middle layer - the falling matrix code */
+}
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
   --spacing-xxl: 4rem;
