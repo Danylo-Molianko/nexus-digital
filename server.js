@@ -4,61 +4,59 @@
 
 const express = require('express');
 const path = require('path');
-const cors = require('cors');
-require('dotenv').config();
-
-const { connectDB, healthCheck, getPool } = require('./config/db');
-
 const app = express();
-app.use(cors());
-app.use(express.json());
-app.set('trust proxy', 1);
+const PORT = process.env.PORT || 8080;
 
-// Перевірка здоров'я
-app.get('/api/health', async (_req, res) => {
-  try {
-    await healthCheck();
-    res.json({ ok: true });
-  } catch (e) {
-    res.status(500).json({ ok: false, error: e?.message });
-  }
-});
-
-// Тестовий ендпоінт
-app.get('/api/time', async (_req, res) => {
-  const pool = getPool();
-  const { rows } = await pool.query('select now() as now');
-  res.json(rows[0]);
-});
-
-// Старт тільки після перевірки БД
-(async () => {
-  try {
-    connectDB();
-    await healthCheck();
-    const port = Number(process.env.PORT || 8080);
-    app.listen(port, () => console.log(`API listening on :${port}`));
-  } catch (err) {
-    console.error('Failed to start server:', err);
-    process.exit(1);
-  }
-})());
-
-// Створення простого Express сервера
 console.log('🚀 Запуск Nexus Digital сервера...');
 
-// Middleware для статичних файлів
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
+// Middleware для логування
+app.use((req, res, next) => {
+    console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+    next();
+});
+
+// Статичні файли
+app.use(express.static(path.join(__dirname, 'public'), {
+    maxAge: '1d',
+    etag: false
+}));
+
+app.use('/assets', express.static(path.join(__dirname, 'assets'), {
+    maxAge: '7d',
+    etag: false
+}));
 
 // Основний маршрут
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    const indexPath = path.join(__dirname, 'public', 'index.html');
+    res.sendFile(indexPath, (err) => {
+        if (err) {
+            console.error('Помилка відправки index.html:', err);
+            res.status(500).send(`
+                <h1>Помилка сервера</h1>
+                <p>Файл index.html не знайдено</p>
+                <p>Шлях: ${indexPath}</p>
+            `);
+        }
+    });
 });
 
-// Catch-all для SPA
+// Health check
+app.get('/health', (req, res) => {
+    res.json({
+        status: 'OK',
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime()
+    });
+});
+
+// 404 handler
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.status(404).send(`
+        <h1>404 - Сторінка не знайдена</h1>
+        <p>Шлях: ${req.url}</p>
+        <a href="/">Повернутися на головну</a>
+    `);
 });
 
 // Error handler
@@ -67,7 +65,21 @@ app.use((err, req, res, next) => {
     res.status(500).send('Внутрішня помилка сервера');
 });
 
+// Graceful shutdown
+process.on('SIGTERM', () => {
+    console.log('🛑 Отримано SIGTERM, зупиняємо сервер...');
+    process.exit(0);
+});
+
+process.on('SIGINT', () => {
+    console.log('🛑 Отримано SIGINT, зупиняємо сервер...');
+    process.exit(0);
+});
+
+// Запуск сервера
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`✅ Nexus Digital сервер запущено на порту ${PORT}`);
-    console.log(`🌐 Доступно за адресою: http://localhost:${PORT}`);
+    console.log(`🌐 Локально доступно: http://localhost:${PORT}`);
+    console.log(`🌍 Зовнішньо доступно: http://164.90.234.176:${PORT}`);
+    console.log(`📊 Health check: http://localhost:${PORT}/health`);
 });

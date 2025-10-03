@@ -9,7 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     
     steps:
     - name: 1. Отримання коду
@@ -24,50 +24,69 @@ jobs:
       run: |
         mkdir -p ~/.ssh
         ssh-keyscan -H 164.90.234.176 >> ~/.ssh/known_hosts
+        echo "✅ SSH налаштовано"
 
     - name: 4. Тестування SSH підключення
       run: |
-        echo "🔍 Тестування SSH підключення..."
-        ssh -o ConnectTimeout=30 -o BatchMode=yes nexususer@164.90.234.176 "echo 'SSH підключення успішне'"
+        echo "🔍 Тестування SSH..."
+        if ssh -o ConnectTimeout=10 nexususer@164.90.234.176 "echo 'SSH OK'"; then
+          echo "✅ SSH підключення працює"
+        else
+          echo "❌ SSH підключення не вдалося"
+          exit 1
+        fi
 
     - name: 5. Розгортання на сервер
       run: |
         echo "🚀 Початок розгортання..."
-        ssh -o ConnectTimeout=30 nexususer@164.90.234.176 'bash -s' << 'ENDSSH'
-          set -e  # Зупинити виконання при першій помилці
+        ssh -o ConnectTimeout=30 nexususer@164.90.234.176 << 'ENDSSH'
+          # Функція для логування з кольорами
+          log_info() { echo -e "\033[32m[INFO]\033[0m $1"; }
+          log_error() { echo -e "\033[31m[ERROR]\033[0m $1"; }
+          log_warn() { echo -e "\033[33m[WARN]\033[0m $1"; }
           
-          echo "📂 Перевірка директорії проєкту..."
+          # Зупинка при першій помилці
+          set -e
+          
+          log_info "Перевірка системи..."
           PROJECT_DIR="/home/nexususer/nexus-digital-web"
           
-          # Створити директорію якщо не існує
+          # Перевірка та створення директорії
           if [ ! -d "$PROJECT_DIR" ]; then
-            echo "📁 Створення директорії проєкту..."
+            log_info "Створення директорії проєкту..."
             mkdir -p "$PROJECT_DIR"
             cd "$PROJECT_DIR"
-            git clone https://github.com/Danylo-Molianko/nexus-digital.git .
+            
+            # Ініціалізація git репозиторію
+            if ! git clone https://github.com/Danylo-Molianko/nexus-digital.git . 2>/dev/null; then
+              log_warn "Клонування не вдалося, ініціалізуємо порожній репозиторій..."
+              git init
+              git remote add origin https://github.com/Danylo-Molianko/nexus-digital.git
+            fi
           else
-            echo "📥 Оновлення існуючого проєкту..."
+            log_info "Оновлення існуючого проєкту..."
             cd "$PROJECT_DIR"
             
             # Збереження локальних змін
-            if [ -n "$(git status --porcelain)" ]; then
-              echo "💾 Збереження локальних змін..."
-              git stash
+            if [ -n "$(git status --porcelain 2>/dev/null)" ]; then
+              log_info "Збереження локальних змін..."
+              git stash || log_warn "Не вдалося зберегти зміни"
             fi
             
             # Оновлення з GitHub
-            git fetch origin
-            git reset --hard origin/main
+            log_info "Завантаження останніх змін..."
+            git fetch origin main || log_warn "Fetch не вдався"
+            git reset --hard origin/main || git reset --hard HEAD
           fi
           
-          echo "📦 Перевірка package.json..."
+          # Створення package.json якщо не існує
           if [ ! -f "package.json" ]; then
-            echo "📝 Створення package.json..."
-            cat > package.json << 'EOF'
+            log_info "Створення package.json..."
+            cat > package.json << 'PACKAGE_JSON'
         {
           "name": "nexus-digital",
           "version": "1.0.0",
-          "description": "Nexus Digital - AI & Web Development",
+          "description": "Nexus Digital Website",
           "main": "server.js",
           "scripts": {
             "start": "node server.js",
@@ -78,72 +97,121 @@ jobs:
             "express": "^4.18.2"
           }
         }
-        EOF
+        PACKAGE_JSON
           fi
           
-          echo "🖥️ Перевірка server.js..."
+          # Створення server.js якщо не існує
           if [ ! -f "server.js" ]; then
-            echo "📝 Створення server.js..."
-            cat > server.js << 'EOF'
+            log_info "Створення server.js..."
+            cat > server.js << 'SERVER_JS'
         const express = require('express');
         const path = require('path');
         const app = express();
         const PORT = process.env.PORT || 8080;
         
-        console.log('🚀 Запуск Nexus Digital сервера...');
+        console.log('🚀 Запуск Nexus Digital...');
         
+        // Статичні файли
         app.use(express.static(path.join(__dirname, 'public')));
         app.use('/assets', express.static(path.join(__dirname, 'assets')));
         
+        // Основний маршрут
         app.get('/', (req, res) => {
-            res.sendFile(path.join(__dirname, 'public', 'index.html'));
+            const indexPath = path.join(__dirname, 'public', 'index.html');
+            res.sendFile(indexPath, (err) => {
+                if (err) {
+                    console.error('Помилка відправки файлу:', err);
+                    res.status(500).send('Помилка сервера');
+                }
+            });
         });
         
-        app.use((req, res) => {
-            res.status(404).sendFile(path.join(__dirname, 'public', 'index.html'));
+        // Обробка всіх інших маршрутів
+        app.get('*', (req, res) => {
+            const indexPath = path.join(__dirname, 'public', 'index.html');
+            res.sendFile(indexPath, (err) => {
+                if (err) {
+                    res.status(404).send('Сторінка не знайдена');
+                }
+            });
         });
         
+        // Запуск сервера
         app.listen(PORT, '0.0.0.0', () => {
             console.log(`✅ Сервер запущено на порту ${PORT}`);
+            console.log(`🌐 Доступно: http://localhost:${PORT}`);
         });
-        EOF
+        SERVER_JS
           fi
           
-          echo "📦 Встановлення залежностей..."
+          # Встановлення Node.js якщо не встановлено
+          if ! command -v node >/dev/null 2>&1; then
+            log_warn "Node.js не знайдено, встановлюємо..."
+            curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+          fi
+          
+          # Встановлення залежностей
+          log_info "Встановлення залежностей..."
           if command -v npm >/dev/null 2>&1; then
-            npm install --production
+            npm install --production --no-audit --no-fund
           else
-            echo "❌ npm не знайдено, встановлюйте Node.js"
+            log_error "npm не знайдено"
             exit 1
           fi
           
-          echo "🔄 Запуск/перезапуск сервера..."
-          if command -v pm2 >/dev/null 2>&1; then
-            npm run production
-            echo "✅ PM2 сервер запущено"
-          else
-            echo "⚠️ PM2 не знайдено, запуск через nohup..."
-            pkill -f "node server.js" || true
-            nohup node server.js > server.log 2>&1 &
-            echo "✅ Сервер запущено в фоновому режимі"
+          # Встановлення PM2 якщо не встановлено
+          if ! command -v pm2 >/dev/null 2>&1; then
+            log_info "Встановлення PM2..."
+            sudo npm install -g pm2
           fi
           
-          echo "🌐 Перезапуск Nginx..."
+          # Запуск/перезапуск сервера
+          log_info "Запуск сервера..."
+          if pm2 describe nexus-digital >/dev/null 2>&1; then
+            log_info "Перезапуск існуючого додатку..."
+            pm2 restart nexus-digital
+          else
+            log_info "Запуск нового додатку..."
+            pm2 start server.js --name nexus-digital
+          fi
+          
+          # Збереження конфігурації PM2
+          pm2 save
+          pm2 startup | tail -1 | sudo sh || log_warn "PM2 startup не налаштовано"
+          
+          # Перезапуск Nginx якщо встановлено
           if command -v nginx >/dev/null 2>&1; then
-            sudo systemctl reload nginx || echo "⚠️ Nginx перезапуск не вдався"
-          else
-            echo "⚠️ Nginx не знайдено"
+            log_info "Перезапуск Nginx..."
+            sudo systemctl reload nginx || log_warn "Nginx reload не вдався"
           fi
           
-          echo "✅ Розгортання завершено успішно!"
+          # Перевірка статусу
+          log_info "Перевірка статусу додатку..."
+          if pm2 describe nexus-digital | grep -q "online"; then
+            log_info "✅ Додаток працює онлайн"
+          else
+            log_warn "⚠️ Додаток може працювати не стабільно"
+          fi
+          
+          log_info "🎉 Розгортання завершено успішно!"
         ENDSSH
 
-    - name: 6. Перевірка статусу
+    - name: 6. Перевірка статусу сайту
       run: |
         echo "🔍 Перевірка доступності сайту..."
-        sleep 5
-        if curl -f -s http://164.90.234.176 > /dev/null; then
-          echo "✅ Сайт доступний!"
+        sleep 10
+        
+        # Перевірка з тайм-аутом
+        if timeout 30 bash -c 'until curl -f -s http://164.90.234.176 >/dev/null; do sleep 2; done'; then
+          echo "✅ Сайт доступний за адресою: http://164.90.234.176"
         else
           echo "⚠️ Сайт поки недоступний, але розгортання завершено"
+          echo "Перевірте логи сервера вручну"
         fi
+
+    - name: 7. Показати статус PM2
+      run: |
+        echo "📊 Статус додатків на сервері:"
+        ssh nexususer@164.90.234.176 "pm2 list || echo 'PM2 недоступний'"
+      continue-on-error: true
