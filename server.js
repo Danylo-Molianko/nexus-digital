@@ -9,9 +9,9 @@ const PORT = process.env.PORT || 8080;
 
 console.log('🚀 Запуск Nexus Digital сервера...');
 
-// Middleware для логування
+// Diagnostic Middleware to log all incoming requests
 app.use((req, res, next) => {
-    console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+    console.log(`[${new Date().toISOString()}] Request received for: ${req.url}`);
     next();
 });
 
@@ -74,6 +74,11 @@ process.on('SIGTERM', () => {
 process.on('SIGINT', () => {
     console.log('🛑 Отримано SIGINT, зупиняємо сервер...');
     process.exit(0);
+});
+
+// Test route to confirm server is running
+app.get('/test', (req, res) => {
+    res.status(200).send('Server is working!');
 });
 
 // Запуск сервера
