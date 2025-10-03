@@ -3,6 +3,7 @@
 // ==========================================
 
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -41,4 +42,32 @@ app.get('/api/time', async (_req, res) => {
     console.error('Failed to start server:', err);
     process.exit(1);
   }
-})();
+})());
+
+// Створення простого Express сервера
+console.log('🚀 Запуск Nexus Digital сервера...');
+
+// Middleware для статичних файлів
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
+
+// Основний маршрут
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// 404 handler
+app.use((req, res) => {
+    res.status(404).sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Error handler
+app.use((err, req, res, next) => {
+    console.error('Помилка сервера:', err);
+    res.status(500).send('Внутрішня помилка сервера');
+});
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`✅ Nexus Digital сервер запущено на порту ${PORT}`);
+    console.log(`🌐 Доступно за адресою: http://localhost:${PORT}`);
+});
