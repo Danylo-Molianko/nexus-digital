@@ -1,0 +1,55 @@
+name: Автоматичне Розгортання Nexus Digital
+
+on:
+  push:
+    # Запускати при вивантаженні коду в головну гілку 'main'
+    branches:
+      - main
+  # Дозволити ручний запуск з інтерфейсу GitHub
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 1. Отримання коду
+      uses: actions/checkout@v4
+
+    - name: 2. Налаштування SSH для Droplet
+      uses: webfactory/ssh-agent@v0.9.0
+      with:
+        # Використовуємо наш Секретний ключ
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: 3. Додавання хоста до known_hosts
+      run: |
+        ssh-keyscan -H 164.90.234.176 >> ~/.ssh/known_hosts
+
+    - name: 4. Розгортання та Перезапуск Сервісів
+      # Виконання команд на Droplet через SSH
+      run: |
+        # Встановлюємо змінні для чистоти коду
+        SSH_HOST="nexususer@164.90.234.176" 
+        REMOTE_DIR="/home/nexususer/nexus-digital-web"
+        
+        # Підключення до сервера та виконання команд
+        ssh -o StrictHostKeyChecking=no $SSH_HOST << 'EOF'
+          echo "Перехід до каталогу проєкту..."
+          cd $REMOTE_DIR
+          
+          echo "Оновлення коду з GitHub..."
+          git pull origin main
+          
+          echo "Встановлення залежностей..."
+          npm install --production
+          
+          # Перезапуск застосунку Node.js на порту 8080 (використовує pm2)
+          echo "Перезапуск застосунку через PM2..."
+          npm run production 
+          
+          # Фінальний перезапуск Nginx (для оновлення статичних файлів/проксі)
+          echo "Перезапуск Nginx..."
+          sudo systemctl restart nginx
+          
+          echo "✅ Розгортання успішно завершено!"
+        EOF
