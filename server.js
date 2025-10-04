@@ -15,7 +15,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// Статичні файли
+// Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public'), {
     maxAge: '1d',
     etag: false
@@ -26,28 +26,19 @@ app.use('/assets', express.static(path.join(__dirname, 'assets'), {
     etag: false
 }));
 
-// Основний маршрут
+// Route for the main page
 app.get('/', (req, res) => {
-    const indexPath = path.join(__dirname, 'public', 'index.html');
-    res.sendFile(indexPath, (err) => {
-        if (err) {
-            console.error('Помилка відправки index.html:', err);
-            res.status(500).send(`
-                <h1>Помилка сервера</h1>
-                <p>Файл index.html не знайдено</p>
-                <p>Шлях: ${indexPath}</p>
-            `);
-        }
-    });
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Health check
+// Health check endpoint
 app.get('/health', (req, res) => {
-    res.json({
-        status: 'OK',
-        timestamp: new Date().toISOString(),
-        uptime: process.uptime()
-    });
+    res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+// API routes placeholder
+app.get('/api/status', (req, res) => {
+    res.json({ message: 'Nexus Digital API is running' });
 });
 
 // 404 handler
