@@ -1,4 +1,3 @@
-/* General Body and Canvas Reset */
 body, html {
     width: 100%;
     height: 100%;
@@ -7,7 +6,6 @@ body, html {
     margin: 0;
     padding: 0;
 }
-
 canvas {
     position: fixed;
     top: 0;
@@ -16,12 +14,5 @@ canvas {
     height: 100%;
     display: block;
 }
-
-/* Layering the Canvases */
-#ecosystem-canvas {
-    z-index: 0;
-}
-
-#matrix-canvas {
-    z-index: 1;
-}
+#ecosystem-canvas { z-index: 0; }
+#matrix-canvas { z-index: 1; }
