@@ -16,3 +16,19 @@ canvas {
 }
 #ecosystem-canvas { z-index: 0; }
 #matrix-canvas { z-index: 1; }
+
+/* --- Error Logging --- */
+#error-log {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100; /* On top of everything */
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid #ff4d4d;
+    color: #ff4d4d; /* Red text */
+    font-family: monospace;
+    font-size: 14px;
+    white-space: pre-wrap; /* Preserve line breaks in error messages */
+}
