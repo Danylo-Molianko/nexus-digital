@@ -1,39 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Genesis</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <title>Nexus Digital</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0A0B10;
+            color: #00ff88;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px #00ff88;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .status {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid #00ff88;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
-    <canvas id="ecosystem-canvas"></canvas>
-    <canvas id="matrix-canvas"></canvas>
-
-    <div id="ui-container">
-        <header id="main-header">
-            <div class="logo">Nexus Genesis</div>
-            <nav>
-                <a href="#">Послуги</a>
-                <a href="#">Проєкти</a>
-                <a href="#">Контакти</a>
-            </nav>
-        </header>
-
-        <main id="main-content">
-            <section class="hero-section">
-                <h1>Проєктуємо Інтелектуальні<br>Цифрові Екосистеми</h1>
-            </section>
-        </main>
-
-        <footer id="main-footer">
-            <p>&copy; 2025 Nexus Studio. All rights reserved.</p>
-        </footer>
+    <div class="container">
+        <h1>Nexus Digital</h1>
+        <p>Сервер успішно запущено та готовий до роботи</p>
+        <div class="status">
+            <p><strong>Status:</strong> Server Online</p>
+            <p><strong>Version:</strong> 1.0.0</p>
+            <p><strong>Environment:</strong> Production Ready</p>
+        </div>
     </div>
-
-    <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
