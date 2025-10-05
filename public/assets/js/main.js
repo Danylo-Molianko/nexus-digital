@@ -1,5 +1,17 @@
 import nexusGlyphs from './modules/glyphs.js';
 
+function preloadGlyphs(glyphs) {
+    const imageCache = [];
+    glyphs.forEach(svgString => {
+        const img = new Image();
+        // Use encodeURIComponent for better handling of special characters in SVG
+        const svgUrl = 'data:image/svg+xml;utf8,' + encodeURIComponent(svgString);
+        img.src = svgUrl;
+        imageCache.push(img);
+    });
+    return imageCache;
+}
+
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -35,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 matrixCanvas.height = window.innerHeight;
 
                 // --- Animation Logic ---
-                const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                const preloadedGlyphs = preloadGlyphs(nexusGlyphs);
                 const fontSize = 16;
                 let columns = [];
 
@@ -64,17 +76,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Loop through each column
                     columns.forEach(column => {
-                        // Get a random character
-                        const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                        // Get a random glyph from our cache
+                        const glyph = preloadedGlyphs[Math.floor(Math.random() * preloadedGlyphs.length)];
                         
-                        // Draw the character
-                        ctx.fillText(text, column.x, column.y);
+                        // Ensure the glyph has loaded before trying to draw it
+                        if (glyph.complete && glyph.naturalHeight !== 0) {
+                            ctx.drawImage(glyph, column.x, column.y, fontSize, fontSize);
+                        }
 
                         // Move the column down
-                        column.y += column.speed;
+                        column.y += fontSize * (column.speed / 10);
 
                         // Reset the column when it goes off-screen
-                        if (column.y > matrixCanvas.height && Math.random() > 0.95) {
+                        if (column.y > matrixCanvas.height && Math.random() > 0.975) {
                             column.y = 0;
                         }
                     });
