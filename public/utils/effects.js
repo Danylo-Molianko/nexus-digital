@@ -93,12 +93,12 @@ export function attachEffects() {
       // Add loading state
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Відправляємо...';
+      submitBtn.textContent = 'Sending...';
       submitBtn.disabled = true;
       
       // Simulate form submission
       setTimeout(() => {
-        submitBtn.textContent = 'Відправлено! ✓';
+        submitBtn.textContent = 'Sent! ✓';
         submitBtn.style.background = 'var(--color-accent)';
         
         setTimeout(() => {
@@ -119,7 +119,7 @@ export function attachEffects() {
       const submitBtn = newsletterForm.querySelector('button');
       const originalText = submitBtn.textContent;
       
-      submitBtn.textContent = 'Підписуємо...';
+      submitBtn.textContent = 'Subscribing...';
       setTimeout(() => {
         submitBtn.textContent = 'Підписано! ✓';
         submitBtn.style.background = 'var(--color-accent)';

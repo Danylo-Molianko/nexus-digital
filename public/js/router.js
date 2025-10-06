@@ -166,30 +166,30 @@ class Router {
     if (!main) return;
     
     main.innerHTML = `
-      ${PageHeader({ title: 'Наш Процес', subtitle: 'Прозорий шлях від ідеї — до еволюції продукту.' })}
+      ${PageHeader({ title: 'Our Process', subtitle: 'Transparent path from idea to product evolution.' })}
       ${ProcessSection()}
       ${ProcessTimelineSection()}
       ${ToolsSection()}
       <section class="container" style="padding: 80px 0;">
         <div class="section-header reveal">
-          <h2>Гарантії Якості</h2>
-          <p>Що ви отримуєте на кожному етапі</p>
+          <h2>Quality Guarantees</h2>
+          <p>What you get at every stage</p>
         </div>
         <div class="guarantees-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 60px;">
           <div class="guarantee-card glass-card reveal">
             <div style="font-size: 32px; margin-bottom: 16px; text-align: center;">✅</div>
-            <h4 style="margin-bottom: 12px; text-align: center;">Щотижневі Демо</h4>
-            <p>Бачите прогрес кожного тижня та можете вносити корективи в реальному часі.</p>
+            <h4 style="margin-bottom: 12px; text-align: center;">Weekly Demos</h4>
+            <p>See progress every week and make real-time adjustments.</p>
           </div>
           <div class="guarantee-card glass-card reveal">
             <div style="font-size: 32px; margin-bottom: 16px; text-align: center;">📊</div>
-            <h4 style="margin-bottom: 12px; text-align: center;">Прозорі Звіти</h4>
-            <p>Детальна аналітика часу, бюджету та прогресу виконання завдань.</p>
+            <h4 style="margin-bottom: 12px; text-align: center;">Transparent Reports</h4>
+            <p>Detailed analytics of time, budget, and task completion progress.</p>
           </div>
           <div class="guarantee-card glass-card reveal">
             <div style="font-size: 32px; margin-bottom: 16px; text-align: center;">🔒</div>
-            <h4 style="margin-bottom: 12px; text-align: center;">Безпека Коду</h4>
-            <p>Автоматичні перевірки безпеки на кожному коміті та детальні аудити.</p>
+            <h4 style="margin-bottom: 12px; text-align: center;">Code Security</h4>
+            <p>Automated security checks on every commit and detailed audits.</p>
           </div>
         </div>
       </section>
@@ -202,44 +202,44 @@ class Router {
     if (!main) return;
     
     main.innerHTML = `
-      ${PageHeader({ title: 'Наші Проєкти', subtitle: 'Реальні кейси, що демонструють силу Nexus Effect.' })}
+      ${PageHeader({ title: 'Our Projects', subtitle: 'Real case studies demonstrating the power of Nexus Effect.' })}
       ${ProjectShowcaseSection()}
       ${StatsSection()}
       <section class="container" style="padding: 80px 0;">
         <div class="section-header reveal">
-          <h2>Індустрії, в яких ми працюємо</h2>
-          <p>Експертиза в різних сферах бізнесу</p>
+          <h2>Industries We Work In</h2>
+          <p>Expertise across different business sectors</p>
         </div>
         <div class="industries-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 60px;">
           <div class="industry-card glass-card reveal" style="text-align: center;">
             <div style="font-size: 48px; margin-bottom: 16px;">🏦</div>
-            <h4 style="margin-bottom: 12px;">Фінтех</h4>
-            <p>Банківські додатки, платіжні системи, крипто-платформи</p>
+            <h4 style="margin-bottom: 12px;">Fintech</h4>
+            <p>Banking apps, payment systems, crypto platforms</p>
           </div>
           <div class="industry-card glass-card reveal" style="text-align: center;">
             <div style="font-size: 48px; margin-bottom: 16px;">🛒</div>
             <h4 style="margin-bottom: 12px;">E-commerce</h4>
-            <p>Інтернет-магазини, маркетплейси, системи лояльності</p>
+            <p>Online stores, marketplaces, loyalty systems</p>
           </div>
           <div class="industry-card glass-card reveal" style="text-align: center;">
             <div style="font-size: 48px; margin-bottom: 16px;">🏥</div>
-            <h4 style="margin-bottom: 12px;">Медтех</h4>
-            <p>Телемедицина, системи управління клініками, ШІ-діагностика</p>
+            <h4 style="margin-bottom: 12px;">MedTech</h4>
+            <p>Telemedicine, clinic management systems, AI diagnostics</p>
           </div>
           <div class="industry-card glass-card reveal" style="text-align: center;">
             <div style="font-size: 48px; margin-bottom: 16px;">🎓</div>
             <h4 style="margin-bottom: 12px;">EdTech</h4>
-            <p>Освітні платформи, LMS системи, адаптивне навчання</p>
+            <p>Educational platforms, LMS systems, adaptive learning</p>
           </div>
           <div class="industry-card glass-card reveal" style="text-align: center;">
             <div style="font-size: 48px; margin-bottom: 16px;">🏭</div>
-            <h4 style="margin-bottom: 12px;">Виробництво</h4>
-            <p>IoT рішення, автоматизація, системи управління виробництвом</p>
+            <h4 style="margin-bottom: 12px;">Manufacturing</h4>
+            <p>IoT solutions, automation, production management systems</p>
           </div>
           <div class="industry-card glass-card reveal" style="text-align: center;">
             <div style="font-size: 48px; margin-bottom: 16px;">🚚</div>
-            <h4 style="margin-bottom: 12px;">Логістика</h4>
-            <p>Системи відстеження, оптимізація маршрутів, складське ПЗ</p>
+            <h4 style="margin-bottom: 12px;">Logistics</h4>
+            <p>Tracking systems, route optimization, warehouse software</p>
           </div>
         </div>
       </section>
@@ -252,59 +252,59 @@ class Router {
     if (!main) return;
     
     main.innerHTML = `
-      ${PageHeader({ title: 'Інсайти', subtitle: 'Думки та аналітика від експертів Nexus Studio.' })}
+      ${PageHeader({ title: 'Insights', subtitle: 'Thoughts and analytics from Nexus Studio experts.' })}
       ${LatestNewsSection()}
       <section class="container" style="padding: 80px 0;">
         <div class="section-header reveal">
-          <h2>Популярні Теми</h2>
-          <p>Найбільш актуальні напрямки в технологіях</p>
+          <h2>Popular Topics</h2>
+          <p>Most relevant trends in technology</p>
         </div>
         <div class="topics-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 60px;">
           <div class="topic-card glass-card reveal">
             <div style="font-size: 32px; margin-bottom: 16px; text-align: center;">🤖</div>
-            <h4 style="margin-bottom: 12px; text-align: center;">Штучний Інтелект</h4>
-            <p style="margin-bottom: 16px;">Як ШІ змінює бізнес-процеси та створює нові можливості</p>
+            <h4 style="margin-bottom: 12px; text-align: center;">Artificial Intelligence</h4>
+            <p style="margin-bottom: 16px;">How AI transforms business processes and creates new opportunities</p>
             <div style="text-align: center;">
-              <a href="#" style="color: var(--color-accent); text-decoration: none; font-weight: 600;">15 статей →</a>
+              <a href="#" style="color: var(--color-accent); text-decoration: none; font-weight: 600;">15 articles →</a>
             </div>
           </div>
           <div class="topic-card glass-card reveal">
             <div style="font-size: 32px; margin-bottom: 16px; text-align: center;">🔒</div>
-            <h4 style="margin-bottom: 12px; text-align: center;">Кібербезпека</h4>
-            <p style="margin-bottom: 16px;">Сучасні загрози та методи захисту цифрових активів</p>
+            <h4 style="margin-bottom: 12px; text-align: center;">Cybersecurity</h4>
+            <p style="margin-bottom: 16px;">Modern threats and methods for protecting digital assets</p>
             <div style="text-align: center;">
-              <a href="#" style="color: var(--color-accent); text-decoration: none; font-weight: 600;">12 статей →</a>
+              <a href="#" style="color: var(--color-accent); text-decoration: none; font-weight: 600;">12 articles →</a>
             </div>
           </div>
           <div class="topic-card glass-card reveal">
             <div style="font-size: 32px; margin-bottom: 16px; text-align: center;">☁️</div>
             <h4 style="margin-bottom: 12px; text-align: center;">Cloud Technologies</h4>
-            <p style="margin-bottom: 16px;">Міграція в хмару та оптимізація хмарних рішень</p>
+            <p style="margin-bottom: 16px;">Cloud migration and cloud solutions optimization</p>
             <div style="text-align: center;">
-              <a href="#" style="color: var(--color-accent); text-decoration: none; font-weight: 600;">8 статей →</a>
+              <a href="#" style="color: var(--color-accent); text-decoration: none; font-weight: 600;">8 articles →</a>
             </div>
           </div>
           <div class="topic-card glass-card reveal">
             <div style="font-size: 32px; margin-bottom: 16px; text-align: center;">📱</div>
             <h4 style="margin-bottom: 12px; text-align: center;">Mobile Development</h4>
-            <p style="margin-bottom: 16px;">Тренди в розробці мобільних додатків та UX</p>
+            <p style="margin-bottom: 16px;">Trends in mobile app development and UX</p>
             <div style="text-align: center;">
-              <a href="#" style="color: var(--color-accent); text-decoration: none; font-weight: 600;">10 статей →</a>
+              <a href="#" style="color: var(--color-accent); text-decoration: none; font-weight: 600;">10 articles →</a>
             </div>
           </div>
         </div>
       </section>
       <section class="container" style="padding: 80px 0;">
         <div class="section-header reveal">
-          <h2>Підписка на Новини</h2>
-          <p>Отримуйте останні інсайти прямо на пошту</p>
+          <h2>Newsletter Subscription</h2>
+          <p>Get the latest insights delivered to your inbox</p>
         </div>
         <div class="newsletter-card glass-card reveal" style="max-width: 600px; margin: 60px auto 0; text-align: center;">
           <h4 style="margin-bottom: 20px;">Weekly Tech Digest</h4>
-          <p style="margin-bottom: 24px;">Щотижня відправляємо добірку найцікавіших матеріалів про технології та бізнес</p>
+          <p style="margin-bottom: 24px;">Weekly compilation of the most interesting materials about technology and business</p>
           <form style="display: flex; gap: 12px; max-width: 400px; margin: 0 auto;">
-            <input type="email" placeholder="Ваш email" required style="flex: 1; padding: 12px; border: 1px solid var(--color-glass-border); border-radius: 8px; background: var(--color-glass-bg); color: var(--color-text-primary);">
-            <button type="submit" class="cta-button">Підписатися</button>
+            <input type="email" placeholder="Your email" required style="flex: 1; padding: 12px; border: 1px solid var(--color-glass-border); border-radius: 8px; background: var(--color-glass-bg); color: var(--color-text-primary);">
+            <button type="submit" class="cta-button">Subscribe</button>
           </form>
         </div>
       </section>
@@ -316,27 +316,27 @@ class Router {
     if (!main) return;
     
     main.innerHTML = `
-      ${PageHeader({ title: 'Про Nexus Studio', subtitle: 'Команда, що створює цифрове майбутнє.' })}
+      ${PageHeader({ title: 'About Nexus Studio', subtitle: 'The team creating the digital future.' })}
       <section class="container">
         <div class="section-header reveal">
-          <h2>Наша Місія</h2>
-          <p>Ми — архітектори цифрового майбутнього, що об'єднуємо створення, інновації та безпеку в цілісну екосистему.</p>
+          <h2>Our Mission</h2>
+          <p>We are architects of the digital future, combining creation, innovation, and security into a cohesive ecosystem.</p>
         </div>
         <div class="mission-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 60px;">
           <div class="mission-card glass-card reveal">
             <div style="font-size: 48px; margin-bottom: 20px; text-align: center;">🎯</div>
-            <h4 style="margin-bottom: 16px; text-align: center;">Наша Мета</h4>
-            <p>Допомагати бізнесу використовувати силу технологій для досягнення амбітних цілей та створення інноваційних продуктів.</p>
+            <h4 style="margin-bottom: 16px; text-align: center;">Our Goal</h4>
+            <p>Help businesses harness the power of technology to achieve ambitious goals and create innovative products.</p>
           </div>
           <div class="mission-card glass-card reveal">
             <div style="font-size: 48px; margin-bottom: 20px; text-align: center;">💡</div>
-            <h4 style="margin-bottom: 16px; text-align: center;">Наш Підхід</h4>
-            <p>Поєднуємо глибоку технічну експертизу з розумінням бізнесу, створюючи рішення, що справді працюють.</p>
+            <h4 style="margin-bottom: 16px; text-align: center;">Our Approach</h4>
+            <p>We combine deep technical expertise with business understanding, creating solutions that truly work.</p>
           </div>
           <div class="mission-card glass-card reveal">
             <div style="font-size: 48px; margin-bottom: 20px; text-align: center;">🚀</div>
-            <h4 style="margin-bottom: 16px; text-align: center;">Наше Майбутнє</h4>
-            <p>Стати провідною студією в Україні та розширити вплив на міжнародний ринок через інноваційні проєкти.</p>
+            <h4 style="margin-bottom: 16px; text-align: center;">Our Future</h4>
+            <p>Become a leading studio in Ukraine and expand our influence to the international market through innovative projects.</p>
           </div>
         </div>
       </section>
@@ -352,18 +352,18 @@ class Router {
     if (!main) return;
     
     main.innerHTML = `
-      ${PageHeader({ title: 'Зв\'яжіться з Нами', subtitle: 'Готові обговорити ваш проєкт?' })}
+      ${PageHeader({ title: 'Contact Us', subtitle: 'Ready to discuss your project?' })}
       ${ContactInfoSection()}
       <section class="container" style="padding: 80px 0;">
         <div class="section-header reveal">
-          <h2>Напишіть Нам</h2>
-          <p>Розкажіть про ваш проєкт, і ми зв'яжемося протягом 24 годин</p>
+          <h2>Write to Us</h2>
+          <p>Tell us about your project, and we'll get back to you within 24 hours</p>
         </div>
         <div class="contact-form-container" style="max-width: 800px; margin: 60px auto 0;">
           <form id="contact-form" class="glass-card reveal" style="padding: 40px;">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
               <div>
-                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Ім'я *</label>
+                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Name *</label>
                 <input type="text" name="name" required style="width: 100%; padding: 12px; border: 1px solid var(--color-glass-border); border-radius: 8px; background: var(--color-glass-bg); color: var(--color-text-primary);">
               </div>
               <div>
@@ -372,38 +372,38 @@ class Router {
               </div>
             </div>
             <div style="margin-bottom: 20px;">
-              <label style="display: block; margin-bottom: 8px; font-weight: 600;">Компанія</label>
+              <label style="display: block; margin-bottom: 8px; font-weight: 600;">Company</label>
               <input type="text" name="company" style="width: 100%; padding: 12px; border: 1px solid var(--color-glass-border); border-radius: 8px; background: var(--color-glass-bg); color: var(--color-text-primary);">
             </div>
             <div style="margin-bottom: 20px;">
-              <label style="display: block; margin-bottom: 8px; font-weight: 600;">Тип проєкту</label>
+              <label style="display: block; margin-bottom: 8px; font-weight: 600;">Project Type</label>
               <select name="project-type" style="width: 100%; padding: 12px; border: 1px solid var(--color-glass-border); border-radius: 8px; background: var(--color-glass-bg); color: var(--color-text-primary);">
-                <option value="">Оберіть тип проєкту</option>
-                <option value="web-app">Веб-додаток</option>
-                <option value="mobile-app">Мобільний додаток</option>
-                <option value="ai-solution">ШІ рішення</option>
-                <option value="modernization">Модернізація системи</option>
-                <option value="consulting">Консультації</option>
-                <option value="other">Інше</option>
+                <option value="">Choose project type</option>
+                <option value="web-app">Web Application</option>
+                <option value="mobile-app">Mobile Application</option>
+                <option value="ai-solution">AI Solution</option>
+                <option value="modernization">System Modernization</option>
+                <option value="consulting">Consulting</option>
+                <option value="other">Other</option>
               </select>
             </div>
             <div style="margin-bottom: 20px;">
-              <label style="display: block; margin-bottom: 8px; font-weight: 600;">Бюджет</label>
+              <label style="display: block; margin-bottom: 8px; font-weight: 600;">Budget</label>
               <select name="budget" style="width: 100%; padding: 12px; border: 1px solid var(--color-glass-border); border-radius: 8px; background: var(--color-glass-bg); color: var(--color-text-primary);">
-                <option value="">Орієнтовний бюджет</option>
+                <option value="">Estimated budget</option>
                 <option value="5k-15k">$5,000 - $15,000</option>
                 <option value="15k-50k">$15,000 - $50,000</option>
                 <option value="50k-100k">$50,000 - $100,000</option>
                 <option value="100k+">$100,000+</option>
-                <option value="discuss">Обговорити індивідуально</option>
+                <option value="discuss">Discuss individually</option>
               </select>
             </div>
             <div style="margin-bottom: 24px;">
-              <label style="display: block; margin-bottom: 8px; font-weight: 600;">Опис проєкту *</label>
-              <textarea name="message" rows="5" required placeholder="Розкажіть детальніше про ваш проєкт, цілі та очікування..." style="width: 100%; padding: 12px; border: 1px solid var(--color-glass-border); border-radius: 8px; background: var(--color-glass-bg); color: var(--color-text-primary); resize: vertical;"></textarea>
+              <label style="display: block; margin-bottom: 8px; font-weight: 600;">Project Description *</label>
+              <textarea name="message" rows="5" required placeholder="Tell us more about your project, goals and expectations..." style="width: 100%; padding: 12px; border: 1px solid var(--color-glass-border); border-radius: 8px; background: var(--color-glass-bg); color: var(--color-text-primary); resize: vertical;"></textarea>
             </div>
             <div style="text-align: center;">
-              <button type="submit" class="cta-button" style="padding: 16px 32px;">Відправити запит</button>
+              <button type="submit" class="cta-button" style="padding: 16px 32px;">Send Request</button>
             </div>
           </form>
         </div>
@@ -411,8 +411,8 @@ class Router {
       ${OfficeLocationsSection()}
       <section class="container" style="padding: 80px 0;">
         <div class="section-header reveal">
-          <h2>Слідкуйте за Нами</h2>
-          <p>Будьте в курсі наших проєктів та інсайтів</p>
+          <h2>Follow Us</h2>
+          <p>Stay updated on our projects and insights</p>
         </div>
         <div class="social-links" style="display: flex; justify-content: center; gap: 30px; margin-top: 40px;">
           <a href="#" class="social-link glass-card reveal" style="display: flex; align-items: center; gap: 12px; padding: 16px 24px; text-decoration: none; color: var(--color-text-primary);">
@@ -441,12 +441,12 @@ class Router {
     if (!main) return;
     
     main.innerHTML = `
-      ${PageHeader({ title: '404', subtitle: 'Сторінка не знайдена' })}
+      ${PageHeader({ title: '404', subtitle: 'Page not found' })}
       <section class="container">
         <div class="glass-card reveal">
-          <h3>Упс! Щось пішло не так</h3>
-          <p>Сторінка, яку ви шукаєте, не існує або була переміщена.</p>
-          <div style="margin-top:16px"><a href="/" class="cta-button" data-link>На головну</a></div>
+          <h3>Oops! Something went wrong</h3>
+          <p>The page you're looking for doesn't exist or has been moved.</p>
+          <div style="margin-top:16px"><a href="/" class="cta-button" data-link>Go Home</a></div>
         </div>
       </section>
     `;
@@ -459,9 +459,9 @@ class Router {
     app.innerHTML = `
       <div style="min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; color:var(--color-text-primary);">
         <div>
-          <h1>Помилка завантаження</h1>
-          <p>Спробуйте оновити сторінку</p>
-          <button onclick="window.location.reload()" class="cta-button">Оновити</button>
+          <h1>Loading Error</h1>
+          <p>Please try refreshing the page</p>
+          <button onclick="window.location.reload()" class="cta-button">Refresh</button>
         </div>
       </div>
     `;
