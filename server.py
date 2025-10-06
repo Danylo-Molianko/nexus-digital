@@ -10,7 +10,7 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
     
     def do_GET(self):
         if self.path == '/':
-            self.path = '/pages/index.html'
+            self.path = '/index.html'
         elif self.path == '/about':
             self.path = '/pages/about.html'
         elif self.path == '/services':
@@ -19,6 +19,10 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
             self.path = '/pages/portfolio.html'
         elif self.path == '/contact':
             self.path = '/pages/contact.html'
+        elif self.path == '/process':
+            self.path = '/pages/process.html'
+        elif self.path == '/insights':
+            self.path = '/pages/insights.html'
         
         return super().do_GET()
 

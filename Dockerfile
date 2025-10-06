@@ -24,6 +24,9 @@ RUN adduser -S nextjs -u 1001
 # Змінюємо користувача
 USER nextjs
 
+# Встановлюємо порт середовища для серверу Express
+ENV PORT=8080
+
 # Відкриваємо порт
 EXPOSE 8080
 

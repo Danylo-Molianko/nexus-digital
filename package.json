@@ -1,16 +1,40 @@
 {
-  "name": "nexus-digital-web",
-  "version": "1.0.0",
-  "description": "Nexus Digital Website - Clean Server Setup",
+  "name": "nexus-digital-website",
+  "version": "2.0.0",
+  "description": "Nexus Digital - Professional Web Development & Digital Solutions",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "NODE_ENV=development node server.js",
+    "prod": "NODE_ENV=production node server.js",
+    "dev:win": "$env:NODE_ENV='development'; node server.js",
+    "prod:win": "$env:NODE_ENV='production'; node server.js",
+    "test": "echo \"No tests specified\" && exit 0",
+    "lint": "echo \"No linting configured\" && exit 0"
   },
+  "keywords": [
+    "web-development",
+    "digital-solutions",
+    "mobile-apps",
+    "automation",
+    "express",
+    "nodejs"
+  ],
+  "author": "Nexus Digital Team",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.18.2"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nexus-digital/website.git"
+  },
+  "homepage": "https://nexus-digital.com",
+  "bugs": {
+    "url": "https://github.com/nexus-digital/website/issues"
   }
 }

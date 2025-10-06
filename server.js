@@ -26,32 +26,12 @@ app.use(express.static(path.join(__dirname, 'public'), {
 }));
 
 // ==========================================
-// ROUTES FOR ALL 5 PAGES
+// ROUTES FOR SPA - ALL ROUTES SERVE INDEX.HTML
 // ==========================================
 
-// 1. Головна сторінка
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'pages', 'index.html'));
-});
-
-// 2. Про нас
-app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'pages', 'about.html'));
-});
-
-// 3. Послуги
-app.get('/services', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'pages', 'services.html'));
-});
-
-// 4. Портфоліо
-app.get('/portfolio', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'pages', 'portfolio.html'));
-});
-
-// 5. Контакти
-app.get('/contact', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'pages', 'contact.html'));
+// All routes serve the main index.html for SPA routing
+app.get(['/', '/services', '/process', '/portfolio', '/insights', '/about', '/contact'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Health check endpoint
