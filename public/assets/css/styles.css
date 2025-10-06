@@ -5,19 +5,6 @@
   --grad-3: #f472b6;
 }
 
-/* Smooth gradient background animation */
-.animated-gradient {
-  background: linear-gradient(135deg, var(--grad-1), var(--grad-2), var(--grad-3));
-  background-size: 200% 200%;
-  animation: gradientShift 12s ease infinite;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 /* Subtle glass effect */
 .glass {
   backdrop-filter: blur(12px);
@@ -26,43 +13,8 @@
   border: 1px solid rgba(255,255,255,0.15);
 }
 
-/* Fancy underline hover */
-.link-underline {
-  position: relative;
-}
-.link-underline::after {
-  content: "";
-  position: absolute;
-  left: 0; bottom: -4px;
-  width: 0; height: 2px;
-  background: currentColor;
-  transition: width .25s ease;
-}
-.link-underline:hover::after { width: 100%; }
-
-/* Card hover lift */
-.card-lift {
-  transform: translateY(0px);
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-.card-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-}
-
 /* Reveal animation base (used with AOS/GSAP) */
 .reveal { opacity: 0; transform: translateY(16px); }
-
-/* Utility to limit container width nicely */
-.nx-container { width: min(1200px, 92vw); margin-inline: auto; }
-
-/* Hero headline gradient text */
-.text-gradient {
-  background: linear-gradient(90deg, #22d3ee, #a78bfa, #f472b6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 
 /* Footer subtle border */
 footer { border-top: 1px solid rgba(255,255,255,0.1); }

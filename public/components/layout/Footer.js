@@ -6,19 +6,19 @@ export function Footer() {
       <div class="footer-grid">
         <div class="footer-column reveal">
           <h4>NEXUS STUDIO</h4>
-          <p>Архітектори Вашого Цифрового Майбутнього.</p>
+          <p>Architects of Your Digital Future.</p>
         </div>
         <div class="footer-column reveal">
-          <h4>Навігація</h4>
+          <h4>NAVIGATION</h4>
           <ul>
-            <li><a href="/#pillars">Послуги</a></li>
-            <li><a href="/#process">Наш Процес</a></li>
-            <li><a href="/portfolio">Проєкти</a></li>
-            <li><a href="/about">Про Нас</a></li>
+            <li><a href="/services" data-link>Services</a></li>
+            <li><a href="/process" data-link>Our Process</a></li>
+            <li><a href="/portfolio" data-link>Portfolio</a></li>
+            <li><a href="/about" data-link>About Us</a></li>
           </ul>
         </div>
         <div class="footer-column reveal">
-          <h4>Контакти</h4>
+          <h4>CONNECT</h4>
           <ul>
             <li><a href="mailto:hello@nexus.studio">hello@nexus.studio</a></li>
             <li><a href="#">LinkedIn</a></li>
@@ -26,15 +26,15 @@ export function Footer() {
           </ul>
         </div>
         <div class="footer-column reveal">
-          <h4>Правова інформація</h4>
+          <h4>LEGAL</h4>
           <ul>
-            <li><a href="#">Політика Конфіденційності</a></li>
-            <li><a href="#">Умови Використання</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom reveal">
-        <p>&copy; ${year} Nexus Studio. Всі права захищено.</p>
+        <p>&copy; ${year} Nexus Studio. All rights reserved.</p>
       </div>
     </div>
   </footer>`;

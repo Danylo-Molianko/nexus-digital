@@ -129,31 +129,31 @@ class Router {
     const main = document.getElementById('main-content');
     if (!main) return;
 
-    const buildList = `<ul><li>Архітектура та проектування</li><li>Міграція та модернізація</li><li>DevOps практики</li></ul>`;
-    const aiList = `<ul><li>Автоматизація процесів</li><li>Моделі ML під бізнес</li><li>Аналітика та інсайти</li></ul>`;
-    const secList = `<ul><li>Аудити безпеки</li><li>Впровадження DevSecOps</li><li>Відповідність стандартам</li></ul>`;
+    const buildList = `<ul><li>Architecture & Design</li><li>Migration & Modernization</li><li>DevOps Practices</li></ul>`;
+    const aiList = `<ul><li>Process Automation</li><li>Business ML Models</li><li>Analytics & Insights</li></ul>`;
+    const secList = `<ul><li>Security Audits</li><li>DevSecOps Implementation</li><li>Compliance Standards</li></ul>`;
     
     main.innerHTML = `
-      ${PageHeader({ title: 'Наші Послуги', subtitle: 'Три стовпи, що створюють стійку цифрову екосистему.' })}
+      ${PageHeader({ title: 'OUR SERVICES', subtitle: 'Three pillars that create one resilient digital ecosystem.' })}
       <section class="container">
         <div class="pillars-grid">
-          ${GlassCard({ title: 'Створення та Модернізація', description: 'Розробка ПЗ на замовлення, масштабування інфраструктури. ' + buildList })}
-          ${GlassCard({ title: 'Інновації та Автоматизація', description: 'ШІ-рішення для підвищення ефективності. ' + aiList })}
-          ${GlassCard({ title: 'Захист та Відповідність', description: 'Безпека на всіх етапах циклу. ' + secList })}
+          ${GlassCard({ title: 'Build & Modernize', description: 'Custom software development, infrastructure scaling. ' + buildList })}
+          ${GlassCard({ title: 'Innovate & Automate', description: 'AI solutions for efficiency enhancement. ' + aiList })}
+          ${GlassCard({ title: 'Secure & Comply', description: 'Security at all lifecycle stages. ' + secList })}
         </div>
       </section>
       ${ServiceDetailsSection()}
       ${PricingSection()}
       <section class="container">
         <div class="section-header reveal">
-          <h2>Ефект Nexus</h2>
-          <p>Стовпи діють разом: створення, інновації та безпека інтегруються у цілісну архітектуру.</p>
+          <h2>THE NEXUS EFFECT</h2>
+          <p>The pillars work together: creation, innovation, and security integrate into a holistic architecture.</p>
         </div>
         <div class="glass-card reveal">
-          <h3>Приклади взаємодії</h3>
-          <p>Коли ми створюємо новий мобільний додаток (Створення), ми додаємо персоналізацію через ШІ (Інновації) та впроваджуємо DevSecOps з першого дня (Захист).</p>
-          <p>Модернізація вашої системи — це шанс вбудувати аналітику на основі ШІ і зміцнити її проти сучасних загроз.</p>
-          <div style="margin-top:16px"><a href="/contact" class="cta-button">Запланувати консультацію</a></div>
+          <h3>Integration Examples</h3>
+          <p>When we create a new mobile application (<strong>Build</strong>), we add personalization through AI (<strong>Innovate</strong>) and implement DevSecOps from day one (<strong>Secure</strong>).</p>
+          <p>Modernizing your system is an opportunity to embed AI-powered analytics and strengthen it against modern threats.</p>
+          <div style="margin-top:16px"><a href="/contact" class="cta-button" data-link>SCHEDULE A CONSULTATION</a></div>
         </div>
       </section>
       ${TestimonialsSection()}
@@ -446,7 +446,7 @@ class Router {
         <div class="glass-card reveal">
           <h3>Упс! Щось пішло не так</h3>
           <p>Сторінка, яку ви шукаєте, не існує або була переміщена.</p>
-          <div style="margin-top:16px"><a href="/" class="cta-button">На головну</a></div>
+          <div style="margin-top:16px"><a href="/" class="cta-button" data-link>На головну</a></div>
         </div>
       </section>
     `;

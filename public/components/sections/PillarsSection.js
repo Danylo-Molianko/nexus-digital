@@ -9,24 +9,24 @@ export function PillarsSection() {
   return `
     <section id="pillars" class="container">
       <div class="section-header reveal">
-        <h2>Ефект Nexus</h2>
-        <p>Наша сила — у синергії. Ми не просто надаємо послуги, а поєднуємо їх для створення цілісних та стійких цифрових рішень.</p>
+        <h2>THE NEXUS EFFECT</h2>
+        <p>Our advantage is synergy. We don't just offer services; we architect solutions where the whole is greater than the sum of its parts.</p>
       </div>
       <div class="pillars-grid">
         ${GlassCard({
           icon: ICON_BUILD,
-          title: 'Створення та Модернізація',
-          description: 'Розробка ПЗ на замовлення та модернізація застарілих систем для створення міцного цифрового фундаменту вашого бізнесу.'
+          title: 'Build & Modernize',
+          description: 'From bespoke software engineering to modernizing legacy platforms, we build the robust digital backbone your business requires to scale with confidence.'
         })}
         ${GlassCard({
           icon: ICON_AI,
-          title: 'Інновації та Автоматизація',
-          description: 'Впровадження рішень на основі ШІ та машинне навчання для автоматизації процесів та отримання конкурентних переваг.'
+          title: 'Innovate & Automate',
+          description: 'We implement cutting-edge AI and machine learning to automate complex processes, unlock predictive insights, and forge a decisive competitive edge.'
         })}
         ${GlassCard({
           icon: ICON_SEC,
-          title: 'Захист та Відповідність',
-          description: 'Комплексні рішення з кібербезпеки та DevSecOps для захисту ваших даних, операцій та майбутнього зростання.'
+          title: 'Secure & Comply',
+          description: 'Through comprehensive cybersecurity and DevSecOps, we protect your assets and reputation by engineering security into the very DNA of your product.'
         })}
       </div>
     </section>
