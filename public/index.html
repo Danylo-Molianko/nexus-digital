@@ -8,6 +8,9 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
 </head>
 <body>
+    <!-- Aurora Background -->
+    <div class="aurora-background"></div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container">
@@ -15,11 +18,26 @@
                 <a href="/" class="logo">Nexus Digital</a>
                 
                 <ul class="nav-menu" id="nav-menu">
-                    <li><a href="/" class="nav-link active">Головна</a></li>
-                    <li><a href="/about" class="nav-link">Про нас</a></li>
-                    <li><a href="/services" class="nav-link">Послуги</a></li>
-                    <li><a href="/portfolio" class="nav-link">Портфоліо</a></li>
-                    <li><a href="/contact" class="nav-link">Контакти</a></li>
+                    <li><a href="/" class="nav-link active">
+                        <span class="nav-icon" data-icon="home">🏠</span>
+                        <span class="nav-text">Головна</span>
+                    </a></li>
+                    <li><a href="/about" class="nav-link">
+                        <span class="nav-icon" data-icon="about">👥</span>
+                        <span class="nav-text">Про нас</span>
+                    </a></li>
+                    <li><a href="/services" class="nav-link">
+                        <span class="nav-icon" data-icon="services">⚙️</span>
+                        <span class="nav-text">Послуги</span>
+                    </a></li>
+                    <li><a href="/portfolio" class="nav-link">
+                        <span class="nav-icon" data-icon="portfolio">🎨</span>
+                        <span class="nav-text">Портфоліо</span>
+                    </a></li>
+                    <li><a href="/contact" class="nav-link">
+                        <span class="nav-icon" data-icon="contact">📞</span>
+                        <span class="nav-text">Контакти</span>
+                    </a></li>
                 </ul>
                 
                 <div class="mobile-toggle" id="mobile-toggle">
@@ -32,41 +50,45 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Nexus Digital</h1>
+                <h1>NEXUS DIGITAL</h1>
                 <p>Ваш цифровий партнер у світі інновацій. Створюємо сучасні веб-рішення та цифрові платформи для вашого бізнесу.</p>
                 
-                <div class="status-indicator">
-                    <span class="status-dot"></span>
-                    <span>Сервер онлайн • Готовий до роботи</span>
-                </div>
-                
-                <div style="margin-top: 2rem;">
-                    <a href="/contact" class="btn">Зв'язатися з нами</a>
-                    <a href="/services" class="btn btn-outline" style="margin-left: 1rem;">Наші послуги</a>
+                <div class="hero-buttons">
+                    <a href="/contact" class="btn btn-primary">Зв'язатися з нами</a>
+                    <a href="/services" class="btn btn-outline">Наші послуги</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Quick Info Section -->
-    <section class="section">
+    <!-- Services Section -->
+    <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">Чому обирають нас?</h2>
-            <div class="grid grid-3">
-                <div class="card">
-                    <h3>🚀 Швидкість</h3>
-                    <p>Розробляємо та запускаємо проекти у найкоротші терміни з максимальною ефективністю.</p>
+            <div class="services-header">
+                <h2>Наші послуги</h2>
+                <p>Професійні рішення для вашого цифрового успіху</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="glass-card">
+                    <div class="card-icon">🚀</div>
+                    <h3>Веб-розробка</h3>
+                    <p>Створюємо швидкі та сучасні веб-сайти з унікальним дизайном та професійним функціоналом.</p>
                 </div>
-                <div class="card">
-                    <h3>💡 Інновації</h3>
-                    <p>Використовуємо найсучасніші технології та підходи для створення унікальних рішень.</p>
+                
+                <div class="glass-card">
+                    <div class="card-icon">📱</div>
+                    <h3>Мобільні додатки</h3>
+                    <p>Розробляємо нативні та кросплатформні мобільні додатки для iOS та Android.</p>
                 </div>
-                <div class="card">
-                    <h3>🎯 Якість</h3>
-                    <p>Гарантуємо високу якість коду, дизайну та загальної реалізації всіх проектів.</p>
+                
+                <div class="glass-card">
+                    <div class="card-icon">⚙️</div>
+                    <h3>Автоматизація</h3>
+                    <p>Впроваджуємо автоматизовані системи для оптимізації бізнес-процесів вашої компанії.</p>
                 </div>
             </div>
         </div>
