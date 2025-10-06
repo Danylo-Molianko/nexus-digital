@@ -1,5 +1,5 @@
 // ==========================================
-// NEXUS DIGITAL - CLEAN EXPRESS SERVER
+// NEXUS DIGITAL - MULTI-PAGE EXPRESS SERVER  
 // ==========================================
 
 const express = require('express');
@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-console.log('🚀 Запуск Nexus Digital сервера...');
+console.log('🚀 Запуск Nexus Digital багатосторінкового сервера...');
 
 // Middleware для парсингу JSON
 app.use(express.json({ limit: '10mb' }));
@@ -25,9 +25,33 @@ app.use(express.static(path.join(__dirname, 'public'), {
     etag: false
 }));
 
-// Route for the main page
+// ==========================================
+// ROUTES FOR ALL 5 PAGES
+// ==========================================
+
+// 1. Головна сторінка
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'pages', 'index.html'));
+});
+
+// 2. Про нас
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'pages', 'about.html'));
+});
+
+// 3. Послуги
+app.get('/services', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'pages', 'services.html'));
+});
+
+// 4. Портфоліо
+app.get('/portfolio', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'pages', 'portfolio.html'));
+});
+
+// 5. Контакти
+app.get('/contact', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'pages', 'contact.html'));
 });
 
 // Health check endpoint
@@ -36,16 +60,24 @@ app.get('/health', (req, res) => {
         status: 'OK', 
         timestamp: new Date().toISOString(),
         uptime: process.uptime(),
-        version: '1.0.0'
+        version: '1.0.0',
+        pages: ['/', '/about', '/services', '/portfolio', '/contact']
     });
 });
 
 // API status endpoint
 app.get('/api/status', (req, res) => {
     res.json({ 
-        message: 'Nexus Digital API is running',
+        message: 'Nexus Digital Multi-Page API is running',
         timestamp: new Date().toISOString(),
-        environment: process.env.NODE_ENV || 'development'
+        environment: process.env.NODE_ENV || 'development',
+        availablePages: {
+            home: '/',
+            about: '/about',
+            services: '/services', 
+            portfolio: '/portfolio',
+            contact: '/contact'
+        }
     });
 });
 
