@@ -64,3 +64,9 @@ temp/
 
 # Cache
 .cache/
+# Vite
+.vite
+
+# React/Frontend specific
+# dist - already included above
+
