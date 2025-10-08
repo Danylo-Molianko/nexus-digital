@@ -53,8 +53,11 @@ app.get('/api/health', (req, res) => {
     });
 });
 
-// Static files with smart caching
-const buildPath = path.join(__dirname, 'dist');
+// Static files with smart caching  
+// Після корекції Dockerfile файли знаходяться безпосередньо в /app
+const buildPath = process.env.NODE_ENV === 'production' 
+  ? __dirname  // В Docker контейнері файли в /app
+  : path.join(__dirname, 'dist'); // Локально файли в dist/
 app.use(express.static(buildPath, {
   maxAge: '1d',
   etag: true,
