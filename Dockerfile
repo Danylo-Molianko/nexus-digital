@@ -1,38 +1,21 @@
-# ==========================================
-# NEXUS DIGITAL - CLEAN DOCKERFILE
-# ==========================================
-
-# Використовуємо офіційний Node.js runtime
-FROM node:18-alpine
-
-# Встановлюємо робочу директорію
+# === ЕТАП 1: ЗБІРКА ФРОНТЕНДУ (BUILD STAGE) ===
+FROM node:20-alpine as builder
 WORKDIR /app
-
-# Копіюємо package files
 COPY package*.json ./
-
-# Встановлюємо залежності
-RUN npm ci --only=production
-
-# Копіюємо вихідний код
+RUN npm install
 COPY . .
+RUN npm run build
 
-# Створюємо не-root користувача
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nextjs -u 1001
+# === ЕТАП 2: ЗАПУСК СЕРВЕРА (PRODUCTION STAGE) ===
+FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --only=production
+COPY server.js .
+COPY --from=builder /app/dist ./dist
 
-# Змінюємо користувача
-USER nextjs
+# Відкриваємо порт 3000
+EXPOSE 3000
 
-# Встановлюємо порт середовища для серверу Express
-ENV PORT=8080
-
-# Відкриваємо порт
-EXPOSE 8080
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:8080/health || exit 1
-
-# Запускаємо додаток
-CMD ["npm", "start"]
+# Команда для запуску нашого сервера
+CMD ["node", "server.js"]

@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # Node.js додаток
+  nexus-app:
+    build: .
+    container_name: nexus-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    networks:
+      - nexus-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Nginx реверс-проксі
+  nginx:
+    image: nginx:alpine
+    container_name: nexus-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./ssl:/etc/nginx/ssl  # Папка для SSL сертифікатів
+    depends_on:
+      - nexus-app
+    networks:
+      - nexus-network
+
+networks:
+  nexus-network:
+    driver: bridge
