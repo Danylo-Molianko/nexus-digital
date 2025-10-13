@@ -11,6 +11,17 @@ FROM node:20-alpine
 WORKDIR /app                          # <--- ВСТАНОВЛЮЄМО РОБОЧУ ТЕКУ
 COPY package*.json ./
 RUN npm install --only=production
+
+# ================== START: ADD DATABASE CA CERTIFICATE ==================
+
+# Copy the database CA certificate into the container's certificate store
+COPY db-ca-cert.crt /usr/local/share/ca-certificates/db-ca-cert.crt
+
+# Set correct permissions and update the certificate store
+RUN chmod 644 /usr/local/share/ca-certificates/db-ca-cert.crt && update-ca-certificates
+
+# =================== END: ADD DATABASE CA CERTIFICATE ===================
+
 COPY server.js .
 # Ми копіюємо вміст теки dist з builder'а у поточну робочу теку (/app)
 COPY --from=builder /app/dist/ ./
