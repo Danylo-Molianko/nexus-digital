@@ -29,7 +29,7 @@ const ImpactSection = () => {
     <section className="container mx-auto px-4 py-24">
       <div className="text-center mb-16 max-w-3xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
-          OUR IMPACT IN NUMBERS
+          TRUSTED BY LEADERS DEDICATED TO CREATING VALUE.
         </h2>
         <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
           Results that speak for themselves.

@@ -7,15 +7,11 @@ import ProjectsPage from './pages/ProjectsPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 
-// Цей допоміжний компонент буде автоматично прокручувати сторінку вгору при кожній зміні маршруту.
-// Це стандартна практика для хорошого UX в SPA.
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-
   return null;
 };
 
@@ -30,8 +26,6 @@ function App() {
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          {/* Пізніше ми можемо додати сюди сторінку 404 */}
-          {/* <Route path="*" element={<NotFoundPage />} /> */}
         </Routes>
       </MainLayout>
     </Router>

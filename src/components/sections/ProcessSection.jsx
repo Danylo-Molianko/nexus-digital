@@ -4,10 +4,10 @@ import GlassCard from '../ui/GlassCard';
 const processSteps = [
     { title: "Discovery & Strategy", description: "We dive deep into your business to define objectives, establish KPIs, and create a strategic project roadmap." },
     { title: "Architecture & Design", description: "We architect the solution and design intuitive UX/UI, creating interactive prototypes to visualize the final product." },
-    { title: "Development & Integration", description: "Our team writes clean, scalable code using Agile methodologies for iterative development and seamless integration." },
-    { title: "Testing & Quality Assurance", description: "We conduct rigorous testing, including comprehensive security audits, to ensure a flawless and robust product." },
-    { title: "Deployment & Launch", description: "We manage the entire launch process, from server configuration to market release, ensuring a smooth transition." },
-    { title: "Evolution & Optimization", description: "Our partnership continues post-launch with ongoing monitoring, performance analysis, and strategic enhancements." }
+    { title: "Creation & Development", description: "Our team writes clean, scalable code using Agile methodologies for iterative development and seamless integration." },
+    { title: "Testing & Refinement", description: "We conduct rigorous testing, including comprehensive security audits, to ensure a flawless and robust product." },
+    { title: "Launch & Handover", description: "We manage the entire launch process, from server configuration to market release, ensuring a smooth transition." },
+    { title: "Partnership & Evolution", description: "Our partnership continues post-launch with ongoing monitoring, performance analysis, and strategic enhancements." }
 ];
 
 const ProcessSection = () => {
@@ -15,7 +15,7 @@ const ProcessSection = () => {
         <section className="container mx-auto px-4 py-24">
             <div className="text-center mb-20 max-w-3xl mx-auto">
                 <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
-                    From Idea to Evolution
+                    OUR PROCESS – YOUR PATH TO A CONFIDENT OUTCOME.
                 </h2>
                 <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
                     Our transparent, six-step process guarantees predictability, control, and exceptional results at every stage.

@@ -5,18 +5,18 @@ import { CubeTransparentIcon, SparklesIcon, ShieldCheckIcon } from '@heroicons/r
 const pillarsData = [
   {
     icon: CubeTransparentIcon,
-    title: "Build & Modernize",
-    description: "From custom software development to modernizing legacy systems, we build the robust digital foundation your business needs to scale."
+    title: "FOUNDATION & GROWTH",
+    description: "We create reliable custom software, web, and mobile platforms from the ground up. We modernize existing systems, breathing new life and efficiency into them."
   },
   {
     icon: SparklesIcon,
-    title: "Innovate & Automate",
-    description: "We implement cutting-edge AI and machine learning solutions to automate processes, unlock data insights, and create a decisive competitive advantage."
+    title: "INNOVATION & INSIGHTS",
+    description: "We leverage AI to optimize processes, gain valuable insights from data, and create solutions that better serve people."
   },
   {
     icon: ShieldCheckIcon,
-    title: "Secure & Comply",
-    description: "With comprehensive cybersecurity and DevSecOps, we protect your data, operations, and future growth by embedding security into every layer."
+    title: "SECURITY & TRUST",
+    description: "Security is the foundation of trust. We integrate it into every stage of our work, protecting your data, reputation, and your clients' peace of mind."
   }
 ];
 
@@ -25,7 +25,7 @@ const PillarsSection = () => {
     <section className="container mx-auto px-4 py-24">
       <div className="text-center mb-16 max-w-3xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
-          THE NEXUS EFFECT
+          OUR APPROACH: THREE PILLARS OF EXCELLENCE.
         </h2>
         <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
           Our strength lies in synergy. We don't just offer services; we connect them to create holistic, future-proof digital solutions.

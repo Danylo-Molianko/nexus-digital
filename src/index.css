@@ -4,28 +4,16 @@
 
 @layer base {
   :root {
-    /* Палітра кольорів */
     --color-background-deep: #0A0F1F;
-    --color-background-medium: #171C2E;
     --color-text-primary: #E1E1E6;
     --color-text-secondary: #A8A8B3;
     --color-accent: #00BFFF;
     --color-accent-dimmed: rgba(0, 191, 255, 0.1);
-
-    /* Палітра "Скла" (Glassmorphism) */
     --color-glass-bg: rgba(23, 28, 46, 0.4);
     --color-glass-border: rgba(255, 255, 255, 0.1);
     --glass-blur: 12px;
-
-    /* Layout */
     --header-height: 80px;
   }
-
-  body {
-    @apply bg-[var(--color-background-deep)] text-[var(--color-text-primary)] font-sans antialiased;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-headings text-white;
-  }
+  body { @apply bg-[var(--color-background-deep)] text-[var(--color-text-primary)] font-sans antialiased; }
+  h1, h2, h3, h4, h5, h6 { @apply font-headings text-white; }
 }
