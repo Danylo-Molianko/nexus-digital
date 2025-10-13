@@ -12,15 +12,18 @@ WORKDIR /app                          # <--- ВСТАНОВЛЮЄМО РОБОЧ
 COPY package*.json ./
 RUN npm install --only=production
 
-# ================== START: ADD DATABASE CA CERTIFICATE ==================
+# ================== START: CORRECT CERTIFICATE INSTALL ==================
 
-# Copy the database CA certificate into the container's certificate store
-COPY db-ca-cert.crt /usr/local/share/ca-certificates/db-ca-cert.crt
+# Install the ca-certificates package required for certificate management on Alpine
+RUN apk add --no-cache ca-certificates
 
-# Set correct permissions and update the certificate store
-RUN chmod 644 /usr/local/share/ca-certificates/db-ca-cert.crt && update-ca-certificates
+# Copy the database CA certificate into the container's certificate store with correct permissions
+COPY --chmod=644 db-ca-cert.crt /usr/local/share/ca-certificates/db-ca-cert.crt
 
-# =================== END: ADD DATABASE CA CERTIFICATE ===================
+# Update the certificate store to recognize the new certificate
+RUN update-ca-certificates
+
+# =================== END: CORRECT CERTIFICATE INSTALL ===================
 
 COPY server.js .
 # Ми копіюємо вміст теки dist з builder'а у поточну робочу теку (/app)
