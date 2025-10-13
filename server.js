@@ -69,18 +69,16 @@ app.get('/api/status', (req, res) => {
     });
 });
 
-// Serve static files from dist folder (весь фронтенд)
-const buildPath = path.join(__dirname, 'dist');
-app.use(express.static(buildPath, {
-    maxAge: process.env.NODE_ENV === 'production' ? '1d' : '0',
-    etag: true,
-    lastModified: true,
-    setHeaders: (res, path) => {
-        if (path.endsWith('.html')) {
-            res.setHeader('Cache-Control', 'no-cache');
-        }
-    }
-}));
+// ================== START: CORRECT STATIC PATH CONFIGURATION ==================
+
+// Define the absolute path to the build directory.
+// '__dirname' correctly points to the current directory inside the Docker container (e.g., /app).
+const buildPath = path.join(__dirname, 'dist'); // IMPORTANT: Change 'dist' to 'build' if your build folder has a different name.
+
+// Serve static files from the build directory.
+app.use(express.static(buildPath));
+
+// =================== END: CORRECT STATIC PATH CONFIGURATION ===================
 
 // Handle React Router (SPA fallback) - ВСІ роути через сервер
 app.get('*', (req, res) => {
