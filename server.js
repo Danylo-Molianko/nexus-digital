@@ -69,20 +69,20 @@ app.get('/api/status', (req, res) => {
     });
 });
 
-// ================== START: CORRECT STATIC PATH CONFIGURATION ==================
+// ================== START: FINAL STATIC PATH CONFIGURATION ==================
 
-// Define the absolute path to the build directory.
-// '__dirname' correctly points to the current directory inside the Docker container (e.g., /app).
-const buildPath = path.join(__dirname, 'dist'); // IMPORTANT: Change 'dist' to 'build' if your build folder has a different name.
+// Explicitly define the path to the 'dist' folder.
+// '__dirname' resolves to the application's root directory inside Docker (which is /app).
+const staticFilesPath = path.join(__dirname, 'dist');
 
-// Serve static files from the build directory.
-app.use(express.static(buildPath));
+// Serve all static files (like index.html, CSS, JS) from this specified path.
+app.use(express.static(staticFilesPath));
 
-// =================== END: CORRECT STATIC PATH CONFIGURATION ===================
+// =================== END: FINAL STATIC PATH CONFIGURATION ===================
 
 // Handle React Router (SPA fallback) - ВСІ роути через сервер
 app.get('*', (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'));
+    res.sendFile(path.join(staticFilesPath, 'index.html'));
 });
 
 // Error handling middleware
@@ -102,7 +102,7 @@ app.listen(PORT, HOST, () => {
     console.log(`   - Network:           http://${HOST}:${PORT}`);
     console.log(`   - Продакшн сайт:     https://nexus-studio-innovation.com`);
     console.log(`   - Environment:       ${process.env.NODE_ENV || 'development'}`);
-    console.log(`   - Static files:      ${buildPath}`);
+    console.log(`   - Static files:      ${staticFilesPath}`);
     console.log(`\n🌍 Основний сайт: https://nexus-studio-innovation.com`);
     console.log(`🔧 Локальна розробка: http://localhost:${PORT}`);
     console.log(`\n✨ Готово до розгортання на продакшн!`);
