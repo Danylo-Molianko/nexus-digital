@@ -24,5 +24,8 @@ RUN npm install --only=production
 RUN chown -R node:node /app
 USER node
 
-# 5. The command to run the application
+# 5. Expose the application port
+EXPOSE 3001
+
+# 6. The command to run the application
 CMD [ "node", "server.js" ]
