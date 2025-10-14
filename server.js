@@ -96,7 +96,9 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
+console.log('>>> [ІНДИКАТОР 1] Намагаюся запустити сервер і відкрити порт...');
 app.listen(PORT, HOST, () => {
+    console.log(`>>> [ІНДИКАТОР 2] УСПІХ! Сервер слухає на порту ${PORT}`);
     console.log(`🚀 Nexus Studio Server запущено:`);
     console.log(`   - Локальна розробка:  http://localhost:${PORT}`);
     console.log(`   - Network:           http://${HOST}:${PORT}`);
