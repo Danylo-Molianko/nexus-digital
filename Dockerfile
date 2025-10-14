@@ -32,5 +32,11 @@ COPY --from=builder /app/dist/ ./
 # Відкриваємо порт 3000
 EXPOSE 3000
 
+# Set ownership of all files in /app to the 'node' user
+RUN chown -R node:node /app
+
+# Switch to the non-root 'node' user for subsequent commands
+USER node
+
 # Команда для запуску нашого сервера
 CMD ["node", "server.js"]
