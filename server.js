@@ -7,7 +7,6 @@ import { fileURLToPath } from 'url';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const HOST = process.env.HOST || '0.0.0.0';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -97,11 +96,11 @@ app.use((err, req, res, next) => {
 
 // Start server
 console.log('>>> [ІНДИКАТОР 1] Намагаюся запустити сервер і відкрити порт...');
-app.listen(PORT, HOST, () => {
+app.listen(PORT, () => {
     console.log(`>>> [ІНДИКАТОР 2] УСПІХ! Сервер слухає на порту ${PORT}`);
     console.log(`🚀 Nexus Studio Server запущено:`);
     console.log(`   - Локальна розробка:  http://localhost:${PORT}`);
-    console.log(`   - Network:           http://${HOST}:${PORT}`);
+    console.log(`   - Network:           http://0.0.0.0:${PORT}`);
     console.log(`   - Продакшн сайт:     https://nexus-studio-innovation.com`);
     console.log(`   - Environment:       ${process.env.NODE_ENV || 'development'}`);
     console.log(`   - Static files:      ${staticFilesPath}`);
