@@ -3,7 +3,7 @@
 ## Архітектура
 
 ```
-Internet → nginx (порт 80/443) → Node.js (порт 3000) → React App
+Internet → nginx (порт 80/443) → Node.js (порт 3001) → React App
 ```
 
 ## Швидке налаштування
@@ -56,7 +56,7 @@ docker-compose logs nexus-app
 # Порти
 sudo netstat -tlnp | grep :80
 sudo netstat -tlnp | grep :443
-sudo netstat -tlnp | grep :3000
+sudo netstat -tlnp | grep :3001
 ```
 
 ### Логи
@@ -72,7 +72,7 @@ docker-compose logs -f nexus-app
 ### Тестування
 ```bash
 # Локальна перевірка
-curl -I http://localhost:3000
+curl -I http://localhost:3001
 curl -I https://nexus-studio-innovation.com
 
 # SSL перевірка

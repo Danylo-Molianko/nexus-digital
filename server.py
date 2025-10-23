@@ -26,7 +26,7 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
         
         return super().do_GET()
 
-PORT = 3000
+PORT = 3001
 
 print("========================================")
 print("    NEXUS STUDIO Server Starting...")

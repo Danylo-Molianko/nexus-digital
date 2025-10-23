@@ -12,7 +12,7 @@ if %errorlevel% neq 0 (
 
 echo.
 echo 🌐 Запуск сервера...
-echo Сайт буде доступний на: http://localhost:3000
+echo Сайт буде доступний на: http://localhost:3001
 echo.
 call npm start
 

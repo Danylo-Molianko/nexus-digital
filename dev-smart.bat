@@ -7,7 +7,7 @@ echo ╚════════════════════════
 echo.
 echo 🔥 Запускаю автоматичне збирання...
 echo 📁 Відстежую зміни в src/
-echo 🌐 Сервер: http://localhost:3000
+echo 🌐 Сервер: http://localhost:3001
 echo.
 echo ✨ При зміні файлів - автоматично перебудовую!
 echo 🛑 Для зупинки натисніть Ctrl+C
@@ -24,6 +24,6 @@ echo 📋 Відкриті вікна:
 echo    • Auto Builder - автоматичне збирання
 echo    • Express Server - веб-сервер
 echo.
-echo 🌐 Відкрити сайт: http://localhost:3000
+echo 🌐 Відкрити сайт: http://localhost:3001
 echo.
 pause

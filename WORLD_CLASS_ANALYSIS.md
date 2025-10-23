@@ -154,7 +154,7 @@
 cd "c:\Users\sdank\Desktop\nexus-digital"
 node server.js
 
-# Відкрийте: http://localhost:3000
+# Відкрийте: http://localhost:3001
 ```
 
 ### **Що перевірити:**

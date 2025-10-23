@@ -105,7 +105,7 @@ node server.js
 # Або подвійний клік на start.bat
 ```
 
-**URL: http://localhost:3000**
+**URL: http://localhost:3001**
 
 ---
 

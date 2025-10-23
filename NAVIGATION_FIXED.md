@@ -51,13 +51,13 @@
 - Подвійний клік на `start.bat` (якщо Node.js встановлений)
 
 ### Перевірте ці URL:
-- http://localhost:3000 (головна)
-- http://localhost:3000/services (послуги)
-- http://localhost:3000/process (процес)
-- http://localhost:3000/portfolio (проєкти)
-- http://localhost:3000/insights (інсайти)
-- http://localhost:3000/about (про нас)
-- http://localhost:3000/contact (контакти)
+- http://localhost:3001 (головна)
+- http://localhost:3001/services (послуги)
+- http://localhost:3001/process (процес)
+- http://localhost:3001/portfolio (проєкти)
+- http://localhost:3001/insights (інсайти)
+- http://localhost:3001/about (про нас)
+- http://localhost:3001/contact (контакти)
 
 ## ✨ Ключові покращення
 

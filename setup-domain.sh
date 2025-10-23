@@ -59,7 +59,7 @@ echo ""
 echo "📊 Статус сервісів:"
 echo "==================="
 echo "Nginx: $(sudo systemctl is-active nginx)"
-echo "Node.js app (порт 3000): $(lsof -i :3000 >/dev/null 2>&1 && echo 'Running' || echo 'Stopped')"
+echo "Node.js app (порт 3001): $(lsof -i :3001 >/dev/null 2>&1 && echo 'Running' || echo 'Stopped')"
 
 echo ""
 echo "🌐 Ваш сайт має бути доступний за адресою:"

@@ -124,7 +124,7 @@ function Test-ServerConnection {
     Start-Sleep -Seconds 3
     
     try {
-        $response = Invoke-WebRequest -Uri "http://localhost:3000" -TimeoutSec 10 -ErrorAction Stop
+    $response = Invoke-WebRequest -Uri "http://localhost:3001" -TimeoutSec 10 -ErrorAction Stop
         if ($response.StatusCode -eq 200) {
             Write-ColorText "✅ Сервер відповідає успішно!" Green
             return $true
@@ -142,7 +142,7 @@ function Start-SmartServer {
     Write-ColorText "🚀 Запускаю розумний сервер..." Green
     Write-Host ""
     Write-ColorText "⚡ Автоматичне оновлення активне" Magenta
-    Write-ColorText "🌐 Сайт: http://localhost:3000" Blue
+    Write-ColorText "🌐 Сайт: http://localhost:3001" Blue
     Write-ColorText "🛑 Ctrl+C для зупинки" Red
     Write-Host ""
     
@@ -173,11 +173,11 @@ function Start-SmartServer {
 function Open-Browser {
     Write-ColorText "🌐 Відкриваю браузер..." Blue
     try {
-        Start-Process "http://localhost:3000"
+    Start-Process "http://localhost:3001"
     }
     catch {
         Write-ColorText "ℹ️ Не вдалося автоматично відкрити браузер" Gray
-        Write-ColorText "🔗 Відкрийте вручну: http://localhost:3000" Yellow
+    Write-ColorText "🔗 Відкрийте вручну: http://localhost:3001" Yellow
     }
 }
 

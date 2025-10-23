@@ -4,33 +4,23 @@
 
 ### Розробка (Development)
 ```bash
-npm run dev          # Запуск Vite dev сервера (http://localhost:5173)
-npm run dev:server   # Запуск Express сервера з автоперезапуском
-npm run dev:full     # Одночасний запуск Vite + Express серверів
+# Docker-only flow: запускайте через Docker Compose
+docker compose up -d
 ```
 
 ### Продакшн (Production)
 ```bash
-npm run build        # Збірка проекту
-npm start           # Запуск продакшн сервера (http://localhost:3000)
-npm run build:start # Збірка + запуск сервера
+# Docker-only: збірка/запуск контейнерів
+docker compose up -d --build
 ```
 
 ### Швидкі команди
 
-#### Windows PowerShell
-```powershell
-./restart.ps1        # Перезапуск сервера з новою збіркою
-```
-
-#### Windows Batch
-```cmd
-restart.bat          # Перезапуск сервера з новою збіркою
-```
+> Локальні npm/скрипти PowerShell/BAT більше не використовуються. Використовуйте Docker Compose.
 
 ## Порти
-- **Розробка (Vite)**: http://localhost:5173
-- **Продакшн (Express)**: http://localhost:3000
+- **Доступ до застосунку (через Nginx)**: http://localhost:80
+- **Внутрішній порт Node.js**: http://localhost:3001
 
 ## Структура проекту
 ```
@@ -52,18 +42,17 @@ nexus-digital/
 ## Troubleshooting
 
 ### Сайт не оновлюється?
-1. Зупиніть всі процеси: `taskkill /F /IM node.exe`
-2. Створіть нову збірку: `npm run build`
-3. Запустіть сервер: `npm start`
+1. Зупиніть контейнери: `docker compose down`
+2. Перезберіть: `docker compose up -d --build`
 
 ### Порт зайнятий?
 ```bash
-netstat -ano | findstr :3000    # Знайти процес на порту 3000
+netstat -ano | findstr :3001    # Знайти процес на порту 3001
 taskkill /F /PID <PID>          # Вбити процес
 ```
 
 ## Docker
 ```bash
 docker build -t nexus-digital .
-docker run -p 3000:3000 nexus-digital
+docker run -p 3001:3001 nexus-digital
 ```

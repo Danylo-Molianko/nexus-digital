@@ -7,7 +7,7 @@ Write-Host ""
 
 Write-Host "🔥 Запускаю автоматичне збирання..." -ForegroundColor Yellow
 Write-Host "📁 Відстежую зміни в src/" -ForegroundColor Green
-Write-Host "🌐 Сервер: http://localhost:3000" -ForegroundColor Blue
+Write-Host "🌐 Сервер: http://localhost:3001" -ForegroundColor Blue
 Write-Host ""
 Write-Host "✨ При зміні файлів - автоматично перебудовую!" -ForegroundColor Magenta
 Write-Host "🛑 Для зупинки натисніть Ctrl+C" -ForegroundColor Red
@@ -38,7 +38,7 @@ Write-Host ""
 Write-Host "🌐 Відкриваю сайт..." -ForegroundColor Blue
 
 # Відкриваємо браузер
-Start-Process "http://localhost:3000"
+Start-Process "http://localhost:3001"
 
 Write-Host ""
 Write-Host "🎉 Готово! Розробляйте з комфортом!" -ForegroundColor Green

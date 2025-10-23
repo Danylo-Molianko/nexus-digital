@@ -31,7 +31,7 @@ function triggerBuild() {
     });
     
     console.log(`✅ [${timestamp}] Збірка завершена успішно!`);
-    console.log('🌐 Оновіть браузер: http://localhost:3000');
+  console.log('🌐 Оновіть браузер: http://localhost:3001');
     
   } catch (error) {
     console.error(`❌ [${timestamp}] Помилка збірки:`, error.message);

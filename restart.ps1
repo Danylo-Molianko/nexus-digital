@@ -8,4 +8,4 @@ npm run build
 Write-Host "Запускаємо сервер..." -ForegroundColor Green
 Start-Process powershell -ArgumentList "-Command", "npm start"
 
-Write-Host "Сервер перезапущено! Відкривайте http://localhost:3000" -ForegroundColor Green
+Write-Host "Сервер перезапущено! Відкривайте http://localhost:3001" -ForegroundColor Green

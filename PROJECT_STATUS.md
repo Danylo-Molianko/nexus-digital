@@ -12,7 +12,7 @@
 ```javascript
 ✅ 5 маршрутів: /, /about, /services, /portfolio, /contact
 ✅ Статичні файли з папки public
-✅ Порт: 3000 (оновлений з 8080)
+✅ Порт: 3001 (оновлений з 8080)
 ✅ Health check: /health
 ✅ API статус: /api/status
 ✅ 404 обробка
@@ -64,7 +64,7 @@
 1. Відкрийте CMD (Win + R → cmd)
 2. `cd "c:\Users\sdank\Desktop\nexus-digital"`
 3. `node server.js`
-4. Відкрийте: http://localhost:3000
+4. Відкрийте: http://localhost:3001
 
 ### Альтернативно:
 - Подвійний клік на `start.bat`

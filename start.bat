@@ -5,8 +5,8 @@ echo    NEXUS STUDIO Server Starting...
 echo ========================================
 echo.
 echo 🚀 Launching Digital Dreams Reality...
-echo 🌌 Port: 3000
-echo 🌐 URL: http://localhost:3000
+echo 🌌 Port: 3001
+echo 🌐 URL: http://localhost:3001
 echo.
 node server.js
 echo.

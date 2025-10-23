@@ -8,5 +8,5 @@ call npm run build
 echo Запускаємо сервер...
 start cmd /k npm start
 
-echo Сервер перезапущено! Відкривайте http://localhost:3000
+echo Сервер перезапущено! Відкривайте http://localhost:3001
 pause

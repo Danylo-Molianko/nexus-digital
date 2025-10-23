@@ -106,8 +106,8 @@ npm start              # Тільки запуск
 
 ### 🔍 Для тестування:
 ```bash
-curl http://localhost:3000/api/health
-curl http://localhost:3000/health
+curl http://localhost:3001/api/health
+curl http://localhost:3001/health
 ```
 
 ## 📊 Результати
@@ -140,9 +140,9 @@ curl http://localhost:3000/health
 ---
 
 ### 🌐 Тестування:
-- **Сайт**: http://localhost:3000
-- **API**: http://localhost:3000/api/health
-- **Legacy health**: http://localhost:3000/health
+- **Сайт**: http://localhost:3001
+- **API**: http://localhost:3001/api/health
+- **Legacy health**: http://localhost:3001/health
 - **Продакшн**: https://nexus-studio-innovation.com
 
 **Все працює ідеально! 🎉**

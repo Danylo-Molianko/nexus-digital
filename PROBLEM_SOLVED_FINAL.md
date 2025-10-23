@@ -117,9 +117,9 @@ npm run build:start # Збірка + запуск
 ## 🌐 Тестування
 
 Сайт тепер доступний і оновлюється правильно:
-- **Локально**: http://localhost:3000
+- **Локально**: http://localhost:3001
 - **Продакшн**: https://nexus-studio-innovation.com
-- **Health check**: http://localhost:3000/health
+- **Health check**: http://localhost:3001/health
 
 ---
 

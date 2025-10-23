@@ -176,8 +176,8 @@ copy .env.example .env
 ```env
 # Сервер
 NODE_ENV=development
-PORT=3000
-FRONTEND_URL=http://localhost:3000
+PORT=3001
+FRONTEND_URL=http://localhost:3001
 
 # База даних
 MONGODB_URI=mongodb://localhost:27017/nexus-digital

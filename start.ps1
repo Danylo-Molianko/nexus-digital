@@ -4,8 +4,8 @@ Write-Host "    NEXUS STUDIO Server Starting..." -ForegroundColor Yellow
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "🚀 Launching Digital Dreams Reality..." -ForegroundColor Green
-Write-Host "🌌 Port: 3000" -ForegroundColor Blue
-Write-Host "🌐 URL: http://localhost:3000" -ForegroundColor Blue
+Write-Host "🌌 Port: 3001" -ForegroundColor Blue
+Write-Host "🌐 URL: http://localhost:3001" -ForegroundColor Blue
 Write-Host ""
 
 # Change to the script directory
