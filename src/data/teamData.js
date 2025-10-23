@@ -1,20 +1,20 @@
 export const teamData = [
   {
-    name: 'Данило Молянко',
-    role: 'Founder & CEO',
-    bio: 'Стратегічний візіонер, що поєднує глибоку технічну експертизу з бізнес-мисленням для створення інноваційних рішень.',
+    name: 'Danylo Moliarenko',
+    role: 'Founder & CEO / Chief Strategist',
+    bio: 'Strategic founder leading end-to-end engineering initiatives that fuse product strategy with AI and security to deliver decisive market advantage.',
     imageUrl: 'https://placehold.co/400x400/0A0F1F/FFFFFF?text=DM',
   },
   {
-    name: 'Олена Петренко',
-    role: 'Lead AI Engineer',
-    bio: 'Експерт з машинного навчання та нейронних мереж, що перетворює складні дані на потужні бізнес-інструменти.',
+    name: 'Olena Petrenko',
+    role: 'Lead AI Engineer / Head of Innovation',
+    bio: 'Leads applied AI and machine learning initiatives, transforming complex data into intelligent, automated systems that scale.',
     imageUrl: 'https://placehold.co/400x400/0A0F1F/FFFFFF?text=OP',
   },
   {
-    name: 'Максим Сидоренко',
-    role: 'Head of Cybersecurity',
-    bio: 'Сертифікований спеціаліст з кібербезпеки, що гарантує надійність та захищеність кожного нашого проєкту.',
+    name: 'Max Sydorenko',
+    role: 'Head of Cybersecurity / Chief Security Architect',
+    bio: 'Owns security architecture and DevSecOps, implementing zero-trust principles and compliance by design across every delivery stage.',
     imageUrl: 'https://placehold.co/400x400/0A0F1F/FFFFFF?text=MS',
   },
 ];

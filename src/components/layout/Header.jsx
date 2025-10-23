@@ -29,13 +29,15 @@ const Header = () => {
           Nexus Studio
         </NavLink>
         <nav className="hidden md:flex items-center gap-8">
-          <NavLink to="/services" className={navLinkClasses}>Services</NavLink>
-          <NavLink to="/projects" className={navLinkClasses}>Projects</NavLink>
-          <NavLink to="/about" className={navLinkClasses}>About Us</NavLink>
-          <NavLink to="/contact" className={navLinkClasses}>Contact</NavLink>
+          <NavLink to="/strategy" className={navLinkClasses}>STRATEGY</NavLink>
+          <NavLink to="/arsenal" className={navLinkClasses}>ARSENAL</NavLink>
+          <NavLink to="/team" className={navLinkClasses}>TEAM</NavLink>
+          <NavLink to="/contact" className={navLinkClasses}>CONTACT</NavLink>
         </nav>
         <div className="hidden md:block">
-          <Button variant="secondary">Consultation</Button>
+          <NavLink to="/schedule-session">
+            <Button variant="secondary">SCHEDULE SESSION</Button>
+          </NavLink>
         </div>
       </div>
     </header>

@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout';
 import HomePage from './pages/HomePage';
-import ServicesPage from './pages/ServicesPage';
-import ProjectsPage from './pages/ProjectsPage';
-import AboutPage from './pages/AboutPage';
+import StrategyPage from './pages/ServicesPage';
+import ArsenalPage from './pages/ProjectsPage';
+import TeamPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 
 const ScrollToTop = () => {
@@ -22,10 +22,11 @@ function App() {
       <MainLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/about" element={<AboutPage />} />
+          <Route path="/strategy" element={<StrategyPage />} />
+          <Route path="/arsenal" element={<ArsenalPage />} />
+          <Route path="/team" element={<TeamPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/schedule-session" element={<ContactPage />} />
         </Routes>
       </MainLayout>
     </Router>

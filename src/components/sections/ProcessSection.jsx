@@ -15,10 +15,10 @@ const ProcessSection = () => {
         <section className="container mx-auto px-4 py-24">
             <div className="text-center mb-20 max-w-3xl mx-auto">
                 <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
-                    OUR PROCESS – YOUR PATH TO A CONFIDENT OUTCOME.
+                    Our Process — Your Predictable Victory
                 </h2>
                 <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-                    Our transparent, six-step process guarantees predictability, control, and exceptional results at every stage.
+                    You aren't buying a 'black box.' You are investing in a transparent, 6-step engineering process that guarantees outcomes.
                 </p>
             </div>
             

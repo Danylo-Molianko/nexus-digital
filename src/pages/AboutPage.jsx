@@ -8,19 +8,16 @@ const AboutPage = () => {
   return (
     <>
       <PageHeader 
-        title="About Nexus Studio" 
-        subtitle="We are a team of architects, innovators, and security experts dedicated to engineering the digital future." 
+        title="Your Strategic Engineering Partner" 
+        subtitle="We are a team of architects, innovators, and security experts united by a single purpose: to engineer your market domination." 
       />
       
       <section className="container mx-auto px-4 py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
-            <h2 className="text-4xl font-bold uppercase tracking-wider mb-6">Our Mission</h2>
-            <p className="text-lg text-[var(--color-text-secondary)] mb-4">
-              To be the most trusted strategic technology partner for companies aiming to transform their operations and achieve a decisive competitive advantage through innovation.
-            </p>
-            <p className="text-[var(--color-text-secondary)]">
-              We don't just build software; we engineer intelligent, resilient digital ecosystems that become the core of our clients' success. Our strength lies in the synergy of development, AI, and security.
+            <h2 className="text-4xl font-bold uppercase tracking-wider mb-6">Our Doctrine</h2>
+            <p className="text-lg text-[var(--color-text-secondary)]">
+              Our goal is to be the only technology partner...
             </p>
           </div>
           <GlassCard>
@@ -38,8 +35,8 @@ const AboutPage = () => {
       <section className="bg-[var(--color-background-medium)]/50 py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">Meet Our Team</h2>
-            <p className="mt-4 text-lg text-[var(--color-text-secondary)]">The architects behind your success.</p>
+            <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">The Nexus Command: Your Core Advantage</h2>
+            <p className="mt-4 text-lg text-[var(--color-text-secondary)]">Our leadership is the living embodiment of the Three Pillars: Strategy, Innovation, and Security.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {teamData.map((member, index) => (
