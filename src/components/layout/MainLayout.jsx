@@ -8,7 +8,7 @@ const MainLayout = ({ children }) => {
     <div className="relative min-h-screen">
   {/* <AuroraBackground /> */}
       <Header />
-      <main className="relative z-10">
+      <main className="relative z-10 bg-[var(--color-background-deep)]">
         {children}
       </main>
       <Footer />
