@@ -1,4 +1,6 @@
-﻿/** @type {import('tailwindcss').Config} */
+﻿import defaultTheme from 'tailwindcss/defaultTheme'
+
+/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
@@ -7,8 +9,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        headings: ['Space Grotesk', 'sans-serif'],
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        headings: ['Space Grotesk', ...defaultTheme.fontFamily.sans],
       },
     },
   },
