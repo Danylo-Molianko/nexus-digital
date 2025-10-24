@@ -13,9 +13,11 @@
     --color-glass-border: rgba(255, 255, 255, 0.1);
     --glass-blur: 12px;
     --header-height: 80px;
+    --header-height-large: 80px;
+    --header-height-small: 60px;
   }
   body { @apply bg-[var(--color-background-deep)] text-[var(--color-text-primary)] font-sans antialiased; }
-  h1, h2, h3, h4, h5, h6 { @apply font-headings text-white; }
+  h1, h2, h3, h4, h5, h6 { @apply font-headings text-[var(--color-text-primary)]; }
 }
 
 @keyframes slow-drift {
