@@ -10,7 +10,7 @@ const TriageSection = () => {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-        <GlassCard>
+  <GlassCard className="bg-[#1C1E26] text-[#F7F4EB] border-transparent">
           <div className="flex flex-col h-full">
             <h3 className="text-2xl font-bold mb-3">STRATEGIC PARTNERSHIP</h3>
             <p className="text-[var(--color-text-secondary)] mb-6">
@@ -24,7 +24,7 @@ const TriageSection = () => {
           </div>
         </GlassCard>
 
-        <GlassCard>
+  <GlassCard className="bg-[#1C1E26] text-[#F7F4EB] border-transparent">
           <div className="flex flex-col h-full">
             <h3 className="text-2xl font-bold mb-3">PACKAGED SOLUTIONS</h3>
             <p className="text-[var(--color-text-secondary)] mb-6">
@@ -38,7 +38,7 @@ const TriageSection = () => {
           </div>
         </GlassCard>
 
-        <GlassCard>
+  <GlassCard className="bg-[#1C1E26] text-[#F7F4EB] border-transparent">
           <div className="flex flex-col h-full">
             <h3 className="text-2xl font-bold mb-3">MVP SCOPING</h3>
             <p className="text-[var(--color-text-secondary)] mb-6">
