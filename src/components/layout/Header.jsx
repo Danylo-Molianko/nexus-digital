@@ -24,9 +24,10 @@ const Header = () => {
     <header
       className={clsx(
         'fixed top-0 left-0 w-full z-50 transition-all duration-300',
-        // Glassmorphism: semi-transparent anthracite with strong backdrop blur
-        'bg-[rgba(28,30,38,0.6)] backdrop-blur-xl'
+        'bg-[var(--color-glass-bg)] backdrop-blur-xl'
       )}
+      // Додаємо will-change для оптимізації скролінгу
+      style={{ willChange: 'height' }}
     >
       <div
         className={clsx(
@@ -44,25 +45,32 @@ const Header = () => {
           <NavLink to="/contact" className={navLinkClasses}>CONTACT</NavLink>
         </nav>
         <div className="hidden md:block">
-          {/* Entrance animation wrapper preserves existing appear motion */}
+          {/* 1. Вхідна анімація (залишається без змін) */}
           <motion.div
             initial={{ x: -300, opacity: 0, filter: 'blur(8px)' }}
             animate={{ x: 0, opacity: 1, filter: 'blur(0px)' }}
             transition={{ type: 'spring', stiffness: 70, damping: 20, delay: 0.2 }}
           >
-            {/* Subtle perpetual gold glow */}
+            {/* 2. НОВА АПАРАТНО-ПРИСКОРЕНА АНІМАЦІЯ ПУЛЬСАЦІЇ (GPU) */}
             <motion.div
               animate={{
-                boxShadow: [
-                  '0 0 15px rgba(255, 215, 0, 0.2)',
-                  '0 0 25px rgba(255, 215, 0, 0.5)'
-                ],
+                scale: [1, 1.05, 1],
               }}
-              transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
-              style={{ display: 'inline-block', borderRadius: 9999 }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                repeatType: 'loop',
+                ease: 'easeInOut',
+              }}
+              style={{ display: 'inline-block' }}
             >
               <NavLink to="/schedule-session">
-                <Button variant="secondary">SCHEDULE SESSION</Button>
+                <Button 
+                  variant="secondary"
+                  className="hover:shadow-gold-glow transition-shadow"
+                >
+                  SCHEDULE SESSION
+                </Button>
               </NavLink>
             </motion.div>
           </motion.div>
