@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --color-background-deep: #0A0F1F;
-    --color-text-primary: #E1E1E6;
+    --color-background-deep: #F7F4EB; /* new base background */
+    --color-text-primary: #33302E; /* new primary text color */
     --color-text-secondary: #A8A8B3;
     --color-accent: #00BFFF;
     --color-accent-dimmed: rgba(0, 191, 255, 0.1);

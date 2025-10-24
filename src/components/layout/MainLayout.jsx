@@ -1,12 +1,12 @@
 import React from 'react';
-import AuroraBackground from './AuroraBackground';
+// import AuroraBackground from './AuroraBackground';
 import Header from './Header';
 import Footer from './Footer';
 
 const MainLayout = ({ children }) => {
   return (
     <div className="relative min-h-screen">
-      <AuroraBackground />
+  {/* <AuroraBackground /> */}
       <Header />
       <main className="relative z-10">
         {children}
