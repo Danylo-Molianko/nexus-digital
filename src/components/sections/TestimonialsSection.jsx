@@ -1,5 +1,6 @@
 import React from 'react';
 import GlassCard from '../ui/GlassCard';
+import { motion } from 'framer-motion';
 
 const testimonialsData = [
   {
@@ -32,20 +33,28 @@ const TestimonialsSection = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {testimonialsData.map((testimonial, index) => (
-          <GlassCard key={index} className="flex flex-col">
-            <div className="flex-grow mb-6">
-              <p className="text-lg italic text-white">"{testimonial.quote}"</p>
-            </div>
-            <div className="border-t border-[var(--color-glass-border)] pt-4">
-              <div className="flex items-center gap-4">
-                <img src="https://placehold.co/60x60" alt={`${testimonial.name} avatar`} className="w-12 h-12 rounded-full object-cover" />
-                <div>
-                  <p className="font-bold text-white">{testimonial.name}</p>
-                  <p className="text-sm text-[var(--color-text-secondary)]">{testimonial.title}</p>
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <GlassCard className="flex flex-col">
+              <div className="flex-grow mb-6">
+                <p className="text-lg italic text-white">"{testimonial.quote}"</p>
+              </div>
+              <div className="border-t border-[var(--color-glass-border)] pt-4">
+                <div className="flex items-center gap-4">
+                  <img src="https://placehold.co/60x60" alt={`${testimonial.name} avatar`} className="w-12 h-12 rounded-full object-cover" />
+                  <div>
+                    <p className="font-bold text-white">{testimonial.name}</p>
+                    <p className="text-sm text-[var(--color-text-secondary)]">{testimonial.title}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </GlassCard>
+            </GlassCard>
+          </motion.div>
         ))}
       </div>
     </section>

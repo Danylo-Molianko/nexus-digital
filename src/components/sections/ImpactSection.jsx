@@ -1,5 +1,6 @@
 import React from 'react';
 import GlassCard from '../ui/GlassCard';
+import { motion, useInView, useMotionValue, animate } from 'framer-motion';
 
 const metricsData = [
   {
@@ -37,11 +38,19 @@ const ImpactSection = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {metricsData.map((metric, index) => (
-          <GlassCard key={index} className="text-center">
-            <p className="text-5xl font-bold text-[var(--color-accent)] mb-4">{metric.value}</p>
-            <h3 className="text-xl font-bold mb-2">{metric.title}</h3>
-            <p className="text-[var(--color-text-secondary)] text-sm">{metric.description}</p>
-          </GlassCard>
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <GlassCard className="text-center">
+              <MetricValue value={metric.value} />
+              <h3 className="text-xl font-bold mb-2">{metric.title}</h3>
+              <p className="text-[var(--color-text-secondary)] text-sm">{metric.description}</p>
+            </GlassCard>
+          </motion.div>
         ))}
       </div>
     </section>
@@ -49,3 +58,43 @@ const ImpactSection = () => {
 };
 
 export default ImpactSection;
+
+// Helper component for animated metric counting using Framer Motion
+const MetricValue = ({ value }) => {
+  const ref = React.useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.6 });
+  // Parse prefix (e.g., '+', '>'), numeric part, and suffix (e.g., '%')
+  const match = String(value).trim().match(/^([+>≤≥~<]?)(-?\d+(?:\.\d+)?)(%?)$/);
+  const prefix = match ? match[1] : '';
+  const numStr = match ? match[2] : '0';
+  const suffix = match ? match[3] : '';
+  const target = parseFloat(numStr);
+  const decimals = (numStr.split('.')[1] || '').length;
+
+  const motionValue = useMotionValue(0);
+  const [display, setDisplay] = React.useState('0');
+
+  React.useEffect(() => {
+    const unsub = motionValue.on('change', (v) => {
+      const formatted = decimals > 0 ? Number(v).toFixed(decimals) : Math.round(v).toString();
+      setDisplay(formatted);
+    });
+    return () => unsub();
+  }, [decimals, motionValue]);
+
+  React.useEffect(() => {
+    if (inView) {
+      const controls = animate(motionValue, target, {
+        duration: 1.2,
+        ease: [0.22, 1, 0.36, 1],
+      });
+      return () => controls.stop();
+    }
+  }, [inView, motionValue, target]);
+
+  return (
+    <p ref={ref} className="text-5xl font-bold text-[var(--color-accent)] mb-4">
+      {prefix}{display}{suffix}
+    </p>
+  );
+};
