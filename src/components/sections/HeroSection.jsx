@@ -1,14 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import DigitalCanvas from '../DigitalCanvas';
 
 const HeroSection = () => {
   return (
     <section className="relative flex items-center justify-center min-h-[calc(100vh-var(--header-height))]">
-      {/* Background 3D canvas under content */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <DigitalCanvas />
-      </div>
       <div className="relative z-10 flex flex-col items-center text-center px-4">
         <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-wider max-w-4xl text-[#33302E]">
           We don't just build software. We engineer your intelligent digital core.
