@@ -1,6 +1,7 @@
 import React from 'react';
 import GlassCard from '../ui/GlassCard';
 import { CubeTransparentIcon, SparklesIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
 
 const pillarsData = [
   {
@@ -33,17 +34,25 @@ const PillarsSection = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {pillarsData.map((pillar, index) => (
-          <GlassCard key={index}>
-            <div className="flex flex-col items-start">
-              <div className="bg-[var(--color-accent-dimmed)] p-3 rounded-lg border border-[var(--color-accent)]/30 mb-6">
-                <pillar.icon className="h-8 w-8 text-[var(--color-accent)]" />
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <GlassCard>
+              <div className="flex flex-col items-start">
+                <div className="bg-[var(--color-accent-dimmed)] p-3 rounded-lg border border-[var(--color-accent)]/30 mb-6">
+                  <pillar.icon className="h-8 w-8 text-[var(--color-accent)]" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{pillar.title}</h3>
+                <p className="text-[var(--color-text-secondary)] leading-relaxed">
+                  {pillar.description}
+                </p>
               </div>
-              <h3 className="text-2xl font-bold mb-4">{pillar.title}</h3>
-              <p className="text-[var(--color-text-secondary)] leading-relaxed">
-                {pillar.description}
-              </p>
-            </div>
-          </GlassCard>
+            </GlassCard>
+          </motion.div>
         ))}
       </div>
     </section>

@@ -1,5 +1,6 @@
 import React from 'react';
 import GlassCard from '../ui/GlassCard';
+import { motion } from 'framer-motion';
 
 const processSteps = [
     { title: "Discovery & Strategy", description: "We dive deep into your business to define objectives, establish KPIs, and create a strategic project roadmap." },
@@ -30,11 +31,18 @@ const ProcessSection = () => {
                     <div key={index} className="relative mb-12">
                         <div className={`flex items-center ${index % 2 === 0 ? 'flex-row-reverse' : ''}`}>
                             <div className="w-1/2">
-                                <GlassCard className={`mx-8 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
-                                    <p className="text-lg font-bold text-[var(--color-accent)] mb-2">Step {index + 1}</p>
-                                    <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-                                    <p className="text-[var(--color-text-secondary)]">{step.description}</p>
-                                </GlassCard>
+                                <motion.div
+                                    initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                                    viewport={{ once: true, amount: 0.2 }}
+                                >
+                                    <GlassCard className={`mx-8 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
+                                        <p className="text-lg font-bold text-[var(--color-accent)] mb-2">Step {index + 1}</p>
+                                        <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
+                                        <p className="text-[var(--color-text-secondary)]">{step.description}</p>
+                                    </GlassCard>
+                                </motion.div>
                             </div>
                             <div className="w-1/2"></div>
                         </div>
