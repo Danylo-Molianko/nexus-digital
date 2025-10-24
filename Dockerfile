@@ -2,7 +2,7 @@
 FROM node:20-alpine as builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm install --force
 COPY . .
 RUN npm run build
 
@@ -18,7 +18,7 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/server.js ./server.js
 
 # 3. Install ONLY production dependencies
-RUN npm install --only=production
+RUN npm install --only=production --force
 
 # 4. Set correct permissions now that files are copied
 RUN chown -R node:node /app
