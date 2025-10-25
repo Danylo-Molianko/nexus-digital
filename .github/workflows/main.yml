@@ -1,57 +1,101 @@
-name: Build and Test Nexus Studio
+name: Build and Deploy Nexus Studio (Production)
 
 on:
   push:
     branches:
-      - main
-  pull_request:
-    branches:
-      - main
+      - main # Запускати тільки при push в main
 
 jobs:
-  test-build:
+  # --- 1. РОБОТА: ЗБІРКА ---
+  build:
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x]
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 18.x
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 18.x
         cache: 'npm'
 
     - name: Install dependencies
       run: npm ci
 
-    - name: Build project
+    - name: Build project (Production)
       run: npm run build
 
-    - name: Check build artifacts
-      run: |
-        ls -la dist/
-        echo "Build completed successfully!"
+    - name: Archive production artifacts
+      # [ІДЕАЛЬНИЙ КРОК] Зберігаємо 'dist' для наступної роботи
+      uses: actions/upload-artifact@v4
+      with:
+        name: production-build
+        path: dist/
+        retention-days: 1
 
-    - name: Test server start
-      run: |
-        timeout 10 npm start &
-        sleep 5
-        echo "Server test completed!"
-
-  # Separate job for production deployment (only runs when secrets are available)
+  # --- 2. РОБОТА: РОЗГОРТАННЯ (DEPLOYMENT) ---
   deploy:
-    needs: test-build
+    needs: build # Запускається тільки після успішної збірки
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.repository == 'Danylo-Molianko/nexus-digital'
-    
+
     steps:
-    - name: Production deployment placeholder
-      run: |
-        echo "🚀 Production deployment would run here"
-        echo "Build artifacts are ready for deployment to https://nexus-studio-innovation.com"
-        echo "✅ All tests passed - ready for production!"
+    - name: Download production artifacts
+      # Завантажуємо 'dist', який зібрала попередня робота
+      uses: actions/download-artifact@v4
+      with:
+        name: production-build
+        path: dist/
+
+    - name: 🚀 Deploy to Production Server
+      # [ІДЕАЛЬНИЙ КРОК] Використовуємо SSH для копіювання ТА перезапуску
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: 22
+        script: |
+          # [ІДЕАЛЬНИЙ КРОК 1: КОПІЮВАННЯ]
+          # Переходимо в папку проекту на сервері
+          cd ${{ secrets.PROJECT_DIR }}
+          
+          # Видаляємо СТАРУ папку 'dist'
+          echo "Removing old build directory..."
+          rm -rf dist
+          
+          # Створюємо НОВУ порожню папку 'dist'
+          mkdir dist
+          echo "Created new build directory."
+
+    - name: Sync 'dist' folder to server
+      # [ІДЕАЛЬНИЙ КРОК 2: СИНХРОНІЗАЦІЯ]
+      # Використовуємо 'scp' для копіювання наших артефактів
+      # у НОВУ папку 'dist' на сервері
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: 22
+        source: "dist/*" # Копіюємо вміст 'dist'
+        target: "${{ secrets.TARGET_DIR }}" # У цільову папку
+        strip_components: 1 # Не створювати 'dist/dist', а класти файли прямо
+
+    - name: 🔄 Restart Production Server
+      # [ІДЕАЛЬНИЙ КРОК 3: ПЕРЕЗАПУСК]
+      # Це найважливіший крок. Ми перезапускаємо процес 'node'
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: 22
+        script: |
+          # Ми припускаємо, що процес керується 'pm2'
+          # і його назва 'nexus_app' (як у Nginx-конфігу)
+          # Якщо це не так, цей крок провалиться, і ми його виправимо
+          echo "Restarting application server..."
+          export PATH=$PATH:/home/nexususer/.nvm/versions/node/v18.18.2/bin # Вказуємо шлях до pm2
+          pm2 restart nexus_app
+          
+          echo "✅ Production Deployment Successful!"
