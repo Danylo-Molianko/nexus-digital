@@ -1,4 +1,4 @@
-name: Build and Deploy Nexus Studio (Production)
+name: Build and Deploy Nexus Studio (Production - Direct SSH/SCP)
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main # Запускати тільки при push в main
 
 jobs:
-  # --- 1. РОБОТА: ЗБІРКА ---
+  # --- 1. РОБОТА: ЗБІРКА (Без змін) ---
   build:
     runs-on: ubuntu-latest
     steps:
@@ -26,38 +26,54 @@ jobs:
       run: npm run build
 
     - name: Archive production artifacts
-      # [ІДЕАЛЬНИЙ КРОК] Зберігаємо 'dist' для наступної роботи
       uses: actions/upload-artifact@v4
       with:
         name: production-build
         path: dist/
         retention-days: 1
 
-  # --- 2. РОБОТА: РОЗГОРТАННЯ (DEPLOYMENT) ---
+  # --- 2. РОБОТА: РОЗГОРТАННЯ (DEPLOYMENT - НОВА СТРАТЕГІЯ) ---
   deploy:
     needs: build # Запускається тільки після успішної збірки
     runs-on: ubuntu-latest
 
     steps:
     - name: Download production artifacts
-      # Завантажуємо 'dist', який зібрала попередня робота
       uses: actions/download-artifact@v4
       with:
         name: production-build
-        path: dist/
+        path: dist/ # Завантажуємо у папку 'dist'
 
-    - name: 🚀 Deploy Files via SCP
-      # [ІДЕАЛЬНИЙ КРОК 1: КОПІЮВАННЯ ФАЙЛІВ]
-      # Використовуємо 'scp' для копіювання наших артефактів
-      # у НОВУ папку 'dist' на сервері
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USERNAME }}
-        key: ${{ secrets.SSH_KEY }}
-        port: 22
-        source: "dist/*" # Копіюємо вміст 'dist'
-        target: "${{ secrets.TARGET_DIR }}" # У цільову папку
+    - name: ⚙️ Setup SSH Key
+      # [НОВИЙ КРОК] Налаштовуємо SSH вручну, щоб гарантувати доступ
+      run: |
+        mkdir -p ~/.ssh/
+        echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa # Кладемо ключ з секретів
+        chmod 600 ~/.ssh/id_rsa # Встановлюємо правильні дозволи
+        ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts # Додаємо хост до відомих
+
+    - name: 🚀 Deploy Files via SCP (Direct)
+      # [НОВИЙ КРОК] Використовуємо базову команду scp
+      run: |
+        echo "Copying build files to server..."
+        scp -r dist/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ secrets.TARGET_DIR }}
+        echo "✅ Files copied successfully!"
+
+    - name: 🔄 Restart Production Server (Direct SSH)
+      # [НОВИЙ КРОК] Використовуємо базову команду ssh для перезапуску
+      run: |
+        echo "Connecting to server to restart application..."
+        ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
+          # Команди, що виконаються на сервері
+          echo "Changing to project directory..."
+          cd ${{ secrets.PROJECT_DIR }}
+          
+          echo "Restarting application with pm2..."
+          # export PATH=$PATH:/home/nexususer/.nvm/versions/node/v18.18.2/bin # Якщо pm2 не в PATH
+          pm2 restart nexus_app
+          
+          echo "✅ Application restarted successfully!"
+        EOF # Кінець команд для сервера
         strip_components: 1 # Не створювати 'dist/dist', а класти файли прямо
         overwrite: true
 
