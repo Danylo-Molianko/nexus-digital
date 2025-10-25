@@ -1,7 +1,6 @@
 import React, { useMemo, useRef, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-// [КРИТИЧНЕ ВИПРАВЛЕННЯ V2] 'LineSegments' видалено з імпорту 'drei'
-import { Points } from '@react-three/drei'; 
+import { Points } from '@react-three/drei';
 import seedrandom from 'seedrandom';
 import * as THREE from 'three';
 
@@ -11,7 +10,7 @@ const COLOR_VIOLET = new THREE.Color('#8F00FF'); // Неоновий фіоле�
 const COLOR_INTERACTION = new THREE.Color('#FFFFFF'); // Білий для спалаху
 
 // КОМПОНЕНТ ГЕНЕРАТИВНОЇ ХМАРИ
-const GenerativeCloud = ({ seed, count = 2000, interactionRadius = 0.5 }) => {
+const GenerativeCloud = ({ seed, count = 1000, interactionRadius = 0.3 }) => { // ОПТИМІЗАЦІЯ: count = 1000, interactionRadius = 0.3
   const pointsRef = useRef();
   const linesRef = useRef();
 
@@ -40,7 +39,7 @@ const GenerativeCloud = ({ seed, count = 2000, interactionRadius = 0.5 }) => {
       
       pointsData.push({ x, y, z });
 
-      sizes[i] = rng() * 0.08 + 0.02;
+  sizes[i] = rng() * 0.05 + 0.01; // ОПТИМІЗАЦІЯ: Зменшено діапазон розмірів
       COLOR_GOLD.toArray(colors, i3);
     }
 
@@ -49,7 +48,7 @@ const GenerativeCloud = ({ seed, count = 2000, interactionRadius = 0.5 }) => {
       const p1 = pointsData[i];
       let closest = [];
       
-      for (let j = i + 1; j < Math.min(i + 50, count); j++) {
+      for (let j = i + 1; j < Math.min(i + 20, count); j++) { // ОПТИМІЗАЦІЯ: Зменшено кількість перевірок для зв'язків
         const p2 = pointsData[j];
         const dx = p1.x - p2.x;
         const dy = p1.y - p2.y;
@@ -136,14 +135,15 @@ const GenerativeCloud = ({ seed, count = 2000, interactionRadius = 0.5 }) => {
         </bufferGeometry>
         <pointsMaterial
           vertexColors
-          sizeAttenuation
-          depthWrite={false}
+          // ОПТИМІЗАЦІЯ: sizeAttenuation = false
+          sizeAttenuation={false} 
+          // ОПТИМІЗАЦІЯ: depthWrite = false
+          depthWrite={false} 
           transparent
         />
       </Points>
       
       {/* 2. Фіолетові Лінії (Базовий R3F-компонент) */}
-      {/* [КРИТИЧНЕ ВИПРАВЛЕННЯ V2] <LineSegments> замінено на <lineSegments> (маленька 'l') */}
       <lineSegments ref={linesRef}>
         <bufferGeometry>
           <bufferAttribute
