@@ -1,4 +1,4 @@
-name: Build and Deploy Nexus Studio (Production - Direct SSH/SCP)
+name: Build and Deploy Nexus Studio (Production - Direct SSH/SCP + Debug)
 
 on:
   push:
@@ -38,6 +38,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # [НОВИЙ ДІАГНОСТИЧНИЙ КРОК] Перевіряємо доступ до секрету
+    - name: "Debug: Print SSH_HOST Secret"
+      run: |
+        echo "Attempting to print host: [${{ secrets.SSH_HOST }}]"
+
     - name: Download production artifacts
       uses: actions/download-artifact@v4
       with:
