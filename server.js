@@ -1,110 +1,69 @@
-﻿import 'dotenv/config';
-import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
+﻿import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import crypto from 'crypto'; // Новий імпорт для генерації "насіння"
+import cors from 'cors';
+import helmet from 'helmet';
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+// Налаштування ES Module __dirname
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Security middleware
-app.use(helmet({ 
-    contentSecurityPolicy: {
-        directives: {
-            defaultSrc: ["'self'"],
-            styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-            fontSrc: ["'self'", "https://fonts.gstatic.com"],
-            imgSrc: ["'self'", "data:", "https://placehold.co"],
-            scriptSrc: ["'self'"],
-            connectSrc: ["'self'"],
-        },
-    },
-    crossOriginEmbedderPolicy: false 
-}));
+const app = express();
+const PORT = process.env.PORT || 3001;
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
-// CORS configuration (дозволяє продакшн домен)
-app.use(cors({
-    origin: [
-        'https://nexus-studio-innovation.com',
-        'https://www.nexus-studio-innovation.com',
-        `http://localhost:${PORT}`, 
-        `http://127.0.0.1:${PORT}`
-    ],
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-    optionsSuccessStatus: 200
-}));
+// --- МІДЛВЕРИ БЕЗПЕКИ ---
+app.use(helmet());
+app.use(cors({ origin: IS_PRODUCTION ? 'https://nexus-studio-innovation.com' : '*' }));
+app.use(express.json());
 
-// Body parsing middleware
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+// --- [НОВИЙ API ENDPOINT] ---
+// Мікросервіс "Насіння" для "Гібридного Генеративного Патерну"
+app.get('/api/v1/pattern-seed', (req, res) => {
+  try {
+    // Генерація криптографічно безпечного "насіння" (16 байт)
+    const seed = crypto.randomBytes(16).toString('hex');
+    console.log(`[SEED] Згенеровано нове "насіння": ${seed}`);
+    res.json({ seed: seed });
+  } catch (error) {
+    console.error('[SEED] Помилка генерації "насіння":', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+// --- [КІНЕЦЬ API ENDPOINT] ---
 
-// API routes
-app.get('/api/health', (req, res) => {
-    res.json({ 
-        success: true, 
-        message: 'Nexus Studio API працює!',
-        timestamp: new Date().toISOString(),
-        environment: process.env.NODE_ENV || 'development',
-        production_url: 'https://nexus-studio-innovation.com',
-        local_url: `http://localhost:${PORT}`,
-        mode: 'production-ready'
+// --- ОБСЛУГОВУВАННЯ СТАТИЧНИХ ФАЙЛІВ ТА SPA ---
+if (IS_PRODUCTION) {
+  const distPath = path.join(__dirname, 'dist');
+  console.log(`[STATIC] Обслуговування статичних файлів з: ${distPath}`);
+  
+  app.use(express.static(distPath));
+
+  // Перехоплення всіх інших маршрутів для React Router (SPA fallback)
+  app.get('*', (req, res) => {
+    // Ігноруємо API-маршрути, щоб вони не повертали index.html
+    if (req.path.startsWith('/api/')) {
+      return res.status(404).json({ error: 'API route not found' });
+    }
+    res.sendFile(path.join(distPath, 'index.html'), (err) => {
+      if (err) {
+        console.error('[SPA] Помилка відправки index.html:', err);
+        res.status(500).send(err);
+      }
     });
-});
+  });
+}
 
-app.get('/api/status', (req, res) => {
-    res.json({
-        status: 'active',
-        server: 'Nexus Studio Backend',
-        version: '1.0.0',
-        uptime: process.uptime(),
-        production_site: 'https://nexus-studio-innovation.com',
-        local_development: `http://localhost:${PORT}`,
-        deploy_ready: true
-    });
-});
-
-// ================== START: FINAL STATIC PATH CONFIGURATION ==================
-
-// Explicitly define the path to the 'dist' folder.
-// '__dirname' resolves to the application's root directory inside Docker (which is /app).
-const staticFilesPath = path.join(__dirname, 'dist');
-
-// Serve all static files (like index.html, CSS, JS) from this specified path.
-app.use(express.static(staticFilesPath));
-
-// =================== END: FINAL STATIC PATH CONFIGURATION ===================
-
-// Handle React Router (SPA fallback) - ВСІ роути через сервер
-app.get('*', (req, res) => {
-    res.sendFile(path.join(staticFilesPath, 'index.html'));
-});
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error('Server Error:', err);
-    res.status(500).json({
-        success: false,
-        message: 'Internal Server Error',
-        error: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong'
-    });
-});
-
-// Start server
-console.log('>>> [ІНДИКАТОР 1] Намагаюся запустити сервер і відкрити порт...');
-app.listen(PORT, () => {
-    console.log(`>>> [ІНДИКАТОР 2] УСПІХ! Сервер слухає на порту ${PORT}`);
-    console.log(`🚀 Nexus Studio Server запущено:`);
-    console.log(`   - Локальна розробка:  http://localhost:${PORT}`);
-    console.log(`   - Network:           http://0.0.0.0:${PORT}`);
-    console.log(`   - Продакшн сайт:     https://nexus-studio-innovation.com`);
-    console.log(`   - Environment:       ${process.env.NODE_ENV || 'development'}`);
-    console.log(`   - Static files:      ${staticFilesPath}`);
-    console.log(`\n🌍 Основний сайт: https://nexus-studio-innovation.com`);
-    console.log(`🔧 Локальна розробка: http://localhost:${PORT}`);
-    console.log(`\n✨ Готово до розгортання на продакшн!`);
+// --- ЗАПУСК СЕРВЕРА ---
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`\n>>> [ІНДИКАТОР 2] УСПІХ! Сервер слухає на порту ${PORT}`);
+  console.log('Nexus Studio Server запущено:');
+  if (IS_PRODUCTION) {
+    console.log(`  - Продакшн сайт: https://nexus-studio-innovation.com`);
+    console.log(`  - Environment: production`);
+  } else {
+    console.log(`  - Локальна розробка: http://localhost:${PORT}`);
+    console.log(`  - Environment: development`);
+  }
 });
