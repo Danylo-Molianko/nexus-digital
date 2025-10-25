@@ -1,28 +1,24 @@
-// [КРИТИЧНА ЗМІНА] Ми видаляємо 'useState' та 'useEffect'
-import React, { Suspense, lazy, useMemo } from 'react';
+// [СТРАТЕГІЧНА ЗМІНА] Видалено 'useMemo' та 'Math.random'
+import React, { Suspense, lazy } from 'react'; 
 import { NavLink } from 'react-router-dom';
 
 // 1. ЛІНИВЕ ЗАВАНТАЖЕННЯ (LAZY LOADING) 3D-КОМПОНЕНТА
-// Це залишається без змін
 const LazyDigitalCanvas = lazy(() => import('../DigitalCanvas'));
 
 const HeroSection = () => {
-  // 2. НОВА АРХІТЕКТУРА: "АБСОЛЮТНА АВТОНОМІЯ КЛІЄНТА"
-  // Ми більше не робимо 'fetch' до бекенду.
-  // Ми генеруємо 'seed' локально, 1 раз при монтажі, використовуючи 'useMemo'.
-  // Це гарантує, що 3D-модель з'явиться, навіть якщо server.js старий.
-  const patternSeed = useMemo(() => {
-    // Math.random() дасть нам унікальний патерн при кожному завантаженні сторінки.
-    return Math.random().toString(36).substring(7);
-  }, []); // Порожній масив означає, що це виконається 1 раз.
+  // 2. НОВА АРХІТЕКТУРА: "ЄДИНИЙ БРЕНДОВАНИЙ АКТИВ"
+  // Ми більше не генеруємо випадковий 'seed'.
+  // Ми надаємо ОДИН статичний 'seed' для ВСІХ користувачів.
+  // Це гарантує, що КОЖЕН бачить ту саму, ідеальну 3D-хмару.
+  const patternSeed = "nexus-digital-core-v1";
 
   return (
     <section className="relative flex items-center justify-center min-h-[calc(100vh-var(--header-height-large))] overflow-hidden">
       
       {/* 3. ІНТЕГРАЦІЯ 3D-КАНВАСУ */}
-      {/* Тепер 'patternSeed' гарантовано існує з першого рендеру */}
       <div className="absolute top-0 left-0 w-full h-full z-0">
         <Suspense fallback={<div className="w-full h-full bg-cream" />}> 
+          {/* 'patternSeed' тепер статичний і гарантовано існує */}
           <LazyDigitalCanvas seed={patternSeed} />
         </Suspense>
       </div>
