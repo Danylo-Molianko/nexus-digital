@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import GlassCard from '../ui/GlassCard';
+import GlassCardStatic from '../ui/GlassCardStatic';
 import { motion, useReducedMotion } from 'framer-motion';
 import { zeroGSectionVariant, fadeInVariant } from '../../utils/animations';
 
@@ -53,11 +53,11 @@ const ProcessSection = () => {
                                     transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
                                     viewport={{ once: true, amount: 0.2 }}
                                 >
-                                    <GlassCard className={`mx-8 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
+                                    <GlassCardStatic className={`mx-8 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
                                         <p className="text-lg font-bold text-[var(--color-accent)] mb-2">Step {index + 1}</p>
                                         <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
                                         <p className="text-[var(--color-text-secondary)]">{step.description}</p>
-                                    </GlassCard>
+                                    </GlassCardStatic>
                                 </motion.div>
                             </div>
                             <div className="w-1/2"></div>

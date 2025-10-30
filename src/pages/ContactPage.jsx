@@ -1,5 +1,5 @@
 import React from 'react';
-import GlassCard from '../components/ui/GlassCard';
+import GlassCardStatic from '../components/ui/GlassCardStatic';
 import FormField from '../components/ui/FormField';
 import Button from '../components/ui/Button';
 import { EnvelopeIcon, DevicePhoneMobileIcon, MapPinIcon } from '@heroicons/react/24/outline';
@@ -19,7 +19,7 @@ const ContactPage = () => {
             Our time is our most valuable asset...
           </p>
 
-          <GlassCard className="mt-10">
+          <GlassCardStatic className="mt-10">
             <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
               <h2 className="text-2xl font-bold text-white">Qualification Form</h2>
 
@@ -75,7 +75,7 @@ const ContactPage = () => {
                 SUBMIT FOR QUALIFICATION
               </Button>
             </form>
-          </GlassCard>
+          </GlassCardStatic>
         </div>
 
         {/* Right Column: Alternative Channels */}

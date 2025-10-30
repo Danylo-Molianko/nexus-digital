@@ -1,9 +1,9 @@
 import React from 'react';
-import GlassCard from './GlassCard';
+import GlassCardStatic from './GlassCardStatic';
 
 const TeamMemberCard = ({ member }) => {
   return (
-    <GlassCard className="text-center">
+    <GlassCardStatic className="text-center">
       <img 
         src={member.imageUrl} 
         alt={`Photo of ${member.name}`} 
@@ -12,7 +12,7 @@ const TeamMemberCard = ({ member }) => {
       <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
       <p className="font-bold text-[var(--color-accent)] mb-4">{member.role}</p>
       <p className="text-[var(--color-text-secondary)] text-sm">{member.bio}</p>
-    </GlassCard>
+    </GlassCardStatic>
   );
 };
 

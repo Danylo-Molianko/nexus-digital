@@ -7,9 +7,9 @@ const Button = ({ children, variant = 'primary', className, ...props }) => {
 
   const variants = {
     primary:
-      'bg-[var(--color-accent)] text-white border-2 border-transparent hover:bg-transparent hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--color-accent)]/30',
+      'bg-[var(--color-accent)] text-white border-2 border-transparent hover:bg-transparent hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--color-accent)]/30 hover:u-glow-gold',
     secondary:
-      'bg-transparent text-[var(--color-accent)] border-2 border-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--color-accent)]/30',
+      'bg-transparent text-[var(--color-accent)] border-2 border-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--color-accent)]/30 hover:u-glow-gold',
   };
 
   const buttonClasses = clsx(baseStyles, variants[variant], className);

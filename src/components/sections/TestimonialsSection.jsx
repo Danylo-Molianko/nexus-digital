@@ -1,5 +1,5 @@
 import React from 'react';
-import GlassCard from '../ui/GlassCard';
+import GlassCardStatic from '../ui/GlassCardStatic';
 import { motion } from 'framer-motion';
 
 const testimonialsData = [
@@ -40,7 +40,7 @@ const TestimonialsSection = () => {
             transition={{ duration: 0.5, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true, amount: 0.2 }}
           >
-            <GlassCard className="flex flex-col">
+            <GlassCardStatic className="flex flex-col">
               <div className="flex-grow mb-6">
                 <p className="text-lg italic text-white">"{testimonial.quote}"</p>
               </div>
@@ -53,7 +53,7 @@ const TestimonialsSection = () => {
                   </div>
                 </div>
               </div>
-            </GlassCard>
+            </GlassCardStatic>
           </motion.div>
         ))}
       </div>

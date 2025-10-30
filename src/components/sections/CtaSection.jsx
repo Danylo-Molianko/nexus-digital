@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { zeroGSectionVariant } from '../../utils/animations'; // Використовуємо "Нульову Гравітацію"
 
@@ -51,21 +51,18 @@ const CtaSection = () => {
         </div>
 
         {/* === ФІНАЛЬНИЙ ЗОЛОТИЙ CTA === */}
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="inline-block"
+        <MagneticCTA
+          as={NavLink}
+          to="/contact"
+          className="inline-block rounded-full px-10 py-4 font-headings text-base font-bold uppercase tracking-wider 
+                     bg-nexus-gold text-nexus-dark-void 
+                     transition-all duration-300 
+                     hover:bg-nexus-gold-hover hover:u-glow-gold"
+          radius={50}
+          maxOffset={3}
         >
-          <NavLink
-            to="/contact"
-            className="inline-block rounded-full px-10 py-4 font-headings text-base font-bold uppercase tracking-wider 
-                       bg-nexus-gold text-nexus-dark-void 
-                       transition-all duration-300 
-                       hover:bg-nexus-gold-hover hover:shadow-gold-glow"
-          >
-            Запланувати Стратегічну Сесію
-          </NavLink>
-        </motion.div>
+          Запланувати Стратегічну Сесію
+        </MagneticCTA>
 
       </div>
     </motion.section>
@@ -73,3 +70,47 @@ const CtaSection = () => {
 };
 
 export default CtaSection;
+
+// Local magnetic CTA wrapper for the primary gold CTA only
+function MagneticCTA({ children, className = '', as: Wrapper = NavLink, to, href, onClick, radius = 50, maxOffset = 3, ...rest }) {
+  const prefersReducedMotion = useReducedMotion();
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 220, damping: 18, mass: 0.4 });
+  const springY = useSpring(y, { stiffness: 220, damping: 18, mass: 0.4 });
+
+  function handleMove(e) {
+    if (prefersReducedMotion) return;
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = e.clientX - cx;
+    const dy = e.clientY - cy;
+    const dist = Math.hypot(dx, dy);
+    if (dist > radius) { x.set(0); y.set(0); return; }
+    const clampedDx = Math.max(-radius, Math.min(dx, radius));
+    const clampedDy = Math.max(-radius, Math.min(dy, radius));
+    const ratio = 1 / radius;
+    x.set(clampedDx * ratio * maxOffset);
+    y.set(clampedDy * ratio * maxOffset);
+  }
+  function handleLeave() { x.set(0); y.set(0); }
+
+  const wrapperProps = {};
+  if (Wrapper === NavLink) wrapperProps.to = to;
+  else if (Wrapper === 'a') wrapperProps.href = href;
+
+  return (
+    <motion.div
+      style={{ x: springX, y: springY, display: 'inline-block' }}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+      onBlur={handleLeave}
+    >
+      <Wrapper className={className} onClick={onClick} {...wrapperProps} {...rest}>
+        {children}
+      </Wrapper>
+    </motion.div>
+  );
+}

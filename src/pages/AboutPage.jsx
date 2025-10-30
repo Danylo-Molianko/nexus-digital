@@ -1,6 +1,6 @@
 import React from 'react';
 import PageHeader from '../components/ui/PageHeader';
-import GlassCard from '../components/ui/GlassCard';
+import GlassCardStatic from '../components/ui/GlassCardStatic';
 import TeamMemberCard from '../components/ui/TeamMemberCard';
 import { teamData } from '../data/teamData';
 
@@ -20,7 +20,7 @@ const AboutPage = () => {
               Our goal is to be the only technology partner...
             </p>
           </div>
-          <GlassCard>
+          <GlassCardStatic>
             <h3 className="text-2xl font-bold mb-4">Our Core Values</h3>
             <ul className="space-y-3">
               <li className="font-bold text-white">Integrated Excellence</li>
@@ -28,7 +28,7 @@ const AboutPage = () => {
               <li className="font-bold text-white">Pragmatic Innovation</li>
               <li className="font-bold text-white">Security by Design</li>
             </ul>
-          </GlassCard>
+          </GlassCardStatic>
         </div>
       </section>
 

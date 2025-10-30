@@ -1,5 +1,5 @@
 import React from 'react';
-import GlassCard from '../ui/GlassCard';
+import GlassCardStatic from '../ui/GlassCardStatic';
 import { motion, useInView, useMotionValue, animate } from 'framer-motion';
 
 const metricsData = [
@@ -45,11 +45,11 @@ const ImpactSection = () => {
             transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true, amount: 0.2 }}
           >
-            <GlassCard className="text-center">
+            <GlassCardStatic className="text-center">
               <MetricValue value={metric.value} />
               <h3 className="text-xl font-bold mb-2">{metric.title}</h3>
               <p className="text-[var(--color-text-secondary)] text-sm">{metric.description}</p>
-            </GlassCard>
+            </GlassCardStatic>
           </motion.div>
         ))}
       </div>
