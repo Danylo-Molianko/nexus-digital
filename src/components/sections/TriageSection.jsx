@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRightIcon } from '@heroicons/react/24/solid';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import { zeroGSectionVariant, warpRevealVariant } from '../../utils/animations'; // Пружина + warp reveal
 
 /* === КАРТКА ТРІАЖУ (ІНТЕРАКТИВНА) === */

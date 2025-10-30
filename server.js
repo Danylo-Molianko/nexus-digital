@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import crypto from 'crypto'; // Новий імпорт для генерації "насіння"
 import cors from 'cors';
+import compression from 'compression';
 import helmet from 'helmet';
 
 // Налаштування ES Module __dirname
@@ -17,6 +18,7 @@ const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 app.use(helmet());
 app.use(cors({ origin: IS_PRODUCTION ? 'https://nexus-studio-innovation.com' : '*' }));
 app.use(express.json());
+app.use(compression());
 
 // --- [НОВИЙ API ENDPOINT] ---
 // Мікросервіс "Насіння" для "Гібридного Генеративного Патерну"
@@ -38,7 +40,15 @@ if (IS_PRODUCTION) {
   const distPath = path.join(__dirname, 'dist');
   console.log(`[STATIC] Обслуговування статичних файлів з: ${distPath}`);
   
-  app.use(express.static(distPath));
+  app.use(express.static(distPath, {
+    maxAge: '1y',
+    immutable: true,
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith('index.html')) {
+        res.setHeader('Cache-Control', 'no-cache');
+      }
+    }
+  }));
 
   // Перехоплення всіх інших маршрутів для React Router (SPA fallback)
   app.get('*', (req, res) => {

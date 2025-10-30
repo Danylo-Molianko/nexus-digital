@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRightIcon, ArrowDownTrayIcon as DownloadIcon } from '@heroicons/react/24/solid'; // Використовуємо іконку для скачування
+import { ArrowRightIcon, ArrowDownTrayIcon as DownloadIcon } from '@heroicons/react/24/outline';
 import { zeroGSectionVariant, warpRevealVariant } from '../../utils/animations';
 
 // Картка для "активу, що готується"
