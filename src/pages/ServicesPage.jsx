@@ -1,3 +1,4 @@
+import React, { Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
 import { 
   PencilSquareIcon, 
@@ -10,8 +11,8 @@ import {
   LifebuoyIcon
 } from '@heroicons/react/24/outline'; // Використовуємо outline-іконки для елегантності
 import { zeroGSectionVariant, fadeInVariant } from '../utils/animations';
-import ProcessSection from '../components/sections/ProcessSection'; // Ми перевикористовуємо наш процес!
-import CtaSection from '../components/sections/CtaSection'; // Ми перевикористовуємо наш фінальний CTA!
+const ProcessSection = lazy(() => import('../components/sections/ProcessSection'));
+const CtaSection = lazy(() => import('../components/sections/CtaSection'));
 import PageHeader from '../components/ui/PageHeader'; // Ваш існуючий компонент (у нас у папці ui)
 
 // Картка для окремої послуги
@@ -136,11 +137,11 @@ const StrategyPage = () => {
         </motion.div>
       </motion.section>
 
-      {/* 5. НАШ ПРОЦЕС (ПЕРЕВИКОРИСТАННЯ) */}
-      <ProcessSection />
-
-      {/* 6. ФІНАЛЬНИЙ CTA (ПЕРЕВИКОРИСТАННЯ) */}
-      <CtaSection />
+      {/* 5–6. ЛЕЗІ-ЗАВАНТАЖЕНІ РОЗДІЛИ */}
+      <Suspense fallback={<div className="container mx-auto px-4 py-12 text-center text-nexus-text-secondary">Loading…</div>}>
+        <ProcessSection />
+        <CtaSection />
+      </Suspense>
     </>
   );
 };

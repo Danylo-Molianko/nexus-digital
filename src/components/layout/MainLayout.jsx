@@ -6,9 +6,11 @@ import Footer from './Footer';
 const MainLayout = ({ children }) => {
   return (
     <div className="relative min-h-screen">
-  {/* <AuroraBackground /> */}
+      {/* Global subtle noise overlay for premium film texture */}
+      <div aria-hidden className="noise-overlay" />
+      {/* <AuroraBackground /> */}
       <Header />
-      <main className="relative z-10 bg-[var(--color-background-deep)]">
+      <main className="relative z-10">
         {children}
       </main>
       <Footer />

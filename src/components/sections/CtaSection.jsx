@@ -5,7 +5,7 @@ import { zeroGSectionVariant } from '../../utils/animations'; // Викорис�
 const CtaSection = () => {
   return (
     <motion.section
-      className="relative bg-nexus-dark-primary py-24" // Використовуємо темний фон карт
+      className="relative section-glow bg-nexus-dark-primary py-24" // Додаємо золотий глоу позаду заголовка
       variants={zeroGSectionVariant}
       initial="hidden"
       whileInView="visible"

@@ -16,7 +16,7 @@ const AnimatedHeadline = ({ text }) => {
   return (
     // 1. КОНТЕЙНЕР (Вмикає "staggerChildren")
     <motion.h1
-      className="text-4xl md:text-6xl font-headings font-bold uppercase tracking-wider max-w-4xl text-nexus-text-headings"
+      className="h1-fluid font-headings font-bold uppercase tracking-wider max-w-4xl text-nexus-text-headings"
       variants={shouldReduce ? fadeInVariant : neuralContainerVariant}
       initial="hidden"
       animate="visible"
@@ -43,8 +43,8 @@ const HeroSection = () => {
   
   return (
     <section 
-      className="relative flex items-center justify-center min-h-[calc(100vh-var(--header-height-large))] 
-                 bg-nexus-dark-void overflow-hidden" // Замінили фон 'bg-cream' на наш новий
+      className="relative section-glow flex items-center justify-center min-h-[calc(100vh-var(--header-height-large))] 
+                 overflow-hidden"
     >
       {/* ТУТ МИ ДОДАМО "СЯЙВО КУРСОРУ" У НАСТУПНОМУ ПРОМТІ. 
         Поки що залишаємо місце.
@@ -56,8 +56,8 @@ const HeroSection = () => {
         <AnimatedHeadline text={headlineText} />
 
         {/* === ПІДЗАГОЛОВОК (З'являється після заголовку) === */}
-        <motion.p 
-          className="text-lg md:text-xl text-nexus-text-secondary max-w-3xl mx-auto mt-6"
+        <motion.p
+          className="body-fluid text-nexus-text-secondary max-w-3xl mx-auto mt-6"
           variants={fadeInVariant}
           initial="hidden"
           animate="visible"

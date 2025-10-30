@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 const Button = ({ children, variant = 'primary', className, ...props }) => {
   const baseStyles =
-    'inline-block rounded-full px-8 py-3 font-headings text-sm font-bold uppercase tracking-wider transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-accent)]';
+    'inline-block rounded-full px-8 py-3 font-headings text-sm font-bold uppercase tracking-wider transition-all duration-300 transform focus-visible-ring';
 
   const variants = {
     primary:
