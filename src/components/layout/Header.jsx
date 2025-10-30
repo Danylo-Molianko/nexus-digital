@@ -3,12 +3,12 @@ import { NavLink, Link } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 
-// СТРАТЕГІЧНІ НАВІГАЦІЙНІ ПОСИЛАННЯ
+// Strategic navigation links (English labels, correct routes)
 const navLinks = [
-  { title: 'СТРАТЕГІЯ', to: '/services' }, // Мапуємо "Стратегія" на існуючий роут "/services"
-  { title: 'АРСЕНАЛ', to: '/projects' },    // Мапуємо "Арсенал" на існуючий роут "/projects"
-  { title: 'КОМАНДА', to: '/about' },      // Мапуємо "Команда" на існуючий роут "/about"
-  { title: 'КОНТАКТ', to: '/contact' },
+  { title: 'STRATEGY', to: '/strategy' },
+  { title: 'ARSENAL', to: '/arsenal' },
+  { title: 'TEAM', to: '/team' },
+  { title: 'CONTACT', to: '/contact' },
 ];
 
 const Header = () => {
@@ -73,7 +73,7 @@ const Header = () => {
                            transition-all duration-300 
                            hover:bg-nexus-gold-hover hover:shadow-gold-glow"
               >
-                Запланувати Сесію
+                Schedule Session
               </Link>
             </motion.div>
           </div>
@@ -125,7 +125,7 @@ const Header = () => {
                            bg-nexus-gold text-nexus-dark-void 
                            hover:bg-nexus-gold-hover hover:shadow-gold-glow"
               >
-                Запланувати Сесію
+                Schedule Session
               </Link>
             </motion.div>
           </nav>

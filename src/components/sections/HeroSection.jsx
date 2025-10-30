@@ -37,7 +37,7 @@ const AnimatedHeadline = ({ text }) => {
 // Головний компонент Hero
 const HeroSection = () => {
   // === НОВИЙ СТРАТЕГІЧНИЙ ТЕКСТ ===
-  const headlineText = "Ми не просто створюємо софт. Ми проєктуємо ваше інтелектуальне цифрове ядро.";
+  const headlineText = "We don't just build software. We engineer your intelligent digital core.";
   
   return (
     <section 
@@ -56,13 +56,12 @@ const HeroSection = () => {
         {/* === ПІДЗАГОЛОВОК (З'являється після заголовку) === */}
         <motion.p 
           className="text-lg md:text-xl text-nexus-text-secondary max-w-3xl mx-auto mt-6"
-          variants={fadeInVariant} // Використовуємо просту появу
+          variants={fadeInVariant}
           initial="hidden"
           animate="visible"
-          transition={{ duration: 0.5, delay: 1.5 }} // Затримка, поки "друкується" H1
+          transition={{ duration: 0.5, delay: 1.5 }}
         >
-          Ми об'єднуємо кастомну розробку, ШІ-інтеграцію та незламну безпеку ("Ефект Nexus"), 
-          щоб перетворити ваші амбіції на абсолютну ринкову перевагу.
+          We fuse custom development, AI integration, and unbreakable security (the \"Nexus Effect\") to forge your ambitions into absolute market advantage.
         </motion.p>
 
         {/* === БЛОК CTA (З'являється останнім) === */}
@@ -85,7 +84,7 @@ const HeroSection = () => {
                          transition-all duration-300 
                          hover:bg-nexus-gold-hover hover:shadow-gold-glow"
             >
-              Запланувати Стратегічну Сесію
+              Schedule a Strategy Session
             </NavLink>
           </motion.div>
           
@@ -95,13 +94,13 @@ const HeroSection = () => {
             whileTap={{ scale: 0.95 }}
           >
             <NavLink
-              to="/projects"
+              to="/arsenal"
               className="inline-block rounded-full px-8 py-3.5 font-headings text-sm font-bold uppercase tracking-wider 
                          border-2 border-nexus-gold text-nexus-gold 
                          transition-all duration-300 
                          hover:bg-nexus-gold hover:text-nexus-dark-void hover:shadow-gold-glow"
             >
-              Дослідити наш Арсенал
+              Explore Our Arsenal
             </NavLink>
           </motion.div>
 
