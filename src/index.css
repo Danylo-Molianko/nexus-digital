@@ -25,9 +25,9 @@
   --color-text-headings: #FFFFFF;
 
   /* 5. Скло (Glassmorphism) */
-  --color-glass-bg: rgba(17, 5, 44, 0.5); /* На основі background-medium */
-  --color-glass-border: rgba(255, 255, 255, 0.1);
-  --glass-blur: 12px;
+  --color-glass-bg: rgba(17, 5, 44, 0.65); /* Робимо скло трохи менш прозорим (0.5 -> 0.65) */
+  --color-glass-border: rgba(255, 255, 255, 0.15); /* Робимо рамку трохи яскравішою (0.1 -> 0.15) */
+  --glass-blur: 16px; /* Посилюємо розмиття (12px -> 16px) для кращої читабельності */
 
   /* 6. Навігація (Зберігаємо з вашого файлу) */
   --header-height-large: 5rem; /* 80px */

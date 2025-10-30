@@ -28,12 +28,12 @@ const Header = () => {
     : 'h-[var(--header-height-large)]'; // 80px
 
   const activeLinkStyle = "text-nexus-gold after:w-full"; // Стиль для активного посилання
-  const baseLinkStyle = "relative py-2 text-sm font-medium tracking-wide text-nexus-text-primary transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-nexus-gold after:transition-all after:duration-300 hover:text-white hover:after:w-full";
+  const baseLinkStyle = "relative py-2 text-sm font-medium tracking-wide text-nexus-text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-0 after:-translate-x-1/2 after:bg-nexus-gold after:transition-all after:duration-300 hover:text-white hover:after:w-full";
 
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-nexus-glass-bg backdrop-blur-[var(--glass-blur)] border-b border-nexus-glass-border' : 'bg-transparent border-b border-transparent'}`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-nexus-glass-bg backdrop-blur-[var(--glass-blur)] border-b border-nexus-glass-border shadow-tech-glow' : 'bg-transparent border-b border-transparent'}`}
       >
         <div className={`container mx-auto flex items-center justify-between px-4 transition-all duration-300 ${headerHeight}`}>
           
