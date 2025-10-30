@@ -40,7 +40,7 @@ const Header = () => {
           {/* === ЛОГОТИП NEXUS (НОВИЙ) === */}
           <Link to="/" className="flex items-center h-full py-2" onClick={() => setIsMobileMenuOpen(false)}>
             <img 
-              src="/logo-nexus.jpg" // Агент повинен підтвердити, що logo-nexus.jpg є в папці /public
+              src="/logo-nexus.jpg" // Синхронізовано з актуальним файлом у /public
               alt="Nexus Studio Logo" 
               className="h-full object-contain transition-all duration-300" 
               style={{ filter: 'drop-shadow(0 0 10px rgba(199, 139, 12, 0.3))' }} // Додаємо логотипу золоте сяйво
