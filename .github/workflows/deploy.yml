@@ -20,7 +20,7 @@ jobs:
         script: |
           cd ~/nexus-digital-web
           git pull
-          docker compose down
-          docker compose up -d --build
           echo "Pruning old docker images..."
           docker image prune -f
+          docker compose down
+          docker compose up -d --build
