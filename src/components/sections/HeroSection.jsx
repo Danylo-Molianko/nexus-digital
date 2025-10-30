@@ -1,47 +1,110 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { motion } from 'framer-motion'; // Залишаємо Framer Motion для майбутніх анімацій
+import { motion } from 'framer-motion';
+import { 
+  neuralContainerVariant, 
+  neuralLetterVariant,
+  fadeInVariant 
+} from '../../utils/animations'; // Імпортуємо наш Кінетичний Рушій
 
-const HeroSection = () => {
+// Компонент для "Нейронної Типографіки"
+const AnimatedHeadline = ({ text }) => {
+  // Розбиваємо текст на масив літер
+  const letters = Array.from(text);
+
   return (
-    // Використовуємо стандартну висоту і прибираємо overflow-hidden
-    <section className="relative flex items-center justify-center min-h-[calc(100vh-var(--header-height-large))] bg-cream"> 
-      
-      {/* Контент тепер знову головний елемент */}
-      <div className="relative z-10 flex flex-col items-center text-center px-4">
-        
-        {/* Анімація появи тексту (приклад) */}
-        <motion.h1 
-          className="text-4xl md:text-6xl font-bold uppercase tracking-wider max-w-4xl text-anthracite-light"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+    // 1. КОНТЕЙНЕР (Вмикає "staggerChildren")
+    <motion.h1
+      className="text-4xl md:text-6xl font-headings font-bold uppercase tracking-wider max-w-4xl text-nexus-text-headings"
+      variants={neuralContainerVariant}
+      initial="hidden"
+      animate="visible"
+    >
+      {letters.map((letter, index) => (
+        // 2. КОЖНА ЛІТЕРА (Реагує на "staggerChildren")
+        <motion.span
+          key={index}
+          variants={neuralLetterVariant}
+          className="inline-block" // Потрібно для правильної анімації 'y'
         >
-          We don't just build software. We engineer your intelligent digital core.
-        </motion.h1>
+          {/* Додаємо пробіл як ' ' для збереження відступів */}
+          {letter === ' ' ? '\u00A0' : letter}
+        </motion.span>
+      ))}
+    </motion.h1>
+  );
+};
+
+// Головний компонент Hero
+const HeroSection = () => {
+  // === НОВИЙ СТРАТЕГІЧНИЙ ТЕКСТ ===
+  const headlineText = "Ми не просто створюємо софт. Ми проєктуємо ваше інтелектуальне цифрове ядро.";
+  
+  return (
+    <section 
+      className="relative flex items-center justify-center min-h-[calc(100vh-var(--header-height-large))] 
+                 bg-nexus-dark-void overflow-hidden" // Замінили фон 'bg-cream' на наш новий
+    >
+      {/* ТУТ МИ ДОДАМО "СЯЙВО КУРСОРУ" У НАСТУПНОМУ ПРОМТІ. 
+        Поки що залишаємо місце.
+      */}
+
+      <div className="container mx-auto px-4 text-center z-10">
         
+        {/* === ВАУ-ЕФЕКТ: НЕЙРОННИЙ ЗАГОЛОВOК === */}
+        <AnimatedHeadline text={headlineText} />
+
+        {/* === ПІДЗАГОЛОВОК (З'являється після заголовку) === */}
         <motion.p 
-          className="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-anthracite-light"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-lg md:text-xl text-nexus-text-secondary max-w-3xl mx-auto mt-6"
+          variants={fadeInVariant} // Використовуємо просту появу
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.5, delay: 1.5 }} // Затримка, поки "друкується" H1
         >
-          We fuse custom development, AI integration, and unbreakable security (the "Nexus Effect") to forge your ambitions into absolute market advantage.
+          Ми об'єднуємо кастомну розробку, ШІ-інтеграцію та незламну безпеку ("Ефект Nexus"), 
+          щоб перетворити ваші амбіції на абсолютну ринкову перевагу.
         </motion.p>
-        
+
+        {/* === БЛОК CTA (З'являється останнім) === */}
         <motion.div 
-          className="mt-10 flex flex-col sm:flex-row items-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
+          variants={fadeInVariant}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.5, delay: 1.8 }} // Найбільша затримка
         >
-          <NavLink 
-            to="/schedule-session" 
-            className="inline-block rounded-full px-8 py-3 font-headings text-sm font-bold uppercase tracking-wider 
-                       bg-gold text-anthracite transition-shadow hover:shadow-gold-glow"
+          {/* 1. Головна Золота Кнопка */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            Schedule a Strategy Session
-          </NavLink>
+            <NavLink
+              to="/contact"
+              className="inline-block rounded-full px-8 py-3.5 font-headings text-sm font-bold uppercase tracking-wider 
+                         bg-nexus-gold text-nexus-dark-void 
+                         transition-all duration-300 
+                         hover:bg-nexus-gold-hover hover:shadow-gold-glow"
+            >
+              Запланувати Стратегічну Сесію
+            </NavLink>
+          </motion.div>
+          
+          {/* 2. Другорядна Кнопка (Арсенал) */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <NavLink
+              to="/projects"
+              className="inline-block rounded-full px-8 py-3.5 font-headings text-sm font-bold uppercase tracking-wider 
+                         border-2 border-nexus-gold text-nexus-gold 
+                         transition-all duration-300 
+                         hover:bg-nexus-gold hover:text-nexus-dark-void hover:shadow-gold-glow"
+            >
+              Дослідити наш Арсенал
+            </NavLink>
+          </motion.div>
+
         </motion.div>
       </div>
     </section>
