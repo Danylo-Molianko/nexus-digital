@@ -35,6 +35,22 @@ app.get('/api/v1/pattern-seed', (req, res) => {
 });
 // --- [КІНЕЦЬ API ENDPOINT] ---
 
+// --- HEALTHCHECK ---
+app.get('/health', (req, res) => {
+  try {
+    res.set('Cache-Control', 'no-cache');
+    return res.status(200).json({
+      status: 'ok',
+      env: IS_PRODUCTION ? 'production' : 'development',
+      time: new Date().toISOString(),
+      uptime: process.uptime(),
+      node: process.version
+    });
+  } catch (e) {
+    return res.status(500).json({ status: 'error' });
+  }
+});
+
 // --- ОБСЛУГОВУВАННЯ СТАТИЧНИХ ФАЙЛІВ ТА SPA ---
 if (IS_PRODUCTION) {
   const distPath = path.join(__dirname, 'dist');
