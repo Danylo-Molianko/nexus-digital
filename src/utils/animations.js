@@ -115,3 +115,24 @@ export const fadeInVariant = {
     }
   }
 };
+
+/*
+ * 6. "Warp Reveal" (Вихід крізь реальність)
+ * Розкриття секції маскою-колом з легким дефокусом, ніби контент проривається крізь фон.
+ */
+export const warpRevealVariant = {
+  hidden: {
+    opacity: 0,
+    filter: 'blur(8px) saturate(0.9)',
+    clipPath: 'circle(0% at 50% 50%)'
+  },
+  visible: {
+    opacity: 1,
+    filter: 'blur(0px) saturate(1)',
+    clipPath: 'circle(140% at 50% 50%)',
+    transition: {
+      duration: 1.1,
+      ease: [0.22, 1, 0.36, 1]
+    }
+  }
+};

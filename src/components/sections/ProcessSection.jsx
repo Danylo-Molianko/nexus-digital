@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import GlassCardStatic from '../ui/GlassCardStatic';
 import { motion, useReducedMotion } from 'framer-motion';
-import { zeroGSectionVariant, fadeInVariant } from '../../utils/animations';
+import { zeroGSectionVariant, fadeInVariant, warpRevealVariant } from '../../utils/animations';
 
 const processSteps = [
     { title: "Discovery & Strategy", description: "We dive deep into your business to define objectives, establish KPIs, and create a strategic project roadmap." },
@@ -24,20 +24,20 @@ const ProcessSection = () => {
 
     return (
         <motion.section 
-            className="container mx-auto px-4 py-24"
+            className="container mx-auto px-4 py-24 defer-visibility"
             variants={variants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: viewportAmount }}
         >
-            <div className="text-center mb-20 max-w-3xl mx-auto">
+            <motion.div className="text-center mb-20 max-w-3xl mx-auto" variants={warpRevealVariant} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
                 <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
                     Our Process — Your Predictable Victory
                 </h2>
                 <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
                     You aren't buying a 'black box.' You are investing in a transparent, 6-step engineering process that guarantees outcomes.
                 </p>
-            </div>
+            </motion.div>
             
             <div className="relative max-w-4xl mx-auto">
                 {/* The Timeline Line */}

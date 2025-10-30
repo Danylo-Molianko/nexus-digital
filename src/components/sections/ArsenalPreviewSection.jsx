@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRightIcon, ArrowDownTrayIcon as DownloadIcon } from '@heroicons/react/24/solid'; // Використовуємо іконку для скачування
-import { zeroGSectionVariant } from '../../utils/animations';
+import { zeroGSectionVariant, warpRevealVariant } from '../../utils/animations';
 
 // Картка для "активу, що готується"
 const AssetCard = ({ title, description, role, to }) => {
@@ -45,7 +45,7 @@ const ArsenalPreviewSection = () => {
   return (
     // Використовуємо "Нульову Гравітацію"
     <motion.section
-      className="bg-nexus-dark-void" // Фон може бути трохи іншим, якщо треба
+      className="bg-nexus-dark-void defer-visibility" // Легкий перф-плюс
       variants={zeroGSectionVariant}
       initial="hidden"
       whileInView="visible"
@@ -53,15 +53,17 @@ const ArsenalPreviewSection = () => {
     >
       <div className="container mx-auto px-4 py-24">
         {/* Заголовок Секції */}
-        <h2 className="text-3xl md:text-5xl font-headings font-bold text-center mb-6 text-nexus-text-headings">
-          Арсенал: Дані для Вашого Комітету
-        </h2>
-        <p className="text-lg md:text-xl text-nexus-text-secondary max-w-2xl mx-auto text-center mb-16">
-          Ми готуємо стратегічні бріфи, які допоможуть вашій команді прийняти правильне рішення. Отримайте доступ першими.
-        </p>
+        <motion.div variants={warpRevealVariant} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+          <h2 className="text-3xl md:text-5xl font-headings font-bold text-center mb-6 text-nexus-text-headings">
+            Арсенал: Дані для Вашого Комітету
+          </h2>
+          <p className="text-lg md:text-xl text-nexus-text-secondary max-w-2xl mx-auto text-center mb-16">
+            Ми готуємо стратегічні бріфи, які допоможуть вашій команді прийняти правильне рішення. Отримайте доступ першими.
+          </p>
+        </motion.div>
         
         {/* Сітка Активів */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Актив 1 (для CFO) */}
           <AssetCard
             role="ДЛЯ CFO / ФІНАНСИСТІВ"

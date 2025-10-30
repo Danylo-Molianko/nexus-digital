@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { zeroGSectionVariant } from '../../utils/animations'; // Використовуємо "Нульову Гравітацію"
+import { zeroGSectionVariant, warpRevealVariant } from '../../utils/animations'; // Нульова гравітація + warp reveal
 
 const CtaSection = () => {
   return (
@@ -11,18 +11,20 @@ const CtaSection = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
     >
-      <div className="container mx-auto px-4 text-center">
+  <div className="container mx-auto px-4 text-center defer-visibility">
         
         {/* === НАША ГОЛОВНА УТП (З ДОКУМЕНТУ 2.3) === */}
-        <h2 className="text-3xl md:text-5xl font-headings font-bold text-nexus-text-headings mb-6">
-          Ваш проєкт ведуть засновники. Не менеджери.
-        </h2>
-        
-        <p className="text-lg md:text-xl text-nexus-text-secondary max-w-3xl mx-auto mb-12">
-          На відміну від агенцій-фабрик, де ваш проєкт губиться, у Nexus Studio ви отримуєте 
-          прямий доступ та персональну відповідальність лідерів, відповідальних за ваш результат: 
-          Технології, Стратегія та Креатив.
-        </p>
+        <motion.div variants={warpRevealVariant} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+          <h2 className="text-3xl md:text-5xl font-headings font-bold text-nexus-text-headings mb-6">
+            Ваш проєкт ведуть засновники. Не менеджери.
+          </h2>
+          
+          <p className="text-lg md:text-xl text-nexus-text-secondary max-w-3xl mx-auto mb-12">
+            На відміну від агенцій-фабрик, де ваш проєкт губиться, у Nexus Studio ви отримуєте 
+            прямий доступ та персональну відповідальність лідерів, відповідальних за ваш результат: 
+            Технології, Стратегія та Креатив.
+          </p>
+        </motion.div>
 
         {/* === КОМАНДА (ШАБЛОН) === */}
         {/* (Ми замінимо це на реальні фото, коли отримаємо досьє) */}

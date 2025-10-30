@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import GlassCard from '../ui/GlassCard';
 import { CubeTransparentIcon, SparklesIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
 import { motion, useReducedMotion } from 'framer-motion';
-import { zeroGSectionVariant, fadeInVariant } from '../../utils/animations';
+import { zeroGSectionVariant, fadeInVariant, warpRevealVariant } from '../../utils/animations';
 
 const pillarsData = [
   {
@@ -34,20 +34,20 @@ const PillarsSection = () => {
 
   return (
     <motion.section 
-      className="container mx-auto px-4 py-24"
+      className="container mx-auto px-4 py-24 defer-visibility"
       variants={variants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: viewportAmount }}
     >
-      <div className="text-center mb-16 max-w-3xl mx-auto">
+      <motion.div className="text-center mb-16 max-w-3xl mx-auto" variants={warpRevealVariant} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
         <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
           The 'Nexus Effect': Your Advantage is Synergy
         </h2>
         <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
           Our strength lies in synergy. We don't just offer services; we connect them to create holistic, future-proof digital solutions.
         </p>
-      </div>
+      </motion.div>
   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 [perspective:1000px]">
         {pillarsData.map((pillar, index) => (
           <motion.div

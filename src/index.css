@@ -147,3 +147,36 @@ h1, h2, h3, h4, h5, h6 {
   background-size: 200px 200px;
   z-index: 50;
 }
+
+/* === REALITY BACKGROUND LAYERS === */
+.reality-layer {
+  position: absolute; inset: -10%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.06;
+  animation: realityDrift 60s ease-in-out infinite alternate;
+}
+.reality-lava {
+  background: radial-gradient(120% 120% at 50% 100%, rgba(231, 182, 48, 0.15), transparent 60%),
+              radial-gradient(80% 80% at 20% 20%, rgba(199,139,12,0.12), transparent 60%),
+              linear-gradient(120deg, rgba(199,139,12,0.10), rgba(234, 177, 42, 0.06));
+  filter: url(#noiseDistortLava);
+}
+.reality-ocean {
+  background: radial-gradient(100% 100% at 80% 10%, rgba(0,191,255,0.10), transparent 60%),
+              linear-gradient(180deg, rgba(17,5,44,0.10), rgba(10,0,31,0.10));
+  filter: url(#noiseDistortOcean);
+  opacity: 0.04;
+}
+@keyframes realityDrift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-2%, 1%, 0) scale(1.02); }
+  100% { transform: translate3d(2%, -1%, 0) scale(1.01); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reality-layer { animation: none; }
+}
+
+/* === PERF: CONTENT VISIBILITY === */
+.defer-visibility { content-visibility: auto; contain-intrinsic-size: 1000px; }

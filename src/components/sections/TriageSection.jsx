@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
-import { zeroGSectionVariant } from '../../utils/animations'; // Наша "пружинна" анімація
+import { zeroGSectionVariant, warpRevealVariant } from '../../utils/animations'; // Пружина + warp reveal
 
 /* === КАРТКА ТРІАЖУ (ІНТЕРАКТИВНА) === */
 const TriageCard = ({ title, description, to, className = '' }) => {
@@ -45,19 +45,21 @@ const TriageSection = () => {
   return (
     // Використовуємо "Нульову Гравітацію" для всієї секції
     <motion.section
-      className="container mx-auto px-4 py-24"
+      className="container mx-auto px-4 py-24 defer-visibility"
       variants={zeroGSectionVariant}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
     >
-      {/* Заголовок Секції */}
-      <h2 className="text-3xl md:text-5xl font-headings font-bold text-center mb-6 text-nexus-text-headings">
-        Яку стратегічну задачу ви вирішуєте?
-      </h2>
-      <p className="text-lg md:text-xl text-nexus-text-secondary max-w-2xl mx-auto text-center mb-16">
-        Ваша мета визначає наш підхід. Оберіть ваш шлях, щоб ми могли запропонувати ідеальне рішення.
-      </p>
+      {/* Заголовок Секції з warp reveal */}
+      <motion.div variants={warpRevealVariant} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+        <h2 className="text-3xl md:text-5xl font-headings font-bold text-center mb-6 text-nexus-text-headings">
+          Яку стратегічну задачу ви вирішуєте?
+        </h2>
+        <p className="text-lg md:text-xl text-nexus-text-secondary max-w-2xl mx-auto text-center mb-16">
+          Ваша мета визначає наш підхід. Оберіть ваш шлях, щоб ми могли запропонувати ідеальне рішення.
+        </p>
+      </motion.div>
 
       {/* Сітка Тріажу */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 [perspective:1000px]">
