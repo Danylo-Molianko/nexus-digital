@@ -32,6 +32,8 @@
   /* 6. Навігація (Зберігаємо з вашого файлу) */
   --header-height-large: 5rem; /* 80px */
   --header-height-small: 4rem; /* 64px */
+  /* Відсутня, але використовується у компонентах: приглушене золото для бекграундів і бейджів */
+  --color-accent-dimmed: rgba(199, 139, 12, 0.12);
 }
 
 /* === FLUID TYPOGRAPHY SCALE === */
@@ -99,6 +101,52 @@ h1, h2, h3, h4, h5, h6 {
   html, body, body *:not(svg):not(path) {
     text-align: center !important;
   }
+}
+
+/* Дозволяємо явним утилітам Tailwind переважити глобальне центрування */
+@layer utilities {
+  .text-left { text-align: left !important; }
+  .text-right { text-align: right !important; }
+}
+
+/* === GOLD TEXT SHINE (P1) === */
+.gold-text {
+  background: linear-gradient(90deg, #a87113 0%, #ffd27a 35%, #c78b0c 50%, #ffd27a 65%, #a87113 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: goldShine 4s linear infinite;
+}
+@keyframes goldShine {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* === CONIC HALO (P1) === */
+.conic-halo { position: relative; }
+.conic-halo::before {
+  content: "";
+  position: absolute; inset: -2px; border-radius: 1rem; /* match rounded-2xl */
+  background: conic-gradient(from 0deg,
+    rgba(199,139,12,0.35), rgba(0,191,255,0.0) 25%,
+    rgba(199,139,12,0.35) 50%, rgba(0,191,255,0.0) 75%, rgba(199,139,12,0.35) 100%);
+  filter: blur(8px);
+  animation: conicSpin 10s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes conicSpin { to { transform: rotate(360deg); } }
+
+/* === CURSOR GLOW (Global focus aura) === */
+.cursor-glow {
+  position: fixed; inset: 0; pointer-events: none; z-index: 5;
+  background: radial-gradient( 600px 600px at var(--mx,50%) var(--my,50%), rgba(0,191,255,0.08), transparent 60%);
+  transition: opacity 200ms ease;
+  opacity: 0.6;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor-glow { display: none; }
 }
 
 /* Living background motion */
