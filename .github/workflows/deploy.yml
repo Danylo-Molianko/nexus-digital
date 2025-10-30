@@ -1,26 +1,23 @@
-name: Deploy to Production
+name: Deploy to Production (Docker Compose via Direct SSH)
 
 on:
   push:
     branches:
-      - main # Або 'master', залежно від вашої головної гілки
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Deploy to Server
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.SERVER_HOST }}
-        username: ${{ secrets.SERVER_USER }}
-        key: ${{ secrets.SERVER_SSH_KEY }}
-        port: 22
-        script: |
-          cd ~/nexus-digital-web
-          git pull
-          echo "Pruning old docker images..."
-          docker image prune -f
-          docker compose down
-          docker compose up -d --build
+    - name: Setup SSH Key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+
+    - name: Deploy via SSH (Docker Compose)
+      run: |
+        echo "Starting remote Docker deployment..."
+        ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'bash -lc "cd ~/nexus-digital-web && git pull && echo \"Pruning old docker images...\" && docker image prune -f && docker compose down && docker compose up -d --build"'
