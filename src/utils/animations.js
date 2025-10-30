@@ -20,8 +20,8 @@ export const zeroGSectionVariant = {
     y: 0,
     transition: {
       type: 'spring', // Використовуємо фізику пружини
-      duration: 1.2,
-      bounce: 0.3,   // "Відскок" (реалізм)
+      duration: 1.0,
+      bounce: 0.18,   // Більш "важке" відчуття
       delay: 0.1
     }
   }
@@ -61,6 +61,26 @@ export const neuralLetterVariant = {
       damping: 12, // Гасіння коливань
       stiffness: 100, // Жорсткість
     }
+  }
+};
+
+// Альтернатива A: Smooth Luxury
+export const neuralLetterVariantSmooth = {
+  hidden: { opacity: 0, y: '100%' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', damping: 16, stiffness: 120 }
+  }
+};
+
+// Альтернатива B: Mechanical Precision
+export const neuralLetterVariantMechanical = {
+  hidden: { opacity: 0, y: '100%' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', damping: 18, stiffness: 220, restDelta: 0.001 }
   }
 };
 

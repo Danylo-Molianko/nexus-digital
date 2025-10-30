@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { 
   motion, 
   useMotionValue, 
@@ -10,6 +10,12 @@ import {
 
 const GlassCard = ({ children, className = '' }) => {
   const cardRef = useRef(null);
+  const supportsHover = useMemo(
+    () => typeof window !== 'undefined' && window.matchMedia?.('(hover: hover)').matches,
+    []
+  );
+  const [enabled, setEnabled] = useState(false);
+  useEffect(() => setEnabled(!!supportsHover), [supportsHover]);
 
   // Створюємо motion values для відстеження позиції курсора
   const mouseX = useMotionValue(0);
@@ -45,15 +51,16 @@ const GlassCard = ({ children, className = '' }) => {
   return (
     <motion.div
       ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+  onMouseMove={enabled ? handleMouseMove : undefined}
+  onMouseLeave={enabled ? handleMouseLeave : undefined}
       
       // Застосовуємо 3D-нахил
       style={{
-        rotateX,
-        rotateY,
+        rotateX: enabled ? rotateX : 0,
+        rotateY: enabled ? rotateY : 0,
         transformStyle: 'preserve-3d', // Вмикаємо 3D-простір
-        transformPerspective: 1000   // Встановлюємо перспективу
+        transformPerspective: 1000,   // Встановлюємо перспективу
+        willChange: 'transform'
       }}
       
       // Застосовуємо базові стилі зі старого файлу + нові

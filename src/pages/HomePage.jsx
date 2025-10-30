@@ -1,29 +1,28 @@
 // Цей файл містить код, який раніше був у App.jsx
-import React from 'react';
+import React, { Suspense } from 'react';
 import HeroSection from '../components/sections/HeroSection';
-import TriageSection from '../components/sections/TriageSection';
-import PillarsSection from '../components/sections/PillarsSection';
-import ImpactSection from '../components/sections/ImpactSection';
-import ProcessSection from '../components/sections/ProcessSection';
-import ArsenalPreviewSection from '../components/sections/ArsenalPreviewSection';
-import TestimonialsSection from '../components/sections/TestimonialsSection';
-import CtaSection from '../components/sections/CtaSection';
+const TriageSection = React.lazy(() => import('../components/sections/TriageSection'));
+const PillarsSection = React.lazy(() => import('../components/sections/PillarsSection'));
+const ImpactSection = React.lazy(() => import('../components/sections/ImpactSection'));
+const ProcessSection = React.lazy(() => import('../components/sections/ProcessSection'));
+const ArsenalPreviewSection = React.lazy(() => import('../components/sections/ArsenalPreviewSection'));
+const TestimonialsSection = React.lazy(() => import('../components/sections/TestimonialsSection'));
+const CtaSection = React.lazy(() => import('../components/sections/CtaSection'));
 
-// ТЕСТОВА ЗМІНА - оновлення працює!
-console.log('🚀 HomePage LIVE UPDATE TEST:', new Date().toLocaleTimeString());
-console.log('✨ Сервер підключений і оновлюється!');
 
 const HomePage = () => {
   return (
     <>
       <HeroSection />
-      <TriageSection />
-      <PillarsSection />
-      <ImpactSection />
-      <ProcessSection />
-  <ArsenalPreviewSection />
-      <TestimonialsSection />
-      <CtaSection />
+      <Suspense fallback={null}>
+        <TriageSection />
+        <PillarsSection />
+        <ImpactSection />
+        <ProcessSection />
+        <ArsenalPreviewSection />
+        <TestimonialsSection />
+        <CtaSection />
+      </Suspense>
     </>
   );
 };

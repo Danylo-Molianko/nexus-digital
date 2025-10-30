@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import GlassCard from '../ui/GlassCard';
-import { motion } from 'framer-motion';
-import { zeroGSectionVariant } from '../../utils/animations';
+import { motion, useReducedMotion } from 'framer-motion';
+import { zeroGSectionVariant, fadeInVariant } from '../../utils/animations';
 
 const processSteps = [
     { title: "Discovery & Strategy", description: "We dive deep into your business to define objectives, establish KPIs, and create a strategic project roadmap." },
@@ -13,13 +13,22 @@ const processSteps = [
 ];
 
 const ProcessSection = () => {
+    const viewportAmount = useMemo(() => {
+        if (typeof window !== 'undefined' && window.matchMedia?.('(hover: none)').matches) {
+            return 0.1;
+        }
+        return 0.2;
+    }, []);
+    const shouldReduce = useReducedMotion();
+    const variants = shouldReduce ? fadeInVariant : zeroGSectionVariant;
+
     return (
         <motion.section 
             className="container mx-auto px-4 py-24"
-            variants={zeroGSectionVariant}
+            variants={variants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: viewportAmount }}
         >
             <div className="text-center mb-20 max-w-3xl mx-auto">
                 <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">

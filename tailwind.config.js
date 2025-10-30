@@ -31,8 +31,8 @@ export default {
         'nexus-text-headings': '#FFFFFF',    // Чистий білий для головних заголовків.
         
         // 5. Скло (Glassmorphism)
-        'nexus-glass-bg': 'rgba(17, 5, 44, 0.5)',    // Фон для "скляних" карт (на основі dark-primary)
-        'nexus-glass-border': 'rgba(255, 255, 255, 0.1)', // Ледь помітна біла рамка
+  'nexus-glass-bg': 'rgba(17, 5, 44, 0.65)',    // Синхронізовано з index.css
+  'nexus-glass-border': 'rgba(255, 255, 255, 0.15)',
       },
       fontFamily: {
         // ПІДТВЕРДЖЕНО: Шрифти сильні. Залишаємо.

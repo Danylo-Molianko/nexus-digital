@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import GlassCard from '../ui/GlassCard';
 import { CubeTransparentIcon, SparklesIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
-import { motion } from 'framer-motion';
-import { zeroGSectionVariant } from '../../utils/animations';
+import { motion, useReducedMotion } from 'framer-motion';
+import { zeroGSectionVariant, fadeInVariant } from '../../utils/animations';
 
 const pillarsData = [
   {
@@ -23,13 +23,22 @@ const pillarsData = [
 ];
 
 const PillarsSection = () => {
+  const viewportAmount = useMemo(() => {
+    if (typeof window !== 'undefined' && window.matchMedia?.('(hover: none)').matches) {
+      return 0.1; // mobile/tablet quicker trigger
+    }
+    return 0.2;
+  }, []);
+  const shouldReduce = useReducedMotion();
+  const variants = shouldReduce ? fadeInVariant : zeroGSectionVariant;
+
   return (
     <motion.section 
       className="container mx-auto px-4 py-24"
-      variants={zeroGSectionVariant}
+      variants={variants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: viewportAmount }}
     >
       <div className="text-center mb-16 max-w-3xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">

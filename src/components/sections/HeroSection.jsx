@@ -2,12 +2,14 @@ import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   neuralContainerVariant, 
-  neuralLetterVariant,
+  neuralLetterVariantMechanical as neuralLetterVariant,
   fadeInVariant 
 } from '../../utils/animations'; // Імпортуємо наш Кінетичний Рушій
+import { useReducedMotion } from 'framer-motion';
 
 // Компонент для "Нейронної Типографіки"
 const AnimatedHeadline = ({ text }) => {
+  const shouldReduce = useReducedMotion();
   // Розбиваємо текст на масив літер
   const letters = Array.from(text);
 
@@ -15,11 +17,11 @@ const AnimatedHeadline = ({ text }) => {
     // 1. КОНТЕЙНЕР (Вмикає "staggerChildren")
     <motion.h1
       className="text-4xl md:text-6xl font-headings font-bold uppercase tracking-wider max-w-4xl text-nexus-text-headings"
-      variants={neuralContainerVariant}
+      variants={shouldReduce ? fadeInVariant : neuralContainerVariant}
       initial="hidden"
       animate="visible"
     >
-      {letters.map((letter, index) => (
+      {shouldReduce ? text : letters.map((letter, index) => (
         // 2. КОЖНА ЛІТЕРА (Реагує на "staggerChildren")
         <motion.span
           key={index}

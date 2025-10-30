@@ -17,7 +17,9 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const scrolled = window.scrollY > 20;
+      // Avoid unnecessary state updates/rerenders
+      setIsScrolled(prev => (prev !== scrolled ? scrolled : prev));
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
