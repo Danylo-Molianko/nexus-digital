@@ -1,53 +1,65 @@
+/* === ДИРЕКТИВИ TAILWIND (ЗАЛИШИТИ) === */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    /* Спрощена палітра, керована Tailwind */
-    --color-background-deep: theme(colors.cream);
-    --color-text-primary: theme(colors.anthracite-light);
-    --color-text-secondary: theme(colors.gray-light);
-    --color-accent: theme(colors.gold); /* КРИТИЧНА ЗМІНА: Синій -> Золотий */
-    
-    /* Змінні Glassmorphism (залишаємо) */
-    --color-glass-bg: rgba(28, 30, 38, 0.6); /* Антрацит */
-    --color-glass-border: rgba(255, 255, 255, 0.1);
-    --glass-blur: 12px;
-    
-    /* Змінні Header (залишаємо) */
-    --header-height-large: 80px;
-    --header-height-small: 60px;
-  }
-
-  body {
-    @apply bg-cream text-anthracite-light font-sans antialiased;
-  }
+/* === ГЛОБАЛЬНА ПАЛІТРА NEXUS (CSS ЗМІННІ) === */
+:root {
+  /* Синхронізація з tailwind.config.js
+  */
   
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-headings text-anthracite-light;
-  }
+  /* 1. Основа */
+  --color-background-deep: #0A001F;  
+  --color-background-medium: #11052C;
+
+  /* 2. Акцент (Золото Nexus) */
+  --color-accent: #C78B0C;
+  --color-accent-hover: #E0A42D;
+
+  /* 3. Інновації (Технології) */
+  --color-tech-blue: #00BFFF;
+
+  /* 4. Текст */
+  --color-text-primary: #D0D0D0;
+  --color-text-secondary: #8A8A9E;
+  --color-text-headings: #FFFFFF;
+
+  /* 5. Скло (Glassmorphism) */
+  --color-glass-bg: rgba(17, 5, 44, 0.5); /* На основі background-medium */
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --glass-blur: 12px;
+
+  /* 6. Навігація (Зберігаємо з вашого файлу) */
+  --header-height-large: 5rem; /* 80px */
+  --header-height-small: 4rem; /* 64px */
 }
 
-/* Існуюча анімація (залишаємо) */
+/* === БАЗОВІ СТИЛІ === */
+body {
+  /* Встановлення НОВОГО фону та тексту */
+  background-color: var(--color-background-deep);
+  color: var(--color-text-primary);
+  
+  /* Шрифти (підтверджено з Tailwind) */
+  font-family: 'Inter', sans-serif;
+  
+  /* Плавність та анти-аліасинг */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  /* Шрифти (підтверджено з Tailwind) */
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--color-text-headings);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* === АНІМАЦІЇ (ЗАЛИШИТИ) === */
 @keyframes slow-drift {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  25% {
-    transform: translate(15px, 10px) scale(1.1);
-  }
-  50% {
-    transform: translate(-10px, 5px) scale(1);
-  }
-  75% {
-    transform: translate(5px, -15px) scale(1.1);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
-}
-
-.animate-slow-drift {
-  animation: slow-drift 30s ease-in-out infinite alternate;
+  0% { transform: translateY(-10px) translateX(-10px); }
+  100% { transform: translateY(10px) translateX(10px); }
 }
