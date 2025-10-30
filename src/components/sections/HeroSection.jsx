@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import AuroraBackground from '../layout/AuroraBackground';
 import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion';
 import { 
   neuralContainerVariant, 
@@ -43,9 +44,10 @@ const HeroSection = () => {
   
   return (
     <section 
-      className="relative section-glow flex items-center justify-center min-h-[calc(100vh-var(--header-height-large))] 
-                 overflow-hidden"
+      className="relative section-glow flex items-center justify-center min-h-[calc(100vh-var(--header-height-large))] overflow-hidden"
     >
+      {/* Subtle aurora just for hero (very low opacity) */}
+      <AuroraBackground className="absolute inset-0 -z-10 opacity-[0.08]" />
       {/* ТУТ МИ ДОДАМО "СЯЙВО КУРСОРУ" У НАСТУПНОМУ ПРОМТІ. 
         Поки що залишаємо місце.
       */}

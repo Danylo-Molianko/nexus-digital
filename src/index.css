@@ -155,17 +155,17 @@ h1, h2, h3, h4, h5, h6 {
   mix-blend-mode: screen;
   opacity: 0.06;
   animation: realityDrift 60s ease-in-out infinite alternate;
+  will-change: transform;
+  contain: layout paint style;
 }
 .reality-lava {
   background: radial-gradient(120% 120% at 50% 100%, rgba(231, 182, 48, 0.15), transparent 60%),
               radial-gradient(80% 80% at 20% 20%, rgba(199,139,12,0.12), transparent 60%),
               linear-gradient(120deg, rgba(199,139,12,0.10), rgba(234, 177, 42, 0.06));
-  filter: url(#noiseDistortLava);
 }
 .reality-ocean {
   background: radial-gradient(100% 100% at 80% 10%, rgba(0,191,255,0.10), transparent 60%),
               linear-gradient(180deg, rgba(17,5,44,0.10), rgba(10,0,31,0.10));
-  filter: url(#noiseDistortOcean);
   opacity: 0.04;
 }
 @keyframes realityDrift {
@@ -180,3 +180,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* === PERF: CONTENT VISIBILITY === */
 .defer-visibility { content-visibility: auto; contain-intrinsic-size: 1000px; }
+
+/* === Aurora pulse helper (used by AuroraBackground) === */
+@keyframes auroraPulse { 0%,100% { opacity: 0.12; } 50% { opacity: 0.18; } }
+.animate-aurora-pulse { animation: auroraPulse 10s ease-in-out infinite; }
