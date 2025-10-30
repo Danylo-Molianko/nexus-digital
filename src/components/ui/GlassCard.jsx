@@ -70,7 +70,7 @@ const GlassCard = ({ children, className = '' }) => {
         rounded-2xl p-8 
         transition-all duration-300 
         hover:border-nexus-gold/50 
-        hover:shadow-tech-glow 
+        hover:shadow-tech-glow focus-visible-ring 
         ${className}
       `}
     >

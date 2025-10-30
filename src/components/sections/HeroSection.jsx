@@ -8,31 +8,54 @@ import {
 } from '../../utils/animations'; // Імпортуємо наш Кінетичний Рушій
 // useReducedMotion imported above
 
-// Компонент для "Нейронної Типографіки"
-const AnimatedHeadline = ({ text }) => {
+// Компонент для "Нейронної Типографіки" з підтримкою золотих слів
+const AnimatedHeadline = ({ text, highlightWords = [] }) => {
   const shouldReduce = useReducedMotion();
-  // Розбиваємо текст на масив літер
-  const letters = Array.from(text);
+  // Підготуємо множину виділених слів у верхньому регістрі
+  const highlightSet = new Set(highlightWords.map(w => w.toUpperCase()));
+  // Розбиваємо текст на токени, зберігаючи пробіли
+  const tokens = text.split(/(\s+)/);
+  const sanitize = (t) => t
+    .toUpperCase()
+    .replace(/[«»“”"'.,!?;:()\[\]{}]/g, '');
 
   return (
-    // 1. КОНТЕЙНЕР (Вмикає "staggerChildren")
     <motion.h1
       className="h1-fluid font-headings font-bold uppercase tracking-wider max-w-4xl text-nexus-text-headings"
       variants={shouldReduce ? fadeInVariant : neuralContainerVariant}
       initial="hidden"
       animate="visible"
     >
-      {shouldReduce ? text : letters.map((letter, index) => (
-        // 2. КОЖНА ЛІТЕРА (Реагує на "staggerChildren")
-        <motion.span
-          key={index}
-          variants={neuralLetterVariant}
-          className="inline-block" // Потрібно для правильної анімації 'y'
-        >
-          {/* Додаємо пробіл як ' ' для збереження відступів */}
-          {letter === ' ' ? '\u00A0' : letter}
-        </motion.span>
-      ))}
+      {shouldReduce
+        ? (
+          tokens.map((tok, i) => {
+            const isSpace = /^\s+$/.test(tok);
+            if (isSpace) return <span key={i}>{tok}</span>;
+            const isGold = highlightSet.has(sanitize(tok));
+            return <span key={i} className={isGold ? 'gold-text' : undefined}>{tok}</span>;
+          })
+        )
+        : (
+          tokens.flatMap((tok, ti) => {
+            const isSpace = /^\s+$/.test(tok);
+            if (isSpace) {
+              return (
+                <motion.span key={`s-${ti}`} variants={neuralLetterVariant} className="inline-block">{'\u00A0'}</motion.span>
+              );
+            }
+            const isGold = highlightSet.has(sanitize(tok));
+            return Array.from(tok).map((letter, li) => (
+              <motion.span
+                key={`l-${ti}-${li}`}
+                variants={neuralLetterVariant}
+                className={`inline-block ${isGold ? 'gold-text' : ''}`}
+              >
+                {letter}
+              </motion.span>
+            ));
+          })
+        )
+      }
     </motion.h1>
   );
 };
@@ -40,7 +63,7 @@ const AnimatedHeadline = ({ text }) => {
 // Головний компонент Hero
 const HeroSection = () => {
   // === НОВИЙ СТРАТЕГІЧНИЙ ТЕКСТ ===
-  const headlineText = "We don't just build software. We engineer your intelligent digital core.";
+  const headlineText = "We don't just build software. We engineer your \u00AB\u0406\u041D\u0422\u0415\u041b\u0415\u041a\u0422\u0423\u0410\u041b\u042c\u041d\u0415 \u0426\u0418\u0424\u0420\u041e\u0412\u0415 \u042f\u0414\u0420\u041e\u00BB.";
   
   return (
     <section 
@@ -55,7 +78,11 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 text-center z-10">
         
         {/* === ВАУ-ЕФЕКТ: НЕЙРОННИЙ ЗАГОЛОВOК === */}
-        <AnimatedHeadline text={headlineText} />
+  <AnimatedHeadline 
+    text={headlineText}
+    highlightWords={["ІНТЕЛЕКТУАЛЬНЕ", "ЦИФРОВЕ", "ЯДРО"]}
+  />
+  <h2 className="sr-only">Intelligent Digital Core</h2>
 
         {/* === ПІДЗАГОЛОВОК (З'являється після заголовку) === */}
         <motion.p
