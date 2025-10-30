@@ -2,6 +2,7 @@ import React from 'react';
 import GlassCard from '../ui/GlassCard';
 import { CubeTransparentIcon, SparklesIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
+import { zeroGSectionVariant } from '../../utils/animations';
 
 const pillarsData = [
   {
@@ -23,7 +24,13 @@ const pillarsData = [
 
 const PillarsSection = () => {
   return (
-    <section className="container mx-auto px-4 py-24">
+    <motion.section 
+      className="container mx-auto px-4 py-24"
+      variants={zeroGSectionVariant}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
       <div className="text-center mb-16 max-w-3xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
           The 'Nexus Effect': Your Advantage is Synergy
@@ -32,7 +39,7 @@ const PillarsSection = () => {
           Our strength lies in synergy. We don't just offer services; we connect them to create holistic, future-proof digital solutions.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 [perspective:1000px]">
         {pillarsData.map((pillar, index) => (
           <motion.div
             key={index}
@@ -55,7 +62,7 @@ const PillarsSection = () => {
           </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 
