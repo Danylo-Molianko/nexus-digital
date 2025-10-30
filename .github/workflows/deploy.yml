@@ -20,7 +20,26 @@ jobs:
     - name: Deploy via SSH (Docker Compose)
       run: |
         echo "Starting remote Docker deployment..."
-        ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'bash -lc "cd ~/nexus-digital-web && git pull && echo \"Pruning old docker images...\" && docker image prune -f && docker compose down && docker compose up -d --build && echo \"Containers:\" && docker ps && echo \"Waiting for app health...\" && sleep 5 && curl -fsSL http://localhost/health && echo \"\nSeed API:\" && curl -fsSL http://localhost/api/v1/pattern-seed"'
+        ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'bash -lc "\
+          set -euo pipefail; \
+          cd ~/nexus-digital-web; \
+          git pull; \
+          echo \"Pruning old docker images...\"; \
+          docker image prune -f; \
+          echo \"Stopping existing compose project...\"; \
+          docker compose down --remove-orphans || true; \
+          echo \"Force-removing legacy named containers if present...\"; \
+          docker rm -f nexus-app nexus-nginx 2>/dev/null || true; \
+          echo \"Starting compose (rebuild) ...\"; \
+          docker compose up -d --build --remove-orphans; \
+          echo \"Containers:\"; \
+          docker ps; \
+          echo \"Waiting for app health...\"; \
+          sleep 5; \
+          curl -fsSL http://localhost/health; \
+          echo \"\\nSeed API:\"; \
+          curl -fsSL http://localhost/api/v1/pattern-seed \
+        "'
 
     - name: Public HTTP smoke test
       run: |
