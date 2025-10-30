@@ -65,7 +65,7 @@ const TriageSection = () => {
         <TriageCard
           title="Я Засновник (Startup)"
           description="У мене є ідея (MVP). Мені потрібна прозора оцінка, захист NDA та швидкий, але надійний запуск."
-          to="/strategy" // Або '/mvp-path' - ми налаштуємо роутинг пізніше
+          to="/services"
           className="hover:border-nexus-tech-blue/50 hover:shadow-tech-glow" // Кастомний колір для "Інновацій"
         />
         
@@ -73,14 +73,14 @@ const TriageSection = () => {
         <TriageCard
           title="Я Власник Бізнесу (МСБ)"
           description="Мій бізнес працює, але застарілий сайт втрачає клієнтів. Мені потрібне надійне 'під ключ' рішення."
-          to="/strategy" // Або '/smb-path'
+          to="/services"
         />
 
         {/* === БЛОК 3: КОРПОРАЦІЇ ("Анна" - НАШ ГОЛОВНИЙ ФОКУС) === */}
         <TriageCard
           title="Я Стратегічний Лідер (Enterprise)"
           description="Мені потрібне комплексне AI/веб-рішення для масштабування, автоматизації та випередження конкурентів."
-          to="/strategy" // '/enterprise-path'
+          to="/services"
           className="md:scale-105 border-nexus-gold/50 shadow-gold-glow" // Виділяємо цей блок
         />
       </div>
