@@ -9,7 +9,7 @@ const GlassCardStatic = ({ children, className = '' }) => {
          border border-nexus-glass-border 
          rounded-2xl p-8 
          transition-all duration-300 
-         hover:border-nexus-gold/50 hover:u-glow-gold focus-visible-ring ${className}`
+         hover:border-nexus-gold/50 hover:u-glow-gold focus-visible-ring glass-interactive ${className}`
       }
     >
       {children}

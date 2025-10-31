@@ -14,16 +14,16 @@ import { zeroGSectionVariant, fadeInVariant } from '../utils/animations';
 const ProcessSection = lazy(() => import('../components/sections/ProcessSection'));
 const CtaSection = lazy(() => import('../components/sections/CtaSection'));
 import PageHeader from '../components/ui/PageHeader'; // Ваш існуючий компонент (у нас у папці ui)
+import GlassCardStatic from '../components/ui/GlassCardStatic';
 
 // Картка для окремої послуги
 const ServiceItemCard = ({ icon: Icon, title, description }) => (
-  <motion.div
-    variants={fadeInVariant} // Проста поява для елементів сітки
-    className="bg-nexus-dark-primary p-6 rounded-lg border border-nexus-glass-border"
-  >
-    <Icon className="h-10 w-10 text-nexus-gold mb-4" />
-    <h4 className="text-xl font-headings font-bold text-nexus-text-headings mb-2">{title}</h4>
-    <p className="text-nexus-text-secondary text-sm">{description}</p>
+  <motion.div variants={fadeInVariant} className="group">
+    <GlassCardStatic className="p-6">
+      <Icon className="h-10 w-10 text-nexus-gold mb-4 transition-transform duration-500 group-hover:rotate-12" />
+      <h4 className="text-xl font-headings font-bold text-nexus-text-headings mb-2">{title}</h4>
+      <p className="text-nexus-text-secondary text-sm">{description}</p>
+    </GlassCardStatic>
   </motion.div>
 );
 

@@ -40,12 +40,20 @@ const GlassCard = ({ children, className = '' }) => {
 
     mouseX.set(relativeX);
     mouseY.set(relativeY);
+
+    // Interactive light: update CSS vars for spotlight position
+    cardRef.current.style.setProperty('--mx', `${Math.round(relativeX * 100)}%`);
+    cardRef.current.style.setProperty('--my', `${Math.round(relativeY * 100)}%`);
   };
 
   const handleMouseLeave = () => {
     // Повертаємо картку у вихідне положення (центр)
     mouseX.set(0.5);
     mouseY.set(0.5);
+    if (cardRef.current) {
+      cardRef.current.style.setProperty('--mx', `50%`);
+      cardRef.current.style.setProperty('--my', `50%`);
+    }
   };
 
   return (
@@ -71,6 +79,7 @@ const GlassCard = ({ children, className = '' }) => {
         transition-all duration-300 
         hover:border-nexus-gold/50 
         hover:shadow-tech-glow focus-visible-ring 
+        glass-interactive 
         ${className}
       `}
     >

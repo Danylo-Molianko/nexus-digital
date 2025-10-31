@@ -21,6 +21,20 @@ const AnimatedHeadline = ({ text, highlightWords = [] }) => {
       {tokens.map((tok, i) => {
         if (/^\s+$/.test(tok)) return <span key={i}>{tok}</span>;
         const isGold = highlightSet.has(sanitize(tok));
+        const isIntelligent = sanitize(tok) === 'INTELLIGENT';
+        if (isIntelligent) {
+          return (
+            <motion.span
+              key={i}
+              className={isGold ? 'gold-text' : undefined}
+              initial={{ opacity: 0, y: 6, letterSpacing: '0.05em' }}
+              animate={{ opacity: 1, y: 0, letterSpacing: '0.1em' }}
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.22,1,0.36,1] }}
+            >
+              {tok}
+            </motion.span>
+          );
+        }
         return <span key={i} className={isGold ? 'gold-text' : undefined}>{tok}</span>;
       })}
     </motion.h1>
