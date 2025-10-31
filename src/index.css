@@ -50,20 +50,11 @@
 
 /* === БАЗОВІ СТИЛІ === */
 body {
-  /* Living Cosmic Background */
-  background-color: var(--color-background-deep);
-  background-image:
-    linear-gradient(
-      -45deg,
-      var(--color-background-deep, #0A001F),
-      var(--color-background-medium, #11052C),
-      var(--color-tech-purple, #6A0DAD),
-      var(--color-background-deep, #0A001F)
-    );
-  background-size: 400% 400%;
-  background-attachment: fixed;
-  animation: livingVoidShift 40s ease-in-out infinite;
-  will-change: background-position;
+  /* Static premium navy background per directive */
+  background-color: #0A192F; /* deep navy */
+  background-image: none;
+  animation: none;
+  will-change: auto;
 
   /* Текст і типографіка */
   color: var(--color-text-primary);

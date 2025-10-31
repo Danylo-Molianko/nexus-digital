@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import AuroraBackground from '../layout/AuroraBackground';
 import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion';
 import { fadeInVariant } from '../../utils/animations';
 
@@ -36,8 +35,7 @@ const HeroSection = () => {
     <section 
       className="relative section-glow flex items-center justify-center min-h-[calc(100vh-var(--header-height-large))] overflow-hidden"
     >
-      {/* Subtle aurora just for hero (very low opacity) */}
-      <AuroraBackground className="absolute inset-0 -z-10 opacity-[0.08]" />
+  {/* Aurora background removed per performance directive */}
 
       <div className="container mx-auto px-4 text-center z-10">
         {/* Заголовок */}
