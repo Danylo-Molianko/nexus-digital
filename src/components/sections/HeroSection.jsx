@@ -85,7 +85,7 @@ const HeroSection = () => {
             className="inline-block rounded-full px-8 py-3.5 font-headings text-sm font-bold uppercase tracking-wider 
                        bg-nexus-gold text-nexus-dark-void 
                        transition-all duration-300 
-                       hover:bg-nexus-gold-hover hover:u-glow-gold"
+                       hover:bg-nexus-gold-hover hover:u-glow-gold glass-interactive glass-interactive--cta"
             radius={50}
             maxOffset={3}
           >

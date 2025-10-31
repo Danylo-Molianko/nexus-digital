@@ -5,7 +5,7 @@ import { zeroGSectionVariant, warpRevealVariant } from '../../utils/animations';
 const CtaSection = () => {
   return (
     <motion.section
-      className="relative section-glow bg-[#0F213B] py-24 my-12" // Додаємо золотий глоу позаду заголовка
+      className="relative section-glow bg-[var(--bg-level1)] py-24 my-12" // Додаємо золотий глоу позаду заголовка
       variants={zeroGSectionVariant}
       initial="hidden"
       whileInView="visible"
@@ -59,7 +59,7 @@ const CtaSection = () => {
           className="inline-block rounded-full px-10 py-4 font-headings text-base font-bold uppercase tracking-wider 
                      bg-nexus-gold text-nexus-dark-void 
                      transition-all duration-300 
-                     hover:bg-nexus-gold-hover hover:u-glow-gold"
+                     hover:bg-nexus-gold-hover hover:u-glow-gold glass-interactive glass-interactive--cta"
           radius={50}
           maxOffset={3}
         >

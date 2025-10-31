@@ -13,7 +13,7 @@ const industriesData = [
 
 const IndustriesSection = () => {
   return (
-    <section className="py-24 my-12 bg-[#0F213B]">
+    <section className="py-24 my-12 bg-[var(--bg-level1)]">
       <div className="container mx-auto px-4">
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">Industries We Work In</h2>

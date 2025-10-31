@@ -29,7 +29,7 @@ const TriageSection = () => {
   return (
     // Використовуємо "Нульову Гравітацію" для всієї секції
     <motion.section
-      className="py-24 my-12 bg-[#0F213B] defer-visibility"
+      className="py-24 my-12 bg-[var(--bg-level1)] defer-visibility"
       variants={zeroGSectionVariant}
       initial="hidden"
       whileInView="visible"

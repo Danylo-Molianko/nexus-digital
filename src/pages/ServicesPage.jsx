@@ -39,7 +39,7 @@ const StrategyPage = () => {
 
       {/* 2. НАПРЯМОК 1: DIGITAL FOUNDATION */}
       <motion.section
-        className="py-24 my-12 bg-[#0F213B]"
+        className="py-24 my-12 bg-[var(--bg-level1)]"
         variants={zeroGSectionVariant}
         initial="hidden"
         whileInView="visible"
@@ -72,7 +72,7 @@ const StrategyPage = () => {
 
       {/* 3. НАПРЯМОК 2: BUSINESS ACCELERATION */}
       <motion.section
-        className="bg-[#0B1A31] py-24 my-12" // Виділяємо фон
+        className="bg-[var(--bg-level1)] py-24 my-12" // Виділяємо фон
         variants={zeroGSectionVariant}
         initial="hidden"
         whileInView="visible"
@@ -105,7 +105,7 @@ const StrategyPage = () => {
       
       {/* 4. НАПРЯМОК 3: STRATEGIC PARTNERSHIP */}
       <motion.section
-        className="py-24 my-12 bg-[#0F213B]"
+        className="py-24 my-12 bg-[var(--bg-level1)]"
         variants={zeroGSectionVariant}
         initial="hidden"
         whileInView="visible"

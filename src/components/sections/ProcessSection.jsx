@@ -24,7 +24,7 @@ const ProcessSection = () => {
 
     return (
         <motion.section 
-            className="py-24 my-12 bg-[#0F213B] defer-visibility"
+            className="py-24 my-12 bg-[var(--bg-level1)] defer-visibility"
             variants={variants}
             initial="hidden"
             whileInView="visible"

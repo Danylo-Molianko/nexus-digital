@@ -27,7 +27,7 @@ const metricsData = [
 
 const ImpactSection = () => {
   return (
-    <section className="py-24 my-12 bg-[#0B1A31]">
+    <section className="py-24 my-12 bg-[var(--bg-level1)]">
       <div className="container mx-auto px-4">
       <div className="text-center mb-16 max-w-3xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">

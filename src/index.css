@@ -34,6 +34,11 @@
   --header-height-small: 4rem; /* 64px */
   /* Відсутня, але використовується у компонентах: приглушене золото для бекграундів і бейджів */
   --color-accent-dimmed: rgba(199, 139, 12, 0.12);
+
+  /* === LEVEL BACKGROUNDS (GLOBAL) === */
+  --bg-level0: #0A192F; /* Base space */
+  --bg-level1: #0F213B; /* Content blocks */
+  --bg-level2: #1A1A2E; /* Footer */
 }
 
 /* === FLUID TYPOGRAPHY SCALE === */
@@ -51,7 +56,7 @@
 /* === БАЗОВІ СТИЛІ === */
 body {
   /* Static premium navy background per directive */
-  background-color: #0A192F; /* deep navy */
+  background-color: var(--bg-level0); /* deep navy */
   background-image: none;
   animation: none;
   will-change: auto;
@@ -168,6 +173,12 @@ h1, h2, h3, h4, h5, h6 {
 .glass-interactive:hover::before { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   .glass-interactive::before { display: none; }
+}
+
+/* Modifier: CTA bias (golden light emphasis) */
+.glass-interactive.glass-interactive--cta::before {
+  background: radial-gradient( 220px 220px at var(--mx,50%) var(--my,50%), rgba(255,215,0,0.20), transparent 60% ),
+              radial-gradient( 160px 160px at var(--mx,50%) var(--my,50%), rgba(199,139,12,0.16), transparent 65% );
 }
 
 /* === ACCESSIBILITY & INTERACTION UTILITIES === */
