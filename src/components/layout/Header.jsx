@@ -41,10 +41,14 @@ const Header = () => {
           
           {/* === ЛОГОТИП NEXUS (НОВИЙ) === */}
           <Link to="/" className="flex items-center h-full py-2" onClick={() => setIsMobileMenuOpen(false)}>
-            <img 
+            <img
               src="/logo-nexus.png" // Використовуємо наявний PNG у /public
-              alt="Nexus Studio Logo" 
-              className="h-full object-contain transition-all duration-300" 
+              alt="Nexus Studio Logo"
+              width="80"
+              height="80"
+              decoding="async"
+              fetchpriority="high"
+              className="h-full object-contain transition-all duration-300"
               style={{ filter: 'drop-shadow(0 0 10px rgba(199, 139, 12, 0.3))' }} // Додаємо логотипу золоте сяйво
             />
           </Link>

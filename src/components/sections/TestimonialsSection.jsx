@@ -46,7 +46,16 @@ const TestimonialsSection = () => {
               </div>
               <div className="border-t border-[var(--color-glass-border)] pt-4">
                 <div className="flex items-center gap-4">
-                  <img src="https://placehold.co/60x60" alt={`${testimonial.name} avatar`} className="w-12 h-12 rounded-full object-cover" />
+                  <img
+                    src="https://placehold.co/60x60"
+                    alt={`${testimonial.name} avatar`}
+                    width="60"
+                    height="60"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
                   <div>
                     <p className="font-bold text-white">{testimonial.name}</p>
                     <p className="text-sm text-[var(--color-text-secondary)]">{testimonial.title}</p>
