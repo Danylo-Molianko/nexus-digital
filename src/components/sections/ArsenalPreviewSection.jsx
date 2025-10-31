@@ -45,7 +45,7 @@ const ArsenalPreviewSection = () => {
   return (
     // Використовуємо "Нульову Гравітацію"
     <motion.section
-      className="bg-[#0B1A31] py-24 my-12 defer-visibility" // Секційний фон
+      className="py-24 my-12 defer-visibility" // Прозорий для ритму (Level 0)
       variants={zeroGSectionVariant}
       initial="hidden"
       whileInView="visible"

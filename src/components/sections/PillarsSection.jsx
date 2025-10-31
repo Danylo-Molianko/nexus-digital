@@ -34,7 +34,7 @@ const PillarsSection = () => {
 
   return (
     <motion.section 
-      className="py-24 my-12 bg-[#0B1A31] defer-visibility"
+      className="py-24 my-12 defer-visibility"
       variants={variants}
       initial="hidden"
       whileInView="visible"
