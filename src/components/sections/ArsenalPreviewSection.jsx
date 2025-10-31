@@ -45,13 +45,13 @@ const ArsenalPreviewSection = () => {
   return (
     // Використовуємо "Нульову Гравітацію"
     <motion.section
-      className="bg-nexus-dark-void defer-visibility" // Легкий перф-плюс
+      className="bg-[#0B1A31] py-24 my-12 defer-visibility" // Секційний фон
       variants={zeroGSectionVariant}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
     >
-      <div className="container mx-auto px-4 py-24">
+      <div className="container mx-auto px-4">
         {/* Заголовок Секції */}
         <motion.div variants={warpRevealVariant} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
           <h2 className="text-3xl md:text-5xl font-headings font-bold text-center mb-6 text-nexus-text-headings">

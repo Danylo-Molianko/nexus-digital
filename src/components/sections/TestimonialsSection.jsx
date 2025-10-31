@@ -22,7 +22,8 @@ const testimonialsData = [
 
 const TestimonialsSection = () => {
   return (
-    <section className="container mx-auto px-4 py-24">
+    <section className="py-24 my-12 bg-[#0B1A31]">
+      <div className="container mx-auto px-4">
       <div className="text-center mb-16 max-w-3xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
           What Our Strategic Partners Say
@@ -31,7 +32,7 @@ const TestimonialsSection = () => {
           Real feedback from leaders we partner with.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {testimonialsData.map((testimonial, index) => (
           <motion.div
             key={index}
@@ -65,6 +66,7 @@ const TestimonialsSection = () => {
             </GlassCardStatic>
           </motion.div>
         ))}
+      </div>
       </div>
     </section>
   );

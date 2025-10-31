@@ -24,12 +24,13 @@ const ProcessSection = () => {
 
     return (
         <motion.section 
-            className="container mx-auto px-4 py-24 defer-visibility"
+            className="py-24 my-12 bg-[#0F213B] defer-visibility"
             variants={variants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: viewportAmount }}
         >
+            <div className="container mx-auto px-4">
             <motion.div className="text-center mb-20 max-w-3xl mx-auto" variants={warpRevealVariant} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
                 <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
                     Our Process — Your Predictable Victory
@@ -66,6 +67,7 @@ const ProcessSection = () => {
                         <div className="absolute top-1/2 left-1/2 w-5 h-5 bg-[var(--color-background-deep)] border-2 border-[var(--color-accent)] rounded-full -translate-y-1/2 -translate-x-1/2"></div>
                     </div>
                 ))}
+            </div>
             </div>
         </motion.section>
     );

@@ -34,12 +34,13 @@ const PillarsSection = () => {
 
   return (
     <motion.section 
-      className="container mx-auto px-4 py-24 defer-visibility"
+      className="py-24 my-12 bg-[#0B1A31] defer-visibility"
       variants={variants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: viewportAmount }}
     >
+      <div className="container mx-auto px-4">
       <motion.div className="text-center mb-16 max-w-3xl mx-auto" variants={warpRevealVariant} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
         <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
           The 'Nexus Effect': Your Advantage is Synergy
@@ -70,6 +71,7 @@ const PillarsSection = () => {
             </GlassCard>
           </motion.div>
         ))}
+      </div>
       </div>
     </motion.section>
   );

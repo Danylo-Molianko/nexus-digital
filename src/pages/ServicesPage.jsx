@@ -39,12 +39,13 @@ const StrategyPage = () => {
 
       {/* 2. НАПРЯМОК 1: DIGITAL FOUNDATION */}
       <motion.section
-        className="container mx-auto px-4 py-24"
+        className="py-24 my-12 bg-[#0F213B]"
         variants={zeroGSectionVariant}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
       >
+        <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-5xl font-headings font-bold text-nexus-text-headings mb-4">
           [ 1 ] Digital Foundation (Цифровий Фундамент)
         </h2>
@@ -66,11 +67,12 @@ const StrategyPage = () => {
             description="Створюємо унікальні веб-додатки зі складною бізнес-логікою: особисті кабінети, інтерактивні каталоги, бази знань."
           />
         </motion.div>
+        </div>
       </motion.section>
 
       {/* 3. НАПРЯМОК 2: BUSINESS ACCELERATION */}
       <motion.section
-        className="bg-nexus-dark-primary py-24" // Виділяємо фон
+        className="bg-[#0B1A31] py-24 my-12" // Виділяємо фон
         variants={zeroGSectionVariant}
         initial="hidden"
         whileInView="visible"
@@ -103,12 +105,13 @@ const StrategyPage = () => {
       
       {/* 4. НАПРЯМОК 3: STRATEGIC PARTNERSHIP */}
       <motion.section
-        className="container mx-auto px-4 py-24"
+        className="py-24 my-12 bg-[#0F213B]"
         variants={zeroGSectionVariant}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
       >
+        <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-5xl font-headings font-bold text-nexus-text-headings mb-4">
           [ 3 ] Strategic Partnership (Стратегічне Партнерство)
         </h2>
@@ -135,6 +138,7 @@ const StrategyPage = () => {
             description="6 місяців гарантії на виправлення наших помилок. Пропонуємо прозорі пакети підтримки (6, 12, 24 міс.) для вашого спокою."
           />
         </motion.div>
+        </div>
       </motion.section>
 
       {/* 5–6. ЛЕЗІ-ЗАВАНТАЖЕНІ РОЗДІЛИ */}

@@ -27,7 +27,8 @@ const metricsData = [
 
 const ImpactSection = () => {
   return (
-    <section className="container mx-auto px-4 py-24">
+    <section className="py-24 my-12 bg-[#0B1A31]">
+      <div className="container mx-auto px-4">
       <div className="text-center mb-16 max-w-3xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
           TRUSTED BY LEADERS DEDICATED TO CREATING VALUE.
@@ -36,7 +37,7 @@ const ImpactSection = () => {
           Results that speak for themselves.
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {metricsData.map((metric, index) => (
           <motion.div
             key={index}
@@ -52,6 +53,7 @@ const ImpactSection = () => {
             </GlassCardStatic>
           </motion.div>
         ))}
+      </div>
       </div>
     </section>
   );

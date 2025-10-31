@@ -26,7 +26,8 @@ const ProjectsPage = () => {
     <>
       <PageHeader title="Our Projects" subtitle="Real-world case studies demonstrating the power of the Nexus Effect." />
       
-      <section className="container mx-auto px-4 py-24">
+      <section className="py-24 my-12 bg-[#0F213B]">
+        <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">Our Best Projects</h2>
           <div className="flex justify-center flex-wrap gap-4 mt-8">
@@ -45,6 +46,7 @@ const ProjectsPage = () => {
           {filteredProjects.map((project, index) => (
             <ProjectCard key={index} project={project} />
           ))}
+        </div>
         </div>
       </section>
 

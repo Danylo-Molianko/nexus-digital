@@ -5,7 +5,7 @@ import { zeroGSectionVariant, warpRevealVariant } from '../../utils/animations';
 const CtaSection = () => {
   return (
     <motion.section
-      className="relative section-glow bg-nexus-dark-primary py-24" // Додаємо золотий глоу позаду заголовка
+      className="relative section-glow bg-[#0F213B] py-24 my-12" // Додаємо золотий глоу позаду заголовка
       variants={zeroGSectionVariant}
       initial="hidden"
       whileInView="visible"

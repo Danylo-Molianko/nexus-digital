@@ -29,12 +29,13 @@ const TriageSection = () => {
   return (
     // Використовуємо "Нульову Гравітацію" для всієї секції
     <motion.section
-      className="container mx-auto px-4 py-24 defer-visibility"
+      className="py-24 my-12 bg-[#0F213B] defer-visibility"
       variants={zeroGSectionVariant}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
     >
+      <div className="container mx-auto px-4">
       {/* Заголовок Секції з warp reveal */}
       <motion.div variants={warpRevealVariant} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
         <h2 className="h2-fluid font-headings font-bold text-center mb-6 text-nexus-text-headings">
@@ -45,7 +46,7 @@ const TriageSection = () => {
         </p>
       </motion.div>
 
-      {/* Сітка Тріажу */}
+  {/* Сітка Тріажу */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 [perspective:1000px]">
         {/* === БЛОК 1: СТАРТАПИ ("Максим") === */}
         <TriageCard
@@ -69,6 +70,7 @@ const TriageSection = () => {
           to="/services"
           className="md:scale-105 border-nexus-gold/50 shadow-gold-glow conic-halo" // Виділяємо цей блок з конічним сяйвом
         />
+      </div>
       </div>
     </motion.section>
   );
