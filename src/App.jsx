@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout';
-const HomePage = lazy(() => import('./pages/HomePage'));
+import HomePage from './pages/HomePage';
 const StrategyPage = lazy(() => import('./pages/ServicesPage'));
 const ArsenalPage = lazy(() => import('./pages/ProjectsPage'));
 const TeamPage = lazy(() => import('./pages/AboutPage'));
