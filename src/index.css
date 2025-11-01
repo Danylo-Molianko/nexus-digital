@@ -36,9 +36,9 @@
   --color-accent-dimmed: rgba(199, 139, 12, 0.12);
 
   /* === LEVEL BACKGROUNDS (GLOBAL) === */
-  --bg-level0: #0A192F; /* Base space */
-  --bg-level1: #0F213B; /* Content blocks */
-  --bg-level2: #1A1A2E; /* Footer */
+  --bg-level0: #0a0e1a; /* Темно-синій схожий на чорний */
+  --bg-level1: #0d1117; /* Трохи світліший */
+  --bg-level2: #111827; /* Для footer */
 
   /* === NAVY STYLE (Uizard-inspired, no purple) === */
   --navy-900: #0A192F;
@@ -116,7 +116,54 @@ h1, h2, h3, h4, h5, h6 {
   100% { background-position: -200% 0; }
 }
 
-/* === CONIC HALO (P1) === */
+/* === GOLD BUTTON WITH SHIMMER ANIMATION === */
+.gold-button {
+  position: relative;
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #0a0e1a;
+  background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #D4AF37 100%);
+  background-size: 200% 100%;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  text-align: center;
+}
+
+.gold-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+.gold-button:hover {
+  background-position: 100% 0;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+}
 .conic-halo { position: relative; }
 .conic-halo::before {
   content: "";

@@ -6,7 +6,6 @@ const StrategyPage = lazy(() => import('./pages/ServicesPage'));
 const ArsenalPage = lazy(() => import('./pages/ProjectsPage'));
 const TeamPage = lazy(() => import('./pages/AboutPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
-const StyleShowcase = lazy(() => import('./pages/StyleShowcase'));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -30,7 +29,6 @@ function App() {
             <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/schedule-session" element={<ContactPage />} />
-            <Route path="/style" element={<StyleShowcase />} />
           </Routes>
         </Suspense>
       </MainLayout>
@@ -39,4 +37,4 @@ function App() {
 }
 
 export default App;
-    
+
