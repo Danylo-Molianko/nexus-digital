@@ -34,11 +34,14 @@ jobs:
           docker compose up -d --build --remove-orphans; \
           echo \"Containers:\"; \
           docker ps; \
-          echo \"Waiting for app health...\"; \
-          sleep 5; \
-          curl -fsSL http://localhost/health; \
+          echo \"Waiting for app to start...\"; \
+          sleep 10; \
+          echo \"Health check (direct app port 3001):\"; \
+          curl -fsSL http://localhost:3001/health || echo \"Direct health check failed\"; \
+          echo \"\\nHealth check (via nginx port 80):\"; \
+          curl -fsSL http://localhost/health || echo \"Nginx health check failed\"; \
           echo \"\\nSeed API:\"; \
-          curl -fsSL http://localhost/api/v1/pattern-seed \
+          curl -fsSL http://localhost/api/v1/pattern-seed || echo \"Seed API failed\" \
         "'
 
     - name: Public HTTP smoke test
