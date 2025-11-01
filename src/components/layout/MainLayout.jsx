@@ -6,12 +6,12 @@ import AnnouncementBar from '../../components/experiments/uizard-navy/Announceme
 const MainLayout = ({ children }) => {
   return (
     <div className="relative min-h-screen">
-  {/* Global subtle noise overlay for premium film texture */}
+      {/* Global subtle noise overlay for premium film texture */}
       <div aria-hidden className="noise-overlay" />
       {/* Navy announcement bar */}
       <AnnouncementBar text="Navy Neon is here — premium deep-navy palette with electric blue accents" cta="Preview" />
       <Header />
-      <main className="relative z-10">
+      <main id="main-content" className="relative z-10">
         {children}
       </main>
       <Footer />

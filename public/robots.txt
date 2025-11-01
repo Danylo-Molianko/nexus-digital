@@ -1,0 +1,10 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://nexus-studio-innovation.com/sitemap.xml
+
+# Disallow admin/sensitive paths (якщо будуть)
+# Disallow: /admin/
+# Disallow: /api/

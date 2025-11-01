@@ -1,0 +1,19 @@
+{
+    "css.lint.unknownAtRules": "ignore",
+    "css.lint.validProperties": [
+        "composes"
+    ],
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "files.associations": {
+        "*.css": "tailwindcss"
+    },
+    "tailwindCSS.experimental.classRegex": [
+        [
+            "clsx\\(([^)]*)\\)",
+            "(?:'|\"|`)([^']*)(?:'|\"|`)"
+        ]
+    ]
+}

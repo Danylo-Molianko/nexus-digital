@@ -25,7 +25,7 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const headerHeight = isScrolled 
+  const headerHeight = isScrolled
     ? 'h-[var(--header-height-small)]' // 64px
     : 'h-[var(--header-height-large)]'; // 80px
 
@@ -34,11 +34,19 @@ const Header = () => {
 
   return (
     <>
-      <header 
+      {/* Skip to Main Content Link (Accessibility) */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-nexus-gold focus:text-nexus-dark-void focus:rounded-lg focus:font-bold focus:shadow-gold-glow"
+      >
+        Skip to main content
+      </a>
+
+      <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-nexus-glass-bg backdrop-blur-[var(--glass-blur)] border-b border-nexus-glass-border shadow-tech-glow' : 'bg-transparent border-b border-transparent'}`}
       >
         <div className={`container mx-auto flex items-center justify-between px-4 transition-all duration-300 ${headerHeight}`}>
-          
+
           {/* === ЛОГОТИП NEXUS (НОВИЙ) === */}
           <Link to="/" className="flex items-center h-full py-2" onClick={() => setIsMobileMenuOpen(false)}>
             <img
@@ -56,8 +64,8 @@ const Header = () => {
           {/* === НАВІГАЦІЯ (DESKTOP) === */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <NavLink 
-                key={link.title} 
+              <NavLink
+                key={link.title}
                 to={link.to}
                 className={({ isActive }) => `${baseLinkStyle} ${isActive ? activeLinkStyle : ''}`}
               >
@@ -72,8 +80,8 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 className="inline-block rounded-full px-6 py-2.5 text-sm font-medium uppercase tracking-wider 
                            bg-nexus-gold text-nexus-dark-void 
                            transition-all duration-300 
@@ -100,7 +108,7 @@ const Header = () => {
         </div>
 
         {/* === МОБІЛЬНЕ МЕНЮ (НОВЕ) === */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={isMobileMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
           transition={{ duration: 0.3 }}
@@ -108,8 +116,8 @@ const Header = () => {
         >
           <nav className="flex flex-col items-center gap-6 py-8">
             {navLinks.map((link) => (
-              <NavLink 
-                key={link.title} 
+              <NavLink
+                key={link.title}
                 to={link.to}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={({ isActive }) => `text-lg tracking-wider ${isActive ? 'text-nexus-gold' : 'text-nexus-text-primary'}`}
@@ -117,15 +125,15 @@ const Header = () => {
                 {link.title}
               </NavLink>
             ))}
-            
+
             {/* === CTA (МОБІЛЬНЕ) === */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="mt-4"
             >
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="inline-block rounded-full px-8 py-3 text-base font-medium uppercase tracking-wider 
                            bg-nexus-gold text-nexus-dark-void 
@@ -137,7 +145,7 @@ const Header = () => {
           </nav>
         </motion.div>
       </header>
-      
+
       {/* === ЗАГЛУШКА ДЛЯ КОНТЕНТУ === */}
       {/* Додаємо пустий блок висотою з хедер, щоб контент не ховався під нього */}
       <div className={`transition-all duration-300 ${headerHeight}`}></div>
