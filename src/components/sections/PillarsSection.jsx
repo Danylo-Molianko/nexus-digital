@@ -41,13 +41,15 @@ const PillarsSection = () => {
       viewport={{ once: true, amount: viewportAmount }}
     >
       <div className="container mx-auto px-4">
-      <motion.div className="text-center mb-16 max-w-3xl mx-auto" variants={warpRevealVariant} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-        <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
-          The 'Nexus Effect': Your Advantage is Synergy
-        </h2>
-        <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-          Our strength lies in synergy. We don't just offer services; we connect them to create holistic, future-proof digital solutions.
-        </p>
+      <motion.div className="mb-16 max-w-3xl mx-auto" variants={warpRevealVariant} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+        <div className="holo-frame p-6 md:p-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
+            The Nexus Effect: Synergy as Advantage
+          </h2>
+          <p className="mt-3 text-lg text-[var(--color-text-secondary)]">
+            We connect creation, innovation, and security into one system.
+          </p>
+        </div>
       </motion.div>
   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 [perspective:1000px]">
         {pillarsData.map((pillar, index) => (

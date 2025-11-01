@@ -29,13 +29,12 @@ const ImpactSection = () => {
   return (
     <section className="py-24 my-12 bg-[var(--bg-level1)]">
       <div className="container mx-auto px-4">
-      <div className="text-center mb-16 max-w-3xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
-          TRUSTED BY LEADERS DEDICATED TO CREATING VALUE.
-        </h2>
-        <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-          Results that speak for themselves.
-        </p>
+      <div className="mb-16 max-w-3xl mx-auto">
+        <div className="holo-frame p-6 md:p-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
+            Trusted by leaders
+          </h2>
+        </div>
       </div>
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {metricsData.map((metric, index) => (

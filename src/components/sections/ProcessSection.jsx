@@ -4,12 +4,12 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { zeroGSectionVariant, fadeInVariant, warpRevealVariant } from '../../utils/animations';
 
 const processSteps = [
-    { title: "Discovery & Strategy", description: "We dive deep into your business to define objectives, establish KPIs, and create a strategic project roadmap." },
-    { title: "Architecture & Design", description: "We architect the solution and design intuitive UX/UI, creating interactive prototypes to visualize the final product." },
-    { title: "Creation & Development", description: "Our team writes clean, scalable code using Agile methodologies for iterative development and seamless integration." },
-    { title: "Testing & Refinement", description: "We conduct rigorous testing, including comprehensive security audits, to ensure a flawless and robust product." },
-    { title: "Launch & Handover", description: "We manage the entire launch process, from server configuration to market release, ensuring a smooth transition." },
-    { title: "Partnership & Evolution", description: "Our partnership continues post-launch with ongoing monitoring, performance analysis, and strategic enhancements." }
+    { title: "Discovery & Strategy", description: "Define goals, KPIs, and a clear roadmap." },
+    { title: "Architecture & Design", description: "Plan the system and craft intuitive UX/UI." },
+    { title: "Creation & Development", description: "Ship clean, scalable code in tight iterations." },
+    { title: "Testing & Security", description: "Verify quality and harden with security audits." },
+    { title: "Launch & Handover", description: "Smooth release, docs, and ownership transfer." },
+    { title: "Partnership & Evolution", description: "Monitor, improve, and scale continuously." }
 ];
 
 const ProcessSection = () => {
@@ -31,13 +31,15 @@ const ProcessSection = () => {
             viewport={{ once: true, amount: viewportAmount }}
         >
             <div className="container mx-auto px-4">
-            <motion.div className="text-center mb-20 max-w-3xl mx-auto" variants={warpRevealVariant} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-                <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
-                    Our Process — Your Predictable Victory
-                </h2>
-                <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-                    You aren't buying a 'black box.' You are investing in a transparent, 6-step engineering process that guarantees outcomes.
-                </p>
+            <motion.div className="mb-20 max-w-3xl mx-auto" variants={warpRevealVariant} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+                <div className="holo-frame p-6 md:p-8 text-center">
+                  <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
+                      A Transparent, 6‑Step Process
+                  </h2>
+                  <p className="mt-3 text-lg text-[var(--color-text-secondary)]">
+                      No black boxes. Just clarity and momentum.
+                  </p>
+                </div>
             </motion.div>
             
             <div className="relative max-w-4xl mx-auto">

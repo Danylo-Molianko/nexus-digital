@@ -15,20 +15,19 @@ const CtaSection = () => {
         
         {/* === НАША ГОЛОВНА УТП (З ДОКУМЕНТУ 2.3) === */}
         <motion.div variants={warpRevealVariant} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-          <h2 className="text-3xl md:text-5xl font-headings font-bold text-nexus-text-headings mb-6">
-            Ваш проєкт ведуть засновники. Не менеджери.
-          </h2>
-          
-          <p className="text-lg md:text-xl text-nexus-text-secondary max-w-3xl mx-auto mb-12">
-            На відміну від агенцій-фабрик, де ваш проєкт губиться, у Nexus Studio ви отримуєте 
-            прямий доступ та персональну відповідальність лідерів, відповідальних за ваш результат: 
-            Технології, Стратегія та Креатив.
-          </p>
+          <div className="max-w-4xl mx-auto holo-frame p-6 md:p-8 mb-12">
+            <h2 className="text-3xl md:text-5xl font-headings font-bold text-nexus-text-headings">
+              Ваш проєкт ведуть засновники. Не менеджери.
+            </h2>
+            <p className="text-lg md:text-xl text-nexus-text-secondary max-w-3xl mx-auto mt-4">
+              Прямий доступ і особиста відповідальність лідерів: Технології, Стратегія, Креатив.
+            </p>
+          </div>
         </motion.div>
 
         {/* === КОМАНДА (ШАБЛОН) === */}
         {/* (Ми замінимо це на реальні фото, коли отримаємо досьє) */}
-        <div className="flex justify-center items-center gap-8 mb-12">
+  <div className="flex justify-center items-center gap-8 mb-12 holo-frame p-6">
           <div className="text-center">
             <div className="w-24 h-24 rounded-full bg-nexus-dark-void border-2 border-nexus-gold mx-auto mb-2 flex items-center justify-center">
               <span className="font-headings text-2xl text-nexus-gold">О</span>

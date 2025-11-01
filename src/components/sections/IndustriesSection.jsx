@@ -15,9 +15,10 @@ const IndustriesSection = () => {
   return (
     <section className="py-24 my-12 bg-[var(--bg-level1)]">
       <div className="container mx-auto px-4">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">Industries We Work In</h2>
-        <p className="mt-4 text-lg text-[var(--color-text-secondary)]">Deep expertise across a wide range of business sectors.</p>
+      <div className="mb-16 max-w-2xl mx-auto">
+        <div className="holo-frame p-6 md:p-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">Industries</h2>
+        </div>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8">
         {industriesData.map((industry, index) => <IndustryCard key={index} {...industry} />)}

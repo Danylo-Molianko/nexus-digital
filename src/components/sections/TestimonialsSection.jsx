@@ -24,13 +24,12 @@ const TestimonialsSection = () => {
   return (
     <section className="py-24 my-12 bg-[var(--bg-level1)]">
       <div className="container mx-auto px-4">
-      <div className="text-center mb-16 max-w-3xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
-          What Our Strategic Partners Say
-        </h2>
-        <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-          Real feedback from leaders we partner with.
-        </p>
+      <div className="mb-16 max-w-3xl mx-auto">
+        <div className="holo-frame p-6 md:p-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">
+            What partners say
+          </h2>
+        </div>
       </div>
   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {testimonialsData.map((testimonial, index) => (
