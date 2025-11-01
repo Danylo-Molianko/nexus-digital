@@ -1,15 +1,19 @@
 import React from 'react';
+import { useGlassCardHover } from '../../utils/gsapHooks';
 
-/* Lightweight glass card without 3D tilt. For static informational blocks. */
+/* A-LIST Glass card with GSAP hover animation */
 const GlassCardStatic = ({ children, className = '' }) => {
+  const cardRef = useGlassCardHover();
+  
   return (
     <div
+      ref={cardRef}
       className={
         `bg-nexus-glass-bg backdrop-blur-[var(--glass-blur)] 
          border border-nexus-glass-border 
          rounded-2xl p-8 
-         transition-all duration-300 
-         hover:border-nexus-gold/50 hover:u-glow-gold focus-visible-ring glass-interactive ${className}`
+         hover:border-nexus-gold/50 hover:shadow-lg hover:shadow-[var(--color-accent)]/20 
+         focus-visible-ring ${className}`
       }
     >
       {children}

@@ -71,14 +71,14 @@ body {
   animation: none;
   will-change: auto;
 
-  /* Текст і типографіка */
+  /* Текст і типографіка - AGGRESSIVE CONTRAST */
   color: var(--color-text-primary);
   font-family: 'Inter', sans-serif;
+  font-weight: 300; /* Light weight for body text */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   line-height: 1.6;
-  /* Базове вирівнювання — природнє (замість примусового центрування) */
   text-align: left;
 }
 
@@ -87,11 +87,18 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  /* Шрифти (підтверджено з Tailwind) */
+  /* Шрифти - MAXIMUM WEIGHT CONTRAST */
   font-family: 'Space Grotesk', sans-serif;
   color: var(--color-text-headings);
-  font-weight: 700;
-  line-height: 1.2;
+  font-weight: 800; /* Black weight for maximum impact */
+  line-height: 1.1; /* Tighter leading for bold headlines */
+  letter-spacing: -0.02em; /* Slight negative tracking for modern look */
+}
+
+/* Paragraph refinement */
+p {
+  font-weight: 300; /* Explicitly light */
+  line-height: 1.7;
 }
 
 /* === АНІМАЦІЇ (ЗАЛИШИТИ) === */
@@ -102,21 +109,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Видаляємо попереднє примусове центрування всього контенту. */
 
-/* === GOLD TEXT SHINE (P1) === */
+/* === GOLD TEXT (STATIC) === */
 .gold-text {
-  background: linear-gradient(90deg, #a87113 0%, #ffd27a 35%, #c78b0c 50%, #ffd27a 65%, #a87113 100%);
-  background-size: 200% 100%;
+  background: linear-gradient(90deg, #a87113 0%, #ffd27a 50%, #a87113 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: goldShine 4s linear infinite;
-}
-@keyframes goldShine {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
 }
 
-/* === GOLD BUTTON WITH SHIMMER ANIMATION === */
+/* === GOLD BUTTON (STATIC, INTERACTIVE READY) === */
 .gold-button {
   position: relative;
   display: inline-block;
@@ -127,41 +128,14 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.1em;
   color: #0a0e1a;
   background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #D4AF37 100%);
-  background-size: 200% 100%;
   border-radius: 9999px;
   border: none;
   cursor: pointer;
-  overflow: hidden;
   text-align: center;
-}
-
-.gold-button::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.3) 50%,
-    transparent 70%
-  );
-  animation: shimmer 3s infinite linear;
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%) translateY(-100%) rotate(45deg);
-  }
-  100% {
-    transform: translateX(100%) translateY(100%) rotate(45deg);
-  }
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .gold-button:hover {
-  background-position: 100% 0;
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
 }
 .conic-halo { position: relative; }

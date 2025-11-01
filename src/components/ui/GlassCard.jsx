@@ -1,10 +1,13 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useGlassCardHover } from '../../utils/gsapHooks';
 
-/* === СПРОЩЕНИЙ GLASS CARD (БЕЗ 3D ЕФЕКТІВ) === */
+/* === A-LIST GLASS CARD WITH GSAP HOVER === */
 
 const GlassCard = ({ children, className = '' }) => {
+  const cardRef = useGlassCardHover();
+  
   return (
     <div
+      ref={cardRef}
       className={`
         rounded-2xl p-6
         bg-[var(--color-glass-bg)] 
