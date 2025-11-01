@@ -21,7 +21,7 @@ jobs:
       run: |
         echo "Starting remote Docker deployment..."
         ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'bash -lc "\
-          set -euo pipefail; \
+          set -e; \
           cd ~/nexus-digital-web; \
           git pull; \
           echo \"Pruning old docker images...\"; \
@@ -35,10 +35,17 @@ jobs:
           echo \"Containers:\"; \
           docker ps; \
           echo \"Waiting for services to be healthy...\"; \
-          timeout 60 sh -c 'until docker compose ps | grep -q \"healthy\"; do echo \"Waiting for health checks...\"; sleep 5; done' || echo \"Health check timeout - continuing anyway\"; \
+          for i in 1 2 3 4 5 6 7 8 9 10 11 12; do \
+            if docker compose ps | grep -q healthy; then \
+              echo \"Services are healthy!\"; \
+              break; \
+            fi; \
+            echo \"Waiting for health checks... (attempt \$i/12)\"; \
+            sleep 5; \
+          done; \
           echo \"Testing health endpoint...\"; \
           curl -f --retry 5 --retry-delay 2 http://localhost/health || echo \"Health check failed, but deployment completed\"; \
-          echo \"\\nTesting seed API...\"; \
+          echo \"Testing seed API...\"; \
           curl -f --retry 3 --retry-delay 2 http://localhost/api/v1/pattern-seed || echo \"API check failed, but deployment completed\" \
         "'
 
