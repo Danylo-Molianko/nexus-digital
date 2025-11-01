@@ -8,6 +8,7 @@ const ProcessSection = React.lazy(() => import('../components/sections/ProcessSe
 const ArsenalPreviewSection = React.lazy(() => import('../components/sections/ArsenalPreviewSection'));
 // const TestimonialsSection = React.lazy(() => import('../components/sections/TestimonialsSection')); // МИ ВІДКЛЮЧАЄМО ЦЕ
 const CtaSection = React.lazy(() => import('../components/sections/CtaSection'));
+const LogosStrip = React.lazy(() => import('../components/experiments/uizard-navy/LogosStrip'));
 
 
 const HomePage = () => {
@@ -21,6 +22,10 @@ const HomePage = () => {
         <TriageSection />
         {/* 3. ТРИ СТОВПИ (З НУЛЬОВОЮ ГРАВІТАЦІЄЮ) */}
         <PillarsSection />
+        {/* 3.5 Logos strip (uizard-inspired, navy grayscale) */}
+        <Suspense fallback={null}>
+          <LogosStrip />
+        </Suspense>
         {/* 4. ПРОЦЕС (З НУЛЬОВОЮ ГРАВІТАЦІЄЮ) */}
         <ProcessSection />
         {/* 5. АРСЕНАЛ-ПРЕВ'Ю (АРХІТЕКТУРА ОБІЦЯНКИ) */}

@@ -59,7 +59,7 @@ const Footer = () => {
               </div>
               <span className="text-white font-bold text-xl">Nexus Studio</span>
             </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-white/70 mb-6 leading-relaxed">
               Architects of your digital future. We combine creation, innovation, and security into a cohesive ecosystem.
             </p>
             <div className="flex space-x-4">
@@ -84,7 +84,7 @@ const Footer = () => {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-gray-300 hover:text-white transition-colors duration-200"
+                      className="text-white/70 hover:text-[var(--blue-electric)] transition-colors duration-200"
                     >
                       {link}
                     </a>
@@ -102,13 +102,13 @@ const Footer = () => {
               © {currentYear} Nexus Studio. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+              <a href="#" className="text-white/60 hover:text-[var(--blue-electric)] transition-colors duration-200">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+              <a href="#" className="text-white/60 hover:text-[var(--blue-electric)] transition-colors duration-200">
                 Terms of Service
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+              <a href="#" className="text-white/60 hover:text-[var(--blue-electric)] transition-colors duration-200">
                 Cookie Policy
               </a>
             </div>

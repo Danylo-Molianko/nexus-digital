@@ -49,10 +49,10 @@ const HeroSection = () => {
     <section 
       className="relative section-glow flex items-center justify-center min-h-[calc(100vh-var(--header-height-large))] overflow-hidden"
     >
-  {/* Aurora background removed per performance directive */}
-
-      <div className="container mx-auto px-4 text-center z-10">
+      <div className="container mx-auto px-4 z-10">
+        <div className="holo-frame p-6 md:p-10">
         {/* Заголовок */}
+        <div className="text-left">
         <AnimatedHeadline 
           text={headlineText}
           highlightWords={["Intelligent", "Digital", "Core"]}
@@ -61,7 +61,7 @@ const HeroSection = () => {
 
         {/* Підзаголовок */}
         <motion.p
-          className="body-fluid text-nexus-text-secondary max-w-3xl mx-auto mt-6"
+          className="body-fluid text-nexus-text-secondary max-w-3xl mt-6"
           variants={fadeInVariant}
           initial="hidden"
           animate="visible"
@@ -72,7 +72,7 @@ const HeroSection = () => {
 
         {/* CTA блок */}
         <motion.div 
-          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
+          className="mt-12 flex flex-col sm:flex-row items-center sm:items-start justify-start gap-6"
           variants={fadeInVariant}
           initial="hidden"
           animate="visible"
@@ -99,16 +99,15 @@ const HeroSection = () => {
           >
             <NavLink
               to="/arsenal"
-              className="inline-block rounded-full px-8 py-3.5 font-headings text-sm font-bold uppercase tracking-wider 
-                         border-2 border-nexus-gold text-nexus-gold 
-                         transition-all duration-300 
-                         hover:bg-nexus-gold hover:text-nexus-dark-void hover:shadow-gold-glow"
+              className="btn-blue inline-block"
             >
               Explore Our Arsenal
             </NavLink>
           </motion.div>
 
         </motion.div>
+        </div>
+        </div>
       </div>
     </section>
   );
