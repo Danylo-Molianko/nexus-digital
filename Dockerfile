@@ -17,9 +17,9 @@ COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/server.js ./server.js
 
-# 3. Install ONLY production dependencies + healthcheck tools
+# 3. Install ONLY production dependencies
 RUN npm install --only=production --force \
- && apk add --no-cache curl wget
+    && apk add --no-cache curl
 
 # 4. Set correct permissions now that files are copied
 RUN chown -R node:node /app
