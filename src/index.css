@@ -39,6 +39,16 @@
   --bg-level0: #0A192F; /* Base space */
   --bg-level1: #0F213B; /* Content blocks */
   --bg-level2: #1A1A2E; /* Footer */
+
+  /* === NAVY STYLE (Uizard-inspired, no purple) === */
+  --navy-900: #0A192F;
+  --navy-850: #0C1F3E;
+  --navy-800: #0E244B;
+  --navy-700: #132D5F;
+  --blue-electric: #3BA3FF; /* Accent instead of purple */
+  --blue-electric-2: #00BFFF; /* existing tech blue */
+  --surface-border: rgba(255,255,255,0.08);
+  --surface-border-strong: rgba(255,255,255,0.14);
 }
 
 /* === FLUID TYPOGRAPHY SCALE === */
@@ -180,6 +190,68 @@ h1, h2, h3, h4, h5, h6 {
   background: radial-gradient( 220px 220px at var(--mx,50%) var(--my,50%), rgba(255,215,0,0.20), transparent 60% ),
               radial-gradient( 160px 160px at var(--mx,50%) var(--my,50%), rgba(199,139,12,0.16), transparent 65% );
 }
+
+/* === NAVY EXPERIMENT UTILITIES (Uizard-style adaptation) === */
+/* 1) Announcement bar (thin gradient strip with subtle glow) */
+.announcement-bar {
+  background: linear-gradient(90deg, rgba(59,163,255,0.25), rgba(10,25,47,0.0) 40%, rgba(59,163,255,0.25));
+  box-shadow: 0 0 20px rgba(59,163,255,0.12) inset;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+/* 2) Holo frame for hero media/card */
+.holo-frame {
+  position: relative;
+  background: radial-gradient(120% 120% at 50% 0%, rgba(59,163,255,0.18), transparent 60%),
+              linear-gradient(180deg, rgba(14,36,75,0.85), rgba(12,31,62,0.85));
+  border: 1px solid var(--surface-border-strong);
+  border-radius: 1.25rem;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.35),
+    0 0 0 1px rgba(255,255,255,0.04) inset;
+}
+.holo-frame::before {
+  content: "";
+  position: absolute; inset: -2px; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(90% 50% at 50% -10%, rgba(59,163,255,0.25), transparent 60%);
+  filter: blur(10px);
+}
+
+/* 3) Navy surface card (for testimonial-like items) */
+.navy-surface {
+  background: linear-gradient(180deg, rgba(14,36,75,0.9), rgba(10,25,47,0.9));
+  border: 1px solid var(--surface-border);
+  border-radius: 0.75rem;
+}
+.navy-surface:hover { border-color: var(--surface-border-strong); }
+
+/* 4) Buttons: Blue and Gold */
+.btn-blue {
+  background: var(--blue-electric);
+  color: #001025;
+  border-radius: 9999px;
+  padding: 0.625rem 1rem;
+  font-weight: 600;
+  transition: transform 120ms ease, filter 120ms ease;
+}
+.btn-blue:hover { filter: brightness(1.05); transform: translateY(-1px); }
+
+.btn-gold {
+  background: var(--color-accent);
+  color: #0A0A0A;
+  border-radius: 9999px;
+  padding: 0.625rem 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform 120ms ease, filter 120ms ease;
+}
+.btn-gold:hover { filter: brightness(1.05); transform: translateY(-1px); }
+
+/* 5) Logos strip helpers */
+.logos-strip { opacity: 0.75; filter: saturate(0) brightness(1.4); }
+.logos-strip > li { opacity: 0.7; transition: opacity 150ms ease; }
+.logos-strip > li:hover { opacity: 1; }
 
 /* === ACCESSIBILITY & INTERACTION UTILITIES === */
 .focus-visible-ring:focus-visible {
